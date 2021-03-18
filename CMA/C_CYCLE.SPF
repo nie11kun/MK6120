@@ -27,20 +27,13 @@ IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI
     
     ;**********************
     ;ifIsExternalBegin
-    IF RING[0]==0;螺纹/环形槽加工
-        D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[56],INI[55]);外螺纹
+
+    IF ($AA_IM[Z]>=INI[6]-20) AND ($AA_IM[Z]<=INI[6]+20);Z轴在磨削起点附近慢速到位
+        D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[57],INI[55]);外螺纹
     ELSE
-        IF INI[130]==0;C轴是否是主轴(0否1是)
-            DO MOV[C]=1 FA[C]=TECHNOLOGY[60+PROCESS[2]]*360;c轴旋转
-        ELSE
-            M3 S=TECHNOLOGY[60+PROCESS[2]];c轴旋转
-        ENDIF
-        IF ($AA_IM[Z]>=INI[6]-10) AND ($AA_IM[Z]<=INI[6]+10);Z轴在磨削起点附近慢速到位
-            D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[57],INI[55]);外螺纹
-        ELSE
-            D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[56],INI[55]);外螺纹
-        ENDIF
+        D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[56],INI[55]);外螺纹
     ENDIF
+
     ;ifIsExternalEnd
 
     ;
@@ -50,15 +43,8 @@ ENDIF
 
 M8;磨削冷却开
 
-IF RING[0]==0;螺纹/环形槽加工
-;
-        D_GRIND;螺纹小循环
-;
-;
-;
-ELSE
-    D_GRIND_RING;环形槽小循环
-ENDIF
+D_GRIND_RING;环形槽小循环
+
 PLCASUP1;初始角度计算
 
 IF INI[47]==0;磨削中不正常退出标记
@@ -92,15 +78,9 @@ ENDIF
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]);最后一次结束
     M9;磨削冷却关
 
-    ;*********************
-    IF RING[0]==0;螺纹/环形槽加工
+    IF RING[5]==RING[4]-1;最后一槽
         D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[55]);外螺纹 ifIsExternal
 ;
-    ELSE
-        IF RING[5]==RING[4]-1;最后一槽
-            D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[55]);外螺纹 ifIsExternal
-;
-        ENDIF
     ENDIF
 
     ;*********************

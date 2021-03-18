@@ -23,32 +23,13 @@ INI[72]=0;磨削中进行过修整后的标记
 R270=0;同步动作取消标记
 
 ;非蜗杆磨床时对存储齿形程序的变量赋值
-IF INI[86]==0;非蜗杆或蜗杆时用内置齿形
 	IF (DRESSER[0]==0) OR (DRESSER[0]==1);VW/XZ
 		IF DRESSER[139]==0;是否使用外部齿形程序(0否1是)
-			IF DRESSER[114]==0;是否使用通用齿形程序(0否1是)
-				IF DRESSER[4]==0;齿形选择(0三角/1梯形/2双圆弧)
-					SHAPE="D_TRIANGLE"
-				ELSE
-					IF DRESSER[4]==1
-						SHAPE="D_TRAPEZOIDAL"
-					ELSE
-						SHAPE="D_DOUBLE_ARC"
-					ENDIF
-				ENDIF
+			SHAPE="D_COMMON_SHAPE"
+			IF DRESSER[4]==0;
+				WHICH_COMMON_SHAPE="F_COMMON_SHAPE_6"
 			ELSE
-				SHAPE="D_COMMON_SHAPE"
-				IF DRESSER[4]==0;三角
-					WHICH_COMMON_SHAPE="F_COMMON_SHAPE_8"
-				ELSE
-					IF DRESSER[4]==1;梯形
-						WHICH_COMMON_SHAPE="F_COMMON_SHAPE_7"
-					ELSE
-						IF DRESSER[4]==2;双圆弧
-							WHICH_COMMON_SHAPE="F_COMMON_SHAPE_6"
-						ENDIF
-					ENDIF
-				ENDIF
+				WHICH_COMMON_SHAPE="F_COMMON_SHAPE_7"
 			ENDIF
 		ELSE
 			SHAPE="D_EXTERNE_SHAPE"
@@ -61,9 +42,6 @@ IF INI[86]==0;非蜗杆或蜗杆时用内置齿形
 			SHAPE="D_HYDRAULIC"
 		ENDIF
 	ENDIF
-ELSE;蜗杆
-	SHAPE=WORM_SHAPE
-ENDIF
 
 GRIND[1]=$A_DBB[0];是否修整
 
@@ -128,18 +106,9 @@ ENDIF
 ;新砂轮时磨削初始和当前接触
 IF GRIND[1]==1;修整
 	IF (DRESSER[5]==0) AND (INI[40]==0);砂轮为新砂轮
-		IF GRIND[0]<>1;不是内螺纹
-			PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
-			PROCESS[4]=PROCESS[4]+(WHEEL[12]-WHEEL[10])
-		ELSE
-			IF DRESSER[37]==0;前/后修整
-				PROCESS[13]=PROCESS[13]+(WHEEL[10]-WHEEL[12]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
-				PROCESS[4]=PROCESS[4]+(WHEEL[10]-WHEEL[12])
-			ELSE
-				PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10])
-				PROCESS[4]=PROCESS[4]+(WHEEL[12]-WHEEL[10])
-			ENDIF
-		ENDIF
+		PROCESS[13]=PROCESS[13]+(WHEEL[12]-WHEEL[10])*COS(SHAPE_MODEL[7]);新砂轮接触工件位置等于初始接触加上当前与初始接触修整轮距离(如果相减为负则说明新砂轮直径小于当前旧砂轮)
+		PROCESS[4]=PROCESS[4]+(WHEEL[12]-WHEEL[10])*COS(SHAPE_MODEL[7])
+
 		INI[40]=1;新砂轮磨削接触位计算标记
 		INI[77]=DRESSER[23];当前新砂轮直径缓存
 	ELSE
@@ -147,53 +116,29 @@ IF GRIND[1]==1;修整
 			IF DRESSER[113]==0;新砂轮是否是成型砂轮(0否1是)
 				IF (DRESSER[13]<>0);有轮廓
 					IF DRESSER[20]==DRESSER[13];轮廓已修完
-						PROCESS[13]=PROCESS[13]+ABS(WHEEL[12]-WHEEL[10])
-						PROCESS[4]=PROCESS[4]+ABS(WHEEL[12]-WHEEL[10])
+						PROCESS[13]=PROCESS[13]+ABS(WHEEL[12]-WHEEL[10])*COS(SHAPE_MODEL[7])
+						PROCESS[4]=PROCESS[4]+ABS(WHEEL[12]-WHEEL[10])*COS(SHAPE_MODEL[7])
 					ELSE;未修完
-						PROCESS[13]=PROCESS[13]+(DRESSER[23]-INI[77])/2;当前输入的新砂轮直径和上次的不一样，将差值导入磨削接触位
-						PROCESS[4]=PROCESS[4]+(DRESSER[23]-INI[77])/2
+						PROCESS[13]=PROCESS[13]+(DRESSER[23]-INI[77])/2*COS(SHAPE_MODEL[7]);当前输入的新砂轮直径和上次的不一样，将差值导入磨削接触位
+						PROCESS[4]=PROCESS[4]+(DRESSER[23]-INI[77])/2*COS(SHAPE_MODEL[7])
 						INI[77]=DRESSER[23];当前新砂轮直径缓存
 					ENDIF
 				ELSE;无轮廓-齿高设为0
-					PROCESS[13]=PROCESS[13]+ABS(WHEEL[12]-WHEEL[10])
-					PROCESS[4]=PROCESS[4]+ABS(WHEEL[12]-WHEEL[10])
+					PROCESS[13]=PROCESS[13]+ABS(WHEEL[12]-WHEEL[10])*COS(SHAPE_MODEL[7])
+					PROCESS[4]=PROCESS[4]+ABS(WHEEL[12]-WHEEL[10])*COS(SHAPE_MODEL[7])
 				ENDIF
 			ELSE
-				PROCESS[13]=PROCESS[13]+ABS(WHEEL[12]-WHEEL[10])
-				PROCESS[4]=PROCESS[4]+ABS(WHEEL[12]-WHEEL[10])
+				PROCESS[13]=PROCESS[13]+ABS(WHEEL[12]-WHEEL[10])*COS(SHAPE_MODEL[7])
+				PROCESS[4]=PROCESS[4]+ABS(WHEEL[12]-WHEEL[10])*COS(SHAPE_MODEL[7])
 			ENDIF
 		ENDIF
 	ENDIF
 ENDIF
 
 ;螺旋升角值
-IF INI[0]==0;右旋
-	INI[20]=-INI[17];计算升角值
-ELSE
-	INI[20]=INI[17];计算升角值
-ENDIF
+INI[20]=INI[17];计算升角值
 
-;工件磨削起点/终点
-IF GRIND[0]==1;是内螺纹磨削
-	INI[6]=INI[2]-RING[7];工件右端
-	INI[7]=INI[1];工件左端
-ELSE;不是内螺纹磨削
-	IF INI[0]==1;左旋
-		INI[6]=INI[1];工件左端
-		INI[7]=INI[2];工件右端
-	ELSE;右旋
-		INI[6]=INI[2]-RING[7];工件右端
-		INI[7]=INI[1];工件左端
-	ENDIF
-ENDIF
-
-INI[3]=INI[2]-INI[1];磨削长度
-INI[5]=WORK[0]*INI[4];导程
-INI[9]=360*(INI[3]-INI[24])/INI[5];磨削总角度
-INI[8]=(INI[2]+INI[1])/2;磨削中点
-
-;锥度相关计算,内螺纹大头往小头磨,外螺纹小头往大头磨
-INI[15]=INI[3]*INI[14]+INI[141];X方向的增量+补偿值
+INI[6]=INI[2]+RING[7];工件右端
 
 ;X轴初始接触赋值位置选择
 IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
@@ -204,21 +149,6 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 	ENDIF
 ELSE
 	PROCESS[2]=4;当前工艺
-ENDIF
-
-TECHNOLOGY[140]=TECHNOLOGY[60]*INI[4]*WORK[0];磨削速度计算
-TECHNOLOGY[141]=TECHNOLOGY[61]*INI[4]*WORK[0];磨削速度计算
-TECHNOLOGY[142]=TECHNOLOGY[62]*INI[4]*WORK[0];磨削速度计算
-TECHNOLOGY[143]=TECHNOLOGY[63]*INI[4]*WORK[0];磨削速度计算
-
-TECHNOLOGY[200]=TECHNOLOGY[267]*INI[4]*WORK[0];磨削速度计算
-TECHNOLOGY[201]=TECHNOLOGY[268]*INI[4]*WORK[0];磨削速度计算
-TECHNOLOGY[202]=TECHNOLOGY[269]*INI[4]*WORK[0];磨削速度计算
-TECHNOLOGY[203]=TECHNOLOGY[270]*INI[4]*WORK[0];磨削速度计算
-
-;报警判断
-IF (INI[3]<=0) AND (RING[0]==0);磨削长度<=0 且不是环形槽磨削
-	DRESSER[6]=1;工件左端坐标>工件右端坐标
 ENDIF
 
 IF (PROCESS[0]==0) AND (GRIND[1]==0) AND (GRIND[2]==0);选择界面工艺不是对刀不是修整,界面工艺修整量总量
@@ -256,20 +186,6 @@ ENDIF
 
 IF DRESSER[24]-DRESSER[38]*2<DRESSER[35];当前砂轮直径<最小砂轮直径
 	DRESSER[6]=2;砂轮过小,请更换砂轮
-ENDIF
-
-IF GRIND[1]==0;不再修整中
-	IF (DRESSER[24]>DRESSER[49])AND(GRIND[0]==1);当前砂轮直径>砂轮最大磨削直径,并且是内螺纹磨时
-		DRESSER[6]=3;砂轮过大,请将砂轮修整到小于最大磨削直径
-	ENDIF
-ENDIF
-
-IF (TOOL_SET[59]==1) AND (GRIND[1]==0) AND (GRIND[2]==0);变螺距且要进行磨削
-	IF (TOOL_SET[64]<INI[2]) AND (TOOL_SET[65]<TOOL_SET[64]) AND (INI[1]<TOOL_SET[65])
-
-	ELSE
-		DRESSER[6]=10;测量多段螺距结果有误
-	ENDIF
 ENDIF
 
 RET

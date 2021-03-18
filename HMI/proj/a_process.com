@@ -26,10 +26,10 @@
 	DEF VAR22=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[134]"/0,0,0/402,129,60//"UserGuide/section_2.html","S2D5");精磨进给量
 	
 	;磨削速度
-	DEF VAR27=(R///$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[141]"/0,0,0/132,154,60/);粗磨速度
-	DEF VAR28=(R///$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[142]"/0,0,0/222,154,60/);半粗磨速度
-	DEF VAR29=(R///$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[143]"/0,0,0/312,154,60/);半精磨速度
-	DEF VAR30=(R///$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[144]"/0,0,0/402,154,60/);精磨速度
+	DEF VAR27=(R///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[141]"/0,0,0/132,154,60/);粗磨速度
+	DEF VAR28=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[142]"/0,0,0/222,154,60/);半粗磨速度
+	DEF VAR29=(R///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[143]"/0,0,0/312,154,60/);半精磨速度
+	DEF VAR30=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[144]"/0,0,0/402,154,60/);精磨速度
 
 	;磨削几次修整设定
 	DEF VAR41=(I///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[151]"/0,0,0/132,179,60//"UserGuide/section_2.html","S2D6");粗磨
@@ -44,19 +44,19 @@
 	DEF VAR40=(R/0,//$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[164]"/0,0,0/402,203,60//"UserGuide/section_2.html","S2D7");精磨砂轮线速度
 	
 	;头架转速显示
-	DEF VAR23=(R///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[61]"/0,0,0/132,245,60//"UserGuide/section_2.html","S2D8");粗磨头架转速
-	DEF VAR24=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[62]"/0,0,0/222,245,60//"UserGuide/section_2.html","S2D8");半粗磨头架转速
-	DEF VAR25=(R///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[63]"/0,0,0/312,245,60//"UserGuide/section_2.html","S2D8");半精磨头架转速
-	DEF VAR26=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[64]"/0,0,0/402,245,60//"UserGuide/section_2.html","S2D8");精磨头架转速
-	DEF VAR31=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/INI[5]"/0,0,0/0,0,0/);螺距调用
-	DEF TouShou=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/WORK[1]"/0,0,0/0,0,0/);工件头数调用
+	;DEF VAR23=(R///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[61]"/0,0,0/132,245,60//"UserGuide/section_2.html","S2D8");粗磨头架转速
+	;DEF VAR24=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[62]"/0,0,0/222,245,60//"UserGuide/section_2.html","S2D8");半粗磨头架转速
+	;DEF VAR25=(R///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[63]"/0,0,0/312,245,60//"UserGuide/section_2.html","S2D8");半精磨头架转速
+	;DEF VAR26=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[64]"/0,0,0/402,245,60//"UserGuide/section_2.html","S2D8");精磨头架转速
+	;DEF VAR31=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/INI[5]"/0,0,0/0,0,0/);螺距调用
+	;DEF TouShou=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/WORK[1]"/0,0,0/0,0,0/);工件头数调用
 	
 	;砂轮转速显示
 	DEF VAR32=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/0,0,0/0,0,0/);当前砂轮直径调用
-	DEF VAR33=(I/0,//$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[71]"/0,0,0/132,266,60//"UserGuide/section_2.html","S2D10");粗磨砂轮转速
-	DEF VAR34=(I/0,//$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[72]"/0,0,0/222,266,60//"UserGuide/section_2.html","S2D10");半粗磨砂轮转速
-	DEF VAR35=(I/0,//$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[73]"/0,0,0/312,266,60//"UserGuide/section_2.html","S2D10");半精磨砂轮转速
-	DEF VAR36=(I/0,//$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[74]"/0,0,0/402,266,60//"UserGuide/section_2.html","S2D10");精磨砂轮转速
+	DEF VAR33=(I/0,//$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[71]"/0,0,0/132,245,60//"UserGuide/section_2.html","S2D10");粗磨砂轮转速
+	DEF VAR34=(I/0,//$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[72]"/0,0,0/222,245,60//"UserGuide/section_2.html","S2D10");半粗磨砂轮转速
+	DEF VAR35=(I/0,//$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[73]"/0,0,0/312,245,60//"UserGuide/section_2.html","S2D10");半精磨砂轮转速
+	DEF VAR36=(I/0,//$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[74]"/0,0,0/402,245,60//"UserGuide/section_2.html","S2D10");精磨砂轮转速
 
 	DEF WAIJING=(R/0,300//$85207,$85207,,$85043/WR4//"/NC/_N_NC_GD2_ACX/INI[121]"/35,290,100/130,290,110/);工件外径
 	DEF SANXIAN=(R/0,300//$85208,$85208,,$85043/WR4//"/NC/_N_NC_GD2_ACX/INI[122]"/35,310,100/130,310,110/);三线测量
@@ -95,7 +95,7 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
 
 	VS1=($85231,ac7,se3);批量
-	VS2=($85232,ac7,se1);单件
+	;VS2=($85232,ac7,se1);单件
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -126,7 +126,7 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1","a_grind.com")
+			LM("MASK51","a_grind.com")
 		ELSE
 			LM("MASK18","a_grind.com")
 		ENDIF
@@ -307,10 +307,7 @@
 	END_SUB
 
 	SUB(UP2)
-		VAR27.VAL=VAR23.VAL*VAR31.VAL*TouShou.VAL
-		VAR28.VAL=VAR24.VAL*VAR31.VAL*TouShou.VAL
-		VAR29.VAL=VAR25.VAL*VAR31.VAL*TouShou.VAL
-		VAR30.VAL=VAR26.VAL*VAR31.VAL*TouShou.VAL
+
 	END_SUB
 
 	SUB(UP3)
@@ -595,7 +592,7 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1","a_grind.com")
+			LM("MASK51","a_grind.com")
 		ELSE
 			LM("MASK18","a_grind.com")
 		ENDIF
@@ -775,10 +772,7 @@
 	END_CHANGE
 	
 	SUB(UP2)
-		VAR27.VAL=VAR23.VAL*VAR31.VAL*TouShou.VAL
-		VAR28.VAL=VAR24.VAL*VAR31.VAL*TouShou.VAL
-		VAR29.VAL=VAR25.VAL*VAR31.VAL*TouShou.VAL
-		VAR30.VAL=VAR26.VAL*VAR31.VAL*TouShou.VAL
+
 	END_SUB
 
 	SUB(UP3)
@@ -1099,7 +1093,7 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1","a_grind.com")
+			LM("MASK51","a_grind.com")
 		ELSE
 			LM("MASK18","a_grind.com")
 		ENDIF
@@ -1282,10 +1276,7 @@
 	END_CHANGE
 
 	SUB(UP2)
-		VAR27.VAL=VAR23.VAL*VAR31.VAL*TouShou.VAL
-		VAR28.VAL=VAR24.VAL*VAR31.VAL*TouShou.VAL
-		VAR29.VAL=VAR25.VAL*VAR31.VAL*TouShou.VAL
-		VAR30.VAL=VAR26.VAL*VAR31.VAL*TouShou.VAL
+
 	END_SUB
 
 	SUB(UP3)
@@ -1723,7 +1714,7 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1","a_grind.com")
+			LM("MASK51","a_grind.com")
 		ELSE
 			LM("MASK18","a_grind.com")
 		ENDIF
@@ -1905,10 +1896,7 @@
 	END_CHANGE
 
 	SUB(UP2)
-		VAR27.VAL=VAR23.VAL*VAR31.VAL*TouShou.VAL
-		VAR28.VAL=VAR24.VAL*VAR31.VAL*TouShou.VAL
-		VAR29.VAL=VAR25.VAL*VAR31.VAL*TouShou.VAL
-		VAR30.VAL=VAR26.VAL*VAR31.VAL*TouShou.VAL
+
 	END_SUB
 
 	SUB(UP3)

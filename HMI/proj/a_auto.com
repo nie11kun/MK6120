@@ -67,7 +67,7 @@
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1","a_grind.com")
+			LM("MASK51","a_grind.com")
 		ELSE
 			LM("MASK18","a_grind.com")
 		ENDIF

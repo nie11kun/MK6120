@@ -7,7 +7,7 @@
 	VS1=(["\\S_002.png",$85065],ac7,se1,pa0) 
 	
 	PRESS(HS7)
-		LM("MASK1","a_grind.com");磨削界面加载 ifIsExternal
+		LM("MASK51","a_grind.com");磨削界面加载 ifIsExternal
 ;
 ;
 	END_PRESS

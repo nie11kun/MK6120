@@ -18,10 +18,27 @@ IF INI[16]==1
 		STOPRE
 		G4 F0.5
 		M36;夹紧
-		IF INI[158]==0;转完A轴关闭液压
-			G4 F1;
-			M74;液压关
-		ENDIF
+	ENDIF
+
+	IF TRUNC($AA_IM[B]*1000)<>TRUNC(LADAO[5]*1000)
+		M73;液压开
+		G4 F1
+		M94;松开
+		WHILE($A_DBB[15]==0);未松开
+			G4 F0.2
+		ENDWHILE
+		G4 F1
+;
+		MSG("螺旋升角到位中"); ifIsCHS
+		G90 G01 B=LADAO[5] F=INI[60]
+		STOPRE
+		G4 F0.5
+		M95;夹紧
+	ENDIF
+
+	IF INI[158]==0;转完A轴关闭液压
+		G4 F1;
+		M74;液压关
 	ENDIF
 ENDIF
 

@@ -9,17 +9,20 @@ IF $A_DBB[0]<>0;修整
 ENDIF
 
 IF $A_DBB[1]<>0;手动对刀
-    RET
+    B_SCREW;磨削主程序
+    GOTOF RING_ENDING
 ENDIF
 
 IF $A_DBB[5]<>0;自动对刀
-    RET
+    B_SCREW;磨削主程序
+    IF GRIND[2]==2;自动对刀
+		GRIND[2]=0
+		TOOL_SET[68]=1;自动对刀标记(不关对刀键情况下使用)
+		IF INI[90]==0;不是纯自动对刀或自动对刀后不直接磨削
+            GOTOF RING_ENDING
+        ENDIF
+	ENDIF
 ENDIF
-
-INI[0]=0;右旋
-INI[26]=1;批量磨削
-WORK[0]=1;头数
-INI[17]=0;螺旋升角置零
 
 RING[4]=RING[3]-RING[2]+1;需加工槽数
 RING[5]=0;已加工槽数
@@ -46,15 +49,6 @@ IF (INI[74]<>0) AND (INI[73]>=INI[74]);磨削几件后修整不为零或当前�
 ENDIF
 
 RING_ENDING:
-IF INI[130]==0;C轴是否是主轴(0否1是)
-    DO MOV[C]=1 FA[C]=3600
-    G4 F0.5
-    DO MOV[C]=0;停止c轴旋转
-ELSE
-    M3 S=30;头架启动
-    G4 F0.5
-    M5;头架停止转动
-ENDIF
 
 M9;内磨削冷却关
 M29;修整冷却关

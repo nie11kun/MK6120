@@ -21,9 +21,6 @@
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,30,60//"UserGuide/section_3.html","S3D16");砂轮状态
 	DEF CHENGXING=(I/*0=$85301,1=$85302//$85300,,,/WR4/"panel_3_14_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[114]"/0,0,0/510,30,40//"UserGuide/section_3.html","S3D17");新砂轮是否是成型砂轮(0否1是)
 
-	DEF DRESSANG=(R///$85310,$85310,,$85042/WR4/"panel_3_16_chs.png"/"/NC/_N_NC_GD2_ACX/INI[154]"/110,30,110/200,30,110//"UserGuide/section_3.html","S3D20");修整时A轴角度
-	DEF DISPDRESSANG=(R////WR4//"/NC/_N_NC_GD2_ACX/INI[155]"/0,0,0/0,0,0/);显示A角度调整参数
-
 	;+++++++++++++++++++++++++++++++++++++++++++++
 	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
 ;
@@ -35,11 +32,11 @@
 ;
 ;
 
-	DEF VAR2=(I/*0=$85380,2=$85382//$85388,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D3");修整轮类型 ifIsSingleAndRound
+	DEF VAR2=(I/*0=$85380//$85388,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D3");修整轮类型 ifIsSingleAndRound
 ;
 
 ;
-	DEF VAR3=(I/*2=$85385/2/$85389,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
+	DEF VAR3=(I/*0=$85390,1=$85391//$85389,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
 	DEF cixindiaoyong=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[115]"/0,0,0/0,0,0/);调用默认齿形程序0/通用齿形程序1
 
 	DEF ROLLING_1=(I/*0=$85379,1=$85379/0/$85388,,,/WR4///0,0,0/440,10,60/);成型修整轮
@@ -81,11 +78,10 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
-;
-;
-	VS3=($85385,ac7,se1);"双圆弧" ifIsArc
+	VS1=($85390,ac7,se1);"齿形一" ifIsArc
+	VS2=($85391,ac7,se1);"齿形二" ifIsArc
+
 	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
-	VS6=($85382,ac7,se1);"方滚轮" ifIsSingleAndRound
 ;
 	VS7=($85379,ac7,se1);"滚压轮"
 ;
@@ -109,7 +105,7 @@
 	
 	PRESS(HS1)
 		IF TYPE.VAL<>1
-			LM("MASK1","a_grind.com")
+			LM("MASK51","a_grind.com")
 		ELSE
 			LM("MASK18","a_grind.com")
 		ENDIF
@@ -156,27 +152,11 @@
 	END_PRESS
 
 	PRESS(VS1)
-		IF cixindiaoyong.VAL==0
-			LM("MASK7","a_shape.com")
-		ELSE
-			LM("MASK7","a_shapecommon.com")
-		ENDIF
+		LM("MASK1","a_shapecommon.com")
 	END_PRESS
 
 	PRESS(VS2)
-		IF cixindiaoyong.VAL==0
-			LM("MASK8","a_shape.com")
-		ELSE
-			LM("MASK8","a_shapecommon.com")
-		ENDIF
-	END_PRESS
-
-	PRESS(VS3)
-		IF cixindiaoyong.VAL==0
-			LM("MASK9","a_shape.com")
-		ELSE
-			LM("MASK9","a_shapecommon.com")
-		ENDIF
+		LM("MASK2","a_shapecommon.com")
 	END_PRESS
 
 	PRESS(VS4)
@@ -336,10 +316,10 @@
 			VS7.se=2
 			VS8.se=2
 			IF QCHECK.VAL==0
-				VAR2.WR=2;  ifIsSingleAndRound
+				VAR2.WR=1;  ifIsSingleAndRound
 ;
 ;
-				VAR3.WR=1;  ifIsOnlyArc
+				VAR3.WR=2;  ifIsOnlyArc
 				VAR12.WR=2
 			ELSE
 				VAR2.WR=1;  ifIsSingleAndRound
@@ -361,10 +341,10 @@
 				VS7.se=2
 				VS8.se=2
 				IF QCHECK.VAL==0
-					VAR2.WR=2;  ifIsSingleAndRound
+					VAR2.WR=1;  ifIsSingleAndRound
 ;
 ;
-					VAR3.WR=1;  ifIsOnlyArc
+					VAR3.WR=2;  ifIsOnlyArc
 					VAR12.WR=2
 				ELSE
 					VAR2.WR=1;  ifIsSingleAndRound
@@ -431,7 +411,7 @@
 			VAR21.VAL="W"
 		ELSE
 			IF VAR1.VAL==1
-				VAR20.VAL="X"
+				VAR20.VAL="Y"
 				VAR21.VAL="Z"
 			ELSE
 				IF VAR1.VAL==2
@@ -443,7 +423,7 @@
 						VAR21.VAL=""
 					ELSE
 						IF VAR1.VAL==4
-							VAR20.VAL="X"
+							VAR20.VAL="Y"
 							VAR21.VAL=""
 						ENDIF
 					ENDIF
