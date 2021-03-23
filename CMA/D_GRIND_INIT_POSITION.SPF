@@ -10,7 +10,7 @@ MSG("台面到磨削起点"); ifIsCHS
 G90 G01 Z=ZPOSITION F=ZSPEED;Z轴到磨削起点
 ;
 MSG("砂轮到安全位置"); ifIsCHS
-G90 G01 X=XPOSITION F=XSPEED;X轴到安全位置
+G90 G01 Y=XPOSITION F=XSPEED;X轴到安全位置
 
 RET
 
