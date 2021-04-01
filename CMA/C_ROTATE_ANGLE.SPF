@@ -18,6 +18,7 @@ IF INI[16]==1
 		STOPRE
 		G4 F0.5
 		M36;夹紧
+		G4 F1;
 	ENDIF
 
 	IF TRUNC($AA_IM[B]*1000)<>TRUNC(LADAO[5]*1000)
@@ -34,10 +35,10 @@ IF INI[16]==1
 		STOPRE
 		G4 F0.5
 		M95;夹紧
+		G4 F1;
 	ENDIF
 
 	IF INI[158]==0;转完A轴关闭液压
-		G4 F1;
 		M74;液压关
 	ENDIF
 ENDIF

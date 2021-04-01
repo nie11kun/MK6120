@@ -3,17 +3,28 @@ PROC F_DRESSWHEEL_RUN(REAL SPEED) DISPLOF
 ;*修整轮启动
 ;SPEED:转速
 ;****************************
-
-IF $A_DBB[13]==0;修整轮当前未启动
-    INI[71]=INI[114];启动等待转速到位延时时间
+IF (DRESSER[0]==0)
+    IF $A_DBB[13]==0;修整轮1当前未启动
+        INI[71]=INI[114];启动等待转速到位延时时间
+    ELSE
+        INI[71]=INI[115]
+    ENDIF
 ELSE
-    INI[71]=INI[115]
+    IF $A_DBB[11]==0;修整轮2当前未启动
+        INI[71]=INI[114];启动等待转速到位延时时间
+    ELSE
+        INI[71]=INI[115]
+    ENDIF
 ENDIF
 
 IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
     R297=SPEED
     G4 F0.2
-    M63;修整轮启动
+    IF (DRESSER[0]==0)
+        M63;修整轮1启动
+    ELSE
+        M64;修整轮2启动
+    ENDIF
 ELSE
     IF (INI[36]==0) OR (INI[36]==2)
         M1=3 S1=SPEED

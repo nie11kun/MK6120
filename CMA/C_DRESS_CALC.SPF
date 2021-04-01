@@ -31,8 +31,11 @@ ELSE
         D_DRESS_TOUCH_CURNT(DRESSER[14]);当前接触位置
         DRESSER[10]=DRESSER[16]
 
-        PROCESS[13]=PROCESS[13]-DRESSER[14]*COS(SHAPE_MODEL[7]);初始进刀位置计算
-        PROCESS[4]=PROCESS[4]-DRESSER[14]*COS(SHAPE_MODEL[7]);当前进刀位置计算
+        PROCESS[13]=PROCESS[13]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
+        PROCESS[4]=PROCESS[4]-DRESSER[14]*COS(LADAO[13]);当前进刀位置计算
+
+        INI[2]=INI[2]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
+        INI[6]=INI[2]+RING[7];工件右端
 
 ;
         MSG("粗修整中-->正在进行第"<<DRESSER[18]<<"次,还剩"<<DRESSER[11]-DRESSER[18]<<"次完成,进给量:"<<DRESSER[14]<<"mm"); ifIsCHS
@@ -42,8 +45,11 @@ ELSE
             D_DRESS_TOUCH_CURNT(DRESSER[15]);当前接触位置
             DRESSER[10]=DRESSER[17]
 
-            PROCESS[13]=PROCESS[13]-DRESSER[15]*COS(SHAPE_MODEL[7]);初始进刀位置计算
-            PROCESS[4]=PROCESS[4]-DRESSER[15]*COS(SHAPE_MODEL[7]);当前进刀位置计算
+            PROCESS[13]=PROCESS[13]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
+            PROCESS[4]=PROCESS[4]-DRESSER[15]*COS(LADAO[13]);当前进刀位置计算
+
+            INI[2]=INI[2]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
+            INI[6]=INI[2]+RING[7];工件右端
 
 ;
             MSG("精修整中-->正在进行第"<<DRESSER[19]<<"次,还剩"<<DRESSER[12]-DRESSER[19]<<"次完成,进给量:"<<DRESSER[15]<<"mm"); ifIsCHS

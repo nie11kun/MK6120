@@ -23,6 +23,8 @@ IF INI[75]==1;磨削几件后修整标记位
     C_LINESPEED_GRIND;磨削时砂轮速度调节子程序
 ENDIF
 
+C_ROTATE_ANGLE;螺旋升角
+
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI[72]==1);第一次磨削或者修整后的磨削
     
     ;**********************
@@ -80,6 +82,7 @@ IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY
 
     IF RING[5]==RING[4]-1;最后一槽
         D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[55]);外螺纹 ifIsExternal
+        G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
 ;
     ENDIF
 

@@ -22,21 +22,23 @@
 	DEF A_DRESS_POS=(R///$85635,$85635,,$85042/WR2//"/NC/_N_NC_GD2_ACX/INI[154]"/330,100,110/440,100,110//"UserGuide/section_4.html","S4D14");A轴修正位
 	DEF B_DRESS_POS=(R///$85636,$85636,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[7]"/330,120,110/440,120,110//"UserGuide/section_4.html","S4D14");B轴修正位
 
-	DEF VAR0=(R/0,300//$85614,$85614,,$85043/WR4//""/330,60,110/440,60,110/);滚轮间距
+	DEF PIANZHUAN=(R/0,90//$85477,$85477,,$85043/WR2/"panel_7_7_chs.png"/"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[8]"/330,150,120/440,150,110/);修整齿形偏转角度
 
-	DEF VAR1=(R/0,10//$85612,$85612,,$85043/WR2/"panel_12_2_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[5]"/330,150,110/440,150,110//"UserGuide/section_4.html","S4D1");圆弧半径
-	DEF VAR2=(R/0,10//$85611,$85611,,$85043/WR4//"/NC/_N_NC_GD2_ACX/WHEEL[6]"/330,110,110/440,110,110/);右圆弧半径
+	DEF VAR0=(R/0,300//$85614,$85614,,$85043/WR4//""/0,0,0/0,0,0/);滚轮间距
 
-	DEF VAR3=(R///$85627,$85627,,$85043/WR1/"panel_12_3_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[13]"/330,180,110/440,180,110//"UserGuide/section_4.html","S4D14");初始接触位置
-	DEF VAR4=(R///$85630,$85630,,$85043/WR4//"/NC/_N_NC_GD2_ACX/WHEEL[14]"/330,160,110/440,160,110/);初始右端接触位置
+	DEF VAR1=(R/0,10//$85612,$85612,,$85043/WR2/"panel_12_2_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[5]"/330,180,110/440,180,110//"UserGuide/section_4.html","S4D1");圆弧半径
+	DEF VAR2=(R/0,10//$85611,$85611,,$85043/WR4//"/NC/_N_NC_GD2_ACX/WHEEL[6]"/0,0,0/0,0,0/);右圆弧半径
 
-	DEF VAR5=(R///$85628,$85628,,$85043/WR2/"panel_12_4_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[11]"/330,200,110/440,200,110//"UserGuide/section_4.html","S4D15");当前接触位置
-	DEF VAR6=(R///$85632,$85632,,$85043/WR4//"/NC/_N_NC_GD2_ACX/WHEEL[12]"/330,210,110/440,210,110/);当前右端接触位置
+	DEF VAR3=(R///$85627,$85627,,$85043/WR1/"panel_12_3_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[13]"/330,210,110/440,210,110//"UserGuide/section_4.html","S4D14");初始接触位置
+	DEF VAR4=(R///$85630,$85630,,$85043/WR4//"/NC/_N_NC_GD2_ACX/WHEEL[14]"/0,0,0/0,0,0/);初始右端接触位置
 
-	DEF VAR7=(R/0,500//$85620,$85620,,$85043/WR2/"panel_12_5_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[1]"/330,240,110/440,240,110//"UserGuide/section_4.html","S4D4");修整轮直径
-	DEF VAR8=(R/0,60//$85621,$85621,,$85046/WR2/"panel_12_6_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[2]"/330,260,110/440,260,110//"UserGuide/section_4.html","S4D5");修整轮线速度
+	DEF VAR5=(R///$85628,$85628,,$85043/WR2/"panel_12_4_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[11]"/330,230,110/440,230,110//"UserGuide/section_4.html","S4D15");当前接触位置
+	DEF VAR6=(R///$85632,$85632,,$85043/WR4//"/NC/_N_NC_GD2_ACX/WHEEL[12]"/0,0,0/0,0,0/);当前右端接触位置
+
+	DEF VAR7=(R/0,500//$85620,$85620,,$85043/WR2/"panel_12_5_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[1]"/330,260,110/440,260,110//"UserGuide/section_4.html","S4D4");修整轮直径
+	DEF VAR8=(R/0,60//$85621,$85621,,$85046/WR2/"panel_12_6_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[2]"/330,280,110/440,280,110//"UserGuide/section_4.html","S4D5");修整轮线速度
 	
-	DEF DWHEEL_RPM=(I/0,//$85600,$85600,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/330,280,110/440,280,110/);修整轮转速
+	DEF DWHEEL_RPM=(I/0,//$85600,$85600,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/330,300,110/440,300,110/);修整轮转速
 
 	DEF VAR10=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[24]"/0,0,0/0,0,0/);新砂轮直径
 
@@ -267,16 +269,18 @@
 	DEF A_DRESS_POS=(R///$85635,$85635,,$85042/WR2//"/NC/_N_NC_GD2_ACX/INI[154]"/330,90,110/440,90,110//"UserGuide/section_4.html","S4D14");A轴修正位
 	DEF B_DRESS_POS=(R///$85636,$85636,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[7]"/330,110,110/440,110,110//"UserGuide/section_4.html","S4D14");B轴修正位
 
-	DEF VAR11=(R/0,80//$85604,$85604,,$85047/WR2/"panel_16_1_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[19]"/325,140,110/440,140,110//"UserGuide/section_4.html","S4D10");滚压轮停留时间
-	
-	DEF VAR2=(R/0,50//$85602,$85602,,$85043/WR2/"panel_16_3_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[2]"/325,170,110/440,170,110//"UserGuide/section_4.html","S4D11");齿高
-	DEF VAR7=(R/0,500//$85620,$85620,,$85043/WR2/"panel_16_5_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[1]"/325,190,110/440,190,110//"UserGuide/section_4.html","S4D4");修整轮直径
-	DEF VAR8=(R/0,60//$85621,$85621,,$85046/WR2/"panel_16_6_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[2]"/325,210,110/440,210,110//"UserGuide/section_4.html","S4D5");修整轮线速度
-	DEF VAR9=(I/0,//$85600,$85600,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/325,230,110/440,230,110/);修整轮转速
+	DEF PIANZHUAN=(R/0,90//$85477,$85477,,$85043/WR2/"panel_7_7_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[15]"/330,140,120/440,140,110/);修整齿形偏转角度
 
-	DEF VAR1=(R///$85633,$85633,,$85043/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/325,260,110/440,260,110/);NC用初始接触
-	DEF VAR3=(R///$85627,$85627,,$85043/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/325,280,110/440,280,110//"UserGuide/section_4.html","S4D14");初始接触位置
-	DEF VAR5=(R///$85628,$85628,,$85043/WR2/"panel_16_4_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[11]"/325,300,110/440,300,110//"UserGuide/section_4.html","S4D15");当前接触位置
+	DEF VAR11=(R/0,80//$85604,$85604,,$85047/WR2/"panel_16_1_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[19]"/325,170,110/440,170,110//"UserGuide/section_4.html","S4D10");滚压轮停留时间
+	
+	DEF VAR2=(R/0,50//$85602,$85602,,$85043/WR2/"panel_16_3_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[2]"/325,200,110/440,200,110//"UserGuide/section_4.html","S4D11");齿高
+	DEF VAR7=(R/0,500//$85620,$85620,,$85043/WR2/"panel_16_5_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[1]"/325,220,110/440,220,110//"UserGuide/section_4.html","S4D4");修整轮直径
+	DEF VAR8=(R/0,60//$85621,$85621,,$85046/WR2/"panel_16_6_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[2]"/325,240,110/440,240,110//"UserGuide/section_4.html","S4D5");修整轮线速度
+	DEF VAR9=(I/0,//$85600,$85600,,$85044/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[20]"/325,260,110/440,260,110/);修整轮转速
+
+	DEF VAR1=(R///$85633,$85633,,$85043/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/325,290,110/440,290,110/);NC用初始接触
+	DEF VAR3=(R///$85627,$85627,,$85043/WR1//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/325,310,110/440,310,110//"UserGuide/section_4.html","S4D14");初始接触位置
+	DEF VAR5=(R///$85628,$85628,,$85043/WR2/"panel_16_4_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[11]"/325,330,110/440,330,110//"UserGuide/section_4.html","S4D15");当前接触位置
 
 	DEF VAR10=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[24]"/0,0,0/0,0,0/);新砂轮直径
 

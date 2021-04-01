@@ -10,9 +10,5 @@ G1 G90 Y=WHEEL[10]+2 F=INI[55];x轴回退到修整接触位+2
 MSG("台面离开中"); ifIsCHS
 G90 G1 Z=INI[6] F=INI[56]
 
-G90 G1 X=LADAO[0] F=LADAO[2]
-
-C_ROTATE_ANGLE;螺旋升角
-
 RET
 
