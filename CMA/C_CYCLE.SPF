@@ -30,10 +30,10 @@ IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) OR (INI
     ;**********************
     ;ifIsExternalBegin
 
-    IF ($AA_IM[Z]>=INI[6]-20) AND ($AA_IM[Z]<=INI[6]+20);Z轴在磨削起点附近慢速到位
-        D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[57],INI[55]);外螺纹
+    IF ($AA_IM[Z]>=INI[6]+LADAO[17]-20) AND ($AA_IM[Z]<=INI[6]+LADAO[17]+20);Z轴在磨削起点附近慢速到位
+        D_GRIND_INIT_POSITION(INI[6]+LADAO[17],PROCESS[16],INI[57],INI[55]);外螺纹
     ELSE
-        D_GRIND_INIT_POSITION(INI[6],PROCESS[16],INI[56],INI[55]);外螺纹
+        D_GRIND_INIT_POSITION(INI[6]+LADAO[17],PROCESS[16],INI[56],INI[55]);外螺纹
     ENDIF
 
     ;ifIsExternalEnd
@@ -81,7 +81,7 @@ IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY
     M9;磨削冷却关
 
     IF RING[5]==RING[4]-1;最后一槽
-        D_GRIND_INIT_POSITION(INI[6],INI[23],INI[56],INI[55]);外螺纹 ifIsExternal
+        D_GRIND_INIT_POSITION(INI[6]+LADAO[17],INI[23],INI[56],INI[55]);外螺纹 ifIsExternal
         G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
 ;
     ENDIF
