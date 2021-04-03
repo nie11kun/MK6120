@@ -8,7 +8,7 @@ MSG("修整轮运行至起始位置"); ifIsCHS
 G90 G1 Y=WHEEL[10]+INI[132] F=INI[55];多退刀一点，防止齿高过大抬刀不够
 ;
 MSG("台面离开中"); ifIsCHS
-G90 G1 Z=INI[6]+LADAO[17] F=INI[56]
+G90 G1 Z=INI[6] F=INI[56]
 
 RET
 
