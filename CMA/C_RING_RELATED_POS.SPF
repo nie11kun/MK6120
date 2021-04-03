@@ -34,8 +34,8 @@ ELSE
     ENDIF
 ENDIF
 
-RING[8]=PROCESS[13]+RING[6];当前槽起始磨削位置X
-RING[9]=INI[2]-RING[7];当前槽起始磨削位置Z
+RING[8]=PROCESS[13]+X_RELATED;当前槽起始磨削位置X
+RING[9]=INI[2]+Z_RELATED;当前槽起始磨削位置Z
 
 RET
 
