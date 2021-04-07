@@ -64,6 +64,7 @@
 ;
 	VS1=($85390,ac7,se1);"齿形一" ifIsArc
 	VS2=($85391,ac7,se1);"齿形二" ifIsArc
+	VS3=($85392,ac7,se1);"齿形二" ifIsArc
 
 	VS4=($85380,ac7,se3);"单滚轮" ifIsSingleAndRound
 ;
@@ -124,6 +125,10 @@
 
 	PRESS(VS2)
 		LM("MASK2","a_shapecommon.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK3","a_shapecommon.com")
 	END_PRESS
 
 	PRESS(VS4)
@@ -306,6 +311,7 @@
 ;
 	VS1=($85390,ac7,se2);"齿形一" ifIsArc
 	VS2=($85391,ac7,se2);"齿形二" ifIsArc
+	VS3=($85392,ac7,se2);"齿形二" ifIsArc
 
 	VS4=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
 ;
@@ -366,6 +372,10 @@
 
 	PRESS(VS2)
 		LM("MASK2","a_shapecommon.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK3","a_shapecommon.com")
 	END_PRESS
 
 	PRESS(VS4)
