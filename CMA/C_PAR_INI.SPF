@@ -108,7 +108,7 @@ IF INI[47]==1;磨削中不正常退出标记
 	INI[47]=0;磨削中不正常退出标记
 ENDIF
 
-IF (DRESSER[0]==0);插补
+IF (DRESSER[0]==0) OR (DRESSER[0]==1);vw/xz
 	LADAO[13]=SHAPE_MODEL[7];齿形偏转角度
 ELSE
 	LADAO[13]=LADAO[14]
