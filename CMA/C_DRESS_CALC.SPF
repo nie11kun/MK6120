@@ -59,5 +59,8 @@ ELSE
     ENDIF
 ENDIF
 
+RING[8]=PROCESS[13]+RING[6];当前槽起始磨削位置Y
+RING[9]=INI[2]+RING[7];当前槽起始磨削位置Z
+
 RET
 
