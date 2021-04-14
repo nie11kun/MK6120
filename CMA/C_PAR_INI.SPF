@@ -169,6 +169,11 @@ ELSE
 	PROCESS[2]=4;当前工艺
 ENDIF
 
+RING[10]=LADAO[34];齿距
+RING[20]=LADAO[34];齿距
+RING[30]=LADAO[34];齿距
+RING[40]=LADAO[34];齿距
+
 IF (PROCESS[0]==0) AND (GRIND[1]==0) AND (GRIND[2]==0);选择界面工艺不是对刀不是修整,界面工艺修整量总量
 	IF PROCESS[15]==0;基本工艺
 		IF INI[75]==1;磨削几件后修整标记位

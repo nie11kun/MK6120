@@ -2,8 +2,6 @@
 ;**********************MASK51:环形槽:panel_51:**********************
 //M(Mask51/$85025//)
 
-	DEF MAINPIC = (V///,$85123////0,0,600,370/0,0,0)
-
 	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
 	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
 	DEF Z_IM=(R///$85119,$85119,,/WR1//"$AA_IM[Z]"/10,50,20/30,50,60/3);Z_IM
@@ -44,36 +42,6 @@
 
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 
-	;环形槽组螺距
-	DEF PITCH_1=(R/0,//$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[11]"/0,0,0/132,295,60//"UserGuide/section_1.html","S1D47");
-	DEF PITCH_2=(R/0,//$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[21]"/0,0,0/222,295,60//"UserGuide/section_1.html","S1D47");
-	DEF PITCH_3=(R/0,//$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[31]"/0,0,0/312,295,60//"UserGuide/section_1.html","S1D47");
-	DEF PITCH_4=(R/0,//$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[41]"/0,0,0/402,295,60//"UserGuide/section_1.html","S1D47");
-
-	;环形槽组槽数
-	DEF SLOTS_1=(I/0,//$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[12]"/0,0,0/132,320,60//"UserGuide/section_1.html","S1D48");
-	DEF SLOTS_2=(I/0,//$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[22]"/0,0,0/222,320,60//"UserGuide/section_1.html","S1D48");
-	DEF SLOTS_3=(I/0,//$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[32]"/0,0,0/312,320,60//"UserGuide/section_1.html","S1D48");
-	DEF SLOTS_4=(I/0,//$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[42]"/0,0,0/402,320,60//"UserGuide/section_1.html","S1D48");
-
-	;环形槽组齿升量
-	DEF Y_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[8]"/0,0,0/132,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[9]"/0,0,0/222,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[10]"/0,0,0/312,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[11]"/0,0,0/402,344,60//"UserGuide/section_1.html","S1D49");
-
-	;环形槽组水平偏移
-	;DEF Z_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[13]"/0,0,0/132,320,60//"UserGuide/section_1.html","S1D49");
-	;DEF Z_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[23]"/0,0,0/222,320,60//"UserGuide/section_1.html","S1D49");
-	;DEF Z_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[33]"/0,0,0/312,320,60//"UserGuide/section_1.html","S1D49");
-	;DEF Z_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[43]"/0,0,0/402,320,60//"UserGuide/section_1.html","S1D49");
-
-	;环形槽组垂直偏移
-	;DEF X_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[14]"/0,0,0/132,344,60//"UserGuide/section_1.html","S1D50");
-	;DEF X_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[24]"/0,0,0/222,344,60//"UserGuide/section_1.html","S1D50");
-	;DEF X_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[34]"/0,0,0/312,344,60//"UserGuide/section_1.html","S1D50");
-	;DEF X_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[44]"/0,0,0/402,344,60//"UserGuide/section_1.html","S1D50");
-
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
 	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
@@ -85,7 +53,7 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
-	VS1=("")
+	VS1=($85075,ac7,se1);工件参数
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -129,6 +97,10 @@
 	
 	PRESS(HS8)
 		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK1","a_grind.com")
 	END_PRESS
 
 	CHANGE(SLOTS_1)
@@ -202,3 +174,110 @@
 //END
 
 ;
+
+//M(Mask1/$85025//)
+	DEF MAINPIC = (V///,$85123////0,0,600,370/0,0,0)
+
+	DEF QIAN_ANG=(R///$85149,$85149,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[31]"/10,10,110/110,10,60//);齿形参数：前刃角度
+	DEF HOU_ANG=(R///$85150,$85150,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[32]"/10,30,110/110,30,60//);齿形参数：后背角度
+	DEF HOU_LENGTH=(R///$85151,$85151,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[33]"/10,50,110/110,50,60//);齿形参数：后背厚度
+	DEF DING_ANG=(R///$85152,$85152,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[34]"/10,70,110/110,70,60//);齿形参数：顶部后刃角度
+	DEF PITCH=(R///$85153,$85153,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[35]"/10,90,110/110,90,60//);齿形参数：齿距
+	DEF HEIGHT=(R///$85154,$85154,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[36]"/10,110,110/110,110,60//);齿形参数：齿高
+
+	;环形槽组螺距
+	;DEF PITCH_1=(R/0,//$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[11]"/0,0,0/132,295,60//"UserGuide/section_1.html","S1D47");
+	;DEF PITCH_2=(R/0,//$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[21]"/0,0,0/222,295,60//"UserGuide/section_1.html","S1D47");
+	;DEF PITCH_3=(R/0,//$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[31]"/0,0,0/312,295,60//"UserGuide/section_1.html","S1D47");
+	;DEF PITCH_4=(R/0,//$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[41]"/0,0,0/402,295,60//"UserGuide/section_1.html","S1D47");
+
+	;环形槽组槽数
+	DEF SLOTS_1=(I/0,//$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[12]"/0,0,0/132,320,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_2=(I/0,//$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[22]"/0,0,0/222,320,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_3=(I/0,//$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[32]"/0,0,0/312,320,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_4=(I/0,//$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[42]"/0,0,0/402,320,60//"UserGuide/section_1.html","S1D48");
+
+	;环形槽组齿升量
+	DEF Y_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[8]"/0,0,0/132,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[9]"/0,0,0/222,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[10]"/0,0,0/312,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[11]"/0,0,0/402,344,60//"UserGuide/section_1.html","S1D49");
+
+	;环形槽组水平偏移
+	;DEF Z_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[13]"/0,0,0/132,320,60//"UserGuide/section_1.html","S1D49");
+	;DEF Z_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[23]"/0,0,0/222,320,60//"UserGuide/section_1.html","S1D49");
+	;DEF Z_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[33]"/0,0,0/312,320,60//"UserGuide/section_1.html","S1D49");
+	;DEF Z_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[43]"/0,0,0/402,320,60//"UserGuide/section_1.html","S1D49");
+
+	;环形槽组垂直偏移
+	;DEF X_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[14]"/0,0,0/132,344,60//"UserGuide/section_1.html","S1D50");
+	;DEF X_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[24]"/0,0,0/222,344,60//"UserGuide/section_1.html","S1D50");
+	;DEF X_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[34]"/0,0,0/312,344,60//"UserGuide/section_1.html","S1D50");
+	;DEF X_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[44]"/0,0,0/402,344,60//"UserGuide/section_1.html","S1D50");
+
+	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+
+	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
+
+	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+
+	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
+	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
+	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
+	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
+
+	;
+
+	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
+
+	VS1=($85075,ac7,se3);工件参数
+
+	PRESS(HS1)
+		LM("MASK51","a_grind.com")
+	END_PRESS
+
+	PRESS(HS2)
+		IF VAR45.VAL==0;基本工艺
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK29","a_process.com")
+			ELSE
+				LM("MASK2","a_process.com")
+			ENDIF
+		ELSE
+			IF PIECE_VOLUME.VAL==0;单件
+				LM("MASK30","a_process.com")
+			ELSE
+				LM("MASK20","a_process.com")
+			ENDIF
+		ENDIF
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","a_dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","a_auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK31","a_centerwaiyuan.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK32","a_centerduanmian.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK23","a_centermain.com")
+	END_PRESS
+	
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK1","a_grind.com")
+	END_PRESS
+
+//END
