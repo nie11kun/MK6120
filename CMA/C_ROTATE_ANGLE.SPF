@@ -1,10 +1,10 @@
-PROC C_ROTATE_ANGLE DISPLOF
+PROC C_ROTATE_ANGLE(REAL A_ANG,REAL B_ANG) DISPLOF
 ;***********程序功能**********
 ;*螺旋升角
 ;****************************
 
 IF INI[16]==1
-	IF ABS($AA_IM[A]-INI[20])*1000>=1
+	IF ABS($AA_IM[A]-A_ANG)*1000>=1
 		M73;液压开
 		G4 F1
 		M35;松开
@@ -14,14 +14,14 @@ IF INI[16]==1
 		G4 F1
 ;
 		MSG("螺旋升角到位中"); ifIsCHS
-		G90 G01 A=INI[20] F=INI[60]
+		G90 G01 A=A_ANG F=INI[60]
 		STOPRE
 		G4 F0.5
 		M36;夹紧
 		G4 F1;
 	ENDIF
 
-	IF ABS($AA_IM[B]-LADAO[5])*1000>=1
+	IF ABS($AA_IM[B]-B_ANG)*1000>=1
 		M73;液压开
 		G4 F1
 		M94;松开
@@ -31,7 +31,7 @@ IF INI[16]==1
 		G4 F1
 ;
 		MSG("螺旋升角到位中"); ifIsCHS
-		G90 G01 B=LADAO[5] F=INI[60]
+		G90 G01 B=B_ANG F=INI[60]
 		STOPRE
 		G4 F0.5
 		M95;夹紧

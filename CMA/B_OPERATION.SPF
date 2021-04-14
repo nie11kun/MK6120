@@ -18,8 +18,8 @@ IF (DRESSER[6]<>0) OR ($A_DBB[2]==1);有报警/按下退刀键则退出程序
     RET
 ENDIF
 
-PLCASUP1;跳转到初始角度计算子程序
-C_EXITWORK;退出工件范围
+;PLCASUP1;跳转到初始角度计算子程序
+;C_EXITWORK;退出工件范围
 
 RET
 

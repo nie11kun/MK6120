@@ -22,8 +22,8 @@
 	DEF X_CURRENT_INIT=(R///$85908,$85908,,/WR1//"/NC/_N_NC_GD2_ACX/RING[9]"/10,180,110/110,180,60/);当前槽起始磨削位置Y
 	DEF X_CURRENT_CURRENT=(R///$85919,$85919,,/WR1//"/NC/_N_NC_GD2_ACX/PROCESS[5]"/10,200,110/110,200,60/);当前磨削接触位Y
 
-	DEF Y_QUIT=(R///$85106,$85106,,/WR2//"/NC/_N_NC_GD2_ACX/INI[24]"/10,220,110/110,220,60//"UserGuide/section_1.html","S1D14");退刀位置Y
-	DEF X_QUIT=(R///$85128,$85128,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[13]"/10,240,110/110,240,60//"UserGuide/section_1.html","S1D14");退刀位置X
+	DEF Z_POSITION_INIT=(R///$85920,$85920,,/WR2//"/NC/_N_NC_GD2_ACX/INI[3]"/10,220,110/110,220,60/6/"UserGuide/section_1.html","S1D45");工件右端
+	DEF X_POSITION_INIT=(R///$85921,$85921,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[14]"/10,240,110/110,240,60/6/"UserGuide/section_1.html","S1D46");初始磨削接触位
 
 	DEF SLOT_INIT=(I/0,//$85904,$85904,,/WR2//"/NC/_N_NC_GD2_ACX/RING[3]"/360,10,110/460,10,60//"UserGuide/section_1.html","S1D43");起始磨削槽
 	DEF SLOT_END=(I/0,//$85905,$85905,,/WR2//"/NC/_N_NC_GD2_ACX/RING[4]"/360,30,110/460,30,60//"UserGuide/section_1.html","S1D44");终止磨削槽
@@ -35,11 +35,10 @@
 	DEF GRIND_B=(R///$85925,$85925,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[6]"/360,130,110/460,130,110//"UserGuide/section_1.html","S1D44");B轴磨削位
 
 	DEF GRIND_ZUIDU=(R///$85914,$85914,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[12]"/360,160,110/460,160,110//"UserGuide/section_1.html","S1D44");磨削x向锥度调整
-
-	DEF Z_POSITION_INIT=(R///$85920,$85920,,/WR2//"/NC/_N_NC_GD2_ACX/INI[3]"/360,190,110/460,190,60/6/"UserGuide/section_1.html","S1D45");工件右端
-	DEF X_POSITION_INIT=(R///$85921,$85921,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[14]"/360,210,110/460,210,60/6/"UserGuide/section_1.html","S1D46");初始磨削接触位
 ;
-	DEF GRIND_SAFE=(R///$85172,$85172,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[17]"/360,230,202/460,230,60//"UserGuide/section_1.html","S1D13");磨削安全位置  ifIsExternal
+	DEF GRIND_SAFE=(R///$85172,$85172,,/WR2//"/NC/_N_NC_GD2_ACX/PROCESS[17]"/360,190,202/460,190,60//"UserGuide/section_1.html","S1D13");磨削安全位置  ifIsExternal
+	DEF Y_QUIT=(R///$85106,$85106,,/WR2//"/NC/_N_NC_GD2_ACX/INI[24]"/360,210,202/460,210,60//"UserGuide/section_1.html","S1D14");退刀位置Y
+	DEF X_QUIT=(R///$85128,$85128,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[13]"/360,230,202/460,230,60//"UserGuide/section_1.html","S1D14");退刀位置X
 
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
