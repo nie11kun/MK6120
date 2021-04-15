@@ -152,8 +152,15 @@ IF GRIND[1]==1;修整
 	ENDIF
 ENDIF
 
-;螺旋升角值
-INI[20]=INI[17];计算升角值
+IF LADAO[37]<>1;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+	INI[20]=LADAO[42];A轴磨削位-当前
+	LADAO[5]=LADAO[43];B轴磨削位-当前
+	PROCESS[16]=LADAO[44];磨削安全位-当前
+ELSE
+	INI[20]=LADAO[45];A轴磨削位-当前
+	LADAO[5]=LADAO[46];B轴磨削位-当前
+	PROCESS[16]=LADAO[47];磨削安全位-当前
+ENDIF
 
 IF LADAO[37]<>1;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
 	INI[6]=INI[2]+RING[7];工件右端
