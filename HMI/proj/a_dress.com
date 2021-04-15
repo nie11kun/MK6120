@@ -3,6 +3,8 @@
 
 	DEF VAR0=(R///$85366,$85366,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[10]"/110,10,110/200,10,110//"UserGuide/section_3.html","S3D18");累计修整量
 
+	DEF SHALUN_LEIXIN=(I/*0=$85368,1=$85369//$85367,$85367,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[39]"/110,30,110/200,30,60//);砂轮类型(0刚玉/1金刚石)
+
 	DEF VAR5=(I/0,1000//$85340,$85340,,/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60//"UserGuide/section_3.html","S3D7");粗修次数
 	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,80,110/440,80,110//"UserGuide/section_3.html","S3D8");粗修量
 	DEF VAR7=(R/0,1000//$85306,$85306,,$85045/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[30]"/330,100,110/440,100,110//"UserGuide/section_3.html","S3D9");粗修速度
@@ -260,8 +262,12 @@
 		call("UP6")
 	END_CHANGE
 
+	CHANGE(SHALUN_LEIXIN)
+		call("UP1")
+	END_CHANGE
+
 	SUB(UP1)
-		IF VAR4.VAL==0;新砂轮
+		IF (VAR4.VAL==0) OR (SHALUN_LEIXIN.VAL==1);新砂轮
 			VAR14.VAL=VAR13.VAL
 		ELSE
 			IF TYPE.VAL<>1;不是内螺纹
