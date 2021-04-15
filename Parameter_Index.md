@@ -1474,6 +1474,8 @@
 |MEASURE_RESULT[349]||顶部后刃测量结果50
 |MEASURE_RESULT[350]||顶部后刃测量相对偏移1
 |MEASURE_RESULT[399]||顶部后刃测量相对偏移50
+|MEASURE_RESULT[400]||前刃计算齿距测量结果1
+|MEASURE_RESULT[449]||前刃计算齿距测量结果50
 |||
 |GRIND_RESULT[0]||底面当前接触Y1
 |GRIND_RESULT[49]||底面当前接触Y50
