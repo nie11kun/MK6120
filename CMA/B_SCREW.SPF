@@ -21,8 +21,6 @@ IF GRIND[1]<>0
     GOTOF G_ENDING
 ENDIF
 
-C_ROTATE_ANGLE(INI[20],LADAO[5]);螺旋升角
-
 IF GRIND[2]<>0
     IF INI[78]==0;无二次对刀
         TOOL_SET[8]=0;改为首次对刀
@@ -30,6 +28,8 @@ IF GRIND[2]<>0
     B_OPERATION;对刀
     GOTOF G_ENDING
 ENDIF
+
+C_ROTATE_ANGLE(INI[20],LADAO[5]);螺旋升角
 
 ;使用界面参数还是DIY参数
 IF PROCESS[0]==0;选择界面工艺
