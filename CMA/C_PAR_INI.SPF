@@ -102,13 +102,6 @@ IF (INI[74]==0) OR (INI[73]<INI[74]);修整为零或当前几件小于设定值
     INI[75]=0;标记位
 ENDIF
 
-IF INI[47]==1;磨削中不正常退出标记
-	IF LADAO[18]==0;进刀方向(0垂直/1水平)
-		PROCESS[4]=PROCESS[4]+PROCESS[8];当前磨削位回退
-	ENDIF
-	INI[47]=0;磨削中不正常退出标记
-ENDIF
-
 IF (DRESSER[0]==0) OR (DRESSER[0]==1);vw/xz
 	LADAO[13]=SHAPE_MODEL[7];齿形偏转角度
 ELSE

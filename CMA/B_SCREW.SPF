@@ -85,6 +85,7 @@ TECH_TIME[1]=0;当前半粗磨次数
 TECH_TIME[2]=0;当前半精磨次数
 TECH_TIME[3]=0;当前精磨次数
 TECH_TIME[4]=0;当前DIY次数
+PROCESS[2]=0;当前工艺
 
 LADAO[18]=1;进刀方向(0垂直/1水平)
 
