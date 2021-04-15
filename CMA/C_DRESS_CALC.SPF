@@ -34,8 +34,10 @@ ELSE
         PROCESS[13]=PROCESS[13]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
         PROCESS[4]=PROCESS[4]-DRESSER[14]*COS(LADAO[13]);当前进刀位置计算
 
-        INI[2]=INI[2]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
-        INI[6]=INI[2]+RING[7];工件右端
+        IF LADAO[37]<>1;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+            INI[2]=INI[2]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
+            INI[6]=INI[2]+RING[7];工件右端
+        ENDIF
 
 ;
         MSG("粗修整中-->正在进行第"<<DRESSER[18]<<"次,还剩"<<DRESSER[11]-DRESSER[18]<<"次完成,进给量:"<<DRESSER[14]<<"mm"); ifIsCHS
@@ -48,8 +50,10 @@ ELSE
             PROCESS[13]=PROCESS[13]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
             PROCESS[4]=PROCESS[4]-DRESSER[15]*COS(LADAO[13]);当前进刀位置计算
 
-            INI[2]=INI[2]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
-            INI[6]=INI[2]+RING[7];工件右端
+            IF LADAO[37]<>1;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+                INI[2]=INI[2]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
+                INI[6]=INI[2]+RING[7];工件右端
+            ENDIF
 
 ;
             MSG("精修整中-->正在进行第"<<DRESSER[19]<<"次,还剩"<<DRESSER[12]-DRESSER[19]<<"次完成,进给量:"<<DRESSER[15]<<"mm"); ifIsCHS

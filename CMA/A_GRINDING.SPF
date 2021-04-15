@@ -5,7 +5,13 @@ PROC A_GRINDING DISPLON
 
 B_MACHINE_INI;机床初始化
 
-B_RING_GROOVE;环形槽
+IF LADAO[37]<>1;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+    B_RING_GROOVE;环形槽
+ELSE
+    RING[6]=0;任意槽的X相对偏移量
+    RING[7]=0;任意槽的Z相对偏移量
+    B_SCREW;磨削主程序
+ENDIF
 
 ENDING:
 

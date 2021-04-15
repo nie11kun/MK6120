@@ -7,7 +7,9 @@ PROC C_GRINDING_END DISPLOF
 STOPRE
 INI[25]=0;退刀计算标志位置0
 
-IF (PROCESS[0]==0) AND (RING[0]==0);如果不是DIY且不是环形槽
+IF (PROCESS[0]==0) AND ((RING[0]==0) OR (LADAO[37]==1));如果不是DIY且不是环形槽
+    G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
+    G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
     M9;内磨削冷却关
     M57;退刀关
     ;*M61;*对刀关

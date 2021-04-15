@@ -1446,6 +1446,11 @@
 |LADAO[34]||齿形参数：齿距
 |LADAO[35]||齿形参数：齿高
 |LADAO[36]||测头半径
+|LADAO[37]||加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+|LADAO[38]||
+|LADAO[39]||齿形平磨初始位x
+|LADAO[40]||齿形平磨起点Z
+|LADAO[41]||齿形平磨终点Z
 |||
 |MEASURE_RESULT[0]||底面测量结果1
 |MEASURE_RESULT[49]||底面测量结果50
@@ -1463,3 +1468,12 @@
 |MEASURE_RESULT[349]||顶部后刃测量结果50
 |MEASURE_RESULT[350]||顶部后刃测量相对偏移1
 |MEASURE_RESULT[399]||顶部后刃测量相对偏移50
+|||
+|GRIND_RESULT[0]||底面当前接触Y1
+|GRIND_RESULT[49]||底面当前接触Y50
+|GRIND_RESULT[50]||前刃当前接触Z1
+|GRIND_RESULT[99]||前刃当前接触Z50
+|GRIND_RESULT[100]||后背当前接触Z1
+|GRIND_RESULT[149]||后背当前接触Z50
+|GRIND_RESULT[150]||顶部后刃当前接触Y1
+|GRIND_RESULT[199]||顶部后刃当前接触Y50

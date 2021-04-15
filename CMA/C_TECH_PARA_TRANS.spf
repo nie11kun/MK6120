@@ -3,7 +3,7 @@ PROC C_TECH_PARA_TRANS DISPLOF
 ;*单件/批量工艺界面参数传递
 ;****************************
 
-IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
+IF LADAO[18]==0;进刀方向(0垂直/1水平)
     TECHNOLOGY[0]=TECHNOLOGY[110];粗磨单双
     TECHNOLOGY[10]=TECHNOLOGY[120];粗磨次数
     TECHNOLOGY[20]=TECHNOLOGY[130];粗磨进给量

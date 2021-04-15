@@ -38,7 +38,7 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	LOAD
-		LG("Measure","GRID")
+		LG("Measure","GRID","a_auto.com")
 	END_LOAD
 
 	PRESS(HS1)
@@ -50,19 +50,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		IF TECH.VAL==0;基本工艺
-			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK29","a_process.com")
-			ELSE
-				LM("MASK2","a_process.com")
-			ENDIF
-		ELSE
-			IF PIECE_VOLUME.VAL==0;单件
-				LM("MASK30","a_process.com")
-			ELSE
-				LM("MASK20","a_process.com")
-			ENDIF
-		ENDIF
+		LM("MASK2","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)

@@ -21,7 +21,6 @@ DRESSER[38]=0;界面工艺修整量总量
 TOOL_SET[40]=0;是否已执行过二次对刀的标记
 INI[72]=0;磨削中进行过修整后的标记
 R270=0;同步动作取消标记
-LADAO[17]=0;磨削偏移z向累计
 
 ;非蜗杆磨床时对存储齿形程序的变量赋值
 	IF (DRESSER[0]==0) OR (DRESSER[0]==1);VW/XZ
@@ -156,14 +155,27 @@ ENDIF
 ;螺旋升角值
 INI[20]=INI[17];计算升角值
 
-INI[6]=INI[2]+RING[7];工件右端
+IF LADAO[37]<>1;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+	INI[6]=INI[2]+RING[7];工件右端
+ELSE
+	INI[6]=LADAO[40];平磨起点z
+	INI[7]=LADAO[41]平磨终点z
+ENDIF
 
 ;X轴初始接触赋值位置选择
 IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行判断
 	PROCESS[2]=0;当前工艺
 	IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
+		LADAO[17]=0;磨削偏移z向累计
 		PROCESS[4]=PROCESS[13]+RING[6];磨削位置当前等于初始
 		PROCESS[14]=0;工艺累积进刀清零
+	ELSE
+		IF LADAO[37]<>1;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+			LADAO[17]=GRIND_RESULT[50+RING[5]]-INI[6];磨削偏移z向累计
+			PROCESS[4]=GRIND_RESULT[0+RING[5]]
+		ELSE
+			PROCESS[4]=PROCESS[4]
+		ENDIF
 	ENDIF
 ELSE
 	PROCESS[2]=4;当前工艺
