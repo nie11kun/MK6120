@@ -12,10 +12,21 @@ G1 G90 Z=DRESSER[33]+DRESSER[22]/2+150 F=INI[56];z轴快速接近
 
 G90 G1 Y=PROCESS[16] F=INI[55]
 
-IF LADAO[37]<>1;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背)
     G90 G01 X=LADAO[0] F=LADAO[2];X轴到磨削起点
 ELSE
-    G90 G01 X=LADAO[39] F=LADAO[2];X轴到磨削起点
+    IF LADAO[37]==1
+        G90 G01 X=LADAO[39] F=LADAO[2];X轴到磨削起点
+    ELSE
+        IF LADAO[37]==2
+            G90 G01 X=LADAO[52] F=LADAO[2];X轴到磨削起点
+        ELSE
+            IF LADAO[37]==3
+            ELSE
+                G90 G01 X=LADAO[58] F=LADAO[2];X轴到磨削起点
+            ENDIF
+        ENDIF
+    ENDIF
 ENDIF
 
 G90 G1 Z=INI[6] F=INI[56]
