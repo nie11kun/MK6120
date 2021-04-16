@@ -38,7 +38,7 @@
 ;
 
 ;
-	DEF VAR3=(I/*0=$85390,1=$85391,2=$85392//$85389,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
+	DEF VAR3=(I/*0=$85390,1=$85391,2=$85392,3=$85393//$85389,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
 	DEF cixindiaoyong=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[115]"/0,0,0/0,0,0/);调用默认齿形程序0/通用齿形程序1
 
 	DEF ROLLING_1=(I/*0=$85379,1=$85379/0/$85388,,,/WR4///0,0,0/440,10,60/);成型修整轮
@@ -83,8 +83,9 @@
 	VS1=($85390,ac7,se1);"齿形一" ifIsArc
 	VS2=($85391,ac7,se1);"齿形二" ifIsArc
 	VS3=($85392,ac7,se1);"齿形三" ifIsArc
+	VS4=($85393,ac7,se1);"齿形三" ifIsArc
 
-	VS4=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS5=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
 ;
 	VS7=($85379,ac7,se1);"滚压轮"
 ;
@@ -155,6 +156,10 @@
 	END_PRESS
 
 	PRESS(VS4)
+		LM("MASK4","a_shapecommon.com")
+	END_PRESS
+
+	PRESS(VS5)
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
 			LM("MASK4","a_dressware.com")
 		ELSE;XZ/X
@@ -162,13 +167,6 @@
 		ENDIF
 	END_PRESS
 
-	PRESS(VS5)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
-			LM("MASK5","a_dressware.com")
-		ELSE;XZ/X
-			LM("MASK13","a_dressware.com")
-		ENDIF
-	END_PRESS
 
 	PRESS(VS6)
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V

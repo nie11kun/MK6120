@@ -65,8 +65,9 @@
 	VS1=($85390,ac7,se1);"齿形一" ifIsArc
 	VS2=($85391,ac7,se1);"齿形二" ifIsArc
 	VS3=($85392,ac7,se1);"齿形二" ifIsArc
+	VS4=($85393,ac7,se1);"齿形二" ifIsArc
 
-	VS4=($85380,ac7,se3);"单滚轮" ifIsSingleAndRound
+	VS5=($85380,ac7,se3);"单滚轮" ifIsSingleAndRound
 ;
 	VS7=($85379,ac7,se2);"滚压轮"
 ;
@@ -120,18 +121,14 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4","a_dressware.com")
-		ELSE;XZ/X
-			LM("MASK12","a_dressware.com")
-		ENDIF
+		LM("MASK4","a_shapecommon.com")
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5","a_dressware.com")
+			LM("MASK4","a_dressware.com")
 		ELSE;XZ/X
-			LM("MASK13","a_dressware.com")
+			LM("MASK12","a_dressware.com")
 		ENDIF
 	END_PRESS
 
@@ -300,8 +297,9 @@
 	VS1=($85390,ac7,se2);"齿形一" ifIsArc
 	VS2=($85391,ac7,se2);"齿形二" ifIsArc
 	VS3=($85392,ac7,se2);"齿形二" ifIsArc
+	VS4=($85393,ac7,se2);"齿形二" ifIsArc
 
-	VS4=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
+	VS5=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
 ;
 	VS7=($85379,ac7,se3);"滚压轮"
 ;
@@ -355,18 +353,14 @@
 	END_PRESS
 
 	PRESS(VS4)
-		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK4","a_dressware.com")
-		ELSE;XZ/X
-			LM("MASK12","a_dressware.com")
-		ENDIF
+		LM("MASK4","a_shapecommon.com")
 	END_PRESS
 
 	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK5","a_dressware.com")
+			LM("MASK4","a_dressware.com")
 		ELSE;XZ/X
-			LM("MASK13","a_dressware.com")
+			LM("MASK12","a_dressware.com")
 		ENDIF
 	END_PRESS
 

@@ -34,9 +34,13 @@ ELSE
         PROCESS[13]=PROCESS[13]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
         PROCESS[4]=PROCESS[4]-DRESSER[14]*COS(LADAO[13]);当前进刀位置计算
 
-        IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+        IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
             INI[2]=INI[2]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
             INI[6]=INI[2]+RING[7];工件右端
+        ELSE
+            IF LADAO[37]==1
+                LADAO[39]=LADAO[39]-DRESSER[14]*SIN(LADAO[13])
+            ENDIF
         ENDIF
 
 ;
@@ -50,9 +54,13 @@ ELSE
             PROCESS[13]=PROCESS[13]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
             PROCESS[4]=PROCESS[4]-DRESSER[15]*COS(LADAO[13]);当前进刀位置计算
 
-            IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，4齿侧后刃)
+            IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
                 INI[2]=INI[2]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
                 INI[6]=INI[2]+RING[7];工件右端
+            ELSE
+                IF LADAO[37]==1
+                    LADAO[39]=LADAO[39]-DRESSER[15]*SIN(LADAO[13])
+                ENDIF
             ENDIF
 
 ;
