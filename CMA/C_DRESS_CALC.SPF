@@ -69,7 +69,6 @@ ELSE
                         LADAO[71]=LADAO[71]-DRESSER[15]*SIN(LADAO[13])
                     ENDIF
                 ENDIF
-                ENDIF
             ENDIF
 
 ;
