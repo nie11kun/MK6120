@@ -47,6 +47,7 @@
 	VS4=($85080,ac7,se1);后背磨削
 	VS5=($85079,ac7,se1);顶刃磨削
 	VS6=($85077,ac7,se1);平磨参数
+	VS7=($85081,ac7,se1);平磨参数
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -102,6 +103,10 @@
 
 	PRESS(VS6)
 		LM("MASK3","a_grind.com")
+	END_PRESS
+
+	PRESS(VS7)
+		LM("MASK7","a_grind.com")
 	END_PRESS
 
 //END
@@ -176,6 +181,7 @@
 	VS4=($85080,ac7,se1);后背磨削
 	VS5=($85079,ac7,se1);顶刃磨削
 	VS6=($85077,ac7,se1);平磨参数
+	VS7=($85081,ac7,se1);平磨参数
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -233,6 +239,10 @@
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
+	PRESS(VS7)
+		LM("MASK7","a_grind.com")
+	END_PRESS
+
 	CHANGE(SLOTS_1)
 		call("UP1")
 	END_CHANGE
@@ -281,7 +291,7 @@
 
 //M(Mask2/$85076//)
 
-	DEF GRID={TYP="R",TGL="% POSITION_CURR",X=10,W=380,H=200};
+	DEF GRID={TYP="R",TGL="% POSITION_CURR",X=10,W=460,H=300};
 
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
@@ -304,6 +314,7 @@
 	VS4=($85080,ac7,se1);后背磨削
 	VS5=($85079,ac7,se1);顶刃磨削
 	VS6=($85077,ac7,se1);平磨参数
+	VS7=($85081,ac7,se1);平磨参数
 
 	LOAD
 		LG("POSITION_CURR","GRID","a_grind.com")
@@ -365,6 +376,10 @@
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
+	PRESS(VS7)
+		LM("MASK7","a_grind.com")
+	END_PRESS
+
 //END
 
 //M(Mask4/$85078//)
@@ -400,6 +415,7 @@
 	VS4=($85080,ac7,se1);后背磨削
 	VS5=($85079,ac7,se1);顶刃磨削
 	VS6=($85077,ac7,se1);平磨参数
+	VS7=($85081,ac7,se1);平磨参数
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -455,6 +471,10 @@
 
 	PRESS(VS6)
 		LM("MASK3","a_grind.com")
+	END_PRESS
+
+	PRESS(VS7)
+		LM("MASK7","a_grind.com")
 	END_PRESS
 
 //END
@@ -490,6 +510,7 @@
 	VS4=($85080,ac7,se3);后背磨削
 	VS5=($85079,ac7,se1);顶刃磨削
 	VS6=($85077,ac7,se1);平磨参数
+	VS7=($85081,ac7,se1);平磨参数
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -545,6 +566,10 @@
 
 	PRESS(VS6)
 		LM("MASK3","a_grind.com")
+	END_PRESS
+
+	PRESS(VS7)
+		LM("MASK7","a_grind.com")
 	END_PRESS
 
 //END
@@ -580,6 +605,7 @@
 	VS4=($85080,ac7,se1);后背磨削
 	VS5=($85079,ac7,se3);顶刃磨削
 	VS6=($85077,ac7,se1);平磨参数
+	VS7=($85081,ac7,se1);平磨参数
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -635,6 +661,10 @@
 
 	PRESS(VS6)
 		LM("MASK3","a_grind.com")
+	END_PRESS
+
+	PRESS(VS7)
+		LM("MASK7","a_grind.com")
 	END_PRESS
 
 //END
@@ -668,6 +698,7 @@
 	VS4=($85080,ac7,se1);后背磨削
 	VS5=($85079,ac7,se1);顶刃磨削
 	VS6=($85077,ac7,se3);平磨参数
+	VS7=($85081,ac7,se1);平磨参数
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -725,6 +756,103 @@
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
+	PRESS(VS7)
+		LM("MASK7","a_grind.com")
+	END_PRESS
+
+//END
+
+//M(Mask7/$85081//)
+
+	DEF GRIND_START_Z=(R///$85155,$85155,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[71]"/360,10,110/460,10,60//);首齿起始z
+	DEF GRIND_X=(R///$85132,$85132,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[72]"/360,30,110/460,30,60//);磨削位x
+	DEF LENGTH_CI=(R///$85133,$85133,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[73]"/360,50,110/460,50,60//);齿厚
+
+	DEF GRIND_A=(R///$85924,$85924,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[68]"/360,80,110/460,80,110//"UserGuide/section_1.html","S1D44");A轴磨削位
+	DEF GRIND_B=(R///$85925,$85925,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[69]"/360,100,110/460,100,110//"UserGuide/section_1.html","S1D44");B轴磨削位
+	DEF GRIND_SAFE=(R///$85172,$85172,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[70]"/360,120,202/460,120,60//"UserGuide/section_1.html","S1D13");磨削安全位置  ifIsExternal
+
+	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
+	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+
+	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
+	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
+	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
+	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
+
+	;
+
+	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
+
+	VS1=($85075,ac7,se1);工件参数
+	VS2=($85076,ac7,se1);加工数据
+	VS3=($85078,ac7,se1);前刃磨削
+	VS4=($85080,ac7,se1);后背磨削
+	VS5=($85079,ac7,se1);顶刃磨削
+	VS6=($85077,ac7,se1);平磨参数
+	VS7=($85081,ac7,se3);平磨参数
+
+	PRESS(HS1)
+		LM("MASK51","a_grind.com")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK2","a_process.com")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","a_dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","a_auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK31","a_centerwaiyuan.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK32","a_centerduanmian.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK23","a_centermain.com")
+	END_PRESS
+	
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK1","a_grind.com")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK2","a_grind.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK4","a_grind.com")
+	END_PRESS
+
+	PRESS(VS4)
+		LM("MASK6","a_grind.com")
+	END_PRESS
+
+	PRESS(VS5)
+		LM("MASK5","a_grind.com")
+	END_PRESS
+
+	PRESS(VS6)
+		LM("MASK3","a_grind.com")
+	END_PRESS
+
+	PRESS(VS7)
+		LM("MASK7","a_grind.com")
+	END_PRESS
+
 //END
 
 //G(POSITION_CURR/0/51)
@@ -733,4 +861,5 @@
 	(R///$85584,$85584/WR3//"GRIND_RESULT[50]"/80/1)
 	(R///$85585,$85585/WR3//"GRIND_RESULT[100]"/80/1)
 	(R///$85586,$85586/WR3//"GRIND_RESULT[150]"/80/1)
+	(R///$85588,$85588/WR3//"GRIND_RESULT[200]"/80/1)
 //END

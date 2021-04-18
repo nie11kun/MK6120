@@ -40,6 +40,10 @@ ELSE
         ELSE
             IF LADAO[37]==1
                 LADAO[39]=LADAO[39]-DRESSER[14]*SIN(LADAO[13])
+            ELSE
+                IF LADAO[37]==3
+                    LADAO[71]=LADAO[71]-DRESSER[14]*SIN(LADAO[13])
+                ENDIF
             ENDIF
         ENDIF
 
@@ -60,6 +64,11 @@ ELSE
             ELSE
                 IF LADAO[37]==1
                     LADAO[39]=LADAO[39]-DRESSER[15]*SIN(LADAO[13])
+                ELSE
+                    IF LADAO[37]==3
+                        LADAO[71]=LADAO[71]-DRESSER[15]*SIN(LADAO[13])
+                    ENDIF
+                ENDIF
                 ENDIF
             ENDIF
 

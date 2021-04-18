@@ -53,6 +53,8 @@ ELSE
     ELSE
         IF LADAO[37]==2;齿顶后刃
             D_GRIND_DINGHOUREN
+        ELSE
+            D_GRIND_CEREN
         ENDIF
     ENDIF
 ENDIF

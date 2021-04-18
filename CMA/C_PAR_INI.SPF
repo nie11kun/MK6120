@@ -165,6 +165,9 @@ ELSE
 			PROCESS[16]=LADAO[50];磨削安全位-当前
 		ELSE
 			IF LADAO[37]==3;齿顶后刃
+				INI[20]=LADAO[67];A轴磨削位-当前
+				LADAO[5]=LADAO[68];B轴磨削位-当前
+				PROCESS[16]=LADAO[69];磨削安全位-当前
 			ELSE
 				INI[20]=LADAO[54];A轴磨削位-当前
 				LADAO[5]=LADAO[55];B轴磨削位-当前
@@ -185,6 +188,7 @@ ELSE
 			INI[6]=LADAO[51]+RING[7];工件右端
 		ELSE
 			IF LADAO[37]==3;
+				INI[6]=LADAO[70]+RING[7];工件右端
 			ELSE
 				INI[6]=LADAO[57]+RING[7];工件右端
 			ENDIF
@@ -211,6 +215,7 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 					PROCESS[4]=GRIND_RESULT[150+RING[2]+RING[5]-1]
 				ELSE
 					IF LADAO[37]==3;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背)
+						PROCESS[4]=GRIND_RESULT[200+RING[2]+RING[5]-1]
 					ELSE
 						LADAO[17]=GRIND_RESULT[100+RING[2]+RING[5]-1]-INI[6];磨削偏移z向累计
 						PROCESS[4]=GRIND_RESULT[0+RING[2]+RING[5]-1]

@@ -1476,6 +1476,12 @@
 |LADAO[64]||齿形4-齿侧角
 |LADAO[65]||齿形4-齿底延长
 |LADAO[66]||齿形4-齿顶圆弧半径R-2(靠近底角圆弧)
+|LADAO[67]||A轴磨削位-侧后刃
+|LADAO[68]||B轴磨削位-侧后刃
+|LADAO[69]||磨削安全位-侧后刃
+|LADAO[70]||首齿起始z-侧后刃
+|LADAO[71]||磨削位x-侧后刃
+|LADAO[72]||齿厚-侧后刃
 |||
 |MEASURE_RESULT[0]||底面测量结果1
 |MEASURE_RESULT[49]||底面测量结果50
@@ -1504,3 +1510,5 @@
 |GRIND_RESULT[149]||后背当前接触Z50
 |GRIND_RESULT[150]||顶部后刃当前接触Y1
 |GRIND_RESULT[199]||顶部后刃当前接触Y50
+|GRIND_RESULT[200]||侧刃当前接触Y1
+|GRIND_RESULT[249]||侧刃当前接触Y50
