@@ -1498,6 +1498,8 @@
 |LADAO[86]||自动测量-上次底面y坐标
 |LADAO[87]||自动测量-上次顶刃z坐标
 |LADAO[88]||自动测量-上次顶刃y坐标
+|LADAO[89]||自动测量-当前顶刃底角z坐标
+|LADAO[90]||自动测量-当前顶刃底角y坐标
 |||
 |MEASURE_RESULT[0]||底面测量结果1
 |MEASURE_RESULT[49]||底面测量结果50
@@ -1521,6 +1523,8 @@
 |MEASURE_RESULT[499]||前刃下部测量结果50
 |MEASURE_RESULT[500]||后背下部测量结果1
 |MEASURE_RESULT[549]||后背下部测量结果50
+|MEASURE_RESULT[550]||前刃底角R测量结果1
+|MEASURE_RESULT[599]||前刃底角R测量结果50
 |||
 |GRIND_RESULT[0]||底面当前接触Y1
 |GRIND_RESULT[49]||底面当前接触Y50
