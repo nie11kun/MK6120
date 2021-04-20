@@ -1,4 +1,4 @@
-PROC D_OPERATION_AUTO_CALC DISPLOF
+PROC D_OPERATION_AUTO_CALC(REAL HOU_ENABLE) DISPLOF
 ;***********程序功能**********
 ;*
 ;****************************
