@@ -37,13 +37,24 @@ ELSE
         IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
             INI[2]=INI[2]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
             INI[6]=INI[2]+RING[7];工件右端
+            D_DRESS_GRIND_CALC(0,50,DRESSER[14]*COS(LADAO[13]))
+            D_DRESS_GRIND_CALC(50,50,DRESSER[14]*SIN(LADAO[13]))
         ELSE
             IF LADAO[37]==1
                 LADAO[39]=LADAO[39]-DRESSER[14]*SIN(LADAO[13])
             ELSE
-                IF LADAO[37]==3
-                    D_DRESS_GRIND_CALC(200,50,DRESSER[14]*COS(LADAO[13]))
-                    LADAO[71]=LADAO[71]-DRESSER[14]*SIN(LADAO[13])
+                IF LADAO[37]==2
+                    D_DRESS_GRIND_CALC(150,50,DRESSER[14])
+                ELSE
+                    IF LADAO[37]==3
+                        D_DRESS_GRIND_CALC(200,50,DRESSER[14]*COS(LADAO[13]))
+                        LADAO[71]=LADAO[71]-DRESSER[14]*SIN(LADAO[13])
+                    ELSE
+                        LADAO[57]=LADAO[57]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
+                        INI[6]=LADAO[57]+RING[7];工件右端
+                        D_DRESS_GRIND_CALC(250,50,DRESSER[14]*COS(LADAO[13]))
+                        D_DRESS_GRIND_CALC(100,50,DRESSER[14]*SIN(LADAO[13]))
+                    ENDIF
                 ENDIF
             ENDIF
         ENDIF
@@ -62,13 +73,24 @@ ELSE
             IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
                 INI[2]=INI[2]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
                 INI[6]=INI[2]+RING[7];工件右端
+                D_DRESS_GRIND_CALC(0,50,DRESSER[15]*COS(LADAO[13]))
+                D_DRESS_GRIND_CALC(50,50,DRESSER[15]*SIN(LADAO[13]))
             ELSE
                 IF LADAO[37]==1
                     LADAO[39]=LADAO[39]-DRESSER[15]*SIN(LADAO[13])
                 ELSE
-                    IF LADAO[37]==3
-                        D_DRESS_GRIND_CALC(200,50,DRESSER[15]*COS(LADAO[13]))
-                        LADAO[71]=LADAO[71]-DRESSER[15]*SIN(LADAO[13])
+                    IF LADAO[37]==2
+                        D_DRESS_GRIND_CALC(150,50,DRESSER[15])
+                    ELSE
+                        IF LADAO[37]==3
+                            D_DRESS_GRIND_CALC(200,50,DRESSER[15]*COS(LADAO[13]))
+                            LADAO[71]=LADAO[71]-DRESSER[15]*SIN(LADAO[13])
+                        ELSE
+                            LADAO[57]=LADAO[57]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
+                            INI[6]=LADAO[57]+RING[7];工件右端
+                            D_DRESS_GRIND_CALC(250,50,DRESSER[15]*COS(LADAO[13]))
+                            D_DRESS_GRIND_CALC(100,50,DRESSER[15]*SIN(LADAO[13]))
+                        ENDIF
                     ENDIF
                 ENDIF
             ENDIF
@@ -87,6 +109,12 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 ELSE
     IF LADAO[37]==2;
         RING[9]=LADAO[51]+RING[7];工件右端
+    ELSE
+        IF LADAO[37]==3;
+            RING[9]=LADAO[70]+RING[7];工件右端
+        ELSE
+            RING[9]=LADAO[57]+RING[7];当前槽起始磨削位置Z
+        ENDIF
     ENDIF
 ENDIF
 
