@@ -31,7 +31,19 @@ ELSE
         ENDIF
     ELSE
         IF LADAO[37]==3;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
-            Y_RELATED=0
+            IF CAO_CURRENT-RING[11]<=0
+                Y_RELATED=RING[13]+LADAO[7]*CAO_CURRENT-LADAO[7]
+            ELSE
+                IF CAO_CURRENT-RING[11]-RING[21]<=0
+                    Y_RELATED=X_RELATED_1+LADAO[8]*(CAO_CURRENT-RING[11])-LADAO[7]
+                ELSE
+                    IF CAO_CURRENT-RING[11]-RING[21]-RING[31]<=0
+                        Y_RELATED=X_RELATED_1+X_RELATED_2+LADAO[9]*(CAO_CURRENT-RING[11]-RING[21])-LADAO[7]
+                    ELSE
+                        Y_RELATED=X_RELATED_1+X_RELATED_2+X_RELATED_3+LADAO[10]*(CAO_CURRENT-RING[11]-RING[21]-RING[31])-LADAO[7]
+                    ENDIF
+                ENDIF
+            ENDIF
             Z_RELATED=MEASURE_RESULT[100+CAO_CURRENT-1]-MEASURE_RESULT[100]
         ELSE
             Y_RELATED=MEASURE_RESULT[CAO_CURRENT-1]-MEASURE_RESULT[1]
