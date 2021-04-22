@@ -18,6 +18,8 @@
 	DEF VAR11=(R/-2000,2000//$85607,$85626,,$85043/WR2/"panel_12_1_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/330,40,110/440,40,110//"UserGuide/section_4.html","S4D13");砂轮修整轮中心
 	DEF para_switch=(I/*0=$85015,1=$85016//$85063,$85063,,/WR2/"panel_12_1_chs.png"/"/NC/_N_NC_GD2_ACX/PARA_LOCK_SWITCH[4]"/0,0,0/530,40,18/);参数锁定开关
 
+	DEF CIGAO=(R///$85602,$85602,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[93]"/330,60,110/440,60,110//);修整齿形齿高
+
 	DEF X_DRESS_POS=(R///$85634,$85634,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[5]"/330,80,110/440,80,110//"UserGuide/section_4.html","S4D14");X轴修正位
 	DEF A_DRESS_POS=(R///$85635,$85635,,$85042/WR2//"/NC/_N_NC_GD2_ACX/INI[154]"/330,100,110/440,100,110//"UserGuide/section_4.html","S4D14");A轴修正位
 	DEF B_DRESS_POS=(R///$85636,$85636,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[7]"/330,120,110/440,120,110//"UserGuide/section_4.html","S4D14");B轴修正位
