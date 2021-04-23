@@ -34,14 +34,14 @@ C_ROTATE_ANGLE(INI[20],LADAO[5]);螺旋升角
 ;使用界面参数还是DIY参数
 IF PROCESS[0]==0;选择界面工艺
     DIY[1]=0;DIY磨削次数
-    IF TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]==0;工艺参数中设置的总磨削次数
-        RET
-    ENDIF
+    ;IF TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]==0;工艺参数中设置的总磨削次数
+    ;    RET
+    ;ENDIF
 ELSE;选择DIY工艺
     PROCESS[2]=4;当前工艺切换到DIY
-    IF DIY[1]==0
-        RET
-    ENDIF
+    ;IF DIY[1]==0
+    ;    RET
+    ;ENDIF
 ENDIF
 
 STOPRE
