@@ -26,6 +26,7 @@ ENDIF
 
 RING[4]=RING[3]-RING[2]+1;需加工槽数
 RING[5]=0;已加工槽数
+INI[73]=0;磨削工件计数
 
 WHILE(RING[5]<RING[4]);已加工小于需加工
     C_RING_RELATED_POS(RING[2]+RING[5],RING[6],RING[7]);当前槽的XZ方向偏移量计算
@@ -37,16 +38,6 @@ WHILE(RING[5]<RING[4]);已加工小于需加工
     RING[5]=RING[5]+1;已加工槽数
     STOPRE
 ENDWHILE
-
-IF INI[26]<>0;0是单件磨削模式,1是批量磨削模式
-    INI[73]=INI[73]+1;磨削工件计数
-ENDIF
-
-IF (INI[74]<>0) AND (INI[73]>=INI[74]);磨削几件后修整不为零或当前几件大于设定值
-    IF INI[73]/INI[74]-TRUNC(INI[73]/INI[74])==0
-        INI[75]=1;标记位
-    ENDIF
-ENDIF
 
 RING_ENDING:
 
