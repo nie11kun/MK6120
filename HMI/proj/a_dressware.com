@@ -257,7 +257,7 @@
 
 	DEF VAR12=(R/-2000,2000//$85626,$85626,,$85043/WR2/"panel_16_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[22]"/325,30,110/440,30,110//"UserGuide/section_4.html","S4D13");砂轮修整轮中心
 
-	DEF X_DRESS_POS=(R///$85634,$85634,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[5]"/330,70,110/440,70,110//"UserGuide/section_4.html","S4D14");X轴修正位
+	DEF X_DRESS_POS=(R///$85634,$85634,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[98]"/330,70,110/440,70,110//"UserGuide/section_4.html","S4D14");X轴修正位
 	DEF A_DRESS_POS=(R///$85635,$85635,,$85042/WR2//"/NC/_N_NC_GD2_ACX/INI[154]"/330,90,110/440,90,110//"UserGuide/section_4.html","S4D14");A轴修正位
 	DEF B_DRESS_POS=(R///$85636,$85636,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[7]"/330,110,110/440,110,110//"UserGuide/section_4.html","S4D14");B轴修正位
 
