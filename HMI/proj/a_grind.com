@@ -47,7 +47,7 @@
 	VS4=($85080,ac7,se1);后背磨削
 	VS5=($85079,ac7,se1);顶刃磨削
 	VS6=($85077,ac7,se1);平磨参数
-	VS7=($85081,ac7,se1);平磨参数
+	VS7=($85081,ac7,se1);顶部侧刃
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -113,7 +113,7 @@
 
 ;
 
-//M(Mask1/$85075//)
+//M(Mask1/$85075//);工件参数
 	DEF MAINPIC = (V///,$85123////0,0,600,370/0,0,0)
 
 	DEF SLOT_AMOUNT=(I///$85903,$85903,,/WR1//"/NC/_N_NC_GD2_ACX/RING[2]"/10,10,110/110,10,60/);总槽数
@@ -130,35 +130,29 @@
 	DEF PITCH=(R///$85153,$85153,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[35]"/360,90,110/460,90,60//);齿形参数：齿距
 	DEF HEIGHT=(R///$85154,$85154,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[36]"/360,110,110/460,110,60//);齿形参数：齿高
 
-	;环形槽组螺距
-	;DEF PITCH_1=(R/0,//$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[11]"/0,0,0/132,295,60//"UserGuide/section_1.html","S1D47");
-	;DEF PITCH_2=(R/0,//$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[21]"/0,0,0/222,295,60//"UserGuide/section_1.html","S1D47");
-	;DEF PITCH_3=(R/0,//$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[31]"/0,0,0/312,295,60//"UserGuide/section_1.html","S1D47");
-	;DEF PITCH_4=(R/0,//$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[41]"/0,0,0/402,295,60//"UserGuide/section_1.html","S1D47");
-
 	;环形槽组槽数
-	DEF SLOTS_1=(I/0,//$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[12]"/0,0,0/132,320,60//"UserGuide/section_1.html","S1D48");
-	DEF SLOTS_2=(I/0,//$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[22]"/0,0,0/222,320,60//"UserGuide/section_1.html","S1D48");
-	DEF SLOTS_3=(I/0,//$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[32]"/0,0,0/312,320,60//"UserGuide/section_1.html","S1D48");
-	DEF SLOTS_4=(I/0,//$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[42]"/0,0,0/402,320,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_1=(I/0,//$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[12]"/0,0,0/115,245,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_2=(I/0,//$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[22]"/0,0,0/205,245,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_3=(I/0,//$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[32]"/0,0,0/295,245,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_4=(I/0,//$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[42]"/0,0,0/385,245,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_5=(I/0,//$85929,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[101]"/0,0,0/475,245,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_6=(I/0,//$85930,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[102]"/0,0,0/115,320,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_7=(I/0,//$85931,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[103]"/0,0,0/205,320,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_8=(I/0,//$85932,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[104]"/0,0,0/295,320,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_9=(I/0,//$85933,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[105]"/0,0,0/385,320,60//"UserGuide/section_1.html","S1D48");
+	DEF SLOTS_10=(I/0,//$85934,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[106]"/0,0,0/475,320,60//"UserGuide/section_1.html","S1D48");
 
 	;环形槽组齿升量
-	DEF Y_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[8]"/0,0,0/132,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[9]"/0,0,0/222,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[10]"/0,0,0/312,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[11]"/0,0,0/402,344,60//"UserGuide/section_1.html","S1D49");
-
-	;环形槽组水平偏移
-	;DEF Z_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[13]"/0,0,0/132,320,60//"UserGuide/section_1.html","S1D49");
-	;DEF Z_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[23]"/0,0,0/222,320,60//"UserGuide/section_1.html","S1D49");
-	;DEF Z_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[33]"/0,0,0/312,320,60//"UserGuide/section_1.html","S1D49");
-	;DEF Z_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[43]"/0,0,0/402,320,60//"UserGuide/section_1.html","S1D49");
-
-	;环形槽组垂直偏移
-	;DEF X_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[14]"/0,0,0/132,344,60//"UserGuide/section_1.html","S1D50");
-	;DEF X_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[24]"/0,0,0/222,344,60//"UserGuide/section_1.html","S1D50");
-	;DEF X_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[34]"/0,0,0/312,344,60//"UserGuide/section_1.html","S1D50");
-	;DEF X_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[44]"/0,0,0/402,344,60//"UserGuide/section_1.html","S1D50");
+	DEF Y_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[8]"/0,0,0/115,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[9]"/0,0,0/205,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[10]"/0,0,0/295,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[11]"/0,0,0/385,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_5=(R///$85929,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[107]"/0,0,0/475,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_6=(R///$85930,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[108]"/0,0,0/115,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_7=(R///$85931,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[109]"/0,0,0/205,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_8=(R///$85932,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[110]"/0,0,0/295,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_9=(R///$85933,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[111]"/0,0,0/385,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_10=(R///$85934,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[112]"/0,0,0/475,344,60//"UserGuide/section_1.html","S1D49");
 
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
@@ -259,6 +253,30 @@
 		call("UP1")
 	END_CHANGE
 
+	CHANGE(SLOTS_5)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(SLOTS_6)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(SLOTS_7)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(SLOTS_8)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(SLOTS_9)
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(SLOTS_10)
+		call("UP1")
+	END_CHANGE
+
 	CHANGE(SLOT_END)
 		IF SLOT_END.VAL>SLOT_AMOUNT
 			SLOT_END.VAL=SLOT_AMOUNT
@@ -280,7 +298,7 @@
 	END_CHANGE
 
 	SUB(UP1)
-		SLOT_AMOUNT.VAL=SLOTS_1+SLOTS_2+SLOTS_3+SLOTS_4
+		SLOT_AMOUNT.VAL=SLOTS_1+SLOTS_2+SLOTS_3+SLOTS_4+SLOTS_5+SLOTS_6+SLOTS_7+SLOTS_8+SLOTS_9+SLOTS_10
 	END_SUB
 
 	SUB(UP2)
@@ -289,7 +307,7 @@
 	
 //END
 
-//M(Mask2/$85076//)
+//M(Mask2/$85076//);加工数据
 
 	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
 	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
@@ -386,7 +404,7 @@
 
 //END
 
-//M(Mask4/$85078//)
+//M(Mask4/$85078//);前刃磨削
 
 	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
 	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
@@ -490,7 +508,7 @@
 
 //END
 
-//M(Mask6/$85080//)
+//M(Mask6/$85080//);后背磨削
 
 	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
 	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
@@ -592,7 +610,7 @@
 
 //END
 
-//M(Mask5/$85079//)
+//M(Mask5/$85079//);顶刃磨削
 
 	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
 	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
@@ -693,7 +711,7 @@
 
 //END
 
-//M(Mask3/$85077//)
+//M(Mask3/$85077//);平磨参数
 
 	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
 	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
@@ -790,7 +808,7 @@
 
 //END
 
-//M(Mask7/$85081//)
+//M(Mask7/$85081//);顶部侧刃
 
 	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
 	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
