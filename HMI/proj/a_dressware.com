@@ -57,6 +57,8 @@
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
 	HS3=(["\\S_005.png",$85068],ac7,se3,pa0);修整参数
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
+	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
+	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
 
 	;
 
@@ -95,11 +97,11 @@
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31","a_centerwaiyuan.com")
+		LM("MASK1","a_grind_pos.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32","a_centerduanmian.com")
+		LM("MASK1","a_auto_pos.com")
 	END_PRESS
 	
 	PRESS(HS7)
@@ -289,6 +291,8 @@
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
 	HS3=(["\\S_005.png",$85068],ac7,se3,pa0);修整参数
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
+	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
+	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
 
 	;
 
@@ -327,11 +331,11 @@
 	END_PRESS
 
 	PRESS(HS5)
-		LM("MASK31","a_centerwaiyuan.com")
+		LM("MASK1","a_grind_pos.com")
 	END_PRESS
 	
 	PRESS(HS6)
-		LM("MASK32","a_centerduanmian.com")
+		LM("MASK1","a_auto_pos.com")
 	END_PRESS
 	
 	PRESS(HS7)
