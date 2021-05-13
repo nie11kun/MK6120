@@ -64,10 +64,10 @@
 
 ;
 ;
-	VS1=($85390,ac7,se1);"齿形一" ifIsArc
-	VS2=($85391,ac7,se1);"齿形二" ifIsArc
-	VS3=($85392,ac7,se1);"齿形二" ifIsArc
-	VS4=($85393,ac7,se1);"齿形二" ifIsArc
+	;VS1=($85390,ac7,se1);"齿形一" ifIsArc
+	;VS2=($85391,ac7,se1);"齿形二" ifIsArc
+	;VS3=($85392,ac7,se1);"齿形二" ifIsArc
+	;VS4=($85393,ac7,se1);"齿形二" ifIsArc
 
 	VS5=($85380,ac7,se3);"单滚轮" ifIsSingleAndRound
 ;
@@ -296,10 +296,10 @@
 
 ;
 ;
-	VS1=($85390,ac7,se2);"齿形一" ifIsArc
-	VS2=($85391,ac7,se2);"齿形二" ifIsArc
-	VS3=($85392,ac7,se2);"齿形二" ifIsArc
-	VS4=($85393,ac7,se2);"齿形二" ifIsArc
+	;VS1=($85390,ac7,se2);"齿形一" ifIsArc
+	;VS2=($85391,ac7,se2);"齿形二" ifIsArc
+	;VS3=($85392,ac7,se2);"齿形二" ifIsArc
+	;VS4=($85393,ac7,se2);"齿形二" ifIsArc
 
 	VS5=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
 ;

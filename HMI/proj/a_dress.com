@@ -38,8 +38,9 @@
 ;
 
 ;
-	DEF VAR3=(I/*0=$85390,1=$85391,2=$85392,3=$85393//$85389,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
+	;DEF VAR3=(I/*0=$85390,1=$85391,2=$85392,3=$85393//$85389,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
 	DEF cixindiaoyong=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[115]"/0,0,0/0,0,0/);调用默认齿形程序0/通用齿形程序1
+	DEF EXTERNAL_SHAPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[140]"/0,0,0/0,0,0/);使用外部齿形程序
 
 	DEF ROLLING_1=(I/*0=$85379,1=$85379/0/$85388,,,/WR4///0,0,0/440,10,60/);成型修整轮
 	DEF HY_1=(I/*0=$85378,1=$85378/0/$85388,,,/WR4///0,0,0/440,10,60/);液压修整
@@ -80,10 +81,10 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
-	VS1=($85390,ac7,se1);"齿形一" ifIsArc
-	VS2=($85391,ac7,se1);"齿形二" ifIsArc
-	VS3=($85392,ac7,se1);"齿形三" ifIsArc
-	VS4=($85393,ac7,se1);"齿形三" ifIsArc
+	;VS1=($85390,ac7,se1);"齿形一" ifIsArc
+	;VS2=($85391,ac7,se1);"齿形二" ifIsArc
+	;VS3=($85392,ac7,se1);"齿形三" ifIsArc
+	;VS4=($85393,ac7,se1);"齿形三" ifIsArc
 
 	VS5=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
 ;
