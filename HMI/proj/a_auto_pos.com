@@ -1,7 +1,7 @@
 ;**************MASK21:内/外/磨削中心自动对刀:panel_21********************
 //M(Mask1/$85085//)
 
-	DEF GRID={TYP="R",TGL="%Measure_1",X=10,W=540,H=330}
+	DEF GRID={TYP="R",TGL="%Measure_1",X=10,W=540,H=365}
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
@@ -80,7 +80,7 @@
 ;**************MASK21:内/外/磨削中心自动对刀:panel_21********************
 //M(Mask2/$85085//)
 
-	DEF GRID={TYP="R",TGL="%Measure_2",X=10,W=540,H=330}
+	DEF GRID={TYP="R",TGL="%Measure_2",X=10,W=540,H=365}
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
@@ -159,7 +159,7 @@
 ;**************MASK21:内/外/磨削中心自动对刀:panel_21********************
 //M(Mask3/$85085//)
 
-	DEF GRID={TYP="R",TGL="%Measure_3",X=10,W=540,H=330}
+	DEF GRID={TYP="R",TGL="%Measure_3",X=10,W=540,H=365}
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
