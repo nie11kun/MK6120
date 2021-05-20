@@ -333,7 +333,7 @@
 	DEF GRIND_A=(R///$85924,$85924,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[43]"/360,60,110/460,60,110//"UserGuide/section_1.html","S1D44");A轴磨削位
 	DEF GRIND_B=(R///$85925,$85925,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[44]"/360,80,110/460,80,110//"UserGuide/section_1.html","S1D44");B轴磨削位
 
-	DEF GRIND_ZUIDU=(R///$85914,$85914,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[12]"/360,110,110/460,110,110//"UserGuide/section_1.html","S1D44");磨削x向锥度调整
+	;DEF GRIND_ZUIDU=(R///$85914,$85914,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[12]"/360,110,110/460,110,110//"UserGuide/section_1.html","S1D44");磨削x向锥度调整
 
 	DEF GRIND_SAFE=(R///$85172,$85172,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[45]"/360,140,202/460,140,60//"UserGuide/section_1.html","S1D13");磨削安全位置  ifIsExternal
 
