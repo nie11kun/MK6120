@@ -3,11 +3,46 @@ PROC C_WORKS_CUMU DISPLOF
 ;*工件计数
 ;****************************
 
-INI[73]=INI[73]+1;磨削工件计数
-
-IF (INI[74]<>0) AND (INI[73]>=INI[74]);磨削几件后修整不为零或当前几件大于设定值
-    IF INI[73]/INI[74]-TRUNC(INI[73]/INI[74])==0
-        INI[75]=1;标记位
+IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背)
+    INI[73]=INI[73]+1;磨削工件计数
+    IF (INI[74]<>0) AND (INI[73]>=INI[74]);磨削几件后修整不为零或当前几件大于设定值
+        IF INI[73]/INI[74]-TRUNC(INI[73]/INI[74])==0
+            INI[75]=1;标记位
+        ENDIF
+    ENDIF
+ELSE
+    IF LADAO[37]==1
+        TECH_ADDED[8]=TECH_ADDED[8]+1;磨削工件计数
+        IF (TECH_ADDED[9]<>0) AND (TECH_ADDED[8]>=TECH_ADDED[9]);磨削几件后修整不为零或当前几件大于设定值
+            IF TECH_ADDED[8]/TECH_ADDED[9]-TRUNC(TECH_ADDED[8]/TECH_ADDED[9])==0
+                INI[75]=1;标记位
+            ENDIF
+        ENDIF
+    ELSE
+        IF LADAO[37]==2;齿顶后刃
+            TECH_ADDED[48]=TECH_ADDED[48]+1;磨削工件计数
+            IF (TECH_ADDED[49]<>0) AND (TECH_ADDED[48]>=TECH_ADDED[49]);磨削几件后修整不为零或当前几件大于设定值
+                IF TECH_ADDED[48]/TECH_ADDED[49]-TRUNC(TECH_ADDED[48]/TECH_ADDED[49])==0
+                    INI[75]=1;标记位
+                ENDIF
+            ENDIF
+        ELSE
+            IF LADAO[37]==3;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背)
+                TECH_ADDED[88]=TECH_ADDED[88]+1;磨削工件计数
+                IF (TECH_ADDED[89]<>0) AND (TECH_ADDED[88]>=TECH_ADDED[89]);磨削几件后修整不为零或当前几件大于设定值
+                    IF TECH_ADDED[88]/TECH_ADDED[89]-TRUNC(TECH_ADDED[88]/TECH_ADDED[89])==0
+                        INI[75]=1;标记位
+                    ENDIF
+                ENDIF
+            ELSE
+                TECH_ADDED[128]=TECH_ADDED[128]+1;磨削工件计数
+                IF (TECH_ADDED[129]<>0) AND (TECH_ADDED[128]>=TECH_ADDED[129]);磨削几件后修整不为零或当前几件大于设定值
+                    IF TECH_ADDED[128]/TECH_ADDED[129]-TRUNC(TECH_ADDED[128]/TECH_ADDED[129])==0
+                        INI[75]=1;标记位
+                    ENDIF
+                ENDIF
+            ENDIF
+        ENDIF
     ENDIF
 ENDIF
 

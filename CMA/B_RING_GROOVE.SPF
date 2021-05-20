@@ -20,7 +20,12 @@ ENDIF
 
 RING[4]=RING[3]-RING[2]+1;需加工槽数
 RING[5]=0;已加工槽数
+
 INI[73]=0;磨削工件计数
+TECH_ADDED[8]=0;磨削工件计数
+TECH_ADDED[48]=0;磨削工件计数
+TECH_ADDED[88]=0;磨削工件计数
+TECH_ADDED[128]=0;磨削工件计数
 
 WHILE(RING[5]<RING[4]);已加工小于需加工
     C_RING_RELATED_POS(RING[2]+RING[5],RING[6],RING[7]);当前槽的XZ方向偏移量计算
