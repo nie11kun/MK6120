@@ -105,25 +105,50 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	IF (INI[74]==0) OR (INI[73]<INI[74]);修整为零或当前几件小于设定值
 		INI[75]=0;标记位
 	ENDIF
+	INI[20]=LADAO[42];A轴磨削位-当前
+	LADAO[5]=LADAO[43];B轴磨削位-当前
+	PROCESS[16]=LADAO[44];磨削安全位-当前
+	INI[6]=INI[2]+RING[7];工件右端
+	PROCESS[13]=TECHNOLOGY[231];初始接触Y
 ELSE
-    IF LADAO[37]==1
+    IF LADAO[37]==1;通磨
         IF (TECH_ADDED[9]==0) OR (TECH_ADDED[8]<TECH_ADDED[9]);修整为零或当前几件小于设定值
 			INI[75]=0;标记位
 		ENDIF
+		INI[20]=LADAO[45];A轴磨削位-当前
+		LADAO[5]=LADAO[46];B轴磨削位-当前
+		PROCESS[16]=LADAO[47];磨削安全位-当前
+		INI[6]=LADAO[40];平磨起点z
+		PROCESS[13]=TECHNOLOGY[234];初始接触Y
     ELSE
         IF LADAO[37]==2;齿顶后刃
             IF (TECH_ADDED[49]==0) OR (TECH_ADDED[48]<TECH_ADDED[49]);修整为零或当前几件小于设定值
 				INI[75]=0;标记位
 			ENDIF
+			INI[20]=LADAO[48];A轴磨削位-当前
+			LADAO[5]=LADAO[49];B轴磨削位-当前
+			PROCESS[16]=LADAO[50];磨削安全位-当前
+			INI[6]=LADAO[51]+RING[7];工件右端
+			PROCESS[13]=TECHNOLOGY[233];初始接触Y
         ELSE
-            IF LADAO[37]==3;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背)
+            IF LADAO[37]==3;齿侧后刃
                 IF (TECH_ADDED[89]==0) OR (TECH_ADDED[88]<TECH_ADDED[89]);修整为零或当前几件小于设定值
 					INI[75]=0;标记位
 				ENDIF
-            ELSE
+				INI[20]=LADAO[67];A轴磨削位-当前
+				LADAO[5]=LADAO[68];B轴磨削位-当前
+				PROCESS[16]=LADAO[69];磨削安全位-当前
+				INI[6]=LADAO[70]+RING[7];工件右端
+				PROCESS[13]=TECHNOLOGY[235];初始接触Y
+            ELSE;后背
 				IF (TECH_ADDED[129]==0) OR (TECH_ADDED[128]<TECH_ADDED[129]);修整为零或当前几件小于设定值
 					INI[75]=0;标记位
 				ENDIF
+				INI[20]=LADAO[54];A轴磨削位-当前
+				LADAO[5]=LADAO[55];B轴磨削位-当前
+				PROCESS[16]=LADAO[56];磨削安全位-当前
+				INI[6]=LADAO[57]+RING[7];工件右端
+				PROCESS[13]=TECHNOLOGY[232];初始接触Y
             ENDIF
         ENDIF
     ENDIF
@@ -133,52 +158,6 @@ IF (DRESSER[0]==0) OR (DRESSER[0]==1);vw/xz
 	LADAO[13]=SHAPE_MODEL[7];齿形偏转角度
 ELSE
 	LADAO[13]=LADAO[14]
-ENDIF
-
-IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
-	INI[20]=LADAO[42];A轴磨削位-当前
-	LADAO[5]=LADAO[43];B轴磨削位-当前
-	PROCESS[16]=LADAO[44];磨削安全位-当前
-ELSE
-	IF LADAO[37]==1;平磨
-		INI[20]=LADAO[45];A轴磨削位-当前
-		LADAO[5]=LADAO[46];B轴磨削位-当前
-		PROCESS[16]=LADAO[47];磨削安全位-当前
-	ELSE;
-		IF LADAO[37]==2;齿顶后刃
-			INI[20]=LADAO[48];A轴磨削位-当前
-			LADAO[5]=LADAO[49];B轴磨削位-当前
-			PROCESS[16]=LADAO[50];磨削安全位-当前
-		ELSE
-			IF LADAO[37]==3;齿顶后刃
-				INI[20]=LADAO[67];A轴磨削位-当前
-				LADAO[5]=LADAO[68];B轴磨削位-当前
-				PROCESS[16]=LADAO[69];磨削安全位-当前
-			ELSE
-				INI[20]=LADAO[54];A轴磨削位-当前
-				LADAO[5]=LADAO[55];B轴磨削位-当前
-				PROCESS[16]=LADAO[56];磨削安全位-当前
-			ENDIF
-		ENDIF
-	ENDIF
-ENDIF
-
-IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃),4后背
-	INI[6]=INI[2]+RING[7];工件右端
-ELSE
-	IF LADAO[37]==1
-		INI[6]=LADAO[40];平磨起点z
-	ELSE
-		IF LADAO[37]==2;齿顶后刃
-			INI[6]=LADAO[51]+RING[7];工件右端
-		ELSE
-			IF LADAO[37]==3;
-				INI[6]=LADAO[70]+RING[7];工件右端
-			ELSE
-				INI[6]=LADAO[57]+RING[7];工件右端
-			ENDIF
-		ENDIF
-	ENDIF
 ENDIF
 
 ;X轴初始接触赋值位置选择
