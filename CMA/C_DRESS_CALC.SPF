@@ -44,6 +44,7 @@ ELSE
             IF LADAO[37]==1;通磨
                 LADAO[39]=LADAO[39]-DRESSER[14]*SIN(LADAO[13]);x磨削位
                 TECHNOLOGY[234]=TECHNOLOGY[234]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
+                TECHNOLOGY[236]=TECHNOLOGY[236]-DRESSER[14]*COS(LADAO[13]);通磨当前接触Y
             ELSE
                 IF LADAO[37]==2;平刃后角
                     D_DRESS_GRIND_CALC(450,150,DRESSER[14]);顶部后刃当前接触Y
@@ -85,6 +86,7 @@ ELSE
                 IF LADAO[37]==1
                     LADAO[39]=LADAO[39]-DRESSER[15]*SIN(LADAO[13])
                     TECHNOLOGY[234]=TECHNOLOGY[234]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
+                    TECHNOLOGY[236]=TECHNOLOGY[236]-DRESSER[15]*COS(LADAO[13]);通磨当前接触Y
                 ELSE
                     IF LADAO[37]==2
                         D_DRESS_GRIND_CALC(450,150,DRESSER[15])
