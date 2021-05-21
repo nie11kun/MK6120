@@ -103,20 +103,5 @@ ELSE
     ENDIF
 ENDIF
 
-RING[8]=PROCESS[13]+RING[6];当前槽起始磨削位置Y
-IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
-    RING[9]=INI[2]+RING[7];当前槽起始磨削位置Z
-ELSE
-    IF LADAO[37]==2;
-        RING[9]=LADAO[51]+RING[7];工件右端
-    ELSE
-        IF LADAO[37]==3;
-            RING[9]=LADAO[70]+RING[7];工件右端
-        ELSE
-            RING[9]=LADAO[57]+RING[7];当前槽起始磨削位置Z
-        ENDIF
-    ENDIF
-ENDIF
-
 RET
 
