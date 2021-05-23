@@ -23,7 +23,7 @@ IF DRESSER[5]==0;新砂轮
                         E_COMMON_SHAPE_CACU;通用齿形参数计算程序
                         SHAPE_VER_REAL=COMMON_VER_HEIGHT;实际齿高
                     ELSE
-                        SHAPE_VER_REAL=LADAO[92];实际齿高
+                        SHAPE_VER_REAL=LADAO[16];实际齿高
                     ENDIF
                 ELSE;偏半个砂轮宽度
                     SHAPE_VER_REAL=DRESSER[22]/2
