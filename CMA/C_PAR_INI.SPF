@@ -4,6 +4,8 @@ PROC C_PAR_INI SBLOF DISPLOF
 ;*各种参数初始化赋值，判断及运算
 ;****************************
 
+DEF REAL TEMP_Z,TEMP_Y
+
 DRFOF;手轮偏置清除
 
 ;参数初始赋值
@@ -102,6 +104,15 @@ IF INI[70]==1;有自动门(0没有/1有)
 ENDIF
 
 IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背)
+	IF TOOL_SET[43]==1;新砂轮修整后校准磨削位
+		TOOL_SET[43]=0;复位开关
+		TEMP_Z=TOOL_SET[44]-GRIND_RESULT[150];首齿实际与首齿当前差值
+		TEMP_Y=TOOL_SET[45]-GRIND_RESULT[0];首齿实际与首齿当前差值
+		INI[2]=INI[2]+TEMP_Z
+		TECHNOLOGY[231]=TECHNOLOGY[231]+TEMP_Y
+		D_DRESS_GRIND_CALC(0,150,-TEMP_Y);当前接触Y
+		D_DRESS_GRIND_CALC(150,150,-TEMP_Z);当前接触Z
+	ENDIF
 	IF (INI[74]==0) OR (INI[73]<INI[74]);修整为零或当前几件小于设定值
 		INI[75]=0;标记位
 	ENDIF
@@ -112,6 +123,14 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	PROCESS[13]=TECHNOLOGY[231];初始接触Y
 ELSE
     IF LADAO[37]==1;通磨
+		IF TECH_ADDED[17]==1;新砂轮修整后校准磨削位
+			TECH_ADDED[17]=0;复位开关
+			TEMP_Z=TECH_ADDED[18]-LADAO[40]
+			TEMP_Y=TECH_ADDED[19]-TECHNOLOGY[236]
+			LADAO[40]=LADAO[40]+TEMP_Z;初始位置=当前设置+首齿实际与首齿设定插值
+			TECHNOLOGY[234]=TECHNOLOGY[234]+TEMP_Y
+			TECHNOLOGY[236]=TECHNOLOGY[236]+TEMP_Y;当前接触Y
+		ENDIF
         IF (TECH_ADDED[9]==0) OR (TECH_ADDED[8]<TECH_ADDED[9]);修整为零或当前几件小于设定值
 			INI[75]=0;标记位
 		ENDIF
@@ -122,6 +141,14 @@ ELSE
 		PROCESS[13]=TECHNOLOGY[234];初始接触Y
     ELSE
         IF LADAO[37]==2;齿顶后刃
+			IF TECH_ADDED[57]==1;新砂轮修整后校准磨削位
+				TECH_ADDED[57]=0;复位开关
+				TEMP_Z=TECH_ADDED[58]-LADAO[51]
+				TEMP_Y=TECH_ADDED[59]-GRIND_RESULT[450]
+				LADAO[51]=LADAO[51]+TEMP_Z;初始位置=当前设置+首齿实际与首齿设定插值
+				TECHNOLOGY[233]=TECHNOLOGY[233]+TEMP_Y
+				D_DRESS_GRIND_CALC(450,150,-TEMP_Y);当前接触Y
+			ENDIF
             IF (TECH_ADDED[49]==0) OR (TECH_ADDED[48]<TECH_ADDED[49]);修整为零或当前几件小于设定值
 				INI[75]=0;标记位
 			ENDIF
@@ -132,6 +159,14 @@ ELSE
 			PROCESS[13]=TECHNOLOGY[233];初始接触Y
         ELSE
             IF LADAO[37]==3;齿侧后刃
+				IF TECH_ADDED[97]==1;新砂轮修整后校准磨削位
+					TECH_ADDED[97]=0;复位开关
+					TEMP_Z=TECH_ADDED[98]-LADAO[70]
+					TEMP_Y=TECH_ADDED[99]-GRIND_RESULT[600]
+					LADAO[70]=LADAO[70]+TEMP_Z;初始位置=当前设置+首齿实际与首齿设定插值
+					TECHNOLOGY[235]=TECHNOLOGY[235]+TEMP_Y
+					D_DRESS_GRIND_CALC(600,150,-TEMP_Y);当前接触Y
+				ENDIF
                 IF (TECH_ADDED[89]==0) OR (TECH_ADDED[88]<TECH_ADDED[89]);修整为零或当前几件小于设定值
 					INI[75]=0;标记位
 				ENDIF
@@ -141,6 +176,15 @@ ELSE
 				INI[6]=LADAO[70]+RING[7];工件右端
 				PROCESS[13]=TECHNOLOGY[235];初始接触Y
             ELSE;后背
+				IF TECH_ADDED[137]==1;新砂轮修整后校准磨削位
+					TECH_ADDED[137]=0;复位开关
+					TEMP_Z=TECH_ADDED[138]-GRIND_RESULT[300]
+					TEMP_Y=TECH_ADDED[139]-GRIND_RESULT[750]
+					LADAO[57]=LADAO[57]+TEMP_Z;初始位置=当前设置+首齿实际与首齿设定插值
+					TECHNOLOGY[232]=TECHNOLOGY[232]+TEMP_Y
+					D_DRESS_GRIND_CALC(750,150,-TEMP_Y);当前接触Y
+					D_DRESS_GRIND_CALC(300,150,-TEMP_Z);当前接触Z
+				ENDIF
 				IF (TECH_ADDED[129]==0) OR (TECH_ADDED[128]<TECH_ADDED[129]);修整为零或当前几件小于设定值
 					INI[75]=0;标记位
 				ENDIF
