@@ -121,6 +121,7 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	PROCESS[16]=LADAO[44];磨削安全位-当前
 	INI[6]=INI[2]+RING[7];工件右端
 	PROCESS[13]=TECHNOLOGY[231];初始接触Y
+	LADAO[26]=LADAO[99];斜线进刀角度
 ELSE
     IF LADAO[37]==1;通磨
 		IF TECH_ADDED[17]==1;新砂轮修整后校准磨削位
@@ -193,6 +194,7 @@ ELSE
 				PROCESS[16]=LADAO[56];磨削安全位-当前
 				INI[6]=LADAO[57]+RING[7];工件右端
 				PROCESS[13]=TECHNOLOGY[232];初始接触Y
+				LADAO[26]=LADAO[41];斜线进刀角度
             ENDIF
         ENDIF
     ENDIF
