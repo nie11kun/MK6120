@@ -1,5 +1,5 @@
 ;***********************MASK3:修整参数_主界面:panel_3**********************
-//M(Mask3/$85022/"panel_3_4_chs.png"/)
+//M(Mask3/$85022//)
 
 	DEF VAR0=(R///$85366,$85366,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[10]"/10,10,110/100,10,110//"UserGuide/section_3.html","S3D18");累计修整量
 
@@ -87,14 +87,9 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
-	;VS1=($85390,ac7,se1);"齿形一" ifIsArc
-	;VS2=($85391,ac7,se1);"齿形二" ifIsArc
-	;VS3=($85392,ac7,se1);"齿形三" ifIsArc
-	;VS4=($85393,ac7,se1);"齿形三" ifIsArc
-
-	VS5=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS1=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
 ;
-	VS7=($85379,ac7,se1);"滚压轮"
+	VS2=($85379,ac7,se1);"滚压轮"
 ;
 
 	LOAD
@@ -151,22 +146,6 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK1","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK2","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS5)
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
 			LM("MASK4","a_dressware.com")
 		ELSE;XZ/X
@@ -174,16 +153,7 @@
 		ENDIF
 	END_PRESS
 
-
-	PRESS(VS6)
-		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
-			LM("MASK6","a_dressware.com")
-		ELSE;XZ/X
-			LM("MASK14","a_dressware.com")
-		ENDIF
-	END_PRESS
-
-	PRESS(VS7)
+	PRESS(VS2)
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
 			LM("MASK11","a_dressware.com")
 		ELSE;XZ/X
@@ -311,14 +281,6 @@
 		IF VAR1.VAL==0
 			ROLLING_1.WR=4
 			HY_1.WR=4
-			VS1.se=1
-			VS2.se=1
-			VS3.se=1
-			VS4.se=1
-			VS5.se=1
-			VS6.se=1
-			VS7.se=2
-			VS8.se=2
 			IF QCHECK.VAL==0
 				VAR2.WR=1;  ifIsSingleAndRound
 ;
@@ -336,14 +298,6 @@
 			IF VAR1.VAL==1
 				ROLLING_1.WR=4
 				HY_1.WR=4
-				VS1.se=1
-				VS2.se=1
-				VS3.se=1
-				VS4.se=1
-				VS5.se=1
-				VS6.se=1
-				VS7.se=2
-				VS8.se=2
 				IF QCHECK.VAL==0
 					VAR2.WR=1;  ifIsSingleAndRound
 ;
@@ -364,14 +318,6 @@
 					VAR12.WR=4
 					ROLLING_1.WR=1
 					HY_1.WR=4
-					VS1.se=2
-					VS2.se=2
-					VS3.se=2
-					VS4.se=2
-					VS5.se=2
-					VS6.se=2
-					VS7.se=1
-					VS8.se=2
 				ELSE
 					IF VAR1.VAL==3
 						VAR2.WR=4
@@ -379,14 +325,6 @@
 						VAR12.WR=4
 						ROLLING_1.WR=4
 						HY_1.WR=1
-						VS1.se=2
-						VS2.se=2
-						VS3.se=2
-						VS4.se=2
-						VS5.se=2
-						VS6.se=2
-						VS7.se=2
-						VS8.se=1
 					ELSE
 						IF VAR1.VAL==4
 							VAR2.WR=4
@@ -394,14 +332,6 @@
 							VAR12.WR=4
 							ROLLING_1.WR=1
 							HY_1.WR=4
-							VS1.se=2
-							VS2.se=2
-							VS3.se=2
-							VS4.se=2
-							VS5.se=2
-							VS6.se=2
-							VS7.se=1
-							VS8.se=2
 						ENDIF
 					ENDIF
 				ENDIF

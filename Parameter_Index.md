@@ -1207,7 +1207,7 @@
 |SHAPE_MODEL[4]||刃背角度
 |SHAPE_MODEL[5]||前刃长度
 |SHAPE_MODEL[6]||刃总长
-|SHAPE_MODEL[7]||修整齿形偏转角度(相对磨削A角度)
+|SHAPE_MODEL[7]||前角-修整齿形偏转角度(相对磨削A角度)
 |SHAPE_MODEL[8]||左齿顶圆弧半径
 |SHAPE_MODEL[9]||
 |SHAPE_MODEL[110]||
@@ -1423,7 +1423,7 @@
 |LADAO[11]||磨削x向锥度调整
 |LADAO[12]||退刀位置.X
 |LADAO[13]||齿形修整偏转角度(相对磨削A角度)
-|LADAO[14]||成型轮修整偏转角度(相对磨削A角度)
+|LADAO[14]||后背-修整齿形偏转角度(相对磨削A角度)
 |LADAO[15]||齿内二次偏移磨削距离(0为不偏移磨削)
 |LADAO[16]||新砂轮抬刀高度
 |LADAO[17]||磨削偏移z向累计
@@ -1669,9 +1669,9 @@
 |TECH_ADDED[104]||侧后刃-精磨是否修整
 |TECH_ADDED[105]||侧后刃-精磨砂轮线速度
 |TECH_ADDED[106]||侧后刃-精磨砂轮转速
-|TECH_ADDED[107]||
-|TECH_ADDED[108]||
-|TECH_ADDED[109]||
+|TECH_ADDED[107]||平刃后角-修整齿形偏转角度(相对磨削A角度)
+|TECH_ADDED[108]||通磨-修整齿形偏转角度(相对磨削A角度)
+|TECH_ADDED[109]||铲背-修整齿形偏转角度(相对磨削A角度)
 |TECH_ADDED[110]||侧后刃-终磨单双
 |TECH_ADDED[111]||侧后刃-终磨次数
 |TECH_ADDED[112]||侧后刃-终磨进给量

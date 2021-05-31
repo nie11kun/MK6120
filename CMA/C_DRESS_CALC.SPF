@@ -47,7 +47,7 @@ ELSE
                 TECHNOLOGY[236]=TECHNOLOGY[236]-DRESSER[14]*COS(LADAO[13]);通磨当前接触Y
             ELSE
                 IF LADAO[37]==2;平刃后角
-                    D_DRESS_GRIND_CALC(450,150,DRESSER[14]);顶部后刃当前接触Y
+                    D_DRESS_GRIND_CALC(450,150,DRESSER[14]*COS(LADAO[13]);顶部后刃当前接触Y
                     TECHNOLOGY[233]=TECHNOLOGY[233]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
                 ELSE
                     IF LADAO[37]==3;铲背
@@ -89,7 +89,7 @@ ELSE
                     TECHNOLOGY[236]=TECHNOLOGY[236]-DRESSER[15]*COS(LADAO[13]);通磨当前接触Y
                 ELSE
                     IF LADAO[37]==2
-                        D_DRESS_GRIND_CALC(450,150,DRESSER[15])
+                        D_DRESS_GRIND_CALC(450,150,DRESSER[15]*COS(LADAO[13])
                         TECHNOLOGY[233]=TECHNOLOGY[233]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
                     ELSE
                         IF LADAO[37]==3

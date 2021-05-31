@@ -22,8 +22,6 @@
 	DEF A_DRESS_POS=(R///$85635,$85635,,$85042/WR2//"/NC/_N_NC_GD2_ACX/INI[154]"/330,100,110/440,100,110//"UserGuide/section_4.html","S4D14");A轴修正位
 	DEF B_DRESS_POS=(R///$85636,$85636,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[7]"/330,120,110/440,120,110//"UserGuide/section_4.html","S4D14");B轴修正位
 
-	DEF PIANZHUAN=(R/0,90//$85477,$85477,,$85043/WR2/"panel_7_7_chs.png"/"/NC/_N_NC_GD2_ACX/SHAPE_MODEL[8]"/330,150,120/440,150,110/);修整齿形偏转角度
-
 	DEF VAR0=(R/0,300//$85614,$85614,,$85043/WR4//""/0,0,0/0,0,0/);滚轮间距
 
 	DEF VAR1=(R/0,10//$85612,$85612,,$85043/WR2/"panel_12_2_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[5]"/330,180,110/440,180,110//"UserGuide/section_4.html","S4D1");圆弧半径
@@ -64,14 +62,9 @@
 
 ;
 ;
-	;VS1=($85390,ac7,se1);"齿形一" ifIsArc
-	;VS2=($85391,ac7,se1);"齿形二" ifIsArc
-	;VS3=($85392,ac7,se1);"齿形二" ifIsArc
-	;VS4=($85393,ac7,se1);"齿形二" ifIsArc
-
-	VS5=($85380,ac7,se3);"单滚轮" ifIsSingleAndRound
+	VS1=($85380,ac7,se3);"单滚轮" ifIsSingleAndRound
 ;
-	VS7=($85379,ac7,se2);"滚压轮"
+	VS2=($85379,ac7,se1);"滚压轮"
 ;
 
 	PRESS(HS1)
@@ -111,22 +104,6 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK1","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK2","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4","a_dressware.com")
 		ELSE;XZ/X
@@ -134,15 +111,7 @@
 		ENDIF
 	END_PRESS
 
-	PRESS(VS6)
-		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6","a_dressware.com")
-		ELSE;XZ/X
-			LM("MASK14","a_dressware.com")
-		ENDIF
-	END_PRESS
-
-	PRESS(VS7)
+	PRESS(VS2)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11","a_dressware.com")
 		ELSE;XZ/X
@@ -261,8 +230,6 @@
 	DEF A_DRESS_POS=(R///$85635,$85635,,$85042/WR2//"/NC/_N_NC_GD2_ACX/INI[154]"/330,90,110/440,90,110//"UserGuide/section_4.html","S4D14");A轴修正位
 	DEF B_DRESS_POS=(R///$85636,$85636,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[7]"/330,110,110/440,110,110//"UserGuide/section_4.html","S4D14");B轴修正位
 
-	DEF PIANZHUAN=(R/0,90//$85477,$85477,,$85043/WR2/"panel_7_7_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[15]"/330,140,120/440,140,110/);修整齿形偏转角度
-
 	DEF VAR11=(R/0,80//$85604,$85604,,$85047/WR2/"panel_16_1_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL[19]"/325,170,110/440,170,110//"UserGuide/section_4.html","S4D10");滚压轮停留时间
 	
 	DEF VAR2=(R/0,50//$85602,$85602,,$85043/WR2/"panel_16_3_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[2]"/325,200,110/440,200,110//"UserGuide/section_4.html","S4D11");齿高
@@ -298,14 +265,9 @@
 
 ;
 ;
-	;VS1=($85390,ac7,se2);"齿形一" ifIsArc
-	;VS2=($85391,ac7,se2);"齿形二" ifIsArc
-	;VS3=($85392,ac7,se2);"齿形二" ifIsArc
-	;VS4=($85393,ac7,se2);"齿形二" ifIsArc
-
-	VS5=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
+	VS1=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
 ;
-	VS7=($85379,ac7,se3);"滚压轮"
+	VS2=($85379,ac7,se3);"滚压轮"
 ;
 
 	PRESS(HS1)
@@ -345,22 +307,6 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK1","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK2","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_shapecommon.com")
-	END_PRESS
-
-	PRESS(VS5)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK4","a_dressware.com")
 		ELSE;XZ/X
@@ -368,15 +314,7 @@
 		ENDIF
 	END_PRESS
 
-	PRESS(VS6)
-		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
-			LM("MASK6","a_dressware.com")
-		ELSE;XZ/X
-			LM("MASK14","a_dressware.com")
-		ENDIF
-	END_PRESS
-
-	PRESS(VS7)
+	PRESS(VS2)
 		IF (WARE.VAL==0) OR (WARE.VAL==2);VW/V
 			LM("MASK11","a_dressware.com")
 		ELSE;XZ/X
