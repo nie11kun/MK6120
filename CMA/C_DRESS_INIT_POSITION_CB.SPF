@@ -4,7 +4,7 @@ PROC C_DRESS_INIT_POSITION_CB DISPLOF
 ;****************************
 
 MSG("台面到位中"); ifIsCHS
-G1 G90 Z=DRESSER[33]+DRESSER[22]/2+150 F=INI[56];z轴快速接近
+G1 G90 Z=DRESSER[33]+150 F=INI[56];z轴快速接近
 ;
 C_ROTATE_ANGLE(INI[153],LADAO[6]);升角复位
 
@@ -15,7 +15,7 @@ G1 G90 Y=WHEEL[10]+LADAO[92]+1 F=INI[55];x轴回退到修整接触位+2
 ;
 
 MSG("台面到位中"); ifIsCHS
-G1 G90 Z=DRESSER[33]+DRESSER[22]/2+5 F=INI[56];z轴快速接近
+G1 G90 Z=DRESSER[33]+5 F=INI[56];z轴快速接近
 
 RET
 
