@@ -10,6 +10,10 @@ G1 G90 Y=WHEEL[10]+LADAO[92]+1 F=INI[55];x轴回退到修整接触位+2
 MSG("台面离开中"); ifIsCHS
 G1 G90 Z=DRESSER[33]+150 F=INI[56];z轴快速接近
 
+IF GRIND[1]<>0;纯修整
+    RET;
+ENDIF
+
 G90 G1 Y=PROCESS[16] F=INI[55]
 
 IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背)

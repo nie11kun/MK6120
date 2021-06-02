@@ -277,8 +277,14 @@ IF (PROCESS[0]==0) AND (GRIND[1]==0) AND (GRIND[2]==0);选择界面工艺不是�
 	ENDIF
 ENDIF
 
-IF DRESSER[24]-DRESSER[38]*2<DRESSER[35];当前砂轮直径<最小砂轮直径
-	DRESSER[6]=2;砂轮过小,请更换砂轮
+IF LADAO[38]==0;砂轮类型
+	IF DRESSER[24]-DRESSER[38]*2<DRESSER[35];当前砂轮直径<最小砂轮直径
+		DRESSER[6]=2;砂轮过小,请更换砂轮
+	ENDIF
+ELSE
+	IF LADAO[112]-DRESSER[38]<LADAO[113];当前砂轮直径<最小砂轮直径
+		DRESSER[6]=2;砂轮过小,请更换砂轮
+	ENDIF
 ENDIF
 
 RET

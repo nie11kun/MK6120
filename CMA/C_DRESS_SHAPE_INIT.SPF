@@ -90,27 +90,21 @@ IF DRESSER[133]==0;新砂轮修整模式(0抬齿高/1偏半个砂轮宽度)
     IF GRIND[0]<>1;不是内螺纹
         IF DRESSER[5]==0;新砂轮
             WHEEL[10]=WHEEL[12]+SHAPE_VER_REAL_FIX;当前左端接触位置
-            WHEEL[11]=WHEEL[13]+SHAPE_VER_REAL_FIX;当前右端接触位置
         ELSE
             WHEEL[10]=WHEEL[10]+SHAPE_VER_REMAINDER;当前左端接触位置
-            WHEEL[11]=WHEEL[11]+SHAPE_VER_REMAINDER;当前右端接触位置
         ENDIF
     ELSE
         IF DRESSER[37]==0;前/后修整
             IF DRESSER[5]==0;新砂轮
                 WHEEL[10]=WHEEL[12]-SHAPE_VER_REAL_FIX;当前左端接触位置
-                WHEEL[11]=WHEEL[13]-SHAPE_VER_REAL_FIX;当前右端接触位置
             ELSE
                 WHEEL[10]=WHEEL[10]-SHAPE_VER_REMAINDER;当前左端接触位置
-                WHEEL[11]=WHEEL[11]-SHAPE_VER_REMAINDER;当前右端接触位置
             ENDIF
         ELSE
             IF DRESSER[5]==0;新砂轮
                 WHEEL[10]=WHEEL[12]+SHAPE_VER_REAL_FIX;当前左端接触位置
-                WHEEL[11]=WHEEL[13]+SHAPE_VER_REAL_FIX;当前右端接触位置
             ELSE
                 WHEEL[10]=WHEEL[10]+SHAPE_VER_REMAINDER;当前左端接触位置
-                WHEEL[11]=WHEEL[11]+SHAPE_VER_REMAINDER;当前右端接触位置
             ENDIF
         ENDIF
     ENDIF
@@ -119,12 +113,10 @@ IF DRESSER[133]==0;新砂轮修整模式(0抬齿高/1偏半个砂轮宽度)
 ELSE;偏半个砂轮宽度
     IF DRESSER[5]==0;新砂轮
         WHEEL[10]=WHEEL[12];当前左端垂直接触位置
-        WHEEL[11]=WHEEL[13];当前右端垂直接触位置
         DRESSER[134]=DRESSER[33]+SHAPE_VER_REAL_FIX;当前左端水平修整位置
         DRESSER[135]=DRESSER[34]-SHAPE_VER_REAL_FIX;当前右端水平修整位置
     ELSE
         WHEEL[10]=WHEEL[10];当前左端垂直接触位置
-        WHEEL[11]=WHEEL[11];当前右端垂直接触位置
         DRESSER[134]=DRESSER[134]+SHAPE_VER_REMAINDER;当前左端水平修整位置
         DRESSER[135]=DRESSER[135]-SHAPE_VER_REMAINDER;当前右端水平修整位置
     ENDIF

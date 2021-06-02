@@ -4,7 +4,6 @@ PROC D_DRESS_TOUCH_CURNT(REAL FEED) DISPLOF
 ;****************************
 
 WHEEL[10]=WHEEL[10]-FEED;当前左接触
-WHEEL[11]=WHEEL[11]-FEED;当前右接触
 
 RET
 

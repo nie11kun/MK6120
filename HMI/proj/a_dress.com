@@ -1,75 +1,57 @@
 ;***********************MASK3:修整参数_主界面:panel_3**********************
 //M(Mask3/$85022//)
 
-	DEF VAR0=(R///$85366,$85366,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[10]"/10,10,110/100,10,110//"UserGuide/section_3.html","S3D18");累计修整量
-
-	DEF SHALUN_LEIXIN=(I/*0=$85368,1=$85369//$85367,$85367,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[39]"/10,30,110/100,30,60//);砂轮类型(0刚玉/1金刚石)
-
 	DEF VAR5=(I/0,1000//$85340,$85340,,/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60//"UserGuide/section_3.html","S3D7");粗修次数
 	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,80,110/440,80,110//"UserGuide/section_3.html","S3D8");粗修量
 	DEF VAR7=(R/0,1000//$85306,$85306,,$85045/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[30]"/330,100,110/440,100,110//"UserGuide/section_3.html","S3D9");粗修速度
 
 	DEF VAR8=(I/0,1000//$85341,$85341,,/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[27]"/330,130,110/440,130,60//"UserGuide/section_3.html","S3D10");精修次数 ifIsNotHasWorm
-;
 	DEF VAR9=(R/0,0.5//$85309,$85309,,$85043/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[29]"/330,150,110/440,150,110//"UserGuide/section_3.html","S3D11");精修量
 	DEF VAR10=(R/0,1000//$85307,$85307,,$85045/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[31]"/330,170,110/440,170,110//"UserGuide/section_3.html","S3D12");精修速度
 
-	;DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/330,200,110/440,200,110//"UserGuide/section_3.html","S3D13");砂轮宽度
-	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR2/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/330,220,110/440,220,110//"UserGuide/section_3.html","S3D14");新砂轮直径
-	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/330,240,110/440,240,110/);砂轮当前直径
-	DEF VAR15=(R/0,80//$85317,$85317,,$85046/WR1/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL_LINESPEED_DRESS[2]"/330,260,110/440,260,110//"UserGuide/section_3.html","S3D15");砂轮线速度
-	DEF VAR16=(I/0,//$85221,$85221,,$85044/WR1/"panel_3_15_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[37]"/330,280,110/440,280,110//"UserGuide/section_3.html","S3D19");修整时砂轮转速
+	DEF VAR15=(R/0,80//$85317,$85317,,$85046/WR1/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL_LINESPEED_DRESS[2]"/330,200,110/440,200,110//"UserGuide/section_3.html","S3D15");砂轮线速度
+	DEF VAR16=(I/0,//$85221,$85221,,$85044/WR1/"panel_3_15_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[37]"/330,220,110/440,220,110//"UserGuide/section_3.html","S3D19");修整时砂轮转速
 
-	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,30,60//"UserGuide/section_3.html","S3D16");砂轮状态
-	DEF CHENGXING=(I/*0=$85301,1=$85302//$85300,,,/WR4/"panel_3_14_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[114]"/0,0,0/510,30,40//"UserGuide/section_3.html","S3D17");新砂轮是否是成型砂轮(0否1是)
+	DEF MODEL_NAME=(S///$85464,$85464,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_EXTERNAL"/330,250,80/440,250,110/);存储齿形程序名
+	DEF CIGAO=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[93]"/330,270,110/440,270,110//);修整齿形齿高
+	DEF TAIDAO=(R///$85637,$85637,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[17]"/330,290,110/440,290,110//);新砂轮抬刀高度
 
-	;+++++++++++++++++++++++++++++++++++++++++++++
-	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/310,310,130/440,310,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
-;
-;
+	DEF CIGAO_ROLL=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/330,270,110/440,270,110//);修整齿形齿高
 
-;
-;
-	DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D2");X_Z/X  ifIsDressWare3
-;
-;
+	;*******************************************
 
-	DEF VAR2=(I/*0=$85380//$85388,,,/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[4]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D3");修整轮类型 ifIsSingleAndRound
-;
+	DEF SHALUN_LEIXIN=(I/*0=$85368,1=$85369//$85367,$85367,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[39]"/10,10,110/110,10,60//);砂轮类型
 
-;
-	;DEF VAR3=(I/*0=$85390,1=$85391,2=$85392,3=$85393//$85389,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[5]"/0,0,0/335,30,60/);齿形 ifIsOnlyArc
-	DEF cixindiaoyong=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[115]"/0,0,0/0,0,0/);调用默认齿形程序0/通用齿形程序1
-	DEF EXTERNAL_SHAPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[140]"/0,0,0/0,0,0/);使用外部齿形程序
+	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR2/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/10,40,110/110,40,110//"UserGuide/section_3.html","S3D14");新砂轮直径
+	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/10,60,110/110,60,110/);砂轮当前直径
+	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR2/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/10,80,130/110,80,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
 
-	DEF MODEL_NAME=(S///$85464,$85464,,///"/NC/_N_NC_GD2_ACX/SHAPE_EXTERNAL"/10,290,80/100,290,150/);存储齿形程序名
-	DEF CIGAO=(R///$85602,$85602,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[93]"/10,310,110/100,310,110//);修整齿形齿高
-	DEF TAIDAO=(R///$85637,$85637,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[17]"/10,330,110/100,330,110//);新砂轮抬刀高度
+	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/10,170,110/110,170,110//"UserGuide/section_3.html","S3D13");新砂轮厚度
+	DEF HOUDU_CURR=(R///$85313,$85313,,$85043/WR1/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[113]"/10,190,110/110,190,110//"UserGuide/section_3.html","S3D13");当前砂轮厚度
+	DEF HOUDU_MIN=(R///$85314,$85314,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[114]"/10,210,110/110,210,110//"UserGuide/section_3.html","S3D13");最小砂轮厚度
+	DEF HOUDU_DIA=(R///$85315,$85315,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[115]"/10,230,110/110,230,110//"UserGuide/section_3.html","S3D13");砂轮直径
 
-	DEF ROLLING_1=(I/*0=$85379,1=$85379/0/$85388,,,/WR4///0,0,0/440,10,60/);成型修整轮
-	DEF HY_1=(I/*0=$85378,1=$85378/0/$85388,,,/WR4///0,0,0/440,10,60/);液压修整
+	;************************************************
+
+	DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D2");Y_Z/Y  ifIsDressWare3
+	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D16");砂轮状态
 
 	DEF N_CX_X_TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在前 ifIsFrontDress
-;
-
-;
-;
-;
-
-	;+++++++++++++++++++++++++++++++++++++++++++++
+	DEF EXTERNAL_SHAPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[140]"/0,0,0/0,0,0/);使用外部齿形程序
 
 	DEF VAR20=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_VER"/0,0,0/0,0,0/);垂直轴
 	DEF VAR21=(S1////WR4//"/NC/_N_NC_GD2_ACX/AXIS_HORI"/0,0,0/0,0,0/);水平轴
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 
-	DEF VAR30=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[3]"/0,0,0/0,0,0);回零时砂轮与修整轮中间距
+	DEF VAR30_0=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[3]"/0,0,0/0,0,0);插补-直径方向-修整基准.Y
+	DEF VAR30_1=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[128]"/0,0,0/0,0,0);插补-厚度方向-修整基准.Y
+	DEF VAR30_2=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[129]"/0,0,0/0,0,0);成型-直径方向-修整基准.Y
+	DEF VAR30_3=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[130]"/0,0,0/0,0,0);成型-厚度方向-修整基准.Y
 	DEF VAR31=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/0,0,0/0,0,0/);NC用初始接触左
-	DEF VAR40=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[14]"/0,0,0/0,0,0/);NC用初始接触右
 	DEF VAR41=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[11]"/0,0,0/0,0,0/);当前接触左
-	DEF VAR42=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[12]"/0,0,0/0,0,0/);当前接触右
-	DEF VAR32=(R////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/0,0,0/0,0,0/);齿高
-	DEF VAR33=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/0,0,0/0,0,0/);初始接触位置
-	DEF VAR34=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[1]"/0,0,0/0,0,0/);修整轮直径
+	DEF VAR33=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/0,0,0/0,0,0/);滚压轮初始接触位置
+	DEF VAR34_0=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[1]"/0,0,0/0,0,0/);成型-修整轮直径
+	DEF VAR34_1=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[127]"/0,0,0/0,0,0/);插补-修整轮直径
 	
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
@@ -87,13 +69,12 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
-	VS1=($85380,ac7,se1);"单滚轮" ifIsSingleAndRound
+	VS1=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
 ;
-	VS2=($85379,ac7,se1);"滚压轮"
+	VS2=($85379,ac7,se2);"滚压轮"
 ;
 
 	LOAD
-		call("UP2")
 		call("UP3")
 		IF WHEEL_RUN_MODE.VAL==0
 			VAR15.WR=2
@@ -157,15 +138,7 @@
 		IF (VAR1.VAL==0) OR (VAR1.VAL==2);VW/V
 			LM("MASK11","a_dressware.com")
 		ELSE;XZ/X
-			IF TYPE.VAL==0;WAI
-				LM("MASK16","a_dressware.com")
-			ELSE;NEI
-				IF N_CX_X_TYPE.VAL==0;NEI-QIAN
-					LM("MASK17","a_dressware.com")
-				ELSE
-					LM("MASK19","a_dressware.com")
-				ENDIF
-			ENDIF
+			LM("MASK16","a_dressware.com")
 		ENDIF
 	END_PRESS
 
@@ -173,36 +146,52 @@
 		LM("MASK15","a_dressware.com")
 	END_PRESS
 
-	CHANGE(VAR1)
-		call("UP2")
+	CHANGE(VAR1);Y_Z/Y
+		IF VAR1.VAL==1
+			VS1.SE=1
+			VS2.SE=2
+		ELSE
+			VS1.SE=2
+			VS2.SE=1
+		ENDIF
 		call("UP3")
-	END_CHANGE
-
-	CHANGE(VAR2)
-		call("UP2")
-	END_CHANGE
-	
-	CHANGE(VAR13)
 		call("UP5")
-		IF WHEEL_N_MAX.VAL+0.2>VAR13.VAL
-			WHEEL_N_MAX.VAL=VAR13.VAL-0.2
+		IF VAR1.VAL==1
+			MODEL_NAME.WR=2
+			CIGAO.WR=2
+			TAIDAO.WR=2
+			CIGAO_ROLL.WR=4
+		ELSE
+			MODEL_NAME.WR=4
+			CIGAO.WR=4
+			TAIDAO.WR=4
+			CIGAO_ROLL.WR=2
 		ENDIF
+	END_CHANGE
+
+	CHANGE(VAR13);新砂轮直径
+		call("UP5")
 		call("UP1")
 	END_CHANGE
 
-	CHANGE(WHEEL_N_MAX)
-		IF WHEEL_N_MAX.VAL+0.2>VAR13.VAL
-			WHEEL_N_MAX.VAL=VAR13.VAL-0.2
-		ENDIF
-	END_CHANGE
-
-	CHANGE(VAR4)
+	CHANGE(VAR12);
 		call("UP1")
-		call("UP6")
+		call("UP5")
 	END_CHANGE
 
-	CHANGE(VAR14)
-		VAR0.VAL=(VAR13.VAL-VAR14.VAL)/2;累计修整量计算
+	CHANGE(VAR4);砂轮状态
+		call("UP1")
+	END_CHANGE
+
+	CHANGE(VAR14);VAR14
+		call("ROTATE_LINE")
+	END_CHANGE
+
+	CHANGE(HOUDU_CURR);VAR14
+		call("ROTATE_LINE")
+	END_CHANGE
+
+	CHANGE(HOUDU_DIA);VAR14
 		call("ROTATE_LINE")
 	END_CHANGE
 	
@@ -214,14 +203,6 @@
 		call("ROTATE_LINE")
 	END_CHANGE
 	
-	CHANGE(DISPDRESSANG)
-		IF DISPDRESSANG.VAL==0
-			DRESSANG.WR=4
-		ELSE
-			DRESSANG.WR=2
-		ENDIF
-	END_CHANGE
-
 	CHANGE(WHEEL_RUN_MODE)
 		IF WHEEL_RUN_MODE.VAL==0
 			VAR15.WR=2
@@ -232,101 +213,35 @@
 		ENDIF
 	END_CHANGE
 
-	CHANGE(QCHECK)
-		call("UP2")
-		call("UP6")
-	END_CHANGE
-
 	CHANGE(SHALUN_LEIXIN)
 		call("UP1")
+		call("UP5")
+		call("ROTATE_LINE")
+	END_CHANGE
+
+	CHANGE(CIGAO_ROLL)
+		call("UP5")
 	END_CHANGE
 
 	SUB(UP1)
-		IF (VAR4.VAL==0) OR (SHALUN_LEIXIN.VAL==1);新砂轮
-			VAR14.VAL=VAR13.VAL
+		IF (VAR4.VAL==0);新砂轮
+			IF SHALUN_LEIXIN.VAL==0
+				VAR14.VAL=VAR13.VAL
+			ELSE
+				HOUDU_CURR.VAL=VAR12.VAL
+			ENDIF
 		ELSE
-			IF TYPE.VAL<>1;不是内螺纹
-				IF VAR31.VAL>=VAR41.VAL;初始大于当前
+			IF VAR31.VAL>=VAR41.VAL;初始大于当前
+				IF SHALUN_LEIXIN.VAL==0;
 					VAR14.VAL=VAR13.VAL-(VAR31.VAL-VAR41.VAL)*2
 				ELSE
+					HOUDU_CURR.VAL=VAR12.VAL-(VAR31.VAL-VAR41.VAL)
+				ENDIF
+			ELSE
+				IF SHALUN_LEIXIN.VAL==0
 					VAR14.VAL=VAR13.VAL
-				ENDIF
-			ELSE;内螺纹
-				IF N_CX_X_TYPE.VAL==0;前/后修整
-					IF VAR41.VAL>=VAR31.VAL;当前大于初始
-						VAR14.VAL=VAR13.VAL-(VAR41.VAL-VAR31.VAL)*2
-					ELSE
-						VAR14.VAL=VAR13.VAL
-					ENDIF
 				ELSE
-					IF VAR31.VAL>=VAR41.VAL;初始大于当前
-						VAR14.VAL=VAR13.VAL-(VAR31.VAL-VAR41.VAL)*2
-					ELSE
-						VAR14.VAL=VAR13.VAL
-					ENDIF
-				ENDIF
-			ENDIF
-		ENDIF
-	END_SUB
-
-	SUB(UP2)
-		call("UP4")
-		IF QCHECK.VAL==0
-;
-			VAR1.WR=2; ifIsDressWare3
-		ELSE
-;
-			VAR1.WR=1; ifIsDressWare3
-		ENDIF
-		IF VAR1.VAL==0
-			ROLLING_1.WR=4
-			HY_1.WR=4
-			IF QCHECK.VAL==0
-				VAR2.WR=1;  ifIsSingleAndRound
-;
-;
-				VAR3.WR=2;  ifIsOnlyArc
-			ELSE
-				VAR2.WR=1;  ifIsSingleAndRound
-;
-;
-				VAR3.WR=1;  ifIsOnlyArc
-			ENDIF
-		ELSE
-			IF VAR1.VAL==1
-				ROLLING_1.WR=4
-				HY_1.WR=4
-				IF QCHECK.VAL==0
-					VAR2.WR=1;  ifIsSingleAndRound
-;
-;
-					VAR3.WR=2;  ifIsOnlyArc
-				ELSE
-					VAR2.WR=1;  ifIsSingleAndRound
-;
-;
-					VAR3.WR=1;  ifIsOnlyArc
-				ENDIF
-			ELSE
-				IF VAR1.VAL==2
-					VAR2.WR=4
-					VAR3.WR=4
-					ROLLING_1.WR=1
-					HY_1.WR=4
-				ELSE
-					IF VAR1.VAL==3
-						VAR2.WR=4
-						VAR3.WR=4
-						ROLLING_1.WR=4
-						HY_1.WR=1
-					ELSE
-						IF VAR1.VAL==4
-							VAR2.WR=4
-							VAR3.WR=4
-							ROLLING_1.WR=1
-							HY_1.WR=4
-						ENDIF
-					ENDIF
+					HOUDU_CURR.VAL=VAR12.VAL
 				ENDIF
 			ENDIF
 		ENDIF
@@ -359,97 +274,38 @@
 		ENDIF
 	END_SUB
 
-	SUB(UP4)
-		IF QCHECK.VAL==1
-			VAR4.WR=1
-			VAR5.WR=1
-			VAR6.WR=1
-			VAR7.WR=1
-			VAR8.WR=1
-			VAR9.WR=1
-			VAR10.WR=1
-			VAR13.WR=1
-			MODEL_NAME.WR=1
-			IF TYPE.VAL<>1;不是内螺纹
-				WHEEL_W_MIN.WR=1
-				WHEEL_N_MIN.WR=4
-				WHEEL_N_MAX.WR=4
-			ELSE
-				WHEEL_W_MIN.WR=4
-				WHEEL_N_MIN.WR=1
-				WHEEL_N_MAX.WR=1
-			ENDIF
-		ELSE
-			VAR4.WR=2
-			VAR5.WR=2
-			VAR6.WR=2
-			VAR7.WR=2
-			VAR8.WR=2; ifIsNotHasWorm
-;
-			VAR9.WR=2
-			VAR10.WR=2
-			VAR13.WR=2
-			MODEL_NAME.WR=2
-			IF TYPE.VAL<>1;不是内螺纹
-				WHEEL_W_MIN.WR=2
-				WHEEL_N_MIN.WR=4
-				WHEEL_N_MAX.WR=4
-			ELSE
-				WHEEL_W_MIN.WR=4
-				WHEEL_N_MIN.WR=2
-				WHEEL_N_MAX.WR=2
-			ENDIF
-		ENDIF
-	END_SUB
-
 	SUB(UP5)
-		IF VAR1.VAL==4;成型X
-			IF TYPE.VAL<>1;不是内螺纹
-				VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
-				VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
+		IF VAR1.VAL==4;成型Y
+			IF SHALUN_LEIXIN.VAL==0
+				VAR33.VAL=VAR30_2.VAL+VAR34_1.VAL/2+VAR13.VAL/2;初始接触位
 			ELSE
-				IF N_CX_X_TYPE.VAL==0;内螺纹成型前/后
-					VAR33.VAL=-(VAR30.VAL+VAR34.VAL/2+VAR13.VAL/2);初始接触位
-					VAR31.VAL=VAR33.VAL+VAR32.VAL;NC用初始接触
-				ELSE
-					VAR33.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
-					VAR31.VAL=VAR33.VAL-VAR32.VAL;NC用初始接触
-				ENDIF
+				VAR33.VAL=VAR30_3.VAL+VAR34_1.VAL/2+VAR12.VAL;初始接触位
 			ENDIF
+			VAR31.VAL=VAR33.VAL-CIGAO_ROLL.VAL;NC用初始接触
 		ELSE
-			IF VAR1.VAL==1;XZ
-				IF TYPE.VAL<>1;不是内螺纹
-					VAR31.VAL=-(VAR30.VAL-VAR34.VAL/2-VAR13.VAL/2);初始接触位
+			IF VAR1.VAL==1;YZ
+				IF SHALUN_LEIXIN.VAL==0
+					VAR31.VAL=VAR30_0.VAL+VAR34_0.VAL/2+VAR13.VAL/2;初始接触位
 				ELSE
-					VAR31.VAL=-(VAR30.VAL+VAR34.VAL/2+VAR13.VAL/2);初始接触位
+					VAR31.VAL=VAR30_1.VAL+VAR34_0.VAL/2+VAR12.VAL;初始接触位
 				ENDIF
-				VAR40.VAL=VAR31.VAL
-			ENDIF
-		ENDIF
-	END_SUB
-
-	SUB(UP6)
-		IF TYPE.VAL<>1;不是内螺纹
-			CHENGXING.WR=4
-			CHENGXING.VAL=0
-		ELSE
-			IF VAR4.VAL==0;新砂轮
-				IF QCHECK==1
-					CHENGXING.WR=1
-				ELSE
-					CHENGXING.WR=2
-				ENDIF
-			ELSE
-				CHENGXING.WR=4
 			ENDIF
 		ENDIF
 	END_SUB
 
 	SUB(ROTATE_LINE)
-		IF WHEEL_RUN_MODE.VAL==0
-			VAR16.VAL=VAR15.VAL*60000/(PI*VAR14.VAL);修整时砂轮转速计算
+		IF SHALUN_LEIXIN==0
+			IF WHEEL_RUN_MODE.VAL==0
+				VAR16.VAL=VAR15.VAL*60000/(PI*VAR14.VAL);修整时砂轮转速计算
+			ELSE
+				VAR15.VAL=VAR16.VAL*PI*VAR14.VAL/60000
+			ENDIF
 		ELSE
-			VAR15.VAL=VAR16.VAL*PI*VAR14.VAL/60000
+			IF WHEEL_RUN_MODE.VAL==0
+				VAR16.VAL=VAR15.VAL*60000/(PI*HOUDU_DIA.VAL);修整时砂轮转速计算
+			ELSE
+				VAR15.VAL=VAR16.VAL*PI*HOUDU_DIA.VAL/60000
+			ENDIF
 		ENDIF
 	END_SUB
 
