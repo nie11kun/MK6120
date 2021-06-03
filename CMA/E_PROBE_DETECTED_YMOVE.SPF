@@ -19,6 +19,7 @@ WHILE(TOOL_SET[54]==1);如果触碰到
 		M0;
 	ENDIF
 	G91 G01 Y=Y_VALUE F=SPEED
+	G4 F0.1
 	IF TOOL_SET[55]==0;当前正在进行接近开关0/测量头1机构测量
 		F_PROBE_A_PROBE(TOOL_SET[51])
 	ELSE
