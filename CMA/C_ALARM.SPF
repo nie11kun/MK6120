@@ -23,37 +23,37 @@ GOTOF ALARM_DELAY
 
 ALARM_4:
 ;
-MSG("工件外径设置有误!"); ifIsCHS
+MSG("测头Y轴方向检测不到后角"); ifIsCHS
 GOTOF ALARM_DELAY
 
 ALARM_5:
 ;
-MSG("测头无法进入孔内,请检查参数设置!"); ifIsCHS
+MSG("测头Y轴方向无法进入齿内"); ifIsCHS
 GOTOF ALARM_DELAY
 
 ALARM_6:
 ;
-MSG("工件小径设置有误,或检测位置太靠外侧!"); ifIsCHS
+MSG("测头Z轴方向检测不到前角"); ifIsCHS
 GOTOF ALARM_DELAY
 
 ALARM_7:
 ;
-MSG("测头距离工件过远,或检测位置太靠外侧!"); ifIsCHS
+MSG("测头Z轴方向检测不到齿背"); ifIsCHS
 GOTOF ALARM_DELAY
 
 ALARM_8:
 ;
-MSG("工件长度设置有误!"); ifIsCHS
+MSG("测头Y轴方向检测不到齿底"); ifIsCHS
 GOTOF ALARM_DELAY
 
 ALARM_9:
 ;
-MSG("外圆砂轮过小,请更换新砂轮!"); ifIsCHS
+MSG("前角底部R检测中,检测不到垂线方向前角面"); ifIsCHS
 GOTOF ALARM_DELAY
 
 ALARM_10:
 ;
-MSG("测量多段螺距结果有误!"); ifIsCHS
+MSG("前角底部R检测中,检测不到R"); ifIsCHS
 GOTOF ALARM_DELAY
 
 ALARM_11:
