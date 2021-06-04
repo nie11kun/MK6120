@@ -139,7 +139,7 @@ ELSE
 		INI[20]=LADAO[45];A轴磨削位-当前
 		LADAO[5]=LADAO[46];B轴磨削位-当前
 		PROCESS[16]=LADAO[47];磨削安全位-当前
-		INI[6]=LADAO[40];平磨起点z
+		INI[6]=LADAO[40]-LADAO[135]*LADAO[98];平磨起点z
 		PROCESS[13]=TECHNOLOGY[234];初始接触Y
 		LADAO[13]=TECH_ADDED[108];齿形偏转角度
     ELSE
@@ -177,7 +177,7 @@ ELSE
 				INI[20]=LADAO[67];A轴磨削位-当前
 				LADAO[5]=LADAO[68];B轴磨削位-当前
 				PROCESS[16]=LADAO[69];磨削安全位-当前
-				INI[6]=LADAO[70]+RING[7];工件右端
+				INI[6]=LADAO[70]+RING[7]-LADAO[137]*LADAO[98];工件右端
 				PROCESS[13]=TECHNOLOGY[235];初始接触Y
 				LADAO[13]=TECH_ADDED[109];齿形偏转角度
             ELSE;后背
@@ -212,13 +212,25 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 		LADAO[17]=0;磨削偏移z向累计
 		PROCESS[4]=PROCESS[13]+RING[6];磨削位置当前等于初始
 
-		PROCESS[14]=0;工艺累积进刀清零
-		TECHNOLOGY[230]=0;工艺累积进刀清零
-		TECH_ADDED[7]=0;工艺累积进刀清零
-		TECH_ADDED[47]=0;工艺累积进刀清零
-		TECH_ADDED[87]=0;工艺累积进刀清零
-		TECH_ADDED[127]=0;工艺累积进刀清零
-		TECH_ADDED[167]=0;工艺累积进刀清零
+		IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背)
+			PROCESS[14]=0;工艺累积进刀清零
+			TECHNOLOGY[230]=0;工艺累积进刀清零
+		ELSE
+			IF LADAO[37]==1
+				TECH_ADDED[7]=0;工艺累积进刀清零
+			ELSE
+				IF LADAO[37]==2
+					TECH_ADDED[47]=0;工艺累积进刀清零
+				ELSE
+					IF LADAO[37]==3
+						TECH_ADDED[87]=0;工艺累积进刀清零
+					ELSE
+						TECH_ADDED[127]=0;工艺累积进刀清零
+						TECH_ADDED[167]=0;工艺累积进刀清零
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
 	ELSE
 		IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背)
 			LADAO[17]=GRIND_RESULT[150+RING[2]+RING[5]-1]-INI[6];磨削偏移z向累计

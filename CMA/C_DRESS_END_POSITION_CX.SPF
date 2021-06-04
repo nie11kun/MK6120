@@ -3,6 +3,8 @@ PROC C_DRESS_END_POSITION_CX DISPLOF
 ;*修整结束移动位置
 ;****************************
 
+DEF REAL BUCHANG_X
+
 ;
 MSG("修整轮运行至起始位置"); ifIsCHS
 G90 G1 Y=WHEEL[10]+INI[132] F=INI[55];多退刀一点，防止齿高过大抬刀不够
@@ -23,13 +25,14 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
     G90 G01 X=LADAO[0] F=LADAO[2];X轴到磨削起点
 ELSE
     IF LADAO[37]==1
-        G90 G01 X=LADAO[39] F=LADAO[2];X轴到磨削起点
+        G90 G01 X=LADAO[39]+LADAO[136] F=LADAO[2];X轴到磨削起点
     ELSE
         IF LADAO[37]==2
-            G90 G01 X=LADAO[52] F=LADAO[2];X轴到磨削起点
+            BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[134]));每齿x磨削起点补偿
+            G90 G01 X=LADAO[52]+BUCHANG_X F=LADAO[2];X轴到磨削起点
         ELSE
             IF LADAO[37]==3
-                G90 G01 X=LADAO[71] F=LADAO[2];X轴到磨削起点
+                G90 G01 X=LADAO[71]+LADAO[139] F=LADAO[2];X轴到磨削起点
             ELSE
                 G90 G01 X=LADAO[58] F=LADAO[2];X轴到磨削起点
             ENDIF
