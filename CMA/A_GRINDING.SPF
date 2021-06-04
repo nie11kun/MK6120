@@ -3,6 +3,8 @@ PROC A_GRINDING DISPLON
 ;*主程序
 ;****************************
 
+B_GRIND_DETECTION;当前加工工序提示
+
 B_MACHINE_INI;机床初始化
 
 IF $AA_IM[Y]<INI[23]

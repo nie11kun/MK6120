@@ -1,0 +1,32 @@
+PROC B_GRIND_DETECTION DISPLOF
+;***********程序功能**********
+;*当前加工工序提示
+;****************************
+
+CASE LADAO[37] OF 0 GOTOF GRIND_0 1 GOTOF GRIND_1 2 GOTOF GRIND_2 3 GOTOF GRIND_3 4 GOTOF GRIND_4 DEFAULT GOTOF GRIND_0
+
+GRIND_0:
+MSG("当前加工工序-前角");
+GOTOF WAIT_START
+
+GRIND_1:
+MSG("当前加工工序-通磨");
+GOTOF WAIT_START
+
+GRIND_2:
+MSG("当前加工工序-平刃后角");
+GOTOF WAIT_START
+
+GRIND_3:
+MSG("当前加工工序-铲背");
+GOTOF WAIT_START
+
+GRIND_4:
+MSG("当前加工工序-齿背");
+GOTOF WAIT_START
+
+WAIT_START:
+M0
+
+RET
+
