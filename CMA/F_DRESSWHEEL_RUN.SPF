@@ -21,9 +21,17 @@ IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
     R297=SPEED
     G4 F0.2
     IF (DRESSER[0]==0) OR (DRESSER[0]==1);VW/XZ
-        M64;修整轮1启动
+        IF LADAO[152]==0;单滚轮-滚轮选择(0前滚轮/1后滚轮)
+            M64;修整轮1启动
+        ELSE
+            M63;修整轮2启动
+        ENDIF
     ELSE
-        M63;修整轮2启动
+        IF LADAO[153]==0
+            M64;修整轮1启动
+        ELSE
+            M63;修整轮2启动
+        ENDIF
     ENDIF
 ELSE
     IF (INI[36]==0) OR (INI[36]==2)
