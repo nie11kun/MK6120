@@ -18,6 +18,7 @@ IF (LADAO[37]<>1) AND (LADAO[37]<>5);加工选择(0前刃、1齿形平磨，2齿
 ELSE
     RING[6]=0;任意槽的X相对偏移量
     RING[7]=0;任意槽的Z相对偏移量
+    RING[5]=0;已加工槽数
     B_SCREW;磨削主程序
 ENDIF
 
