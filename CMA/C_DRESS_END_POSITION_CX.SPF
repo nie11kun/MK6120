@@ -34,7 +34,11 @@ ELSE
             IF LADAO[37]==3
                 G90 G01 X=LADAO[71]+LADAO[139] F=LADAO[2];X轴到磨削起点
             ELSE
-                G90 G01 X=LADAO[58] F=LADAO[2];X轴到磨削起点
+                IF LADAO[37]==4
+                    G90 G01 X=LADAO[58] F=LADAO[2];X轴到磨削起点
+                ELSE
+                    G90 G01 X=LADAO[142] F=LADAO[2];X轴到磨削起点
+                ENDIF
             ENDIF
         ENDIF
     ENDIF
