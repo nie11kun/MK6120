@@ -178,8 +178,8 @@
 	END_CHANGE
 
 	CHANGE(VAR12);
-		call("UP1")
 		call("UP5")
+		call("UP1")
 	END_CHANGE
 
 	CHANGE(VAR4);砂轮状态
@@ -217,8 +217,8 @@
 	END_CHANGE
 
 	CHANGE(SHALUN_LEIXIN)
-		call("UP1")
 		call("UP5")
+		call("UP1")
 		call("ROTATE_LINE")
 	END_CHANGE
 
