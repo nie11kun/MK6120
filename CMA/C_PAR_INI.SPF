@@ -62,7 +62,7 @@ ELSE
 			GRIND[2]=0;不对刀
 		ELSE
 			IF ($A_DBB[1]==1) AND ($A_DBB[5]==0)
-				GRIND[2]=1;手动对刀
+				GRIND[2]=0;手动对刀
 			ELSE
 				IF ($A_DBB[1]==0) AND ($A_DBB[5]==1)
 					GRIND[2]=2;自动对刀(只计算C角度)
