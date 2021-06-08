@@ -4,16 +4,32 @@ PROC F_DRESSWHEEL_RUN(REAL SPEED) DISPLOF
 ;SPEED:转速
 ;****************************
 IF (DRESSER[0]==0) OR (DRESSER[0]==1);VW/XZ
-    IF $A_DBB[11]==0;修整轮1当前未启动
-        INI[71]=INI[114];启动等待转速到位延时时间
+    IF LADAO[152]==0;单滚轮-滚轮选择(0前滚轮/1后滚轮)
+        IF $A_DBB[11]==0;修整轮1当前未启动
+            INI[71]=INI[114];启动等待转速到位延时时间
+        ELSE
+            INI[71]=INI[115]
+        ENDIF
     ELSE
-        INI[71]=INI[115]
+        IF $A_DBB[13]==0;修整轮2当前未启动
+            INI[71]=INI[114];启动等待转速到位延时时间
+        ELSE
+            INI[71]=INI[115]
+        ENDIF
     ENDIF
 ELSE
-    IF $A_DBB[13]==0;修整轮2当前未启动
-        INI[71]=INI[114];启动等待转速到位延时时间
+    IF LADAO[153]==0;
+        IF $A_DBB[11]==0;修整轮1当前未启动
+            INI[71]=INI[114];启动等待转速到位延时时间
+        ELSE
+            INI[71]=INI[115]
+        ENDIF
     ELSE
-        INI[71]=INI[115]
+        IF $A_DBB[13]==0;修整轮2当前未启动
+            INI[71]=INI[114];启动等待转速到位延时时间
+        ELSE
+            INI[71]=INI[115]
+        ENDIF
     ENDIF
 ENDIF
 
