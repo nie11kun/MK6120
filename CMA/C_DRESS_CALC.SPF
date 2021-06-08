@@ -49,7 +49,7 @@ ELSE
                 IF LADAO[37]==2;平刃后角
                     LADAO[51]=LADAO[51]-DRESSER[14]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
                     INI[6]=LADAO[51]+RING[7];工件右端
-                    D_DRESS_GRIND_CALC(450,150,DRESSER[14]*COS(LADAO[13]);顶部后刃当前接触Y
+                    D_DRESS_GRIND_CALC(450,150,DRESSER[14]*COS(LADAO[13]));顶部后刃当前接触Y
                     TECHNOLOGY[233]=TECHNOLOGY[233]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
                 ELSE
                     IF LADAO[37]==3;铲背
@@ -100,7 +100,7 @@ ELSE
                     IF LADAO[37]==2
                         LADAO[51]=LADAO[51]-DRESSER[15]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
                         INI[6]=LADAO[51]+RING[7];工件右端
-                        D_DRESS_GRIND_CALC(450,150,DRESSER[15]*COS(LADAO[13])
+                        D_DRESS_GRIND_CALC(450,150,DRESSER[15]*COS(LADAO[13]))
                         TECHNOLOGY[233]=TECHNOLOGY[233]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
                     ELSE
                         IF LADAO[37]==3
