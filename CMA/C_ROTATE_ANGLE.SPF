@@ -5,6 +5,7 @@ PROC C_ROTATE_ANGLE(REAL A_ANG,REAL B_ANG) DISPLOF
 
 IF INI[16]==1
 	IF ABS($AA_IM[A]-A_ANG)*1000>=1
+		G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
 		M73;液压开
 		G4 F1
 		M35;松开
@@ -22,6 +23,7 @@ IF INI[16]==1
 	ENDIF
 
 	IF ABS($AA_IM[B]-B_ANG)*1000>=1
+		G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
 		M73;液压开
 		G4 F1
 		M94;松开
