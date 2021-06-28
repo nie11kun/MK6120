@@ -73,6 +73,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
 
 	;
 
@@ -143,7 +144,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(VS1)
@@ -590,6 +591,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
 
 	;
 
@@ -660,7 +662,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(VS1)
@@ -1080,6 +1082,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
 
 	;
 
@@ -1150,7 +1153,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(VS1)
@@ -1574,6 +1577,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
 
 	;
 
@@ -1644,7 +1648,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(VS1)
@@ -2060,6 +2064,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
 
 	;
 
@@ -2130,7 +2135,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(VS1)
@@ -2546,6 +2551,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
 
 	;
 
@@ -2616,7 +2622,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(VS1)
@@ -3032,6 +3038,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
 
 	;
 
@@ -3102,7 +3109,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(VS1)
@@ -3506,8 +3513,10 @@
 	DEF WORK_CUMU=(I///$85227,$85227,,$85228/WR4//"/NC/_N_NC_GD2_ACX/TECH_ADDED[209]"/230,1,110/300,1,110//"UserGuide/section_2.html","S2D1");磨削工件计数(磨削完毕后累加)
 	DEF WORK_DRESS=(I///$85229,$85229,,$85228/WR4//"/NC/_N_NC_GD2_ACX/TECH_ADDED[210]"/230,20,110/300,20,110//"UserGuide/section_2.html","S2D2");磨削几件后修整(次数到达后,下一次开始时修整)
 
-	DEF GRID={TYP="R",TGL="% POSITION_CURR",X=0,Y=0,W=0,H=0};
-	DEF Y_INIT=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[146]"/0,0,0/0,0,0/);后角初始磨削接触Y
+	;DEF GRID={TYP="R",TGL="% POSITION_CURR",X=0,Y=0,W=0,H=0};
+	DEF Y_INIT=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[146]"/0,0,0/0,0,0/);初始磨削接触Y
+	DEF Y_CURR_1ST=(R////WR4//"/NC/_N_NC_GD2_ACX/GRIND_RESULT[1]"/0,0,0/0,0,0/);首齿前刃当前磨削接触Y
+	DEF Y_CURR_LAST=(R////WR4///0,0,0/0,0,0/);尾齿后背当前磨削接触Y
 	DEF SLOT_COUNT=(R////WR4//"/NC/_N_NC_GD2_ACX/RING[2]"/0,0,0/0,0,0/);总齿数
 	DEF FEED_NEEDED_QIAN=(R///$85252,$85252,,$85043/WR1///370,1,110/460,1,110/);需加工余量
 	DEF FEED_NEEDED_HOU=(R///$85253,$85253,,$85043/WR1///370,21,110/460,21,110/);需加工余量
@@ -3524,6 +3533,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
 
 	;
 
@@ -3563,7 +3573,8 @@
 			VAR39.WR=1
 			VAR40.WR=1
 		ENDIF
-		LG("POSITION_CURR","GRID","a_process.com")
+		;LG("POSITION_CURR","GRID","a_process.com")
+		Y_CURR_LAST.VAR="/NC/_N_NC_GD2_ACX/GRIND_RESULT["<<SLOT_COUNT.VAL+750<<"]"
 	END_LOAD
 
 	PRESS(HS1)
@@ -3595,7 +3606,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(VS1)
@@ -3647,8 +3658,10 @@
 	END_CHANGE
 
 	CHANGE(Y_INIT);
-		FEED_NEEDED_QIAN.VAL=Y_INIT.VAL-GRID[1,1].VAL
-		FEED_NEEDED_HOU.VAL=Y_INIT.VAL-GRID[SLOT_COUNT.VAL,2].VAL
+		FEED_NEEDED_QIAN.VAL=Y_INIT.VAL-Y_CURR_1ST.VAL
+		FEED_NEEDED_HOU.VAL=Y_INIT.VAL-Y_CURR_LAST.VAL
+		;FEED_NEEDED_QIAN.VAL=Y_INIT.VAL-GRID[1,1].VAL
+		;FEED_NEEDED_HOU.VAL=Y_INIT.VAL-GRID[SLOT_COUNT.VAL,2].VAL
 	END_CHANGE
 
 	CHANGE(VAR16);界面设定磨削总量计算

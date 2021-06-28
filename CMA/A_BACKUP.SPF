@@ -1,0 +1,54 @@
+PROC A_BACKUP DISPLOF
+;**********程序功能**********
+;*参数备份程序
+;****************************
+
+DEF INT ERR
+DEF STRING[50] BACKUP_PATH
+
+MSG("正在备份数据,请稍后...")
+BR_MSG="正在备份数据,请稍后...";
+
+IF LADAO[158]==0;备份位置(0内置/1后USB/2前USB)
+    BACKUP_PATH="/_N_SPF_DIR/_N_"<<BACKUP_DIR<<"_DIR/_N_"<<BACKUP_NAME<<"_SPF"
+    IF(ISFILE(BACKUP_PATH))
+        Delete(ERR,BACKUP_PATH)
+    ENDIF
+    WRITE(ERR,BACKUP_PATH,"M30")
+    WRITE(ERR,BACKUP_PATH,"")
+    WRITE(ERR,BACKUP_PATH,"")
+    BR_MSG="数据保存完成";
+ELSE
+    IF LADAO[158]==1
+        BACKUP_PATH="/dev/ext/8/"<<BACKUP_DIR<<"/"<<BACKUP_NAME<<".SPF";
+        EXTOPEN(ERR,BACKUP_PATH,"SYN","SHARED")
+        IF ERR==0
+            WRITE(ERR,BACKUP_PATH,"M30")
+            WRITE(ERR,BACKUP_PATH,"")
+            WRITE(ERR,BACKUP_PATH,"")
+            EXTCLOSE(ERR,BACKUP_PATH)
+            BR_MSG="数据保存完成";
+        ELSE
+            MSG("文件打开出错")
+            BR_MSG="文件打开出错";
+            M0
+        ENDIF
+    ELSE
+        BACKUP_PATH="/dev/ext/9/"<<BACKUP_DIR<<"/"<<BACKUP_NAME<<".SPF";
+        EXTOPEN(ERR,BACKUP_PATH,"SYN","SHARED")
+        IF ERR==0
+            WRITE(ERR,BACKUP_PATH,"M30")
+            WRITE(ERR,BACKUP_PATH,"")
+            WRITE(ERR,BACKUP_PATH,"")
+            EXTCLOSE(ERR,BACKUP_PATH)
+            BR_MSG="数据保存完成";
+        ELSE
+            MSG("文件打开出错")
+            BR_MSG="文件打开出错";
+            M0
+        ENDIF
+    ENDIF
+ENDIF
+
+RET
+

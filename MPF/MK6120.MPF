@@ -41,8 +41,15 @@ INI[151]=3000;*滚轮最高速度限制
 G94;车床版系统切换线性进给率
 T0D0
 
-A_GRINDING;主程序调用 ;ifIsNotCenter
-;
+IF LADAO[157]==0;数据备份与恢复(0加工/1备份/2恢复)
+    A_GRINDING;主程序调用 ;ifIsNotCenter
+ELSE
+    IF LADAO[157]==1
+        A_BACKUP;
+    ELSE
+        A_RESTORE;
+    ENDIF
+ENDIF
 
 M30
 

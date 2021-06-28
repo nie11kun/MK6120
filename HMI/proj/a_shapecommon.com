@@ -68,7 +68,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -210,7 +210,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -335,7 +335,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -462,7 +462,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(HS8)

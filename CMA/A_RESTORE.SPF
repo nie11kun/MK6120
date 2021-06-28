@@ -1,0 +1,28 @@
+PROC A_RESTORE DISPLOF
+;**********程序功能**********
+;*参数恢复程序
+;****************************
+
+DEF STRING[50] RESTORE_PATH
+
+MSG("正在恢复数据,请稍后...")
+BR_MSG="正在恢复数据,请稍后...";
+
+IF LADAO[159]==0;恢复位置(0内置/1后USB/2前USB)
+    RESTORE_PATH="/_N_SPF_DIR/_N_"<<RESTORE_DIR<<"_DIR/_N_"<<RESTORE_NAME<<"_SPF"
+    CALL(RESTORE_PATH);
+ELSE
+    IF LADAO[159]==1
+        RESTORE_PATH="//DEV_3:"<<RESTORE_DIR<<"/"<<RESTORE_NAME;
+        EXTCALL(RESTORE_PATH)
+    ELSE
+        RESTORE_PATH="USB:"<<RESTORE_DIR<<"/"<<RESTORE_NAME;
+        EXTCALL(RESTORE_PATH)
+    ENDIF
+ENDIF
+
+STOPRE
+BR_MSG="恢复完成!";
+
+RET
+

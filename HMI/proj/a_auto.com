@@ -50,6 +50,8 @@
 	HS4=(["\\S_006.png",$85069],ac7,se3,pa0);自动对刀 ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
+
 	;
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
@@ -87,7 +89,7 @@
 	END_PRESS
 	
 	PRESS(HS7)
-		LM("MASK23","a_centermain.com")
+		LM("MASK0","a_data.com")
 	END_PRESS
 
 	PRESS(HS8)
