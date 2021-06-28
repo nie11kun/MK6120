@@ -5,6 +5,10 @@ PROC A_RESTORE DISPLOF
 
 DEF STRING[50] RESTORE_PATH
 
+MSG("当前执行程序-参数恢复");
+M0
+STOPRE
+
 MSG("正在恢复数据,请稍后...")
 BR_MSG="正在恢复数据,请稍后...";
 
