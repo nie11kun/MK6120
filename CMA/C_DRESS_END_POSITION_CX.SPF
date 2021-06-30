@@ -44,6 +44,8 @@ ELSE
     ENDIF
 ENDIF
 
+C_ROTATE_ANGLE(INI[20],LADAO[5]);螺旋升角
+
 MSG("台面离开中"); ifIsCHS
 G90 G1 Z=INI[6] F=INI[56]
 
