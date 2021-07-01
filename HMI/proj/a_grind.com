@@ -21,7 +21,7 @@
 	DEF X_QUIT=(R///$85128,$85128,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[13]"/360,30,202/460,30,60//"UserGuide/section_1.html","S1D14");退刀位置X
 	DEF POS_INPUT_2=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,30,18/);坐标写入键
 
-	DEF GRIND_CHOICE=(I/*0=$85078,1=$85077,2=$85079,3=$85081,4=$85080,5=$85086//$85131,$85131,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[38]"/160,120,202/300,120,120/);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
+	DEF GRIND_CHOICE=(I/*0=$85078,1=$85077,2=$85079,3=$85081,4=$85080,5=$85086,6=$85092//$85131,$85131,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[38]"/160,120,202/300,120,120/);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
 	DEF PIECE_VOLUME=(I/*0=$85166,1=$85167//$85170,$85170,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/INI[27]"/160,160,202/300,160,120/);单件/批量磨削方式选择
 	DEF GRIND_DIERCTION=(I/*1=$85090,-1=$85091//$85163,$85163,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[99]"/160,200,202/300,200,120/);加工方向(1从左到右/-1从右到左)
 
@@ -44,13 +44,13 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se1);工件参数
-	;VS2=($85076,ac7,se1);加工数据
-	VS3=($85078,ac7,se1);前刃磨削
-	VS4=($85080,ac7,se1);后背磨削
-	VS5=($85079,ac7,se1);顶刃磨削
-	VS6=($85077,ac7,se1);平磨参数
-	VS7=($85081,ac7,se1);顶部侧刃
-	VS8=($85086,ac7,se1);齿平面
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se1);顶部侧刃
+	VS7=($85086,ac7,se1);齿平面
+	VS8=($85092,ac7,se1);吸铁台面
 
 	LOAD
 		IF GRIND_DIERCTION.VAL==0
@@ -95,31 +95,31 @@
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK2","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK4","a_grind.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS3)
 		LM("MASK6","a_grind.com")
 	END_PRESS
 
-	PRESS(VS5)
+	PRESS(VS4)
 		LM("MASK5","a_grind.com")
 	END_PRESS
 
-	PRESS(VS6)
+	PRESS(VS5)
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
-	PRESS(VS7)
+	PRESS(VS6)
 		LM("MASK7","a_grind.com")
 	END_PRESS
 
-	PRESS(VS8)
+	PRESS(VS7)
 		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
 	END_PRESS
 
 	CHANGE(POS_INPUT_1)
@@ -199,13 +199,13 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se3);工件参数
-	;VS2=($85076,ac7,se1);加工数据
-	VS3=($85078,ac7,se1);前刃磨削
-	VS4=($85080,ac7,se1);后背磨削
-	VS5=($85079,ac7,se1);顶刃磨削
-	VS6=($85077,ac7,se1);平磨参数
-	VS7=($85081,ac7,se1);平磨参数
-	VS8=($85086,ac7,se1);齿平面
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se1);平磨参数
+	VS7=($85086,ac7,se1);齿平面
+	VS8=($85092,ac7,se1);吸铁台面
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -244,31 +244,31 @@
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK2","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK4","a_grind.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS3)
 		LM("MASK6","a_grind.com")
 	END_PRESS
 
-	PRESS(VS5)
+	PRESS(VS4)
 		LM("MASK5","a_grind.com")
 	END_PRESS
 
-	PRESS(VS6)
+	PRESS(VS5)
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
-	PRESS(VS7)
+	PRESS(VS6)
 		LM("MASK7","a_grind.com")
 	END_PRESS
 
-	PRESS(VS8)
+	PRESS(VS7)
 		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
 	END_PRESS
 
 	CHANGE(SLOTS_1)
@@ -407,13 +407,13 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se1);工件参数
-	;VS2=($85076,ac7,se1);加工数据
-	VS3=($85078,ac7,se3);前刃磨削
-	VS4=($85080,ac7,se1);后背磨削
-	VS5=($85079,ac7,se1);顶刃磨削
-	VS6=($85077,ac7,se1);平磨参数
-	VS7=($85081,ac7,se1);平磨参数
-	VS8=($85086,ac7,se1);齿平面
+	VS2=($85078,ac7,se3);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se1);平磨参数
+	VS7=($85086,ac7,se1);齿平面
+	VS8=($85092,ac7,se1);吸铁台面
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -452,31 +452,31 @@
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK2","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK4","a_grind.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS3)
 		LM("MASK6","a_grind.com")
 	END_PRESS
 
-	PRESS(VS5)
+	PRESS(VS4)
 		LM("MASK5","a_grind.com")
 	END_PRESS
 
-	PRESS(VS6)
+	PRESS(VS5)
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
-	PRESS(VS7)
+	PRESS(VS6)
 		LM("MASK7","a_grind.com")
 	END_PRESS
 
-	PRESS(VS8)
+	PRESS(VS7)
 		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
 	END_PRESS
 
 	CHANGE(POS_INPUT_1)
@@ -610,13 +610,13 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se1);工件参数
-	;VS2=($85076,ac7,se1);加工数据
-	VS3=($85078,ac7,se1);前刃磨削
-	VS4=($85080,ac7,se3);后背磨削
-	VS5=($85079,ac7,se1);顶刃磨削
-	VS6=($85077,ac7,se1);平磨参数
-	VS7=($85081,ac7,se1);平磨参数
-	VS8=($85086,ac7,se1);齿平面
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se3);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se1);平磨参数
+	VS7=($85086,ac7,se1);齿平面
+	VS8=($85092,ac7,se1);吸铁台面
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -655,31 +655,31 @@
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK2","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK4","a_grind.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS3)
 		LM("MASK6","a_grind.com")
 	END_PRESS
 
-	PRESS(VS5)
+	PRESS(VS4)
 		LM("MASK5","a_grind.com")
 	END_PRESS
 
-	PRESS(VS6)
+	PRESS(VS5)
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
-	PRESS(VS7)
+	PRESS(VS6)
 		LM("MASK7","a_grind.com")
 	END_PRESS
 
-	PRESS(VS8)
+	PRESS(VS7)
 		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
 	END_PRESS
 
 	CHANGE(POS_INPUT_1)
@@ -810,13 +810,13 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se1);工件参数
-	;VS2=($85076,ac7,se1);加工数据
-	VS3=($85078,ac7,se1);前刃磨削
-	VS4=($85080,ac7,se1);后背磨削
-	VS5=($85079,ac7,se3);顶刃磨削
-	VS6=($85077,ac7,se1);平磨参数
-	VS7=($85081,ac7,se1);平磨参数
-	VS8=($85086,ac7,se1);齿平面
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se3);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se1);平磨参数
+	VS7=($85086,ac7,se1);齿平面
+	VS8=($85092,ac7,se1);吸铁台面
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -855,31 +855,31 @@
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK2","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK4","a_grind.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS3)
 		LM("MASK6","a_grind.com")
 	END_PRESS
 
-	PRESS(VS5)
+	PRESS(VS4)
 		LM("MASK5","a_grind.com")
 	END_PRESS
 
-	PRESS(VS6)
+	PRESS(VS5)
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
-	PRESS(VS7)
+	PRESS(VS6)
 		LM("MASK7","a_grind.com")
 	END_PRESS
 
-	PRESS(VS8)
+	PRESS(VS7)
 		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
 	END_PRESS
 
 	CHANGE(POS_INPUT_1)
@@ -1006,13 +1006,13 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se1);工件参数
-	;VS2=($85076,ac7,se1);加工数据
-	VS3=($85078,ac7,se1);前刃磨削
-	VS4=($85080,ac7,se1);后背磨削
-	VS5=($85079,ac7,se1);顶刃磨削
-	VS6=($85077,ac7,se3);平磨参数
-	VS7=($85081,ac7,se1);平磨参数
-	VS8=($85086,ac7,se1);齿平面
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se3);平磨参数
+	VS6=($85081,ac7,se1);平磨参数
+	VS7=($85086,ac7,se1);齿平面
+	VS8=($85092,ac7,se1);吸铁台面
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -1051,31 +1051,31 @@
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK2","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK4","a_grind.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS3)
 		LM("MASK6","a_grind.com")
 	END_PRESS
 
-	PRESS(VS5)
+	PRESS(VS4)
 		LM("MASK5","a_grind.com")
 	END_PRESS
 
-	PRESS(VS6)
+	PRESS(VS5)
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
-	PRESS(VS7)
+	PRESS(VS6)
 		LM("MASK7","a_grind.com")
 	END_PRESS
 
-	PRESS(VS8)
+	PRESS(VS7)
 		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
 	END_PRESS
 
 	CHANGE(POS_INPUT_1)
@@ -1198,13 +1198,13 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se1);工件参数
-	;VS2=($85076,ac7,se1);加工数据
-	VS3=($85078,ac7,se1);前刃磨削
-	VS4=($85080,ac7,se1);后背磨削
-	VS5=($85079,ac7,se1);顶刃磨削
-	VS6=($85077,ac7,se1);平磨参数
-	VS7=($85081,ac7,se3);平磨参数
-	VS8=($85086,ac7,se1);齿平面
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se3);平磨参数
+	VS7=($85086,ac7,se1);齿平面
+	VS8=($85092,ac7,se1);吸铁台面
 
 	PRESS(HS1)
 		LM("MASK51","a_grind.com")
@@ -1243,31 +1243,31 @@
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK2","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK4","a_grind.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS3)
 		LM("MASK6","a_grind.com")
 	END_PRESS
 
-	PRESS(VS5)
+	PRESS(VS4)
 		LM("MASK5","a_grind.com")
 	END_PRESS
 
-	PRESS(VS6)
+	PRESS(VS5)
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
-	PRESS(VS7)
+	PRESS(VS6)
 		LM("MASK7","a_grind.com")
 	END_PRESS
 
-	PRESS(VS8)
+	PRESS(VS7)
 		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
 	END_PRESS
 
 	CHANGE(POS_INPUT_1)
@@ -1385,13 +1385,13 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se1);工件参数
-	;VS2=($85076,ac7,se1);加工数据
-	VS3=($85078,ac7,se1);前刃磨削
-	VS4=($85080,ac7,se1);后背磨削
-	VS5=($85079,ac7,se1);顶刃磨削
-	VS6=($85077,ac7,se1);平磨参数
-	VS7=($85081,ac7,se1);平磨参数
-	VS8=($85086,ac7,se3);齿平面
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se1);平磨参数
+	VS7=($85086,ac7,se3);齿平面
+	VS8=($85092,ac7,se1);吸铁台面
 
 	LOAD
 		IF GRIND_POS.VAL==0
@@ -1436,31 +1436,31 @@
 	END_PRESS
 
 	PRESS(VS2)
-		LM("MASK2","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK4","a_grind.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS3)
 		LM("MASK6","a_grind.com")
 	END_PRESS
 
-	PRESS(VS5)
+	PRESS(VS4)
 		LM("MASK5","a_grind.com")
 	END_PRESS
 
-	PRESS(VS6)
+	PRESS(VS5)
 		LM("MASK3","a_grind.com")
 	END_PRESS
 
-	PRESS(VS7)
+	PRESS(VS6)
 		LM("MASK7","a_grind.com")
 	END_PRESS
 
-	PRESS(VS8)
+	PRESS(VS7)
 		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
 	END_PRESS
 
 	CHANGE(POS_INPUT_1)
@@ -1508,6 +1508,191 @@
 	CHANGE(POS_INPUT_7)
 		IF POS_INPUT_7.VAL==1
 			POS_INPUT_7.VAL=0
+			GRIND_B.VAL=B_IM.VAL
+		ENDIF
+	END_CHANGE
+
+//M(Mask9/$85092//);吸铁台面
+
+	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
+	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
+	DEF Z_IM=(R///$85119,$85119,,/WR1//"$AA_IM[Z]"/10,50,20/30,50,60/3);Z_IM
+	DEF A_IM=(R///$85122,$85122,,/WR1//"$AA_IM[A]"/10,70,20/30,70,60/3);A_IM
+	DEF B_IM=(R///$85121,$85121,,/WR1//"$AA_IM[B]"/10,90,20/30,90,60/3);B_IM
+
+	DEF Z_POSITION_INIT=(R///$85964,$85964,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[164]"/360,40,110/460,40,60//);起点Z
+	DEF POS_INPUT_1=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,40,18/);坐标写入键
+
+	DEF Z_POSITION_END=(R///$85965,$85965,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[165]"/360,60,110/460,60,60//);终点Z
+	DEF POS_INPUT_2=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,60,18/);坐标写入键
+
+	DEF Y_POSITION_INIT=(R///$85935,$85935,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[168]"/360,90,202/460,90,60/);初始磨削接触位
+	DEF POS_INPUT_3=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,90,18/);坐标写入键
+
+	DEF GRIND_SAFE=(R///$85172,$85172,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[167]"/360,110,202/460,110,60//);磨削安全位置  ifIsExternal
+	DEF POS_INPUT_4=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,110,18/);坐标写入键
+
+	DEF GRIND_START=(R///$85968,$85968,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[166]"/360,140,110/460,140,60//);齿形初始位x
+	DEF POS_INPUT_5=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,140,18/);坐标写入键
+
+	DEF GRIND_END=(R///$85969,$85969,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[174]"/360,160,110/460,160,60//);齿形磨削终点.X
+	DEF POS_INPUT_6=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,160,18/);坐标写入键
+
+	DEF GRIND_A=(R///$85924,$85924,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[169]"/360,180,110/460,180,110/);A轴磨削位
+	DEF POS_INPUT_7=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,180,18/);坐标写入键
+
+	DEF GRIND_B=(R///$85925,$85925,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[170]"/360,200,110/460,200,110/);B轴磨削位
+	DEF POS_INPUT_8=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,200,18/);坐标写入键
+
+	DEF GRIND_STEP=(R/0,//$85966,$85966,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[171]"/360,230,110/460,230,110//);磨削步距.x
+
+	DEF GRIND_ZUIDU=(R///$85967,$85967,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[173]"/360,250,110/460,250,110//);磨削Y向锥度调整
+
+	DEF PIANZHUAN=(R/0,90//$85477,$85477,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[172]"/360,320,120/460,320,110/);修整齿形偏转角度
+
+	DEF Y_POSITION_CURR=(R///$85936,$85936,,/WR1//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[239]"/10,280,202/130,280,60//);当前磨削接触位Y
+
+	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
+	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+
+	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
+	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
+	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
+	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
+	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
+	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
+
+	;
+
+	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
+
+	VS1=($85075,ac7,se1);工件参数
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se1);平磨参数
+	VS7=($85086,ac7,se1);齿平面
+	VS8=($85092,ac7,se3);吸铁台面
+
+	PRESS(HS1)
+		LM("MASK51","a_grind.com")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK2","a_process.com")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","a_dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","a_auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK1","a_grind_pos.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK1","a_auto_pos.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK0","a_data.com")
+	END_PRESS
+	
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK1","a_grind.com")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK4","a_grind.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK6","a_grind.com")
+	END_PRESS
+
+	PRESS(VS4)
+		LM("MASK5","a_grind.com")
+	END_PRESS
+
+	PRESS(VS5)
+		LM("MASK3","a_grind.com")
+	END_PRESS
+
+	PRESS(VS6)
+		LM("MASK7","a_grind.com")
+	END_PRESS
+
+	PRESS(VS7)
+		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LM("MASK9","a_grind.com")
+	END_PRESS
+
+	CHANGE(POS_INPUT_1)
+		IF POS_INPUT_1.VAL==1
+			POS_INPUT_1.VAL=0
+			Z_POSITION_INIT.VAL=Z_IM.VAL
+		ENDIF
+	END_CHANGE
+
+	CHANGE(POS_INPUT_2)
+		IF POS_INPUT_2.VAL==1
+			POS_INPUT_2.VAL=0
+			Z_POSITION_END.VAL=Z_IM.VAL
+		ENDIF
+	END_CHANGE
+
+	CHANGE(POS_INPUT_3)
+		IF POS_INPUT_3.VAL==1
+			POS_INPUT_3.VAL=0
+			Y_POSITION_INIT.VAL=Y_IM.VAL
+		ENDIF
+	END_CHANGE
+
+	CHANGE(POS_INPUT_4)
+		IF POS_INPUT_4.VAL==1
+			POS_INPUT_4.VAL=0
+			GRIND_SAFE.VAL=Y_IM.VAL
+		ENDIF
+	END_CHANGE
+
+	CHANGE(POS_INPUT_5)
+		IF POS_INPUT_5.VAL==1
+			POS_INPUT_5.VAL=0
+			GRIND_START.VAL=X_IM.VAL
+		ENDIF
+	END_CHANGE
+
+	CHANGE(POS_INPUT_6)
+		IF POS_INPUT_6.VAL==1
+			POS_INPUT_6.VAL=0
+			GRIND_END.VAL=X_IM.VAL
+		ENDIF
+	END_CHANGE
+
+	CHANGE(POS_INPUT_7)
+		IF POS_INPUT_7.VAL==1
+			POS_INPUT_7.VAL=0
+			GRIND_A.VAL=A_IM.VAL
+		ENDIF
+	END_CHANGE
+
+	CHANGE(POS_INPUT_8)
+		IF POS_INPUT_8.VAL==1
+			POS_INPUT_8.VAL=0
 			GRIND_B.VAL=B_IM.VAL
 		ENDIF
 	END_CHANGE

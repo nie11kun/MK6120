@@ -820,7 +820,7 @@
 |TECHNOLOGY[235]||铲背-初始接触Y
 |TECHNOLOGY[236]||通磨当前接触Y
 |TECHNOLOGY[237]||齿平面当前接触Y
-|TECHNOLOGY[238]||
+|TECHNOLOGY[238]||吸铁台面当前接触Y
 |TECHNOLOGY[239]|GRIND_METHOD_R|外圆粗磨单双磨削
 |TECHNOLOGY[240]|GRIND_METHOD_MR|外圆半精磨单双磨削
 |TECHNOLOGY[241]|GRIND_METHOD_MF|外圆精修单双磨削
@@ -1446,7 +1446,7 @@
 |LADAO[34]||齿形参数：齿距
 |LADAO[35]||齿形参数：齿高
 |LADAO[36]||测头半径
-|LADAO[37]||加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背,5齿两端平面)
+|LADAO[37]||加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背,5齿两端平面,6吸铁台面)
 |LADAO[38]||砂轮类型(0直径方向/1厚度方向)
 |LADAO[39]||齿形平磨初始位x
 |LADAO[40]||齿形平磨起点Z
@@ -1572,6 +1572,17 @@
 |LADAO[160]||修砂轮后是否不进刀加工一次(0否1是)
 |LADAO[161]||修砂轮后磨削标记
 |LADAO[162]||首次启动程序标记
+|LADAO[163]||吸铁台面磨-磨削起点.Z
+|LADAO[164]||吸铁台面磨-磨削终点.Z
+|LADAO[165]||吸铁台面磨-磨削起点(前).X
+|LADAO[166]||吸铁台面磨-磨削安全.Y
+|LADAO[167]||吸铁台面磨-磨削起始.Y
+|LADAO[168]||吸铁台面磨-磨削位.A
+|LADAO[169]||吸铁台面磨-磨削位.B
+|LADAO[170]||吸铁台面磨-磨削步距.X
+|LADAO[171]||吸铁台面磨-磨修角度差
+|LADAO[172]||吸铁台面磨-锥度偏移.Y
+|LADAO[173]||吸铁台面磨-磨削终点(后).X
 |||
 |MEASURE_RESULT[0]||底面测量结果1
 |MEASURE_RESULT[149]||底面测量结果150
@@ -1597,6 +1608,8 @@
 |MEASURE_RESULT[1649]||后背下部测量结果150
 |MEASURE_RESULT[1650]||前刃底角R测量结果1
 |MEASURE_RESULT[1799]||前刃底角R测量结果150
+|MEASURE_RESULT[1800]||齿距累计误差1
+|MEASURE_RESULT[1949]||齿距累计误差150
 |||
 |GRIND_RESULT[0]||前刃底面当前接触Y1
 |GRIND_RESULT[149]||前刃底面当前接触Y150

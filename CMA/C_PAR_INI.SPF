@@ -104,7 +104,7 @@ IF INI[70]==1;有自动门(0没有/1有)
 	ENDIF
 ENDIF
 
-IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背)
+IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背，5齿两端平面,6吸铁台面)
 	IF TOOL_SET[43]==1;新砂轮修整后校准磨削位
 		TOOL_SET[43]=0;复位开关
 		TEMP_Z=TOOL_SET[44]-GRIND_RESULT[150];首齿实际与首齿当前差值
@@ -204,18 +204,28 @@ ELSE
 					PROCESS[13]=TECHNOLOGY[232];初始接触Y
 					LADAO[26]=LADAO[41];斜线进刀角度
 					LADAO[13]=LADAO[14];齿形偏转角度
-				ELSE;齿平面
-					TECH_ADDED[208]=0;平磨-齿数累计
-					TECH_ADDED[209]=0;平磨-加工几齿后修整
-					IF (TECH_ADDED[209]==0) OR (TECH_ADDED[208]<TECH_ADDED[209]);修整为零或当前几件小于设定值
+				ELSE;
+					IF LADAO[37]==5;齿平面
+						TECH_ADDED[208]=0;平磨-齿数累计
+						TECH_ADDED[209]=0;平磨-加工几齿后修整
+						IF (TECH_ADDED[209]==0) OR (TECH_ADDED[208]<TECH_ADDED[209]);修整为零或当前几件小于设定值
+							INI[75]=0;标记位
+						ENDIF
+						INI[20]=LADAO[146];A轴磨削位-当前
+						LADAO[5]=LADAO[147];B轴磨削位-当前
+						PROCESS[16]=LADAO[144];磨削安全位-当前
+						INI[6]=LADAO[140];平磨起点z
+						PROCESS[13]=LADAO[145];初始接触Y
+						LADAO[13]=LADAO[149];齿形偏转角度
+					ELSE;吸铁台面
 						INI[75]=0;标记位
+						INI[20]=LADAO[168];A轴磨削位-当前
+						LADAO[5]=LADAO[169];B轴磨削位-当前
+						PROCESS[16]=LADAO[166];磨削安全位-当前
+						INI[6]=LADAO[163];平磨起点z
+						PROCESS[13]=LADAO[167];初始接触Y
+						LADAO[13]=LADAO[171];齿形偏转角度
 					ENDIF
-					INI[20]=LADAO[146];A轴磨削位-当前
-					LADAO[5]=LADAO[147];B轴磨削位-当前
-					PROCESS[16]=LADAO[144];磨削安全位-当前
-					INI[6]=LADAO[140];平磨起点z
-					PROCESS[13]=LADAO[145];初始接触Y
-					LADAO[13]=LADAO[149];齿形偏转角度
 				ENDIF
             ENDIF
         ENDIF
@@ -246,7 +256,11 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 							;TECH_ADDED[127]=0;工艺累积进刀清零
 							;TECH_ADDED[167]=0;工艺累积进刀清零
 						ELSE
-							;TECH_ADDED[207]=0;工艺累积进刀清零
+							IF LADAO[37]==5
+								;TECH_ADDED[207]=0;工艺累积进刀清零
+							ELSE
+
+							ENDIF
 						ENDIF
 					ENDIF
 				ENDIF
@@ -270,7 +284,11 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 							LADAO[17]=GRIND_RESULT[300+RING[2]+RING[5]-1]-INI[6];磨削偏移z向累计
 							PROCESS[4]=GRIND_RESULT[750+RING[2]+RING[5]-1]
 						ELSE
-							PROCESS[4]=TECHNOLOGY[237]
+							IF LADAO[37]==5;齿两端平面
+								PROCESS[4]=TECHNOLOGY[237]
+							ELSE
+								PROCESS[4]=TECHNOLOGY[238]
+							ENDIF
 						ENDIF
 					ENDIF
 				ENDIF
