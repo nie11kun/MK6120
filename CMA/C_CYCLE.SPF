@@ -23,10 +23,6 @@ IF INI[75]==1;磨削几件后修整标记位
 
     INI[72]=1;磨削中进行过修整后的标记
     C_LINESPEED_GRIND;磨削时砂轮速度调节子程序
-
-    IF LADAO[160]==1;修砂轮后是否不进刀加工一次(0否1是)
-        LADAO[161]=1;修砂轮后磨削标记
-    ENDIF
 ENDIF
 
 C_ROTATE_ANGLE(INI[20],LADAO[5]);螺旋升角
