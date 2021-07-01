@@ -31,8 +31,8 @@ ENDIF
 
 C_ROTATE_ANGLE(INI[20],LADAO[5]);螺旋升角
 
-IF ((TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) AND (LADAO[18]==0)) OR (INI[72]==1);第一次磨削或者修整后的磨削
-    
+IF ((TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==1) AND (LADAO[18]==0)) OR (INI[72]==1) OR (LADAO[162]==1);第一次磨削或者修整后的磨削
+    LADAO[162]=0;首次启动程序标记
     ;**********************
     ;ifIsExternalBegin
 
