@@ -32,6 +32,7 @@
 	DEF HOUDU_CURR=(R///$85313,$85313,,$85043/WR1/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[113]"/10,190,110/110,190,110//"UserGuide/section_3.html","S3D13");当前砂轮厚度
 	DEF HOUDU_MIN=(R///$85314,$85314,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[114]"/10,210,110/110,210,110//"UserGuide/section_3.html","S3D13");最小砂轮厚度
 	DEF HOUDU_DIA=(R///$85315,$85315,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[115]"/10,230,110/110,230,110//"UserGuide/section_3.html","S3D13");砂轮直径
+	DEF HOUDU_ZUIDU=(R///$85325,$85325,,$85042/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[178]"/10,250,110/110,250,110//"UserGuide/section_3.html","S3D13");砂轮锥度角
 
 	;************************************************
 
