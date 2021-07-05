@@ -1695,7 +1695,7 @@
 |TECH_ADDED[64]||顶刃-精磨是否修整
 |TECH_ADDED[65]||顶刃-精磨砂轮线速度
 |TECH_ADDED[66]||顶刃-精磨砂轮转速
-|TECH_ADDED[67]||
+|TECH_ADDED[67]||顶刃-z轴向补偿角
 |TECH_ADDED[68]||
 |TECH_ADDED[69]||
 |TECH_ADDED[70]||顶刃-终磨单双
@@ -1777,8 +1777,8 @@
 |TECH_ADDED[144]||后背-垂直-精磨是否修整
 |TECH_ADDED[145]||后背-垂直-精磨砂轮线速度
 |TECH_ADDED[146]||后背-垂直-精磨砂轮转速
-|TECH_ADDED[147]||
-|TECH_ADDED[148]||
+|TECH_ADDED[147]||前角-z轴向补偿角
+|TECH_ADDED[148]||后背-z轴向补偿角
 |TECH_ADDED[149]||
 |TECH_ADDED[150]||后背-垂直-终磨单双
 |TECH_ADDED[151]||后背-垂直-终磨次数
@@ -1849,7 +1849,7 @@
 |TECH_ADDED[214]||齿平面-半精磨是否修整
 |TECH_ADDED[215]||齿平面-半精磨砂轮线速度
 |TECH_ADDED[216]||齿平面-半精磨砂轮转速
-|TECH_ADDED[217]||
+|TECH_ADDED[217]||齿平面-z轴向补偿角
 |TECH_ADDED[218]||
 |TECH_ADDED[219]||
 |TECH_ADDED[220]||齿平面-精磨单双
