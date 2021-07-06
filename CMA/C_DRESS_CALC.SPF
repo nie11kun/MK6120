@@ -4,7 +4,13 @@ PROC C_DRESS_CALC SBLOF DISPLOF
 ;*修整次数累加，粗精修切换，赋值
 ;****************************
 
-DEF REAL TEMP_1,TEMP_2,TEMP_3
+DEF REAL TEMP_1,TEMP_2,TEMP_3,TEMP_4
+
+IF LADAO[38]==0;砂轮类型
+    TEMP_4=0
+ELSE
+    TEMP_4=LADAO[177]
+ENDIF
 
 IF DRESSER[20]<DRESSER[13];抬刀部分当前次数判断
     DRESSER[20]=DRESSER[20]+1;次数累积
@@ -49,9 +55,9 @@ ELSE
                 TECHNOLOGY[236]=TECHNOLOGY[236]-DRESSER[14]*COS(LADAO[13]);通磨当前接触Y
             ELSE
                 IF LADAO[37]==2;平刃后角
-                    TEMP_1=DRESSER[14]/COS(LADAO[177])
-                    TEMP_2=TEMP_1*SIN(LADAO[177]-LADAO[13])
-                    TEMP_3=TEMP_1*COS(LADAO[177]-LADAO[13])
+                    TEMP_1=DRESSER[14]/COS(TEMP_4)
+                    TEMP_2=TEMP_1*SIN(TEMP_4-LADAO[13])
+                    TEMP_3=TEMP_1*COS(TEMP_4-LADAO[13])
                     LADAO[51]=LADAO[51]+TEMP_2*LADAO[98];z轴磨削起始计算
                     INI[6]=LADAO[51]+RING[7];工件右端
                     D_DRESS_GRIND_CALC(450,150,TEMP_3);顶部后刃当前接触Y
@@ -109,9 +115,9 @@ ELSE
                     TECHNOLOGY[236]=TECHNOLOGY[236]-DRESSER[15]*COS(LADAO[13]);通磨当前接触Y
                 ELSE
                     IF LADAO[37]==2
-                        TEMP_1=DRESSER[15]/COS(LADAO[177])
-                        TEMP_2=TEMP_1*SIN(LADAO[177]-LADAO[13])
-                        TEMP_3=TEMP_1*COS(LADAO[177]-LADAO[13])
+                        TEMP_1=DRESSER[15]/COS(TEMP_4)
+                        TEMP_2=TEMP_1*SIN(TEMP_4-LADAO[13])
+                        TEMP_3=TEMP_1*COS(TEMP_4-LADAO[13])
                         LADAO[51]=LADAO[51]+TEMP_2*LADAO[98];z轴磨削起始计算
                         INI[6]=LADAO[51]+RING[7];工件右端
                         D_DRESS_GRIND_CALC(450,150,TEMP_3)
