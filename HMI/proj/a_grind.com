@@ -169,16 +169,16 @@
 	DEF SLOTS_10=(I/0,//$85934,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[106]"/0,0,0/475,320,60//"UserGuide/section_1.html","S1D48");
 
 	;环形槽组齿升量
-	DEF Y_DELTA_1=(R///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[8]"/0,0,0/115,270,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_2=(R///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[9]"/0,0,0/205,270,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_3=(R///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[10]"/0,0,0/295,270,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_4=(R///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[11]"/0,0,0/385,270,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_5=(R///$85929,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[107]"/0,0,0/475,270,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_6=(R///$85930,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[108]"/0,0,0/115,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_7=(R///$85931,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[109]"/0,0,0/205,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_8=(R///$85932,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[110]"/0,0,0/295,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_9=(R///$85933,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[111]"/0,0,0/385,344,60//"UserGuide/section_1.html","S1D49");
-	DEF Y_DELTA_10=(R///$85934,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[112]"/0,0,0/475,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_1=(R4///$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[8]"/0,0,0/115,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_2=(R4///$85916,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[9]"/0,0,0/205,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_3=(R4///$85917,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[10]"/0,0,0/295,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_4=(R4///$85918,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[11]"/0,0,0/385,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_5=(R4///$85929,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[107]"/0,0,0/475,270,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_6=(R4///$85930,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[108]"/0,0,0/115,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_7=(R4///$85931,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[109]"/0,0,0/205,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_8=(R4///$85932,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[110]"/0,0,0/295,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_9=(R4///$85933,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[111]"/0,0,0/385,344,60//"UserGuide/section_1.html","S1D49");
+	DEF Y_DELTA_10=(R4///$85934,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[112]"/0,0,0/475,344,60//"UserGuide/section_1.html","S1D49");
 
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
