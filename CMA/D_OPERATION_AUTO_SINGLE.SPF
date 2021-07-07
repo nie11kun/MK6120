@@ -30,6 +30,8 @@ IF (LADAO[27]<=RING[1]) OR (LADAO[93]==0);不是最后齿背或测全型
 	F_PROBE_AC_MEA(TOOL_SET[52])
 	IF TOOL_SET[53]==1;碰到外沿
 		DRESSER[6]=5;测头无法进入孔内
+		MSG("测头Y轴方向无法进入齿内"); ifIsCHS
+		M0;
 		GOTOF OPERATION_END
 	ENDIF
 ENDIF
@@ -40,6 +42,8 @@ IF LADAO[27]<=RING[1];不是最后一个齿背
 	F_PROBE_AC_MEA(TOOL_SET[52])
 	IF TOOL_SET[53]==0;没碰到
 		DRESSER[6]=6;没有测量到前刃面
+		MSG("测头Z轴方向检测不到前角"); ifIsCHS
+		M0;
 		GOTOF OPERATION_END
 	ENDIF
 ENDIF
@@ -51,6 +55,8 @@ IF LADAO[93]==0;自动测量-测量位置(0全测/1前刃/2前刃and底面)
 		F_PROBE_AC_MEA(TOOL_SET[52])
 		IF TOOL_SET[53]==0;没碰到
 			DRESSER[6]=7;没有测量到后背面
+			MSG("测头Z轴方向检测不到齿背"); ifIsCHS
+			M0;
 			GOTOF OPERATION_END
 		ENDIF
 	ENDIF
@@ -66,6 +72,8 @@ IF LADAO[93]==0;自动测量-测量位置(0全测/1前刃/2前刃and底面)
 	F_PROBE_AC_MEA(TOOL_SET[52])
 	IF TOOL_SET[53]==0;没碰到
 		DRESSER[6]=8;没有测量到底面
+		MSG("测头Y轴方向检测不到齿底"); ifIsCHS
+		M0;
 		GOTOF OPERATION_END
 	ENDIF
 
@@ -77,6 +85,8 @@ IF LADAO[93]==0;自动测量-测量位置(0全测/1前刃/2前刃and底面)
 		F_PROBE_AC_MEA(TOOL_SET[52])
 		IF TOOL_SET[53]==0;没碰到
 			DRESSER[6]=9;没有测量到底面
+			MSG("前角底部R检测中,检测不到垂线方向前角面"); ifIsCHS
+			M0;
 			GOTOF OPERATION_END
 		ENDIF
 
@@ -89,6 +99,8 @@ IF LADAO[93]==0;自动测量-测量位置(0全测/1前刃/2前刃and底面)
 		F_PROBE_AC_MEA(TOOL_SET[52])
 		IF TOOL_SET[53]==0;没碰到
 			DRESSER[6]=10;没有测量到底面
+			MSG("前角底部R检测中,检测不到R"); ifIsCHS
+			M0;
 			GOTOF OPERATION_END
 		ENDIF
 
@@ -100,6 +112,8 @@ IF LADAO[93]==0;自动测量-测量位置(0全测/1前刃/2前刃and底面)
 		F_PROBE_AC_MEA(TOOL_SET[52])
 		IF TOOL_SET[53]==0;没碰到
 			DRESSER[6]=4;没有测量到顶
+			MSG("测头Y轴方向检测不到后角"); ifIsCHS
+			M0;
 			GOTOF OPERATION_END
 		ENDIF
 	ENDIF
@@ -114,6 +128,8 @@ IF LADAO[93]==2;自动测量-测量位置(0全测/1前刃/2前刃and底面)
 		F_PROBE_AC_MEA(TOOL_SET[52])
 		IF TOOL_SET[53]==0;没碰到
 			DRESSER[6]=8;没有测量到底面
+			MSG("测头Y轴方向检测不到齿底"); ifIsCHS
+			M0;
 			GOTOF OPERATION_END
 		ENDIF
 	ENDIF
