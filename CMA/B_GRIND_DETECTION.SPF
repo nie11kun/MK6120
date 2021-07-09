@@ -36,7 +36,7 @@ MSG("当前加工工序-齿背");
 GOTOF WAIT_START
 
 GRIND_5:
-MSG("当前加工工序-齿平面");
+MSG("当前加工工序-齿端平面");
 GOTOF WAIT_START
 
 GRIND_6:
