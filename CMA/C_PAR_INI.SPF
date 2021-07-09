@@ -119,7 +119,7 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	ENDIF
 	INI[20]=LADAO[42];A轴磨削位-当前
 	LADAO[5]=LADAO[43];B轴磨削位-当前
-	PROCESS[16]=LADAO[44];磨削安全位-当前
+	PROCESS[16]=TECHNOLOGY[231]+LADAO[44]+RING[6];磨削安全位-当前
 	INI[6]=INI[2]+RING[7];工件右端
 	PROCESS[13]=TECHNOLOGY[231];初始接触Y
 	LADAO[26]=LADAO[99];斜线进刀角度
@@ -141,7 +141,7 @@ ELSE
 		ENDIF
 		INI[20]=LADAO[45];A轴磨削位-当前
 		LADAO[5]=LADAO[46];B轴磨削位-当前
-		PROCESS[16]=LADAO[47];磨削安全位-当前
+		PROCESS[16]=TECHNOLOGY[234]+LADAO[47]+ABS(LADAO[72]);磨削安全位-当前
 		INI[6]=LADAO[40]-LADAO[135]*LADAO[98];平磨起点z
 		PROCESS[13]=TECHNOLOGY[234];初始接触Y
 		LADAO[13]=TECH_ADDED[108];齿形偏转角度
@@ -160,7 +160,7 @@ ELSE
 			ENDIF
 			INI[20]=LADAO[48];A轴磨削位-当前
 			LADAO[5]=LADAO[49];B轴磨削位-当前
-			PROCESS[16]=LADAO[50];磨削安全位-当前
+			PROCESS[16]=TECHNOLOGY[233]+LADAO[50]+RING[6];磨削安全位-当前
 			INI[6]=LADAO[51]+RING[7];工件右端
 			PROCESS[13]=TECHNOLOGY[233];初始接触Y
 			LADAO[13]=TECH_ADDED[107];齿形偏转角度
@@ -179,7 +179,7 @@ ELSE
 				ENDIF
 				INI[20]=LADAO[67];A轴磨削位-当前
 				LADAO[5]=LADAO[68];B轴磨削位-当前
-				PROCESS[16]=LADAO[69];磨削安全位-当前
+				PROCESS[16]=TECHNOLOGY[235]+LADAO[69]+RING[6];磨削安全位-当前
 				INI[6]=LADAO[70]+RING[7]-LADAO[137]*LADAO[98];工件右端
 				PROCESS[13]=TECHNOLOGY[235];初始接触Y
 				LADAO[13]=TECH_ADDED[109];齿形偏转角度
@@ -199,7 +199,7 @@ ELSE
 					ENDIF
 					INI[20]=LADAO[54];A轴磨削位-当前
 					LADAO[5]=LADAO[55];B轴磨削位-当前
-					PROCESS[16]=LADAO[56];磨削安全位-当前
+					PROCESS[16]=TECHNOLOGY[232]+LADAO[56]+RING[6];磨削安全位-当前
 					INI[6]=LADAO[57]+RING[7];工件右端
 					PROCESS[13]=TECHNOLOGY[232];初始接触Y
 					LADAO[26]=LADAO[41];斜线进刀角度
@@ -213,7 +213,7 @@ ELSE
 						ENDIF
 						INI[20]=LADAO[146];A轴磨削位-当前
 						LADAO[5]=LADAO[147];B轴磨削位-当前
-						PROCESS[16]=LADAO[144];磨削安全位-当前
+						PROCESS[16]=LADAO[145]+LADAO[144];磨削安全位-当前
 						INI[6]=LADAO[140];平磨起点z
 						PROCESS[13]=LADAO[145];初始接触Y
 						LADAO[13]=LADAO[149];齿形偏转角度
@@ -221,7 +221,7 @@ ELSE
 						INI[75]=0;标记位
 						INI[20]=LADAO[168];A轴磨削位-当前
 						LADAO[5]=LADAO[169];B轴磨削位-当前
-						PROCESS[16]=LADAO[166];磨削安全位-当前
+						PROCESS[16]=LADAO[167]+LADAO[166]+ABS(LADAO[172]);磨削安全位-当前
 						INI[6]=LADAO[163];平磨起点z
 						PROCESS[13]=LADAO[167];初始接触Y
 						LADAO[13]=LADAO[171];齿形偏转角度
