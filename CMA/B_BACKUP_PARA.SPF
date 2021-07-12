@@ -18,7 +18,7 @@ READ(ERR,"/_N_CMA_DIR/_N_VAR_TXT",1,LADAO[182],RESULT);LADAO[182]定义参数文
 IF ERR==0
     FOR CYC_COUNT = 0 TO LADAO[182]-1;
         LINE_CURR=RESULT[CYC_COUNT]
-        IF LINE_CURR[0]<>";";如果行开头为分号则跳过此行
+        IF (LINE_CURR[0]<>";") AND (LINE_CURR[0]<>"");如果行开头为分号或空行则跳过此行
             C_BACKUP_SINGLE(BACKUP_PATH,RESULT[CYC_COUNT])
         ENDIF
     ENDFOR
