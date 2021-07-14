@@ -36,6 +36,8 @@
 
 	;************************************************
 
+	DEF SAFE_Z=(R///$85370,$85370,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[185]"/10,330,110/130,330,110//);修整安全距离.Z
+
 	DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D2");Y_Z/Y  ifIsDressWare3
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D16");砂轮状态
 

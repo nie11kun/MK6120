@@ -7,7 +7,7 @@ G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
 G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
 
 MSG("台面到位中"); ifIsCHS
-G1 G90 Z=DRESSER[33]+150 F=INI[56];z轴快速接近
+G1 G90 Z=DRESSER[33]+LADAO[184] F=INI[56];z轴快速接近
 ;
 IF LADAO[38]==0;砂轮类型
     C_ROTATE_ANGLE(INI[153],LADAO[6]);升角复位
