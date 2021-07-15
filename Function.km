@@ -1,0 +1,670 @@
+{
+    "root": {
+        "data": {
+            "id": "cctpquvr6140",
+            "created": 1626352218570,
+            "text": "MK6120 数控拉刀磨床",
+            "expandState": "expand",
+            "font-size": 24
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "cctpy2maoyo0",
+                    "created": 1626352783962,
+                    "text": "工件数据",
+                    "layout": null,
+                    "expandState": "expand",
+                    "priority": 1,
+                    "font-size": 16
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cctpy8ncfco0",
+                            "created": 1626352797086,
+                            "text": "每齿角度/长度数据",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cctpyho3pt40",
+                            "created": 1626352816723,
+                            "text": "提供最多10组齿升量，最多150齿的工件数据",
+                            "layout_bottom_offset": {
+                                "x": 1,
+                                "y": 2
+                            },
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cctpz492klc0",
+                            "created": 1626352865880,
+                            "text": "工件中任意位置的齿的加工",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cctprbmg9w80",
+                    "created": 1626352255013,
+                    "text": "磨削",
+                    "layout": null,
+                    "expandState": "expand",
+                    "priority": 2,
+                    "font-size": 16
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cctpv1gj39k0",
+                            "created": 1626352546344,
+                            "text": "前角",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctpvvutlt40",
+                                    "created": 1626352612512,
+                                    "text": "按照齿升量(有/无)",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctpwbvj3j40",
+                                    "created": 1626352647383,
+                                    "text": "斜向进刀(有/无)",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctpxc5fcr40",
+                                    "created": 1626352726345,
+                                    "text": "齿距模式(标准/测量)",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq0o6jbt40",
+                                    "created": 1626352987626,
+                                    "text": "角度补偿",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctpv9hzdg00",
+                            "created": 1626352563846,
+                            "text": "齿背",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctpvvutlt40",
+                                    "created": 1626352612512,
+                                    "text": "按照齿升量(有/无)",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctpwbvj3j40",
+                                    "created": 1626352647383,
+                                    "text": "斜向进刀(有/无)",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctpxc5fcr40",
+                                    "created": 1626352726345,
+                                    "text": "齿距模式(标准/测量)",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq0o6jbt40",
+                                    "created": 1626352987626,
+                                    "text": "角度补偿",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctpvc9jpls0",
+                            "created": 1626352569866,
+                            "text": "后角",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctpxc5fcr40",
+                                    "created": 1626352726345,
+                                    "text": "齿距模式(标准/测量)",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq0o6jbt40",
+                                    "created": 1626352987626,
+                                    "text": "角度补偿",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctpvevy3o00",
+                            "created": 1626352575574,
+                            "text": "通磨",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctq0o6jbt40",
+                                    "created": 1626352987626,
+                                    "text": "角度补偿",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq0wvpvxc0",
+                                    "created": 1626353006563,
+                                    "text": "长度补偿",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctpvguew9s0",
+                            "created": 1626352579835,
+                            "text": "铲背",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctpxc5fcr40",
+                                    "created": 1626352726345,
+                                    "text": "齿距模式(标准/测量)",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq0o6jbt40",
+                                    "created": 1626352987626,
+                                    "text": "角度补偿",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq0wvpvxc0",
+                                    "created": 1626353006563,
+                                    "text": "长度补偿",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctpvk411cg0",
+                            "created": 1626352586947,
+                            "text": "齿端平面",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctq1oxx3v40",
+                                    "created": 1626353067646,
+                                    "text": "首齿/尾齿切换",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq1xx83ls0",
+                                    "created": 1626353087195,
+                                    "text": "自动计算加工余量",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq29gdyyw0",
+                                    "created": 1626353112299,
+                                    "text": "自定义步距",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctpvo5eeao0",
+                            "created": 1626352595737,
+                            "text": "吸铁台面",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctq29gdyyw0",
+                                    "created": 1626353112299,
+                                    "text": "自定义步距",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq2n0e87s0",
+                                    "created": 1626353141807,
+                                    "text": "锥度补偿",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cctpte1q5eo0",
+                    "created": 1626352417019,
+                    "text": "修整",
+                    "layout": null,
+                    "expandState": "expand",
+                    "priority": 3,
+                    "font-size": 16
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cctq2qg4a4g0",
+                            "created": 1626353149288,
+                            "text": "砂轮类型",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctq32ie5uw0",
+                                    "created": 1626353175547,
+                                    "text": "厚度方向",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq36ul2sg0",
+                                    "created": 1626353184991,
+                                    "text": "直径方向",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctq2z74t7k0",
+                            "created": 1626353168335,
+                            "text": "滚轮类型",
+                            "expandState": "expand",
+                            "layout": null,
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctq3a5uxr40",
+                                    "created": 1626353192203,
+                                    "text": "单碟轮",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cctq3jsuqgg0",
+                                            "created": 1626353213184,
+                                            "text": "自动计算新砂轮修整位",
+                                            "layout": null,
+                                            "expandState": "expand",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq3e8azvs0",
+                                    "created": 1626353201058,
+                                    "text": "滚压轮",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cctq3jsuqgg0",
+                                            "created": 1626353213184,
+                                            "text": "自动计算新砂轮修整位",
+                                            "layout": null,
+                                            "expandState": "expand",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctq47vcuio0",
+                            "created": 1626353265579,
+                            "text": "齿形",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctq4a7e6gg0",
+                                    "created": 1626353270660,
+                                    "text": "支持DXF文件导入齿形",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq4kgseg00",
+                                    "created": 1626353292996,
+                                    "text": "齿形文件可存储在内部/外部存储空间",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cctptiq91k80",
+                    "created": 1626352427209,
+                    "text": "自动对刀",
+                    "layout": null,
+                    "expandState": "expand",
+                    "priority": 4,
+                    "font-size": 16
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cctq5aykoiw0",
+                            "created": 1626353350668,
+                            "text": "全齿形测量",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctq5x663ug0",
+                                    "created": 1626353399016,
+                                    "text": "前角数据",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq668rxtk0",
+                                    "created": 1626353418765,
+                                    "text": "后背数据",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq68kgwfs0",
+                                    "created": 1626353423825,
+                                    "text": "底面数据",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq6ae4fvk0",
+                                    "created": 1626353427795,
+                                    "text": "后角数据",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq6djfv7k0",
+                                    "created": 1626353434647,
+                                    "text": "齿距数据",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq6ftnkhc0",
+                                    "created": 1626353439618,
+                                    "text": "齿底圆弧R数据",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cctq5jb5pc80",
+                            "created": 1626353368843,
+                            "text": "底面+前角测量",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cctq5spacb40",
+                            "created": 1626353389288,
+                            "text": "前角测量",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cctpudmcq3k0",
+                    "created": 1626352494453,
+                    "text": "备份/恢复数据",
+                    "layout": null,
+                    "expandState": "expand",
+                    "priority": 5,
+                    "font-size": 16
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cctq6rs1tq80",
+                            "created": 1626353465643,
+                            "text": "备份当前工件参数数据",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cctq729mcgw0",
+                            "created": 1626353488473,
+                            "text": "恢复已保存的工件参数数据",
+                            "layout": null,
+                            "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "filetree",
+    "theme": "fish",
+    "version": "1.4.43"
+}
