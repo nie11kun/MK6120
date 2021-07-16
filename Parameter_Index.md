@@ -417,9 +417,9 @@
 |TOOL_SET[41]||自动对刀结果调整
 |TOOL_SET[42]||Z轴偏刀微调
 |TOOL_SET[43]||前角-新砂轮修整后校准磨削位
-|TOOL_SET[44]||前角-实际首齿当前接触.Z
-|TOOL_SET[45]||前角-实际首齿当前接触.Y
-|TOOL_SET[46]||
+|TOOL_SET[44]||前角-当前首齿起始接触.Z
+|TOOL_SET[45]||前角-当前首齿起始接触.Y
+|TOOL_SET[46]||前角-当前砂轮直径
 |TOOL_SET[47]||
 |TOOL_SET[48]||
 |TOOL_SET[49]|OPERA_AUTO_MODEL|自动对刀是否有测量头测量结构
@@ -1653,8 +1653,8 @@
 |TECH_ADDED[15]||平磨-半精磨砂轮线速度
 |TECH_ADDED[16]||平磨-半精磨砂轮转速
 |TECH_ADDED[17]||平磨-新砂轮修整后校准磨削位
-|TECH_ADDED[18]||平磨-实际当前接触.Z
-|TECH_ADDED[19]||平磨-实际当前接触.Y
+|TECH_ADDED[18]||平磨-当前初始接触.Z
+|TECH_ADDED[19]||平磨-当前初始接触.Y
 |TECH_ADDED[20]||平磨-精磨单双
 |TECH_ADDED[21]||平磨-精磨次数
 |TECH_ADDED[22]||平磨-精磨进给量
@@ -1672,7 +1672,7 @@
 |TECH_ADDED[34]||平磨-终磨是否修整
 |TECH_ADDED[35]||平磨-终磨砂轮线速度
 |TECH_ADDED[36]||平磨-终磨砂轮转速
-|TECH_ADDED[37]||
+|TECH_ADDED[37]||平磨-当前砂轮直径
 |TECH_ADDED[38]||
 |TECH_ADDED[39]||
 |||
@@ -1694,8 +1694,8 @@
 |TECH_ADDED[55]||顶刃-半精磨砂轮线速度
 |TECH_ADDED[56]||顶刃-半精磨砂轮转速
 |TECH_ADDED[57]||顶刃-新砂轮修整后校准磨削位
-|TECH_ADDED[58]||顶刃-实际首齿当前接触.Z
-|TECH_ADDED[59]||顶刃-实际首齿当前接触.Y
+|TECH_ADDED[58]||顶刃-当前首齿初始接触.Z
+|TECH_ADDED[59]||顶刃-当前首齿初始接触.Y
 |TECH_ADDED[60]||顶刃-精磨单双
 |TECH_ADDED[61]||顶刃-精磨次数
 |TECH_ADDED[62]||顶刃-精磨进给量
@@ -1713,7 +1713,7 @@
 |TECH_ADDED[74]||顶刃-终磨是否修整
 |TECH_ADDED[75]||顶刃-终磨砂轮线速度
 |TECH_ADDED[76]||顶刃-终磨砂轮转速
-|TECH_ADDED[77]||
+|TECH_ADDED[77]||顶刃-当前砂轮直径
 |TECH_ADDED[78]||
 |TECH_ADDED[79]||
 |||
@@ -1735,8 +1735,8 @@
 |TECH_ADDED[95]||侧后刃-半精磨砂轮线速度
 |TECH_ADDED[96]||侧后刃-半精磨砂轮转速
 |TECH_ADDED[97]||侧后刃-新砂轮修整后校准磨削位
-|TECH_ADDED[98]||侧后刃-实际首齿当前接触.Z
-|TECH_ADDED[99]||侧后刃-实际首齿当前接触.Y
+|TECH_ADDED[98]||侧后刃-当前首齿初始接触.Z
+|TECH_ADDED[99]||侧后刃-当前首齿初始接触.Y
 |TECH_ADDED[100]||侧后刃-精磨单双
 |TECH_ADDED[101]||侧后刃-精磨次数
 |TECH_ADDED[102]||侧后刃-精磨进给量
@@ -1754,7 +1754,7 @@
 |TECH_ADDED[114]||侧后刃-终磨是否修整
 |TECH_ADDED[115]||侧后刃-终磨砂轮线速度
 |TECH_ADDED[116]||侧后刃-终磨砂轮转速
-|TECH_ADDED[117]||
+|TECH_ADDED[117]||侧后刃-当前砂轮直径
 |TECH_ADDED[118]||
 |TECH_ADDED[119]||
 |||
@@ -1776,8 +1776,8 @@
 |TECH_ADDED[135]||后背-垂直-半精磨砂轮线速度
 |TECH_ADDED[136]||后背-垂直-半精磨砂轮转速
 |TECH_ADDED[137]||后背-新砂轮修整后校准磨削位
-|TECH_ADDED[138]||后背-实际首齿当前接触.Z
-|TECH_ADDED[139]||后背-实际首齿当前接触.Y
+|TECH_ADDED[138]||后背-当前首齿初始接触.Z
+|TECH_ADDED[139]||后背-当前首齿初始接触.Y
 |TECH_ADDED[140]||后背-垂直-精磨单双
 |TECH_ADDED[141]||后背-垂直-精磨次数
 |TECH_ADDED[142]||后背-垂直-精磨进给量
@@ -1795,7 +1795,7 @@
 |TECH_ADDED[154]||后背-垂直-终磨是否修整
 |TECH_ADDED[155]||后背-垂直-终磨砂轮线速度
 |TECH_ADDED[156]||后背-垂直-终磨砂轮转速
-|TECH_ADDED[157]||
+|TECH_ADDED[157]||后背-当前砂轮直径
 |TECH_ADDED[158]||
 |TECH_ADDED[159]||
 |||
