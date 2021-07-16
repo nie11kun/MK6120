@@ -23,7 +23,7 @@
                         "data": {
                             "id": "cctpy8ncfco0",
                             "created": 1626352797086,
-                            "text": "每齿角度/长度数据",
+                            "text": "工件各部位图纸数据输入",
                             "layout": null,
                             "expandState": "expand",
                             "font-size": 16
@@ -52,6 +52,24 @@
                             "text": "工件中任意位置的齿的加工",
                             "layout": null,
                             "expandState": "expand",
+                            "font-size": 16
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ccubedbcleg0",
+                            "created": 1626413304379,
+                            "text": "批量连续加工/单齿调整加工模式",
+                            "font-size": 16
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ccubgqq11cw0",
+                            "created": 1626413490293,
+                            "text": "更换砂轮后可自动校准磨削位无需二次对刀",
                             "font-size": 16
                         },
                         "children": []
