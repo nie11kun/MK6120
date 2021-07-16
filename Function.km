@@ -610,6 +610,24 @@
                             },
                             {
                                 "data": {
+                                    "id": "ccubn8zykm80",
+                                    "created": 1626414000261,
+                                    "text": "齿厚数据",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ccubnc9qlq80",
+                                    "created": 1626414007383,
+                                    "text": "齿高数据",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
                                     "id": "cctq6ftnkhc0",
                                     "created": 1626353439618,
                                     "text": "齿底圆弧R数据",
