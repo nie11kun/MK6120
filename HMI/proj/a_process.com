@@ -1035,9 +1035,9 @@
 	
 	;进给深度
 	DEF VAR19=(R///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[123]"/0,0,0/132,129,60//"UserGuide/section_2.html","S2D5");粗磨进给量
-	DEF VAR20=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[143]"/0,0,0/222,129,60//"UserGuide/section_2.html","S2D5");半粗磨进给量
-	DEF VAR21=(R///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[153]"/0,0,0/312,129,60//"UserGuide/section_2.html","S2D5");半精磨进给量
-	DEF VAR22=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[163]"/0,0,0/402,129,60//"UserGuide/section_2.html","S2D5");精磨进给量
+	DEF VAR20=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[133]"/0,0,0/222,129,60//"UserGuide/section_2.html","S2D5");半粗磨进给量
+	DEF VAR21=(R///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[143]"/0,0,0/312,129,60//"UserGuide/section_2.html","S2D5");半精磨进给量
+	DEF VAR22=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[153]"/0,0,0/402,129,60//"UserGuide/section_2.html","S2D5");精磨进给量
 	
 	;磨削速度
 	DEF VAR27=(R///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[124]"/0,0,0/132,154,60/);粗磨速度
