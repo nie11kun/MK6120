@@ -41,7 +41,11 @@ ELSE
                 Y_RELATED=Y_RELATED-TEMP_1
             ENDIF
             IF LADAO[96]==0;磨削齿距模式(0测量齿距/1标准齿距)
-                Z_RELATED=MEASURE_RESULT[1500+CAO_CURRENT-1]-MEASURE_RESULT[1500]
+                IF CAO_CURRENT<RING[1];不是最后齿背
+                    Z_RELATED=MEASURE_RESULT[1350+CAO_CURRENT]-MEASURE_RESULT[1351]
+                ELSE
+                    Z_RELATED=MEASURE_RESULT[1350+CAO_CURRENT-1]-MEASURE_RESULT[1351]+LADAO[34]*LADAO[98]
+                ENDIF
             ELSE
                 Z_RELATED=(RING[2]+RING[5]-1)*LADAO[34]*LADAO[98]
             ENDIF
