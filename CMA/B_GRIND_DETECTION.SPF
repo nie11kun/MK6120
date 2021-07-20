@@ -3,6 +3,13 @@ PROC B_GRIND_DETECTION DISPLOF
 ;*当前加工工序提示
 ;****************************
 
+IF RING[1]>=150;总齿数大于等于150
+    MSG("工件最大齿数不可超过149齿,请修改工件参数");
+    M0
+    G4 F99999
+    STOPRE
+ENDIF
+
 IF $A_DBB[0]<>0;修整
     MSG("当前加工工序-砂轮修整");
     GOTOF WAIT_START
