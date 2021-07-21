@@ -5,7 +5,7 @@ PROC E_SINGLEGRIND_XZBACK(REAL POSITION) DISPLOF
 ;****************************
 
 ;
-MSG("砂轮正在退出工件"); ifIsCHS
+;MSG("砂轮正在退出工件"); ifIsCHS
 IF (LADAO[37]==0) OR (LADAO[37]==4);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)，4后背
     G90 G01 Y=POSITION-$AC_DRF[Y] Z=$AA_IM[Z]-(POSITION-$AA_IM[Y])*TAN(LADAO[30])*LADAO[98] F=INI[55]/2
 ELSE
