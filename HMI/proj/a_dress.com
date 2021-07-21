@@ -24,15 +24,17 @@
 
 	DEF SHALUN_LEIXIN=(I/*0=$85368,1=$85369//$85367,$85367,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[39]"/10,10,110/130,10,70//);砂轮类型
 
-	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR2/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/10,40,110/130,40,110//"UserGuide/section_3.html","S3D14");新砂轮直径
-	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/10,60,110/130,60,110/);砂轮当前直径
-	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR2/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/10,80,130/130,80,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
+	DEF ZHIJIN_MSG=(R///$85329,$85329,,/WR1///10,40,200/0,0,0//);
+	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR2/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/10,60,110/130,60,110//"UserGuide/section_3.html","S3D14");新砂轮直径
+	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/10,80,110/130,80,110/);砂轮当前直径
+	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR2/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/10,100,130/130,100,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
 
-	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/10,130,110/130,130,110//"UserGuide/section_3.html","S3D13");新砂轮厚度
-	DEF HOUDU_CURR=(R///$85313,$85313,,$85043/WR1/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[113]"/10,150,110/130,150,110//"UserGuide/section_3.html","S3D13");当前砂轮厚度
-	DEF HOUDU_MIN=(R///$85314,$85314,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[114]"/10,170,110/130,170,110//"UserGuide/section_3.html","S3D13");最小砂轮厚度
-	DEF HOUDU_DIA=(R///$85315,$85315,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[115]"/10,190,110/130,190,110//"UserGuide/section_3.html","S3D13");砂轮直径
-	DEF HOUDU_ZUIDU=(R///$85325,$85325,,$85042/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[178]"/10,210,110/130,210,110//"UserGuide/section_3.html","S3D13");砂轮锥度角
+	DEF HOUDU_MSG=(R///$85330,$85330,,/WR1///10,140,200/0,0,0//);
+	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/10,160,110/130,160,110//"UserGuide/section_3.html","S3D13");新砂轮厚度
+	DEF HOUDU_CURR=(R///$85313,$85313,,$85043/WR1/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[113]"/10,180,110/130,180,110//"UserGuide/section_3.html","S3D13");当前砂轮厚度
+	DEF HOUDU_MIN=(R///$85314,$85314,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[114]"/10,200,110/130,200,110//"UserGuide/section_3.html","S3D13");最小砂轮厚度
+	DEF HOUDU_DIA=(R///$85315,$85315,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[115]"/10,220,110/130,220,110//"UserGuide/section_3.html","S3D13");砂轮直径
+	DEF HOUDU_ZUIDU=(R///$85325,$85325,,$85042/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[178]"/10,240,110/130,240,110//"UserGuide/section_3.html","S3D13");砂轮锥度角
 
 	;************************************************
 
