@@ -5,7 +5,7 @@
             "created": 1626352218570,
             "text": "MK6120 数控拉刀磨床",
             "expandState": "expand",
-            "font-size": 24
+            "font-size": 18
         },
         "children": [
             {
@@ -134,9 +134,18 @@
                                 "data": {
                                     "id": "cctq0o6jbt40",
                                     "created": 1626352987626,
-                                    "text": "角度补偿",
+                                    "text": "角度补偿(X/Y/Z向)",
                                     "layout": null,
                                     "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cczkwh80slc0",
+                                    "created": 1626947913213,
+                                    "text": "修整自动补偿",
                                     "font-size": 16
                                 },
                                 "children": []
@@ -190,9 +199,18 @@
                                 "data": {
                                     "id": "cctq0o6jbt40",
                                     "created": 1626352987626,
-                                    "text": "角度补偿",
+                                    "text": "角度补偿(X/Y/Z向)",
                                     "layout": null,
                                     "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cczkwh80slc0",
+                                    "created": 1626947913213,
+                                    "text": "修整自动补偿",
                                     "font-size": 16
                                 },
                                 "children": []
@@ -224,9 +242,18 @@
                                 "data": {
                                     "id": "cctq0o6jbt40",
                                     "created": 1626352987626,
-                                    "text": "角度补偿",
+                                    "text": "角度补偿(X/Y/Z向)",
                                     "layout": null,
                                     "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cczkwh80slc0",
+                                    "created": 1626947913213,
+                                    "text": "修整自动补偿",
                                     "font-size": 16
                                 },
                                 "children": []
@@ -247,7 +274,7 @@
                                 "data": {
                                     "id": "cctq0o6jbt40",
                                     "created": 1626352987626,
-                                    "text": "角度补偿",
+                                    "text": "位置补偿(X/Z向)",
                                     "layout": null,
                                     "expandState": "expand",
                                     "font-size": 16
@@ -258,9 +285,18 @@
                                 "data": {
                                     "id": "cctq0wvpvxc0",
                                     "created": 1626353006563,
-                                    "text": "长度补偿",
+                                    "text": "磨削长度根据工件参数自动计算",
                                     "layout": null,
                                     "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cczkwh80slc0",
+                                    "created": 1626947913213,
+                                    "text": "修整自动补偿",
                                     "font-size": 16
                                 },
                                 "children": []
@@ -290,9 +326,9 @@
                             },
                             {
                                 "data": {
-                                    "id": "cctq0o6jbt40",
-                                    "created": 1626352987626,
-                                    "text": "角度补偿",
+                                    "id": "cctq0wvpvxc0",
+                                    "created": 1626353006563,
+                                    "text": "位置补偿(X/Z向)",
                                     "layout": null,
                                     "expandState": "expand",
                                     "font-size": 16
@@ -301,11 +337,9 @@
                             },
                             {
                                 "data": {
-                                    "id": "cctq0wvpvxc0",
-                                    "created": 1626353006563,
-                                    "text": "长度补偿",
-                                    "layout": null,
-                                    "expandState": "expand",
+                                    "id": "cczkwh80slc0",
+                                    "created": 1626947913213,
+                                    "text": "修整自动补偿",
                                     "font-size": 16
                                 },
                                 "children": []
@@ -335,6 +369,15 @@
                             },
                             {
                                 "data": {
+                                    "id": "cczkvx938go0",
+                                    "created": 1626947869742,
+                                    "text": "角度补偿(X/Y/Z向)",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
                                     "id": "cctq1xx83ls0",
                                     "created": 1626353087195,
                                     "text": "自动计算加工余量",
@@ -351,6 +394,15 @@
                                     "text": "自定义步距",
                                     "layout": null,
                                     "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cczkwh80slc0",
+                                    "created": 1626947913213,
+                                    "text": "修整自动补偿",
                                     "font-size": 16
                                 },
                                 "children": []
@@ -385,6 +437,15 @@
                                     "text": "锥度补偿",
                                     "layout": null,
                                     "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cczkwh80slc0",
+                                    "created": 1626947913213,
+                                    "text": "修整自动补偿",
                                     "font-size": 16
                                 },
                                 "children": []
@@ -442,7 +503,7 @@
                         "data": {
                             "id": "cctq2z74t7k0",
                             "created": 1626353168335,
-                            "text": "滚轮类型",
+                            "text": "修整类型",
                             "expandState": "expand",
                             "layout": null,
                             "font-size": 16
@@ -452,7 +513,7 @@
                                 "data": {
                                     "id": "cctq3a5uxr40",
                                     "created": 1626353192203,
-                                    "text": "单碟轮",
+                                    "text": "单碟轮插补",
                                     "layout": null,
                                     "expandState": "expand",
                                     "font-size": 16
@@ -475,7 +536,7 @@
                                 "data": {
                                     "id": "cctq3e8azvs0",
                                     "created": 1626353201058,
-                                    "text": "滚压轮",
+                                    "text": "滚压轮成型",
                                     "layout": null,
                                     "expandState": "expand",
                                     "font-size": 16
@@ -545,94 +606,35 @@
                 "children": [
                     {
                         "data": {
-                            "id": "cctq5aykoiw0",
-                            "created": 1626353350668,
-                            "text": "全齿形测量",
-                            "layout": null,
-                            "expandState": "expand",
+                            "id": "cczkqef15uw0",
+                            "created": 1626947436921,
+                            "text": "测量设置",
                             "font-size": 16
                         },
                         "children": [
                             {
                                 "data": {
-                                    "id": "cctq5x663ug0",
-                                    "created": 1626353399016,
-                                    "text": "前角数据",
-                                    "layout": null,
-                                    "expandState": "expand",
+                                    "id": "cczkpiwuri00",
+                                    "created": 1626947368342,
+                                    "text": "从左到右/从右到左",
                                     "font-size": 16
                                 },
                                 "children": []
                             },
                             {
                                 "data": {
-                                    "id": "cctq668rxtk0",
-                                    "created": 1626353418765,
-                                    "text": "后背数据",
-                                    "layout": null,
-                                    "expandState": "expand",
+                                    "id": "cczkr8p9jk00",
+                                    "created": 1626947502843,
+                                    "text": "测量点可偏置微调",
                                     "font-size": 16
                                 },
                                 "children": []
                             },
                             {
                                 "data": {
-                                    "id": "cctq68kgwfs0",
-                                    "created": 1626353423825,
-                                    "text": "底面数据",
-                                    "layout": null,
-                                    "expandState": "expand",
-                                    "font-size": 16
-                                },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "cctq6ae4fvk0",
-                                    "created": 1626353427795,
-                                    "text": "后角数据",
-                                    "layout": null,
-                                    "expandState": "expand",
-                                    "font-size": 16
-                                },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "cctq6djfv7k0",
-                                    "created": 1626353434647,
-                                    "text": "齿距数据",
-                                    "layout": null,
-                                    "expandState": "expand",
-                                    "font-size": 16
-                                },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "ccubn8zykm80",
-                                    "created": 1626414000261,
-                                    "text": "齿厚数据",
-                                    "font-size": 16
-                                },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "ccubnc9qlq80",
-                                    "created": 1626414007383,
-                                    "text": "齿高数据",
-                                    "font-size": 16
-                                },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "cctq6ftnkhc0",
-                                    "created": 1626353439618,
-                                    "text": "齿底圆弧R数据",
-                                    "layout": null,
-                                    "expandState": "expand",
+                                    "id": "cczksf1356g0",
+                                    "created": 1626947594984,
+                                    "text": "测量数据独立界面可查看",
                                     "font-size": 16
                                 },
                                 "children": []
@@ -641,25 +643,132 @@
                     },
                     {
                         "data": {
-                            "id": "cctq5jb5pc80",
-                            "created": 1626353368843,
-                            "text": "底面+前角测量",
-                            "layout": null,
+                            "id": "cczkrxfkaio0",
+                            "created": 1626947556676,
+                            "text": "测量模式",
                             "expandState": "expand",
                             "font-size": 16
                         },
-                        "children": []
-                    },
-                    {
-                        "data": {
-                            "id": "cctq5spacb40",
-                            "created": 1626353389288,
-                            "text": "前角测量",
-                            "layout": null,
-                            "expandState": "expand",
-                            "font-size": 16
-                        },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cctq5aykoiw0",
+                                    "created": 1626353350668,
+                                    "text": "全齿形测量",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cctq5x663ug0",
+                                            "created": 1626353399016,
+                                            "text": "前角数据",
+                                            "layout": null,
+                                            "expandState": "expand",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cctq668rxtk0",
+                                            "created": 1626353418765,
+                                            "text": "后背数据",
+                                            "layout": null,
+                                            "expandState": "expand",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cctq68kgwfs0",
+                                            "created": 1626353423825,
+                                            "text": "底面数据",
+                                            "layout": null,
+                                            "expandState": "expand",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cctq6ae4fvk0",
+                                            "created": 1626353427795,
+                                            "text": "后角数据",
+                                            "layout": null,
+                                            "expandState": "expand",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cctq6djfv7k0",
+                                            "created": 1626353434647,
+                                            "text": "齿距数据",
+                                            "layout": null,
+                                            "expandState": "expand",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "ccubn8zykm80",
+                                            "created": 1626414000261,
+                                            "text": "齿厚数据",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "ccubnc9qlq80",
+                                            "created": 1626414007383,
+                                            "text": "齿高数据",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cctq6ftnkhc0",
+                                            "created": 1626353439618,
+                                            "text": "齿底圆弧R数据",
+                                            "layout": null,
+                                            "expandState": "expand",
+                                            "font-size": 16
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq5jb5pc80",
+                                    "created": 1626353368843,
+                                    "text": "底面+前角测量",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cctq5spacb40",
+                                    "created": 1626353389288,
+                                    "text": "前角测量",
+                                    "layout": null,
+                                    "expandState": "expand",
+                                    "font-size": 16
+                                },
+                                "children": []
+                            }
+                        ]
                     }
                 ]
             },
