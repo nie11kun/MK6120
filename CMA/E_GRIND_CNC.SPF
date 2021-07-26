@@ -1,6 +1,7 @@
 PROC E_GRIND_CNC(REAL LENGTH_X,REAL LENGTH_Y,REAL LENGTH_Z,REAL BUJU_X) DISPLOF
 ;***********程序功能**********
-;*外部齿形调用程序
+;*CNC齿形磨削程序
+;*要求齿形起点终点两端高度一致
 ;****************************
 
 DEF AXIS AX_HORI,AX_VER
