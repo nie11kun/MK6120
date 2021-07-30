@@ -10,6 +10,8 @@ MSG("台面到磨削起点"); ifIsCHS
 G90 G01 Z=ZPOSITION F=ZSPEED;Z轴到磨削起点
 G90 G01 X=XPOSITION F=XSPEED;X轴到磨削起点
 ;
+M8;磨削冷却开
+
 MSG("砂轮到安全位置"); ifIsCHS
 G90 G01 Y=YPOSITION F=YSPEED;Y轴到安全位置
 
