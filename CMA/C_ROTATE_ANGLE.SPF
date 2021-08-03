@@ -14,7 +14,7 @@ IF INI[16]==1
 		ENDWHILE
 		G4 F1
 ;
-		MSG("螺旋升角到位中"); ifIsCHS
+		;MSG("螺旋升角到位中"); ifIsCHS
 		G90 G01 A=A_ANG F=INI[60]
 		STOPRE
 		G4 F0.5
@@ -32,7 +32,7 @@ IF INI[16]==1
 		ENDWHILE
 		G4 F1
 ;
-		MSG("螺旋升角到位中"); ifIsCHS
+		;MSG("螺旋升角到位中"); ifIsCHS
 		G90 G01 B=B_ANG F=INI[60]
 		STOPRE
 		G4 F0.5
