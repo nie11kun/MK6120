@@ -87,17 +87,29 @@ WHILE(GRIND_COUNT<=GRIND_TIMES)
         VER_FORCE=$AA_IM[Y];当前滚轮接触砂轮位置
     ENDIF
 
-    TRANS AX[AX_HORI]=HORI_FORCE AX[AX_VER]=VER_FORCE-TOOL_R
 
-    FGROUP(AX_HORI,AX_VER)
-    G17 G64 G90 G01 AX[AX_HORI]=0 F1000
-    AX[AX_VER]=TOOL_R F=500
+    IF LADAO[214]==0;前角CNC插补磨削-磨削类型(0砂轮顶圆弧YZ插补/1砂轮半径YX插补)
+        TRANS AX[AX_HORI]=HORI_FORCE AX[AX_VER]=VER_FORCE-TOOL_R
 
-    ;需设置通道设定数据 MD42480=0 否则激活刀具补偿后运行 EXTCALL 执行外部程序会报警
-    ;$TC_DP1[1,1]=121
-    $TC_DP6[1,1]=TOOL_R
-    T1 D1 G17
-    G41 G64 G90 G01 Z=0 Y=0 F1000
+        FGROUP(AX_HORI,AX_VER)
+        G17 G64 G90 G01 AX[AX_HORI]=0 F1000
+        AX[AX_VER]=TOOL_R F=500
+
+        ;需设置通道设定数据 MD42480=0 否则激活刀具补偿后运行 EXTCALL 执行外部程序会报警
+        ;$TC_DP1[1,1]=121
+        $TC_DP6[1,1]=TOOL_R
+        T1 D1 G17
+        G41 G64 G90 G01 Z=0 Y=0 F1000
+    ELSE
+        TRANS AX[AX_HORI]=HORI_FORCE AX[AX_VER]=VER_FORCE-TOOL_R
+
+        FGROUP(AX_HORI,AX_VER)
+        G18 G64 G90 G01 AX[AX_HORI]=0 F1000
+        AX[AX_VER]=TOOL_R F=500
+        $TC_DP6[1,1]=TOOL_R
+        T1 D1 G18
+        G42 G64 G90 G01 X=0 Y=0 F1000
+    ENDIF
 
     F=PROCESS[9]
 
