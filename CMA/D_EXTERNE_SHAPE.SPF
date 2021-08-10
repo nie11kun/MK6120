@@ -43,8 +43,13 @@ ELSE
         SHAPE_PATH="//DEV_3:"<<SHAPE_DIR<<"/"<<SHAPE_EXTERNAL;extcall不需要加 _N_ 等前缀
         EXTCALL(SHAPE_PATH)
     ELSE
-        SHAPE_PATH="USB:"<<SHAPE_DIR<<"/"<<SHAPE_EXTERNAL;
-        EXTCALL(SHAPE_PATH)
+        IF LADAO[156]==2
+            SHAPE_PATH="USB:"<<SHAPE_DIR<<"/"<<SHAPE_EXTERNAL;
+            EXTCALL(SHAPE_PATH)
+        ELSE
+            SHAPE_PATH="CF_CARD:"<<SHAPE_DIR<<"/"<<SHAPE_EXTERNAL;
+            EXTCALL(SHAPE_PATH)
+        ENDIF
     ENDIF
 ENDIF
 

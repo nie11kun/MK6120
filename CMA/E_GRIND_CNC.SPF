@@ -117,8 +117,13 @@ WHILE(GRIND_COUNT<=GRIND_TIMES)
             SHAPE_PATH="//DEV_3:"<<SHAPE_CNC_DIR<<"/"<<SHAPE_CNC_NAME;extcall不需要加 _N_ 等前缀
             EXTCALL(SHAPE_PATH)
         ELSE
-            SHAPE_PATH="USB:"<<SHAPE_CNC_DIR<<"/"<<SHAPE_CNC_NAME;
-            EXTCALL(SHAPE_PATH)
+            IF LADAO[203]==2
+                SHAPE_PATH="USB:"<<SHAPE_CNC_DIR<<"/"<<SHAPE_CNC_NAME;
+                EXTCALL(SHAPE_PATH)
+            ELSE
+                SHAPE_PATH="CF_CARD:"<<SHAPE_CNC_DIR<<"/"<<SHAPE_CNC_NAME;
+                EXTCALL(SHAPE_PATH)
+            ENDIF
         ENDIF
     ENDIF
 
