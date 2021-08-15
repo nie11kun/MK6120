@@ -228,7 +228,8 @@ ELSE
 				PROCESS[13]=TECHNOLOGY[235]+LADAO[205];初始接触Y
 				LADAO[13]=TECH_ADDED[109];齿形偏转角度
 
-				LADAO[199]=LADAO[71]+LADAO[139];当前工序x轴起始位
+				BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[216]));每齿x磨削起点补偿
+				LADAO[199]=LADAO[71]+LADAO[139]+BUCHANG_X;当前工序x轴起始位
             ELSE;
 				IF LADAO[37]==4;后背
 					IF TECH_ADDED[137]==1;新砂轮修整后校准磨削位
