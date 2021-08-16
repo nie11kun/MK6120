@@ -1,44 +1,44 @@
 ;***********************MASK3:修整参数_主界面:panel_3**********************
 //M(Mask3/$85022//)
 
-	DEF VAR5=(I/0,1000//$85340,$85340,,/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,60,110/440,60,60//"UserGuide/section_3.html","S3D7");粗修次数
-	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,80,110/440,80,110//"UserGuide/section_3.html","S3D8");粗修量
-	DEF VAR7=(R/0,1000//$85306,$85306,,$85045/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[30]"/330,100,110/440,100,110//"UserGuide/section_3.html","S3D9");粗修速度
+	DEF VAR5=(I/0,1000//$85340,$85340,,/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[26]"/330,40,110/440,40,60//"UserGuide/section_3.html","S3D7");粗修次数
+	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,60,110/440,60,110//"UserGuide/section_3.html","S3D8");粗修量
+	DEF VAR7=(R/0,1000//$85306,$85306,,$85045/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[30]"/330,80,110/440,80,110//"UserGuide/section_3.html","S3D9");粗修速度
 
-	DEF VAR8=(I/0,1000//$85341,$85341,,/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[27]"/330,130,110/440,130,60//"UserGuide/section_3.html","S3D10");精修次数 ifIsNotHasWorm
-	DEF VAR9=(R/0,0.5//$85309,$85309,,$85043/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[29]"/330,150,110/440,150,110//"UserGuide/section_3.html","S3D11");精修量
-	DEF VAR10=(R/0,1000//$85307,$85307,,$85045/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[31]"/330,170,110/440,170,110//"UserGuide/section_3.html","S3D12");精修速度
+	DEF VAR8=(I/0,1000//$85341,$85341,,/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[27]"/330,110,110/440,110,60//"UserGuide/section_3.html","S3D10");精修次数 ifIsNotHasWorm
+	DEF VAR9=(R/0,0.5//$85309,$85309,,$85043/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[29]"/330,130,110/440,130,110//"UserGuide/section_3.html","S3D11");精修量
+	DEF VAR10=(R/0,1000//$85307,$85307,,$85045/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[31]"/330,150,110/440,150,110//"UserGuide/section_3.html","S3D12");精修速度
 
-	DEF VAR15=(R/0,80//$85317,$85317,,$85046/WR1/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL_LINESPEED_DRESS[2]"/330,200,110/440,200,110//"UserGuide/section_3.html","S3D15");砂轮线速度
-	DEF VAR16=(I/0,//$85221,$85221,,$85044/WR1/"panel_3_15_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[37]"/330,220,110/440,220,110//"UserGuide/section_3.html","S3D19");修整时砂轮转速
+	DEF VAR15=(R/0,80//$85317,$85317,,$85046/WR1/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL_LINESPEED_DRESS[2]"/330,180,110/440,180,110//"UserGuide/section_3.html","S3D15");砂轮线速度
+	DEF VAR16=(I/0,//$85221,$85221,,$85044/WR1/"panel_3_15_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[37]"/330,200,110/440,200,110//"UserGuide/section_3.html","S3D19");修整时砂轮转速
 
-	DEF STORE_AREA=(I/*0=$85322,1=$85323,2=$85324,3=$85326/0/$85321,$85321,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[157]"/330,250,110/440,250,60//);齿形程序存储位置
-	DEF MODEL_DIR=(S///$85456,$85456,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_DIR"/330,270,80/440,270,110/);外部齿形文件夹名称
-	DEF MODEL_NAME=(S///$85464,$85464,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_EXTERNAL"/330,290,80/440,290,110/);存储齿形程序名
-	DEF CIGAO=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[93]"/330,310,110/440,310,110//);修整齿形齿高
-	DEF TAIDAO=(R///$85637,$85637,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[17]"/330,330,110/440,330,110//);新砂轮抬刀高度
+	DEF STORE_AREA=(I/*0=$85322,1=$85323,2=$85324,3=$85326/0/$85321,$85321,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[157]"/330,230,110/440,230,60//);齿形程序存储位置
+	DEF MODEL_DIR=(S///$85456,$85456,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_DIR"/330,250,80/440,250,110/);外部齿形文件夹名称
+	DEF MODEL_NAME=(S///$85464,$85464,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_EXTERNAL"/330,270,80/440,270,110/);存储齿形程序名
+	DEF CIGAO=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[93]"/330,290,110/440,290,110//);修整齿形齿高
+	DEF TAIDAO=(R///$85637,$85637,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[17]"/330,310,110/440,310,110//);新砂轮抬刀高度
 
-	DEF CIGAO_ROLL=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/330,250,110/440,250,110//);修整齿形齿高
+	DEF CIGAO_ROLL=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/330,230,110/440,230,110//);修整齿形齿高
+
+	DEF SAFE_Z=(R///$85370,$85370,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[185]"/330,350,110/440,350,110//);修整安全距离.Z
 
 	;*******************************************
 
 	DEF SHALUN_LEIXIN=(I/*0=$85368,1=$85369//$85367,$85367,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[39]"/10,10,110/130,10,70//);砂轮类型
 
-	DEF ZHIJIN_MSG=(R///$85329,$85329,,/WR1///10,40,200/0,0,0//);
-	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR2/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/10,60,110/130,60,110//"UserGuide/section_3.html","S3D14");新砂轮直径
-	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR1//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/10,80,110/130,80,110/);砂轮当前直径
-	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR2/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/10,100,130/130,100,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
+	DEF ZHIJIN_MSG=(R///$85329,$85329,,/WR4///10,40,200/0,0,0//);
+	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR4/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/10,60,110/130,60,110//"UserGuide/section_3.html","S3D14");新砂轮直径
+	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/10,80,110/130,80,110/);砂轮当前直径
+	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/10,100,130/130,100,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
 
-	DEF HOUDU_MSG=(R///$85330,$85330,,/WR1///10,140,200/0,0,0//);
-	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/10,160,110/130,160,110//"UserGuide/section_3.html","S3D13");新砂轮厚度
-	DEF HOUDU_CURR=(R///$85313,$85313,,$85043/WR1/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[113]"/10,180,110/130,180,110//"UserGuide/section_3.html","S3D13");当前砂轮厚度
-	DEF HOUDU_MIN=(R///$85314,$85314,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[114]"/10,200,110/130,200,110//"UserGuide/section_3.html","S3D13");最小砂轮厚度
-	DEF HOUDU_DIA=(R///$85315,$85315,,$85043/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[115]"/10,220,110/130,220,110//"UserGuide/section_3.html","S3D13");砂轮直径
-	DEF HOUDU_ZUIDU=(R///$85325,$85325,,$85042/WR2/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[178]"/10,240,110/130,240,110//"UserGuide/section_3.html","S3D13");砂轮锥度角
+	DEF HOUDU_MSG=(R///$85330,$85330,,/WR4///10,40,200/0,0,0//);
+	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/10,60,110/130,60,110//"UserGuide/section_3.html","S3D13");新砂轮厚度
+	DEF HOUDU_CURR=(R///$85313,$85313,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[113]"/10,80,110/130,80,110//"UserGuide/section_3.html","S3D13");当前砂轮厚度
+	DEF HOUDU_MIN=(R///$85314,$85314,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[114]"/10,100,110/130,100,110//"UserGuide/section_3.html","S3D13");最小砂轮厚度
+	DEF HOUDU_DIA=(R///$85315,$85315,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[115]"/10,120,110/130,120,110//"UserGuide/section_3.html","S3D13");砂轮直径
+	DEF HOUDU_ZUIDU=(R///$85325,$85325,,$85042/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[178]"/10,140,110/130,140,110//"UserGuide/section_3.html","S3D13");砂轮锥度角
 
 	;************************************************
-
-	DEF SAFE_Z=(R///$85370,$85370,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[185]"/10,330,110/130,330,110//);修整安全距离.Z
 
 	DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D2");Y_Z/Y  ifIsDressWare3
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D16");砂轮状态
@@ -229,6 +229,32 @@
 		call("UP5")
 		call("UP1")
 		call("ROTATE_LINE")
+
+		IF SHALUN_LEIXIN.VAL==0
+			ZHIJIN_MSG.WR=1
+			VAR13.WR=2
+			VAR14.WR=1
+			WHEEL_W_MIN.WR=2
+
+			HOUDU_MSG.WR=4
+			VAR12.WR=4
+			HOUDU_CURR.WR=4
+			HOUDU_MIN.WR=4
+			HOUDU_DIA.WR=4
+			HOUDU_ZUIDU.WR=4
+		ELSE
+			ZHIJIN_MSG.WR=4
+			VAR13.WR=4
+			VAR14.WR=4
+			WHEEL_W_MIN.WR=4
+
+			HOUDU_MSG.WR=1
+			VAR12.WR=2
+			HOUDU_CURR.WR=1
+			HOUDU_MIN.WR=2
+			HOUDU_DIA.WR=2
+			HOUDU_ZUIDU.WR=2
+		ENDIF
 	END_CHANGE
 
 	CHANGE(CIGAO_ROLL)
