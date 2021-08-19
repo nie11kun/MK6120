@@ -1,0 +1,31 @@
+
+E_LAB_A_TEST5: ;#SM Z:2
+;#7__DlgK contour definition begin - Don't change!;*GP*;*RO*;*HD*
+G17 G90 DIAMOF;*GP*
+G0 Y0 Z0 ;*GP*
+G1 Z-1 ;*GP*
+Y11.6649 Z-5.5949 ;*GP*
+G2 Y14.4176 Z-8.2533 I=AC(9.8322) J=AC(-10.247) ;*GP*
+Y13.5964 Z-9.6474 I=AC(13.5006) J=AC(-8.6521) ;*GP*
+G1 Y0 Z-10.9566 ;*GP*
+Z-11.9566 ;*GP*
+;CON,0,0.0000,0,0,MST:0,0,AX:Y,Z,I,J,TRANS:1;*GP*;*RO*;*HD*
+;S,EX:0,EY:0;*GP*;*RO*;*HD*
+;F,LFASE:0;*GP*;*RO*;*HD*
+;LD,EY:-1;*GP*;*RO*;*HD*
+;F,LFASE:0;*GP*;*RO*;*HD*
+;LA,EX:11.6649,EY:-5.5949;*GP*;*RO*;*HD*
+;F,LFASE:0;*GP*;*RO*;*HD*
+;ACW,EX:14.4176,EY:-8.2533,CY:-10.247;*GP*;*RO*;*HD*
+;F,LFASE:0;*GP*;*RO*;*HD*
+;ACW,EX:13.5964,EY:-9.6474,CX:13.5006;*GP*;*RO*;*HD*
+;F,LFASE:0;*GP*;*RO*;*HD*
+;LA,EX:0,EY:-10.9566;*GP*;*RO*;*HD*
+;F,LFASE:0;*GP*;*RO*;*HD*
+;LD,EY:-11.9566;*GP*;*RO*;*HD*
+;F,LFASE:0;*GP*;*RO*;*HD*
+;#End contour definition end - Don't change!;*GP*;*RO*;*HD*
+E_LAB_E_TEST5:
+
+RET
+
