@@ -40,7 +40,7 @@
 
 	;************************************************
 
-	DEF VAR1=(I/*1=$85345,4=$85348//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D2");Y_Z/Y  ifIsDressWare3
+	DEF VAR1=(I/*1=$85345,4=$85348,6=$85371//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D2");Y_Z/Y  ifIsDressWare3
 	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D16");砂轮状态
 
 	DEF N_CX_X_TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在前 ifIsFrontDress
@@ -54,6 +54,8 @@
 	DEF VAR30_1=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[128]"/0,0,0/0,0,0);插补-厚度方向-修整基准.Y
 	DEF VAR30_2=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[129]"/0,0,0/0,0,0);成型-直径方向-修整基准.Y
 	DEF VAR30_3=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[130]"/0,0,0/0,0,0);成型-厚度方向-修整基准.Y
+	DEF VAR30_4=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[222]"/0,0,0/0,0,0);金刚笔-直径方向-修整基准.Y
+	DEF VAR30_5=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[227]"/0,0,0/0,0,0);金刚笔-厚度方向-修整基准.Y
 	DEF VAR31=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[13]"/0,0,0/0,0,0/);NC用初始接触左
 	DEF VAR41=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[11]"/0,0,0/0,0,0/);当前接触左
 	DEF VAR33=(R////WR4//"/NC/_N_NC_GD2_ACX/WHEEL[15]"/0,0,0/0,0,0/);滚压轮初始接触位置
@@ -80,6 +82,7 @@
 	VS1=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
 ;
 	VS2=($85379,ac7,se2);"滚压轮"
+	VS3=($85371,ac7,se2);"金刚笔"
 ;
 
 	LOAD
@@ -92,7 +95,7 @@
 			VAR16.WR=2
 		ENDIF
 		;ifIsDressWare3Begin
-		IF (VAR1.VAL<>1)AND(VAR1.VAL<>4)
+		IF (VAR1.VAL<>1)AND(VAR1.VAL<>4)AND(VAR1.VAL<>6)
 			VAR1.VAL=1
 		ENDIF
 		;ifIsDressWare3End
@@ -150,6 +153,10 @@
 		ENDIF
 	END_PRESS
 
+	PRESS(VS3)
+		LM("MASK20","a_dressware.com")
+	END_PRESS
+
 	PRESS(VS8)
 		LM("MASK15","a_dressware.com")
 	END_PRESS
@@ -158,13 +165,21 @@
 		IF VAR1.VAL==1
 			VS1.SE=1
 			VS2.SE=2
+			VS3.SE=2
 		ELSE
-			VS1.SE=2
-			VS2.SE=1
+			IF VAR1.VAL==4
+				VS1.SE=2
+				VS2.SE=1
+				VS3.SE=2
+			ELSE
+				VS1.SE=2
+				VS2.SE=2
+				VS3.SE=1
+			ENDIF
 		ENDIF
 		call("UP3")
 		call("UP5")
-		IF VAR1.VAL==1
+		IF (VAR1.VAL==1)OR(VAR1.VAL==6)
 			STORE_AREA.WR=1
 			MODEL_DIR.WR=2
 			MODEL_NAME.WR=2
@@ -305,6 +320,11 @@
 						IF VAR1.VAL==4
 							VAR20.VAL="Y"
 							VAR21.VAL=""
+						ELSE
+							IF VAR1.VAL==6
+								VAR20.VAL="Y"
+								VAR21.VAL="Z"
+							ENDIF
 						ENDIF
 					ENDIF
 				ENDIF
@@ -326,6 +346,14 @@
 					VAR31.VAL=VAR30_0.VAL+VAR34_0.VAL/2+VAR13.VAL/2;初始接触位
 				ELSE
 					VAR31.VAL=VAR30_1.VAL+VAR34_0.VAL/2+VAR12.VAL;初始接触位
+				ENDIF
+			ELSE
+				IF VAR1.VAL==6;金刚笔
+					IF SHALUN_LEIXIN.VAL==0
+						VAR31.VAL=VAR30_4.VAL+VAR13.VAL/2;初始接触位
+					ELSE
+						VAR31.VAL=VAR30_5.VAL+VAR12.VAL;初始接触位
+					ENDIF
 				ENDIF
 			ENDIF
 		ENDIF

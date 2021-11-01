@@ -17,7 +17,7 @@ DEF REAL TRAP_TE2
 IF DRESSER[5]==0;新砂轮
     IF INI[86]==0;输入螺距(调用内部齿形/磨螺纹)
         IF DRESSER[113]==0;新砂轮是否是成型砂轮(0否1是)
-            IF (DRESSER[0]==0)OR(DRESSER[0]==1);vw/xz
+            IF (DRESSER[0]==6)OR(DRESSER[0]==1);插补/金刚笔
                 IF DRESSER[133]==0;新砂轮修整模式(0抬齿高/1偏半个砂轮宽度)
                     IF DRESSER[139]==0;是否使用外部齿形程序(0否1是)
                         E_COMMON_SHAPE_CACU;通用齿形参数计算程序

@@ -26,7 +26,7 @@ R270=0;同步动作取消标记
 LADAO[161]=0;修砂轮后磨削标记
 
 ;非蜗杆磨床时对存储齿形程序的变量赋值
-	IF (DRESSER[0]==0) OR (DRESSER[0]==1);VW/XZ
+	IF (DRESSER[0]==6) OR (DRESSER[0]==1);插补/金刚笔
 		IF DRESSER[139]==0;是否使用外部齿形程序(0否1是)
 			SHAPE="D_COMMON_SHAPE"
 			IF DRESSER[4]==0;
