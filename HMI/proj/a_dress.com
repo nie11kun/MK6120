@@ -79,9 +79,9 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
-	VS1=($85380,ac7,se2);"单滚轮" ifIsSingleAndRound
+	VS1=($85345,ac7,se2);"单滚轮" ifIsSingleAndRound
 ;
-	VS2=($85379,ac7,se2);"滚压轮"
+	VS2=($85348,ac7,se2);"滚压轮"
 	VS3=($85371,ac7,se2);"金刚笔"
 ;
 
