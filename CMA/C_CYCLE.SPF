@@ -32,10 +32,14 @@ IF (INI[72]==1) OR (LADAO[162]==1);第一次磨削或者修整后的磨削
     ;**********************
     ;ifIsExternalBegin
 
-    IF ($AA_IM[Z]>=INI[6]-20) AND ($AA_IM[Z]<=INI[6]+20);Z轴在磨削起点附近慢速到位
-        D_GRIND_INIT_POSITION(INI[6],LADAO[199],PROCESS[16],INI[57]*4,LADAO[2],INI[55]);外螺纹
+    IF LADAO[238]==0;内圆加工-使能
+        IF ($AA_IM[Z]>=INI[6]-20) AND ($AA_IM[Z]<=INI[6]+20);Z轴在磨削起点附近慢速到位
+            D_GRIND_INIT_POSITION(INI[6],LADAO[199],PROCESS[16],INI[57]*4,LADAO[2],INI[55]);外螺纹
+        ELSE
+            D_GRIND_INIT_POSITION(INI[6],LADAO[199],PROCESS[16],INI[56],LADAO[2],INI[55]);外螺纹
+        ENDIF
     ELSE
-        D_GRIND_INIT_POSITION(INI[6],LADAO[199],PROCESS[16],INI[56],LADAO[2],INI[55]);外螺纹
+        D_GRIND_INIT_POSITION(LADAO[239],LADAO[240],LADAO[241],INI[56],LADAO[2],INI[55])
     ENDIF
 
     ;ifIsExternalEnd
@@ -47,44 +51,48 @@ ENDIF
 
 M8;磨削冷却开
 
-IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背,5齿平面)
-    D_GRIND_RING;环形槽小循环
-    IF LADAO[18]==0;进刀方向(0垂直/1水平)
-        ;PROCESS[14]=PROCESS[14]+PROCESS[8];累计工艺磨削量累计
-    ELSE
-        ;TECHNOLOGY[230]=TECHNOLOGY[230]+PROCESS[8]
-    ENDIF
-ELSE
-    IF LADAO[37]==1;平磨
-        D_GRIND_PINGMO
-        ;TECH_ADDED[7]=TECH_ADDED[7]+PROCESS[8]
-    ELSE
-        IF LADAO[37]==2;齿顶后刃
-            D_GRIND_DINGHOUREN
-            ;TECH_ADDED[47]=TECH_ADDED[47]+PROCESS[8]
+IF LADAO[238]==0;内圆加工-使能
+    IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背,5齿平面)
+        D_GRIND_RING;环形槽小循环
+        IF LADAO[18]==0;进刀方向(0垂直/1水平)
+            ;PROCESS[14]=PROCESS[14]+PROCESS[8];累计工艺磨削量累计
         ELSE
-            IF LADAO[37]==3;铲背
-                D_GRIND_CEREN
-                ;TECH_ADDED[87]=TECH_ADDED[87]+PROCESS[8]
+            ;TECHNOLOGY[230]=TECHNOLOGY[230]+PROCESS[8]
+        ENDIF
+    ELSE
+        IF LADAO[37]==1;平磨
+            D_GRIND_PINGMO
+            ;TECH_ADDED[7]=TECH_ADDED[7]+PROCESS[8]
+        ELSE
+            IF LADAO[37]==2;齿顶后刃
+                D_GRIND_DINGHOUREN
+                ;TECH_ADDED[47]=TECH_ADDED[47]+PROCESS[8]
             ELSE
-                IF LADAO[37]==4;后背
-                    D_GRIND_RING
-                    IF LADAO[18]==0;进刀方向(0垂直/1水平)
-                        ;TECH_ADDED[127]=TECH_ADDED[127]+PROCESS[8];累计工艺磨削量累计
-                    ELSE
-                        ;TECH_ADDED[167]=TECH_ADDED[167]+PROCESS[8]
-                    ENDIF
-                ELSE;
-                    IF LADAO[37]==5;齿平面
-                        D_GRIND_CIPINMIAN
-                        ;TECH_ADDED[207]=TECH_ADDED[207]+PROCESS[8]
-                    ELSE;吸铁台面
-                        D_GRIND_XITIE
+                IF LADAO[37]==3;铲背
+                    D_GRIND_CEREN
+                    ;TECH_ADDED[87]=TECH_ADDED[87]+PROCESS[8]
+                ELSE
+                    IF LADAO[37]==4;后背
+                        D_GRIND_RING
+                        IF LADAO[18]==0;进刀方向(0垂直/1水平)
+                            ;TECH_ADDED[127]=TECH_ADDED[127]+PROCESS[8];累计工艺磨削量累计
+                        ELSE
+                            ;TECH_ADDED[167]=TECH_ADDED[167]+PROCESS[8]
+                        ENDIF
+                    ELSE;
+                        IF LADAO[37]==5;齿平面
+                            D_GRIND_CIPINMIAN
+                            ;TECH_ADDED[207]=TECH_ADDED[207]+PROCESS[8]
+                        ELSE;吸铁台面
+                            D_GRIND_XITIE
+                        ENDIF
                     ENDIF
                 ENDIF
             ENDIF
         ENDIF
     ENDIF
+ELSE
+    D_GRIND_CYCLE
 ENDIF
 
 IF $A_DBB[2]==1;按下退刀键跳转到结束程序
