@@ -92,7 +92,9 @@ ELSE
         ENDIF
 
         IF LADAO[238]==1;内圆加工-使能
-            LADAO[242]=LADAO[242]+DRESSER[14]
+            IF LADAO[38]==0;砂轮类型
+                LADAO[242]=LADAO[242]+DRESSER[14]
+            ENDIF
         ENDIF
 ;
         MSG("粗修整中-->正在进行第"<<DRESSER[18]<<"次,还剩"<<DRESSER[11]-DRESSER[18]<<"次完成,进给量:"<<DRESSER[14]<<"mm"); ifIsCHS
@@ -155,7 +157,9 @@ ELSE
             ENDIF
 
             IF LADAO[238]==1;内圆加工-使能
-                LADAO[242]=LADAO[242]+DRESSER[15]
+                IF LADAO[38]==0;砂轮类型
+                    LADAO[242]=LADAO[242]+DRESSER[15]
+                ENDIF
             ENDIF
 ;
             MSG("精修整中-->正在进行第"<<DRESSER[19]<<"次,还剩"<<DRESSER[12]-DRESSER[19]<<"次完成,进给量:"<<DRESSER[15]<<"mm"); ifIsCHS
