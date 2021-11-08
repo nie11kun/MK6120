@@ -6,6 +6,7 @@ PROC D_GRIND_CYCLE DISPLOF
 
 ;起点定义在第一几何轴上，这样 AP 可以设置为0或360就可以运动整圆(0或360都会运行一圈)
 ;注意不加 TURN 默认会运行一圈，所以总圈数为 TURN 加 1 圈
+;G111 前需要定义圆插补所在平面
 
 DEF REAL START_X,START_Y,START_Z
 DEF REAL CENTER_X,CENTER_Y
