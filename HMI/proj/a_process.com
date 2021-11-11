@@ -582,7 +582,7 @@
 
 	DEF VER_CUT=(R///$85230,$85230,,$85043/WR1///400,1,190/470,1,110/);垂直相对加工量
 	DEF XIE_ANG=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[100]"/0,0,0/0,0,0//);斜线进刀角度
-	DEF JINDAOMODE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[95]"/0,0,0/0,0,0//);前刃后背加工是否斜向进刀(0否1是)
+	DEF JINDAOMODE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[253]"/0,0,0/0,0,0//);前刃后背加工是否斜向进刀(0否1是)
 
 	;磨削几件后修整
 	DEF WORK_CUMU=(I///$85227,$85227,,$85228/WR2//"/NC/_N_NC_GD2_ACX/INI[74]"/230,1,110/300,1,110//"UserGuide/section_2.html","S2D1");磨削工件计数(磨削完毕后累加)

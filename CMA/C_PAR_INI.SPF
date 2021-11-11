@@ -147,6 +147,8 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 
 	BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[174]));每齿x磨削起点补偿
 	LADAO[199]=LADAO[0]+BUCHANG_X;当前工序x轴起始位
+
+	LADAO[94]=LADAO[252];前角斜线进刀(0否1是)
 ELSE
     IF LADAO[37]==1;通磨
 		IF TECH_ADDED[17]==1;新砂轮修整后校准磨削位
@@ -269,6 +271,8 @@ ELSE
 
 					BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[175]));每齿x磨削起点补偿
 					LADAO[199]=LADAO[58]+BUCHANG_X;当前工序x轴起始位
+
+					LADAO[94]=LADAO[253];前角斜线进刀(0否1是)
 				ELSE;
 					IF LADAO[37]==5;齿平面
 						TECH_ADDED[208]=0;平磨-齿数累计
