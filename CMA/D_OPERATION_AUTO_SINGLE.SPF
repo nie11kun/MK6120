@@ -19,7 +19,7 @@ IF (LADAO[27]<=RING[1]) OR (LADAO[93]==0);不是最后齿背或测全型
 	IF LADAO[27]>1;不是第一齿
 		M97;测头信号有效
 		G4 F0.1
-		MEAS=1 G90 G01 Z=LADAO[81]+LADAO[98]*(LADAO[34]-LADAO[130]) F=LADAO[236]*3;Z轴到安全位置
+		MEAS=1 G90 G01 Z=LADAO[81]+LADAO[98]*(LADAO[34]-LADAO[130]) F=LADAO[236]*5;Z轴到安全位置
 		M96;测头信号无效
 		G4 F0.1
 		IF TOOL_SET[55]==0;当前正在进行接近开关0/测量头1机构测量
