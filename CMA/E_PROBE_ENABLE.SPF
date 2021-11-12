@@ -1,0 +1,25 @@
+PROC E_PROBE_ENABLE DISPLOF
+;***********程序功能**********
+;*测头使能
+;****************************
+
+DEF REAL ENABLE_COUNT;
+ENABLE_COUNT=0;
+
+M97;测头信号有效
+G4 F0.1
+WHILE($A_DBB[27]==1);测头控制继电器故障检测(M97测头信号有效时此信号为0)
+	IF ENABLE_COUNT>=5
+		MSG("测头无法使能,请检查电箱内控制继电器模块是否损坏")
+		M0;
+	ENDIF
+	MSG("等待测头继电器检测信号")
+	G4 F0.2
+	STOPRE
+	ENABLE_COUNT=ENABLE_COUNT+1
+ENDWHILE
+
+STOPRE
+
+RET
+
