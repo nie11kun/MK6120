@@ -1,3 +1,35 @@
+;**********************MASK1:工艺参数;**********************
+//M(Mask1///)
+	
+	DEF GRIND_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[38]"/0,0,0/0,0,0/);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背,5齿两端平面,6吸铁台面)
+
+	LOAD
+		IF GRIND_CHOICE.VAL==0;前角
+			LM("MASK2","a_process.com")
+		ELSE
+			IF GRIND_CHOICE.VAL==1;通磨
+				LM("MASK6","a_process.com")
+			ELSE
+				IF GRIND_CHOICE.VAL==2;后角
+					LM("MASK5","a_process.com")
+				ELSE
+					IF GRIND_CHOICE.VAL==3;铲背
+						LM("MASK7","a_process.com")
+					ELSE
+						IF GRIND_CHOICE.VAL==4;后背
+							LM("MASK3","a_process.com")
+						ELSE
+							LM("MASK8","a_process.com")
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+
+	END_LOAD
+
+//END
+
 ;**********************MASK2:工艺参数_前角_底面;**********************
 //M(Mask2/$85021//)
 		
@@ -84,12 +116,6 @@
 
 	VS1=($85231,ac7,se3);前角底面
 	VS2=($85232,ac7,se1);前角侧面
-	VS3=($85245,ac7,se1);齿背底面
-	VS4=($85246,ac7,se1);齿背侧面
-	VS5=($85247,ac7,se1);平刃后角
-	VS6=($85248,ac7,se1);通磨
-	VS7=($85249,ac7,se1);铲背
-	VS8=($85251,ac7,se1);齿平面
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -156,30 +182,6 @@
 
 	PRESS(VS2)
 		LM("MASK29","a_process.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_process.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_process.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK5","a_process.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK6","a_process.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK7","a_process.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK8","a_process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -610,12 +612,6 @@
 
 	VS1=($85231,ac7,se1);前角底面
 	VS2=($85232,ac7,se3);前角侧面
-	VS3=($85245,ac7,se1);齿背底面
-	VS4=($85246,ac7,se1);齿背侧面
-	VS5=($85247,ac7,se1);平刃后角
-	VS6=($85248,ac7,se1);通磨
-	VS7=($85249,ac7,se1);铲背
-	VS8=($85251,ac7,se1);齿平面
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -682,30 +678,6 @@
 
 	PRESS(VS2)
 		LM("MASK29","a_process.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_process.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_process.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK5","a_process.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK6","a_process.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK7","a_process.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK8","a_process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -1106,14 +1078,8 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
 
-	VS1=($85231,ac7,se1);前角底面
-	VS2=($85232,ac7,se1);前角侧面
-	VS3=($85245,ac7,se3);齿背底面
-	VS4=($85246,ac7,se1);齿背侧面
-	VS5=($85247,ac7,se1);平刃后角
-	VS6=($85248,ac7,se1);通磨
-	VS7=($85249,ac7,se1);铲背
-	VS8=($85251,ac7,se1);齿平面
+	VS1=($85245,ac7,se3);齿背底面
+	VS2=($85246,ac7,se1);齿背侧面
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -1151,7 +1117,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK3","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
@@ -1175,35 +1141,11 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK2","a_process.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK29","a_process.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK3","a_process.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS2)
 		LM("MASK4","a_process.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK5","a_process.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK6","a_process.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK7","a_process.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK8","a_process.com")
 	END_PRESS
 	
 	PRESS(HS8)
@@ -1604,14 +1546,8 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
 
-	VS1=($85231,ac7,se1);前角底面
-	VS2=($85232,ac7,se1);前角侧面
-	VS3=($85245,ac7,se1);齿背底面
-	VS4=($85246,ac7,se3);齿背侧面
-	VS5=($85247,ac7,se1);平刃后角
-	VS6=($85248,ac7,se1);通磨
-	VS7=($85249,ac7,se1);铲背
-	VS8=($85251,ac7,se1);齿平面
+	VS1=($85245,ac7,se1);齿背底面
+	VS2=($85246,ac7,se3);齿背侧面
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -1649,7 +1585,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK3","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
@@ -1673,35 +1609,11 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK2","a_process.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK29","a_process.com")
-	END_PRESS
-
-	PRESS(VS3)
 		LM("MASK3","a_process.com")
 	END_PRESS
 
-	PRESS(VS4)
+	PRESS(VS2)
 		LM("MASK4","a_process.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK5","a_process.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK6","a_process.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK7","a_process.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK8","a_process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -2094,14 +2006,7 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
 
-	VS1=($85231,ac7,se1);前角底面
-	VS2=($85232,ac7,se1);前角侧面
-	VS3=($85245,ac7,se1);齿背底面
-	VS4=($85246,ac7,se1);齿背侧面
-	VS5=($85247,ac7,se3);平刃后角
-	VS6=($85248,ac7,se1);通磨
-	VS7=($85249,ac7,se1);铲背
-	VS8=($85251,ac7,se1);齿平面
+	VS1=($85247,ac7,se3);平刃后角
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -2139,7 +2044,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK5","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
@@ -2163,35 +2068,7 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK2","a_process.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK29","a_process.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_process.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_process.com")
-	END_PRESS
-
-	PRESS(VS5)
 		LM("MASK5","a_process.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK6","a_process.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK7","a_process.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK8","a_process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -2584,14 +2461,7 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
 
-	VS1=($85231,ac7,se1);前角底面
-	VS2=($85232,ac7,se1);前角侧面
-	VS3=($85245,ac7,se1);齿背底面
-	VS4=($85246,ac7,se1);齿背侧面
-	VS5=($85247,ac7,se1);平刃后角
-	VS6=($85248,ac7,se3);通磨
-	VS7=($85249,ac7,se1);铲背
-	VS8=($85251,ac7,se1);齿平面
+	VS1=($85248,ac7,se3);通磨
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -2629,7 +2499,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK6","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
@@ -2653,35 +2523,7 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK2","a_process.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK29","a_process.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_process.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_process.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK5","a_process.com")
-	END_PRESS
-
-	PRESS(VS6)
 		LM("MASK6","a_process.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK7","a_process.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK8","a_process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -3074,14 +2916,7 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
 
-	VS1=($85231,ac7,se1);前角底面
-	VS2=($85232,ac7,se1);前角侧面
-	VS3=($85245,ac7,se1);齿背底面
-	VS4=($85246,ac7,se1);齿背侧面
-	VS5=($85247,ac7,se1);平刃后角
-	VS6=($85248,ac7,se1);通磨
-	VS7=($85249,ac7,se3);铲背
-	VS8=($85251,ac7,se1);齿平面
+	VS1=($85249,ac7,se3);铲背
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -3119,7 +2954,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK7","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
@@ -3143,35 +2978,7 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK2","a_process.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK29","a_process.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_process.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_process.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK5","a_process.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK6","a_process.com")
-	END_PRESS
-
-	PRESS(VS7)
 		LM("MASK7","a_process.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK8","a_process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -3572,14 +3379,7 @@
 
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
 
-	VS1=($85231,ac7,se1);前角底面
-	VS2=($85232,ac7,se1);前角侧面
-	VS3=($85245,ac7,se1);齿背底面
-	VS4=($85246,ac7,se1);齿背侧面
-	VS5=($85247,ac7,se1);平刃后角
-	VS6=($85248,ac7,se1);通磨
-	VS7=($85249,ac7,se1);铲背
-	VS8=($85251,ac7,se3);齿平面
+	VS1=($85251,ac7,se3);齿平面
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -3619,7 +3419,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK8","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
@@ -3643,34 +3443,6 @@
 	END_PRESS
 
 	PRESS(VS1)
-		LM("MASK2","a_process.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK29","a_process.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK3","a_process.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK4","a_process.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK5","a_process.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK6","a_process.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK7","a_process.com")
-	END_PRESS
-
-	PRESS(VS8)
 		LM("MASK8","a_process.com")
 	END_PRESS
 

@@ -33,7 +33,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK1","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
@@ -109,7 +109,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK1","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
@@ -185,7 +185,7 @@
 	END_PRESS
 
 	PRESS(HS2)
-		LM("MASK2","a_process.com")
+		LM("MASK1","a_process.com")
 	END_PRESS
 
 	PRESS(HS3)
