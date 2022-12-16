@@ -1,12 +1,12 @@
 PROC B_BACKUP_PARA(STRING[50] BACKUP_PATH) DISPLOF
 ;**********程序功能**********
 ;*参数备份程序
-;*经测试最大备份参数个数为800个
+;*经测试最大备份参数个数为790个
 ;****************************
 
 DEF INT ERR,CYC_COUNT
 DEF STRING[10] LF_CHAR
-DEF STRING[255] RESULT[600],LINE_CURR
+DEF STRING[255] RESULT[790],LINE_CURR
 
 IF LADAO[158]==0;备份位置(0内置/1后USB/2前USB)
     LF_CHAR=""
