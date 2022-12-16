@@ -658,6 +658,8 @@
 |PROCESS[115]||台阶工艺设定总量
 |PROCESS[116]||左端面工艺设定总量
 |PROCESS[117]||右端面工艺设定总量
+|PROCESS[118]||
+|PROCESS[119]||加工中转换动作固定快速速度
 |**工艺表格参数**||
 |TECHNOLOGY[0]|GRIND_METHOD_R|粗修单双磨削
 |TECHNOLOGY[1]|GRIND_METHOD_MR|半粗修单双磨削
@@ -688,6 +690,8 @@
 |TECHNOLOGY[25]||扩展单件半粗磨修整砂轮转速
 |TECHNOLOGY[26]||扩展单件精磨修整砂轮转速
 |TECHNOLOGY[27]||扩展单件终磨修整砂轮转速
+|TECHNOLOGY[28]||高速移动缓冲距离
+|TECHNOLOGY[29]||高速移动缓冲启动速度
 |||
 |TECHNOLOGY[30]|TECH_GRIND_FEED_R|粗磨速度
 |TECHNOLOGY[31]|TECH_GRIND_FEED_MR|半粗磨速度

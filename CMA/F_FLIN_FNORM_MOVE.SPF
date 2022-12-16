@@ -1,0 +1,49 @@
+PROC F_FLIN_FNORM_MOVE(STRING[1] AXIS_NAME, REAL END_POS, REAL CACHE_LENGTH, REAL HIGH_SPEED, REAL CACHE_SPEED) DISPLOF
+;***********程序功能**********
+;*高速移动轴时的缓启缓停
+;*AXIS_NAME 轴名称-字符串类型
+;*END_POS 终点坐标-绝对位置
+;*CACHE_LENGTH 缓启距离-设置正数
+;*HIGH_SPEED 高速移动速度
+;*CACHE_SPEED 缓冲移动速度
+;
+;*示例: F_FLIN_FNORM_MOVE("X",500,10,10000,2000);X轴移动到500，启动缓冲10mm，启动速度2000，高速速度10000
+;****************************
+
+DEF AXIS AX_NAME
+DEF REAL DIR
+
+STOPRE
+
+AX_NAME=AXNAME(AXIS_NAME);轴名称字符串转换为轴类型
+
+IF $AA_IW[AX_NAME]>END_POS;如果当前轴位置大于终点坐标
+    DIR=-1;负向移动
+ELSE
+    DIR=1;正向移动
+ENDIF
+
+IF CACHE_SPEED>HIGH_SPEED;如果缓冲速度设置大于高速速度
+    CACHE_SPEED=HIGH_SPEED;缓冲速度赋值为高速速度
+ENDIF
+
+IF CACHE_LENGTH<0;缓冲距离设置小于零则反转
+    CACHE_LENGTH=-CACHE_LENGTH;反转为正值
+ENDIF
+
+IF ABS($AA_IW[AX_NAME]-END_POS)<=CACHE_LENGTH*2;总行程小于等于总缓冲距离
+    G90 G01 FNORM AX[AX_NAME]=END_POS F=CACHE_SPEED;以缓冲速度直接走到终点位置
+ELSE
+    IF CACHE_LENGTH>0;缓冲距离设置大于零
+        F=CACHE_SPEED;初始慢速设置
+        G64 G91 G01 FLIN AX[AX_NAME]=CACHE_LENGTH*DIR F=HIGH_SPEED;缓冲加速到快速速度
+        G90 G01 FNORM AX[AX_NAME]=END_POS-CACHE_LENGTH*DIR F=HIGH_SPEED;匀速走到终点前缓冲位置
+        G90 G01 FLIN AX[AX_NAME]=END_POS F=CACHE_SPEED;缓冲降速移动至终点
+        FNORM;取消 FLIN 模态
+    ELSE;缓冲距离为0
+        G90 G01 FNORM AX[AX_NAME]=END_POS F=HIGH_SPEED;以高速速度直接走到终点位置
+    ENDIF
+ENDIF
+
+RET
+
