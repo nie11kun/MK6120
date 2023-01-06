@@ -80,20 +80,20 @@ ELSE
                                 INI[6]=LADAO[140]+LADAO[250];工件右端
                                 LADAO[145]=LADAO[145]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
                                 TECHNOLOGY[237]=TECHNOLOGY[237]-DRESSER[14]*COS(LADAO[13]);通磨当前接触Y
-                            ELSE;吸铁台面
-                                LADAO[165]=LADAO[165]-DRESSER[14]*SIN(LADAO[13]);x磨削位
-                                LADAO[167]=LADAO[167]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
-                                TECHNOLOGY[238]=TECHNOLOGY[238]-DRESSER[14]*COS(LADAO[13]);通磨当前接触Y
+                            ELSE
+                                IF LADAO[37]==6;吸铁台面
+                                    LADAO[165]=LADAO[165]-DRESSER[14]*SIN(LADAO[13]);x磨削位
+                                    LADAO[167]=LADAO[167]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
+                                    TECHNOLOGY[238]=TECHNOLOGY[238]-DRESSER[14]*COS(LADAO[13]);通磨当前接触Y
+                                ELSE;内圆加工
+                                    IF LADAO[38]==0;砂轮类型
+                                        LADAO[242]=LADAO[242]+DRESSER[14]
+                                    ENDIF
+                                ENDIF
                             ENDIF
                         ENDIF
                     ENDIF
                 ENDIF
-            ENDIF
-        ENDIF
-
-        IF LADAO[238]==1;内圆加工-使能
-            IF LADAO[38]==0;砂轮类型
-                LADAO[242]=LADAO[242]+DRESSER[14]
             ENDIF
         ENDIF
 ;
@@ -146,19 +146,19 @@ ELSE
                                     LADAO[145]=LADAO[145]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
                                     TECHNOLOGY[237]=TECHNOLOGY[237]-DRESSER[15]*COS(LADAO[13]);通磨当前接触Y
                                 ELSE
-                                    LADAO[165]=LADAO[165]-DRESSER[15]*SIN(LADAO[13]);x磨削位
-                                    LADAO[167]=LADAO[167]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
-                                    TECHNOLOGY[238]=TECHNOLOGY[238]-DRESSER[15]*COS(LADAO[13]);通磨当前接触Y
+                                    IF LADAO[37]==6;吸铁台面
+                                        LADAO[165]=LADAO[165]-DRESSER[15]*SIN(LADAO[13]);x磨削位
+                                        LADAO[167]=LADAO[167]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
+                                        TECHNOLOGY[238]=TECHNOLOGY[238]-DRESSER[15]*COS(LADAO[13]);通磨当前接触Y
+                                    ELSE;内圆加工
+                                        IF LADAO[38]==0;砂轮类型
+                                            LADAO[242]=LADAO[242]+DRESSER[15]
+                                        ENDIF
+                                    ENDIF
                                 ENDIF
                             ENDIF
                         ENDIF
                     ENDIF
-                ENDIF
-            ENDIF
-
-            IF LADAO[238]==1;内圆加工-使能
-                IF LADAO[38]==0;砂轮类型
-                    LADAO[242]=LADAO[242]+DRESSER[15]
                 ENDIF
             ENDIF
 ;

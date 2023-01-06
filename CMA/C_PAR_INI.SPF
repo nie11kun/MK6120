@@ -104,13 +104,6 @@ IF INI[70]==1;有自动门(0没有/1有)
 	ENDIF
 ENDIF
 
-IF LADAO[238]==1;内圆加工-使能
-	IF INI[47]==1;磨削中不正常退出标记
-		INI[47]=0;
-		LADAO[242]=LADAO[242]-PROCESS[8]
-	ENDIF
-ENDIF
-
 IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背，5齿两端平面,6吸铁台面)
 	IF TOOL_SET[43]==1;新砂轮修整后校准磨削位
 		TOOL_SET[43]=0;复位开关
@@ -292,16 +285,31 @@ ELSE
 						LADAO[13]=LADAO[149];齿形偏转角度
 
 						LADAO[199]=LADAO[142];当前工序x轴起始位
-					ELSE;吸铁台面
-						INI[75]=0;标记位
-						INI[20]=LADAO[168];A轴磨削位-当前
-						LADAO[5]=LADAO[169];B轴磨削位-当前
-						PROCESS[16]=LADAO[167]+LADAO[166]+ABS(LADAO[172])+LADAO[210];磨削安全位-当前
-						INI[6]=LADAO[163]+LADAO[251];平磨起点z
-						PROCESS[13]=LADAO[167]+LADAO[210];初始接触Y
-						LADAO[13]=LADAO[171];齿形偏转角度
+					ELSE
+						IF LADAO[37]==6;吸铁台面
+							INI[75]=0;标记位
+							INI[20]=LADAO[168];A轴磨削位-当前
+							LADAO[5]=LADAO[169];B轴磨削位-当前
+							PROCESS[16]=LADAO[167]+LADAO[166]+ABS(LADAO[172])+LADAO[210];磨削安全位-当前
+							INI[6]=LADAO[163]+LADAO[251];平磨起点z
+							PROCESS[13]=LADAO[167]+LADAO[210];初始接触Y
+							LADAO[13]=LADAO[171];齿形偏转角度
 
-						LADAO[199]=LADAO[165];当前工序x轴起始位
+							LADAO[199]=LADAO[165];当前工序x轴起始位
+						ELSE;内圆加工
+							IF INI[47]==1;磨削中不正常退出标记
+								INI[47]=0;
+								LADAO[242]=LADAO[242]-PROCESS[8]
+							ENDIF
+
+							INI[75]=0;标记位
+							INI[20]=LADAO[254];A轴磨削位-当前
+							LADAO[5]=LADAO[255];B轴磨削位-当前
+
+							PROCESS[16]=LADAO[241];圆心y
+							INI[6]=LADAO[239];圆心z
+							LADAO[199]=LADAO[240];圆心x
+						ENDIF
 					ENDIF
 				ENDIF
             ENDIF
@@ -336,7 +344,11 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 							IF LADAO[37]==5
 								;TECH_ADDED[207]=0;工艺累积进刀清零
 							ELSE
+								IF LADAO[37]==6
 
+								ELSE
+
+								ENDIF
 							ENDIF
 						ENDIF
 					ENDIF
@@ -364,7 +376,11 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 							IF LADAO[37]==5;齿两端平面
 								PROCESS[4]=TECHNOLOGY[237]
 							ELSE
-								PROCESS[4]=TECHNOLOGY[238]
+								IF LADAO[37]==6
+									PROCESS[4]=TECHNOLOGY[238]
+								ELSE
+
+								ENDIF
 							ENDIF
 						ENDIF
 					ENDIF

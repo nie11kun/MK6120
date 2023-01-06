@@ -21,7 +21,7 @@
 	DEF X_QUIT=(R///$85128,$85128,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[13]"/360,30,202/460,30,60//"UserGuide/section_1.html","S1D14");退刀位置X
 	DEF POS_INPUT_2=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,30,18/);坐标写入键
 
-	DEF GRIND_CHOICE=(I/*0=$85078,1=$85077,2=$85079,3=$85081,4=$85080,5=$85086,6=$85092//$85131,$85131,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[38]"/160,120,202/300,120,120/);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
+	DEF GRIND_CHOICE=(I/*0=$85078,1=$85077,2=$85079,3=$85081,4=$85080,5=$85086,6=$85092,7=$85093//$85131,$85131,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[38]"/160,120,202/300,120,120/);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
 	DEF PIECE_VOLUME=(I/*0=$85166,1=$85167//$85170,$85170,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/INI[27]"/160,160,202/300,160,120/);单件/批量磨削方式选择
 	DEF GRIND_DIERCTION=(I/*1=$85090,-1=$85091//$85163,$85163,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[99]"/160,200,202/300,200,120/);加工方向(1从左到右/-1从右到左)
 
@@ -31,96 +31,13 @@
 
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se1);工件参数
-	VS2=($85078,ac7,se1);前刃磨削
-	VS3=($85080,ac7,se1);后背磨削
-	VS4=($85079,ac7,se1);顶刃磨削
-	VS5=($85077,ac7,se1);平磨参数
-	VS6=($85081,ac7,se1);顶部侧刃
-	VS7=($85086,ac7,se1);齿平面
-	VS8=($85092,ac7,se1);吸铁台面
-
 	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		
 		IF GRIND_DIERCTION.VAL==0
 			GRIND_DIERCTION.VAL=1
 		ENDIF
 	END_LOAD
-
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
 
 	CHANGE(POS_INPUT_1)
 		IF POS_INPUT_1.VAL==1
@@ -187,90 +104,10 @@
 
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se3);工件参数
-	VS2=($85078,ac7,se1);前刃磨削
-	VS3=($85080,ac7,se1);后背磨削
-	VS4=($85079,ac7,se1);顶刃磨削
-	VS5=($85077,ac7,se1);平磨参数
-	VS6=($85081,ac7,se1);平磨参数
-	VS7=($85086,ac7,se1);齿平面
-	VS8=($85092,ac7,se1);吸铁台面
-
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
+	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS1.SE=3
+	END_LOAD
 
 	CHANGE(SLOTS_1)
 		call("UP1")
@@ -464,16 +301,6 @@
 	DEF WHEEL_R=(R///$85320,$85320,,$85043/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/10,240,110/130,240,110/);砂轮当前直径
 	DEF BUCHANG_R=(R///$85983,$85983,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[216]"/10,260,110/130,260,110//);砂轮半径YX插补-半径补偿
 
-	DEF CYCLE_0=(I/*0=$85041,1=$85040//$85280,$85280,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[239]"/190,10,202/280,10,60//);内圆加工-使能
-	DEF CYCLE_2=(R///$85282,$85282,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[241]"/190,30,110/280,30,60//);圆心-x
-	DEF CYCLE_3=(R///$85283,$85283,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[242]"/190,50,110/280,50,60//);圆心-Y
-	DEF CYCLE_1=(R///$85281,$85281,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[240]"/190,70,110/280,70,60//);圆心-z
-	DEF CYCLE_4=(R///$85284,$85284,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[243]"/160,90,110/280,90,60//);磨削起点-z
-	DEF CYCLE_5=(R///$85285,$85285,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[244]"/190,110,110/280,110,60//);磨削深度-y
-	DEF CYCLE_6=(R///$85286,$85286,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[245]"/190,130,110/280,130,60//);磨削圈数
-	DEF MSG_0=(R///$85663,$85663,,/WR4///250,150,200/0,0,0//);msg
-	DEF MSG_1=(R///$85664,$85664,,/WR4///250,170,200/0,0,0//);msg
-
 	DEF GRIND_DIERCTION=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[99]"/0,0,0/0,0,0/);加工方向(1从左到右/-1从右到左)
 	DEF PITCH=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[35]"/0,0,0/0,0,0//);齿形参数：齿距
 	DEF CALC_1ST=(R////WR4//"/NC/_N_NC_GD2_ACX/MEASURE_RESULT[1351]"/0,0,0/0,0,0/);首齿前刃测量Z
@@ -487,90 +314,10 @@
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se1);工件参数
-	VS2=($85078,ac7,se3);前刃磨削
-	VS3=($85080,ac7,se1);后背磨削
-	VS4=($85079,ac7,se1);顶刃磨削
-	VS5=($85077,ac7,se1);平磨参数
-	VS6=($85081,ac7,se1);平磨参数
-	VS7=($85086,ac7,se1);齿平面
-	VS8=($85092,ac7,se1);吸铁台面
-
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
+	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS2.SE=3
+	END_LOAD
 
 	CHANGE(CNC_CHOICE)
 		CALL("UP1")
@@ -578,28 +325,6 @@
 
 	CHANGE(CNC_MODE)
 		CALL("UP1")
-	END_CHANGE
-
-	CHANGE(CYCLE_0)
-		IF CYCLE_0.VAL==0
-			CYCLE_1.WR=4
-			CYCLE_2.WR=4
-			CYCLE_3.WR=4
-			CYCLE_4.WR=4
-			CYCLE_5.WR=4
-			CYCLE_6.WR=4
-			MSG_0.WR=4
-			MSG_1.WR=4
-		ELSE
-			CYCLE_1.WR=2
-			CYCLE_2.WR=2
-			CYCLE_3.WR=2
-			CYCLE_4.WR=2
-			CYCLE_5.WR=2
-			CYCLE_6.WR=2
-			MSG_0.WR=2
-			MSG_1.WR=2
-		ENDIF
 	END_CHANGE
 
 	CHANGE(POS_INPUT_1)
@@ -786,90 +511,10 @@
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se1);工件参数
-	VS2=($85078,ac7,se1);前刃磨削
-	VS3=($85080,ac7,se3);后背磨削
-	VS4=($85079,ac7,se1);顶刃磨削
-	VS5=($85077,ac7,se1);平磨参数
-	VS6=($85081,ac7,se1);平磨参数
-	VS7=($85086,ac7,se1);齿平面
-	VS8=($85092,ac7,se1);吸铁台面
-
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
+	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS3.SE=3
+	END_LOAD
 
 	CHANGE(POS_INPUT_1)
 		IF POS_INPUT_1.VAL==1
@@ -1024,90 +669,10 @@
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se1);工件参数
-	VS2=($85078,ac7,se1);前刃磨削
-	VS3=($85080,ac7,se1);后背磨削
-	VS4=($85079,ac7,se3);顶刃磨削
-	VS5=($85077,ac7,se1);平磨参数
-	VS6=($85081,ac7,se1);平磨参数
-	VS7=($85086,ac7,se1);齿平面
-	VS8=($85092,ac7,se1);吸铁台面
-
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
+	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS4.SE=3
+	END_LOAD
 
 	CHANGE(POS_INPUT_1)
 		IF POS_INPUT_1.VAL==1
@@ -1251,90 +816,10 @@
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se1);工件参数
-	VS2=($85078,ac7,se1);前刃磨削
-	VS3=($85080,ac7,se1);后背磨削
-	VS4=($85079,ac7,se1);顶刃磨削
-	VS5=($85077,ac7,se3);平磨参数
-	VS6=($85081,ac7,se1);平磨参数
-	VS7=($85086,ac7,se1);齿平面
-	VS8=($85092,ac7,se1);吸铁台面
-
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
+	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS5.SE=3
+	END_LOAD
 
 	CHANGE(POS_INPUT_1)
 		IF POS_INPUT_1.VAL==1
@@ -1455,90 +940,10 @@
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se1);工件参数
-	VS2=($85078,ac7,se1);前刃磨削
-	VS3=($85080,ac7,se1);后背磨削
-	VS4=($85079,ac7,se1);顶刃磨削
-	VS5=($85077,ac7,se1);平磨参数
-	VS6=($85081,ac7,se3);平磨参数
-	VS7=($85086,ac7,se1);齿平面
-	VS8=($85092,ac7,se1);吸铁台面
-
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
+	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS6.SE=3
+	END_LOAD
 
 	CHANGE(POS_INPUT_1)
 		IF POS_INPUT_1.VAL==1
@@ -1663,96 +1068,14 @@
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se1);工件参数
-	VS2=($85078,ac7,se1);前刃磨削
-	VS3=($85080,ac7,se1);后背磨削
-	VS4=($85079,ac7,se1);顶刃磨削
-	VS5=($85077,ac7,se1);平磨参数
-	VS6=($85081,ac7,se1);平磨参数
-	VS7=($85086,ac7,se3);齿平面
-	VS8=($85092,ac7,se1);吸铁台面
-
 	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS7.SE=3
+
 		IF GRIND_POS.VAL==0
 			GRIND_POS.VAL=1
 		ENDIF
 	END_LOAD
-	
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
 
 	CHANGE(POS_INPUT_1)
 		IF POS_INPUT_1.VAL==1
@@ -1795,6 +1118,8 @@
 			GRIND_B.VAL=B_IM.VAL
 		ENDIF
 	END_CHANGE
+
+//END
 
 //M(Mask9/$85092//);吸铁台面
 
@@ -1842,90 +1167,10 @@
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 
-	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
-	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85075,ac7,se1);工件参数
-	VS2=($85078,ac7,se1);前刃磨削
-	VS3=($85080,ac7,se1);后背磨削
-	VS4=($85079,ac7,se1);顶刃磨削
-	VS5=($85077,ac7,se1);平磨参数
-	VS6=($85081,ac7,se1);平磨参数
-	VS7=($85086,ac7,se1);齿平面
-	VS8=($85092,ac7,se3);吸铁台面
-
-	PRESS(HS1)
-		LM("MASK51","a_grind.com")
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-	
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK1","a_grind.com")
-	END_PRESS
-
-	PRESS(VS2)
-		LM("MASK4","a_grind.com")
-	END_PRESS
-
-	PRESS(VS3)
-		LM("MASK6","a_grind.com")
-	END_PRESS
-
-	PRESS(VS4)
-		LM("MASK5","a_grind.com")
-	END_PRESS
-
-	PRESS(VS5)
-		LM("MASK3","a_grind.com")
-	END_PRESS
-
-	PRESS(VS6)
-		LM("MASK7","a_grind.com")
-	END_PRESS
-
-	PRESS(VS7)
-		LM("MASK8","a_grind.com")
-	END_PRESS
-
-	PRESS(VS8)
-		LM("MASK9","a_grind.com")
-	END_PRESS
+	LOAD
+		LS("MENU_2");默认调用 MENU_1
+		VS1.SE=3
+	END_LOAD
 
 	CHANGE(POS_INPUT_1)
 		IF POS_INPUT_1.VAL==1
@@ -1976,4 +1221,172 @@
 		ENDIF
 	END_CHANGE
 
+//END
+
+//M(Mask10/$85093//);内圆加工
+
+	DEF X_IM=(R///$85118,$85118,,/WR1//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
+	DEF Y_IM=(R///$85126,$85126,,/WR1//"$AA_IM[Y]"/10,30,20/30,30,60/3);Y_IM
+	DEF Z_IM=(R///$85119,$85119,,/WR1//"$AA_IM[Z]"/10,50,20/30,50,60/3);Z_IM
+	DEF A_IM=(R///$85122,$85122,,/WR1//"$AA_IM[A]"/10,70,20/30,70,60/3);A_IM
+	DEF B_IM=(R///$85121,$85121,,/WR1//"$AA_IM[B]"/10,90,20/30,90,60/3);B_IM
+
+	DEF CYCLE_2=(R///$85282,$85282,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[241]"/360,10,110/460,10,60//);圆心-x
+	DEF CYCLE_3=(R///$85283,$85283,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[242]"/360,30,110/460,30,60//);圆心-Y
+	DEF CYCLE_1=(R///$85281,$85281,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[240]"/360,50,110/460,50,60//);圆心-z
+	DEF CYCLE_4=(R///$85284,$85284,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[243]"/360,80,110/460,80,60//);磨削起点-z
+	DEF CYCLE_5=(R///$85285,$85285,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[244]"/360,110,110/460,110,60//);磨削深度-y
+	DEF CYCLE_6=(R///$85286,$85286,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[245]"/360,130,110/460,130,60//);磨削圈数
+	DEF CYCLE_7=(R///$85924,$85924,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[255]"/360,160,110/460,160,60//);A轴磨削位
+	DEF CYCLE_8=(R///$85925,$85925,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[256]"/360,180,110/460,180,60//);B轴磨削位
+
+	LOAD
+		LS("MENU_2");默认调用 MENU_1
+		VS2.SE=3
+	END_LOAD
+//END
+
+//S(MENU_1)
+	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
+	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
+	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
+	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
+	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
+	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
+	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
+
+	VS1=($85075,ac7,se1);工件参数
+	VS2=($85078,ac7,se1);前刃磨削
+	VS3=($85080,ac7,se1);后背磨削
+	VS4=($85079,ac7,se1);顶刃磨削
+	VS5=($85077,ac7,se1);平磨参数
+	VS6=($85081,ac7,se1);顶部侧刃
+	VS7=($85086,ac7,se1);齿平面
+
+	VS8=(["\\sk_more_menu.png"," "],ac7,se1,pa2);
+
+	PRESS(HS1)
+		LM("MASK51","a_grind.com")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK1","a_process.com")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","a_dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","a_auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK1","a_grind_pos.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK1","a_auto_pos.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK0","a_data.com")
+	END_PRESS
+	
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK1","a_grind.com")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK4","a_grind.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK6","a_grind.com")
+	END_PRESS
+
+	PRESS(VS4)
+		LM("MASK5","a_grind.com")
+	END_PRESS
+
+	PRESS(VS5)
+		LM("MASK3","a_grind.com")
+	END_PRESS
+
+	PRESS(VS6)
+		LM("MASK7","a_grind.com")
+	END_PRESS
+
+	PRESS(VS7)
+		LM("MASK8","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LS("MENU_2","a_grind.com",0);第三位参数设置是否保留原有按键，0 删除原有所有按键 / 1 保留原有按键加入新的按键
+	END_PRESS
+//END
+
+//S(MENU_2)
+	HS1=(["\\S_003.png",$85066],ac7,se3,pa0);磨削参数
+	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
+	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
+	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
+	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
+	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_005.png",$85029],ac7,se1,pa0);备份恢复
+	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
+
+	VS1=($85092,ac7,se1);吸铁台面
+	VS2=($85093,ac7,se1);内圆加工
+
+	VS8=(["\\sk_back_menu.png"," "],ac7,se1,pa0);
+
+	PRESS(HS1)
+		LM("MASK51","a_grind.com")
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK1","a_process.com")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","a_dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","a_auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK1","a_grind_pos.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK1","a_auto_pos.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK0","a_data.com")
+	END_PRESS
+	
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK9","a_grind.com")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK10","a_grind.com")
+	END_PRESS
+
+	PRESS(VS8)
+		LS("MENU_1","a_grind.com",0);恢复 MENU_1 菜单
+	END_PRESS
 //END
