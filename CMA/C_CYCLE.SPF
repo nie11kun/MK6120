@@ -4,6 +4,8 @@ PROC C_CYCLE DISPLON
 ;*螺纹磨削初始走位及子程序的调用,磨削中修整的调用
 ;****************************
 
+DEF REAL Z_START_INIT
+
 IF TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==0
     RET
 ENDIF
@@ -32,10 +34,16 @@ IF (INI[72]==1) OR (LADAO[162]==1);第一次磨削或者修整后的磨削
     ;**********************
     ;ifIsExternalBegin
 
-    IF ($AA_IM[Z]>=INI[6]-20) AND ($AA_IM[Z]<=INI[6]+20);Z轴在磨削起点附近慢速到位
-        D_GRIND_INIT_POSITION(INI[6],LADAO[199],PROCESS[16],INI[57]*4,LADAO[2],INI[55]);外螺纹
+    IF ((LADAO[37]==0) AND (LADAO[200]==0)) OR (LADAO[37]==4) OR (LADAO[37]==5);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背,5齿平面,6吸铁台面,7内圆加工)
+        Z_START_INIT=INI[6]-LADAO[98]*(PROCESS[16]-PROCESS[4])*TAN(LADAO[30]);从安全位置斜进刀，z起始
     ELSE
-        D_GRIND_INIT_POSITION(INI[6],LADAO[199],PROCESS[16],INI[56],LADAO[2],INI[55]);外螺纹
+        Z_START_INIT=INI[6];
+    ENDIF
+
+    IF ($AA_IM[Z]>=Z_START_INIT-20) AND ($AA_IM[Z]<=Z_START_INIT+20);Z轴在磨削起点附近慢速到位
+        D_GRIND_INIT_POSITION(Z_START_INIT,LADAO[199],PROCESS[16],INI[57]*4,LADAO[2],INI[55]);外螺纹
+    ELSE
+        D_GRIND_INIT_POSITION(Z_START_INIT,LADAO[199],PROCESS[16],INI[56],LADAO[2],INI[55]);外螺纹
     ENDIF
 
     ;ifIsExternalEnd
