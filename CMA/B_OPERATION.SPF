@@ -10,6 +10,8 @@ ENDIF
 
 IF GRIND[2]==1;手动对刀
     C_OPERATION_JOG;手动对刀程序
+    PLCASUP1;跳转到初始角度计算子程序
+    G90 G01 Y=PROCESS[16] F=INI[54]
 ELSE
     C_OPERATION_AUTO;自动对刀程序
 ENDIF

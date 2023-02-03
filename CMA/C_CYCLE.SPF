@@ -90,7 +90,12 @@ ELSE
                         IF LADAO[37]==6;吸铁台面
                             D_GRIND_XITIE
                         ELSE;
-                            D_GRIND_CYCLE;内圆加工
+                            IF LADAO[37]==7;内圆加工
+                                D_GRIND_CYCLE;
+                            ELSE
+                                D_GRIND_THREAD;螺纹加工
+                                PLCASUP1;初始角度计算
+                            ENDIF
                         ENDIF
                     ENDIF
                 ENDIF
@@ -130,7 +135,7 @@ ENDIF
 IF (TECH_TIME[0]+TECH_TIME[1]+TECH_TIME[2]+TECH_TIME[3]+TECH_TIME[4]==TECHNOLOGY[10]+TECHNOLOGY[11]+TECHNOLOGY[12]+TECHNOLOGY[13]+DIY[1]) AND ((LADAO[18]==1) OR ((LADAO[37]<>0) AND (LADAO[37]<>4)));最后一次结束
     M9;磨削冷却关
 
-    IF (RING[5]==RING[4]-1) OR (LADAO[37]==1) OR (LADAO[37]==5) OR (LADAO[37]==6) OR (LADAO[37]==7);最后一槽
+    IF (RING[5]==RING[4]-1) OR (LADAO[37]==1) OR (LADAO[37]==5) OR (LADAO[37]==6) OR (LADAO[37]==7) OR (LADAO[37]==8);最后一槽
         G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
         G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
 ;

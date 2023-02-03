@@ -7,6 +7,8 @@
 	DEF Z_IM=(R///$85119,$85119,,/WR1//"$AA_IM[Z]"/10,50,20/30,50,60/3);Z_IM
 	DEF A_IM=(R///$85122,$85122,,/WR1//"$AA_IM[A]"/10,70,20/30,70,60/3);A_IM
 	DEF B_IM=(R///$85121,$85121,,/WR1//"$AA_IM[B]"/10,90,20/30,90,60/3);B_IM
+	DEF C_IM=(R///$85120,$85120,,/WR4//"$AA_IM[C]"/10,110,20/30,110,60/3);C_IM
+
 	;DEF X_DRF=(R///$85116,$85116,,/WR1//"$AC_DRF[X]"/120,10,50/170,10,60/7);DRF_X
 	;DEF Y_DRF=(R///$85127,$85127,,/WR1//"$AC_DRF[Y]"/120,30,50/170,30,60/7);DRF_Y
 	;DEF Z_DRF=(R///$85117,$85117,,/WR1//"$AC_DRF[Z]"/120,50,50/170,50,60/7);DRF_Z
@@ -21,11 +23,17 @@
 	DEF X_QUIT=(R///$85128,$85128,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[13]"/360,30,202/460,30,60//"UserGuide/section_1.html","S1D14");退刀位置X
 	DEF POS_INPUT_2=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/530,30,18/);坐标写入键
 
-	DEF GRIND_CHOICE=(I/*0=$85078,1=$85077,2=$85079,3=$85081,4=$85080,5=$85086,6=$85092,7=$85093//$85131,$85131,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[38]"/160,120,202/300,120,120/);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
-	DEF PIECE_VOLUME=(I/*0=$85166,1=$85167//$85170,$85170,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/INI[27]"/160,160,202/300,160,120/);单件/批量磨削方式选择
-	DEF GRIND_DIERCTION=(I/*1=$85090,-1=$85091//$85163,$85163,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[99]"/160,200,202/300,200,120/);加工方向(1从左到右/-1从右到左)
+	DEF X_CENTER=(R///$85180,$85180,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[258]"/360,50,202/460,50,60//);工件中心位置X
+	DEF POS_INPUT_3=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR4///0,0,0/530,50,18/);坐标写入键
+
+	DEF LADAO_CHOICE=(I/*0=$85182,1=$85183//$85181,$85181,,/WR4,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[220]"/160,120,202/300,120,120/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF GRIND_CHOICE=(I/*0=$85078,1=$85077,2=$85079,3=$85081,4=$85080,5=$85086,6=$85092,7=$85093//$85131,$85131,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[38]"/160,160,202/300,160,120/);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
+	DEF PIECE_VOLUME=(I/*0=$85166,1=$85167//$85170,$85170,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/INI[27]"/160,200,202/300,200,120/);单件/批量磨削方式选择
+	DEF GRIND_DIERCTION=(I/*1=$85090,-1=$85091//$85163,$85163,,/WR2,ac7,al0,fs2,li0,cb0//"/NC/_N_NC_GD2_ACX/LADAO[99]"/160,240,202/300,240,120/);加工方向(1从左到右/-1从右到左)
 
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 
@@ -36,6 +44,20 @@
 		
 		IF GRIND_DIERCTION.VAL==0
 			GRIND_DIERCTION.VAL=1
+		ENDIF
+
+		IF LOAD_YUANLADAO.VAL==0
+			C_IM.WR=4
+			X_CENTER.WR=4
+			POS_INPUT_3.WR=4
+			LADAO_CHOICE.WR=4
+			LADAO_CHOICE.VAL=0
+		ELSE
+			C_IM.WR=1
+			X_CENTER.WR=2
+			POS_INPUT_3.WR=2
+			LADAO_CHOICE.WR=2
+			LISTADDITEM("GRIND_CHOICE",8,"$85094");列表栏添加一个元素
 		ENDIF
 	END_LOAD
 
@@ -52,6 +74,13 @@
 			POS_INPUT_2.VAL=0
 		ENDIF
 	END_CHANGE
+
+	CHANGE(POS_INPUT_3)
+		IF POS_INPUT_3.VAL==1
+			X_CENTER.VAL=X_IM.VAL
+			POS_INPUT_3.VAL=0
+		ENDIF
+	END_CHANGE
 //END
 
 ;
@@ -64,8 +93,11 @@
 	DEF SLOT_CURRENT=(I///$85907,$85907,,/WR1//"/NC/_N_NC_GD2_ACX/RING[6]"/10,50,110/110,50,60/);已加工槽数
 	DEF CISHENG_AMOUNT=(R4///$85971,$85971,,$85043/WR1//"/NC/_N_NC_GD2_ACX/LADAO[73]"/10,70,110/110,70,110/);全长齿升量
 
-	DEF SLOT_INIT=(I/0,//$85904,$85904,,/WR2//"/NC/_N_NC_GD2_ACX/RING[3]"/10,100,110/110,100,60//"UserGuide/section_1.html","S1D43");起始磨削槽
-	DEF SLOT_END=(I/0,//$85905,$85905,,/WR2//"/NC/_N_NC_GD2_ACX/RING[4]"/10,120,110/110,120,60//"UserGuide/section_1.html","S1D44");终止磨削槽
+	DEF SLOT_INIT=(I/0,//$85904,$85904,,/WR2//"/NC/_N_NC_GD2_ACX/RING[3]"/10,100,110/110,100,60//"UserGuide/section_1.html","S1D43");起始磨削齿
+	DEF SLOT_END=(I/0,//$85905,$85905,,/WR2//"/NC/_N_NC_GD2_ACX/RING[4]"/10,120,110/110,120,60//"UserGuide/section_1.html","S1D44");终止磨削齿
+
+	DEF CAO_INIT=(I/0,//$85185,$85185,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[260]"/10,150,110/110,150,60//);起始磨削槽
+	DEF CAO_END=(I/0,//$85186,$85186,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[261]"/10,170,110/110,170,60//);终止磨削槽
 
 	DEF QIAN_ANG=(R///$85149,$85149,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[31]"/360,10,110/460,10,110//);齿形参数：前刃角度
 	DEF HOU_ANG=(R///$85150,$85150,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[32]"/360,30,110/460,30,110//);齿形参数：后背角度
@@ -73,6 +105,7 @@
 	DEF HOU_LENGTH=(R///$85151,$85151,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[33]"/360,70,110/460,70,110//);齿形参数：后背厚度
 	DEF PITCH=(R///$85153,$85153,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[35]"/360,90,110/460,90,110//);齿形参数：齿距
 	DEF HEIGHT=(R///$85154,$85154,,$85043/WR2//"/NC/_N_NC_GD2_ACX/LADAO[36]"/360,110,110/460,110,110//);齿形参数：齿高
+	DEF CAO_COUNT=(I/0,//$85184,$85184,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[259]"/360,130,110/460,130,60//);齿形参数：槽数
 
 	;环形槽组槽数
 	DEF SLOTS_1=(I/0,//$85915,,,/WR2//"/NC/_N_NC_GD2_ACX/RING[12]"/0,0,0/115,245,60//"UserGuide/section_1.html","S1D48");
@@ -98,6 +131,9 @@
 	DEF Y_DELTA_9=(R4///$85933,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[111]"/0,0,0/385,344,60//"UserGuide/section_1.html","S1D49");
 	DEF Y_DELTA_10=(R4///$85934,,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[112]"/0,0,0/475,344,60//"UserGuide/section_1.html","S1D49");
 
+	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
+
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
@@ -107,6 +143,16 @@
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
 		VS1.SE=3
+
+		IF LADAO_CHOICE.VAL==0
+			CAO_INIT.WR=4
+			CAO_END.WR=4
+			CAO_COUNT.WR=4
+		ELSE
+			CAO_INIT.WR=2
+			CAO_END.WR=2
+			CAO_COUNT.WR=2
+		ENDIF
 	END_LOAD
 
 	CHANGE(SLOTS_1)
@@ -313,6 +359,7 @@
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
@@ -510,6 +557,7 @@
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
@@ -668,6 +716,7 @@
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
@@ -815,6 +864,7 @@
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
@@ -939,6 +989,7 @@
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
@@ -1067,6 +1118,7 @@
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
@@ -1166,10 +1218,16 @@
 	DEF TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF GRINDING_TYPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/RING[1]"/0,0,0/0,0,0//);螺纹/环形槽加工
 	DEF VAR45=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	LOAD
 		LS("MENU_2");默认调用 MENU_1
 		VS1.SE=3
+
+		IF LOAD_YUANLADAO.VAL==0
+			VS3.SE=2
+			VS3.ST=""
+		ENDIF
 	END_LOAD
 
 	CHANGE(POS_INPUT_1)
@@ -1240,10 +1298,85 @@
 	DEF CYCLE_7=(R///$85924,$85924,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[255]"/360,160,110/460,160,60//);A轴磨削位
 	DEF CYCLE_8=(R///$85925,$85925,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[256]"/360,180,110/460,180,60//);B轴磨削位
 
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
+
 	LOAD
 		LS("MENU_2");默认调用 MENU_1
 		VS2.SE=3
+
+		IF LOAD_YUANLADAO.VAL==0
+			VS3.SE=2
+			VS3.ST=""
+		ENDIF
 	END_LOAD
+//END
+
+;**********************MASK11:螺纹加工:panel_11:;**********************
+//M(Mask11/$85094/"panel_1_1_chs.png"/)
+
+	DEF VAR1=(I//0/$85134,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+
+	DEF VAR7=(R3/0,50//$85104,$85104,$85043,/WR2,ac4/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[5]"/360,80,202/460,80,60//"UserGuide/section_1.html","S1D4");工件螺距输入
+	
+	DEF X_IM=(R///$85118,$85118,,/WR1,ac4//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
+	DEF Z_IM=(R///$85119,$85119,,/WR1,ac4//"$AA_IM[Z]"/10,30,20/30,30,60/3);Z_IM
+	DEF X_DRF=(R///$85116,$85116,,/WR1,ac4//"$AC_DRF[X]"/120,10,50/170,10,60/7);DRF_X
+	DEF Z_DRF=(R///$85117,$85117,,/WR1,ac4//"$AC_DRF[Z]"/120,30,50/170,30,60/7);DRF_Z
+
+	;ifIsNotHasReOperateBegin
+	DEF VAR11=(I/*0=$85146,1=$85147,2=$85148//$85145,,,/WR2,ac4/"panel_1_3_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[20]"/0,0,0/270,10,70//"UserGuide/section_1.html","S1D6");选择对刀位置
+	DEF DUIDAOWEI=(R///$85112,$85112,,/WR4,ac4/"panel_1_3_chs.png"/"/NC/_N_NC_GD2_ACX/INI[135]"/245,30,50/280,30,60//"UserGuide/section_1.html","S1D7");任意点对刀位
+	;ifIsNotHasReOperateEnd
+
+	DEF Y_INIT_UP=(R///$85198,$85198,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[246]"/360,10,202/460,10,110//);磨削起始Y偏置
+
+	DEF SCREW_R=(I/*0=$85124,1=$85125//$85103,$85103,,/WR2,ac4/"panel_1_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[1]"/360,40,100/460,40,60//"UserGuide/section_1.html","S1D8");螺纹旋向
+	DEF VAR6=(I/0,50//$85102,$85102,$85051,/WR2,ac4/"panel_1_5_chs.png"/"/NC/_N_NC_GD2_ACX/WORK[1]"/360,60,202/460,60,60//"UserGuide/section_1.html","S1D9");工件头数
+
+	DEF VAR8=(R3/-2000,2000//$85108,$85108,,/WR2,ac4/"panel_1_7_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[242]"/360,100,202/460,100,60/6/"UserGuide/section_1.html","S1D10");工件左端
+	DEF VAR9=(R3/-2000,2000//$85109,$85109,,/WR2,ac4/"panel_1_8_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[243]"/360,120,202/460,120,60/6/"UserGuide/section_1.html","S1D11");工件右端
+
+	DEF GRIND_SAFE=(R/-500,500//$85172,$85172,,/WR2,ac4/"panel_1_23_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[249]"/360,165,202/460,165,60/6/"UserGuide/section_1.html","S1D13");磨削安全位置
+	DEF C_INIT=(R/0,360//$85100,$85100,$85042,/WR2,ac4/"panel_1_34_chs.png"/"/NC/_N_NC_GD2_ACX/INI[28]"/360,205,202/460,205,60//"UserGuide/section_1.html","S1D29");头架在程序结束调整到合适角度
+	DEF PITCH_COM=(R/-500,500//$85105,$85105,$85043,/WR2,ac7/"panel_1_11_chs.png"/"/NC/_N_NC_GD2_ACX/INI[25]"/360,225,202/460,225,60//"UserGuide/section_1.html","S1D15");全长导程补偿
+
+	DEF ZUIDU=(R6/-10,10//$85159,$85159,$85043,/WR2,ac4/"panel_1_12_chs.png"/"/NC/_N_NC_GD2_ACX/INI[15]"/360,250,202/460,250,60//"UserGuide/section_1.html","S1D16");单位长度锥度值(半径方向)
+	DEF ZUIDUBUCHANG=(R6/-1,1//$85113,$85113,$85043,/WR2,ac7/"panel_1_13_chs.png"/"/NC/_N_NC_GD2_ACX/INI[142]"/360,270,202/460,270,60//"UserGuide/section_1.html","S1D17");全长锥度补偿
+
+	DEF GRIND_A=(R///$85924,$85924,,$85042/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[244]"/360,310,110/460,310,110//);A轴磨削位
+	DEF GRIND_B=(R///$85925,$85925,,$85042/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[245]"/360,330,110/460,330,110/);B轴磨削位
+
+	DEF para_switch_3=(I/*0=$85015,1=$85016/1/$85063,$85063,,/WR2,ac7/"panel_1_24_chs.png"//0,0,0/190,310,18/);参数锁定开关
+	DEF INITANG=(R///$85176,$85176,$85042,/WR1,ac4//"/NC/_N_NC_GD2_ACX/TOOL_SET[5]"/10,310,210/120,310,60//"UserGuide/section_1.html","S1D24");头架初始角
+	DEF VAR19=(R///$85158,$85158,,/WR1,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[248]"/10,330,210/120,330,60//"UserGuide/section_1.html","S1D25");当前磨削接触位
+	DEF WHELL_POS_INI=(R///$85169,$85169,,/WR1,ac4/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[247]"/10,350,210/120,350,60/6/"UserGuide/section_1.html","S1D26");初始磨削接触位(对刀完成后磨削接触位)
+	DEF SHOUJIAN=(I/*0=$85087,1=$85088//$85089,$85039,,/WR2,ac4/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[58]"/190,350,20/210,350,70//"UserGuide/section_1.html","S1D27");是否是首件工件
+
+	LOAD
+		LS("MENU_2");默认调用 MENU_1
+		VS3.SE=3
+	END_LOAD
+	
+	CHANGE(VAR11)
+		IF VAR11.VAL==2
+			DUIDAOWEI.WR=2
+		ELSE
+			DUIDAOWEI.WR=4
+		ENDIF
+	END_CHANGE
+
+	CHANGE(para_switch_3)
+		IF para_switch_3.VAL==0
+			INITANG.WR=2
+			VAR19.WR=2
+			WHELL_POS_INI.WR=2
+		ELSE
+			INITANG.WR=1
+			VAR19.WR=1
+			WHELL_POS_INI.WR=1
+		ENDIF
+	END_CHANGE
+
 //END
 
 //S(MENU_1)
@@ -1328,6 +1461,10 @@
 
 	PRESS(VS8)
 		LS("MENU_2","a_grind.com",0);第三位参数设置是否保留原有按键，0 删除原有所有按键 / 1 保留原有按键加入新的按键
+		IF LOAD_YUANLADAO.VAL==0
+			VS3.SE=2
+			VS3.ST=""
+		ENDIF
 	END_PRESS
 //END
 
@@ -1343,6 +1480,7 @@
 
 	VS1=($85092,ac7,se1);吸铁台面
 	VS2=($85093,ac7,se1);内圆加工
+	VS3=($85094,ac7,se1);螺纹加工
 
 	VS8=(["\\sk_back_menu.png"," "],ac7,se1,pa0);
 
@@ -1384,6 +1522,10 @@
 
 	PRESS(VS2)
 		LM("MASK10","a_grind.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK11","a_grind.com")
 	END_PRESS
 
 	PRESS(VS8)

@@ -63,7 +63,11 @@ ELSE
 			GRIND[2]=0;不对刀
 		ELSE
 			IF ($A_DBB[1]==1) AND ($A_DBB[5]==0)
-				GRIND[2]=0;手动对刀
+				IF LADAO[37]==8;螺纹加工
+					GRIND[2]=1;手动对刀
+				ELSE
+					GRIND[2]=0;不对刀
+				ENDIF
 			ELSE
 				IF ($A_DBB[1]==0) AND ($A_DBB[5]==1)
 					GRIND[2]=2;自动对刀(只计算C角度)
@@ -319,19 +323,59 @@ ELSE
 							LADAO[13]=LADAO[171];齿形偏转角度
 
 							LADAO[199]=LADAO[165];当前工序x轴起始位
-						ELSE;内圆加工
-							IF INI[47]==1;磨削中不正常退出标记
-								INI[47]=0;
-								LADAO[242]=LADAO[242]-PROCESS[8]
+						ELSE;
+							IF LADAO[37]==7;内圆加工
+								IF INI[47]==1;磨削中不正常退出标记
+									INI[47]=0;
+									LADAO[242]=LADAO[242]-PROCESS[8]
+								ENDIF
+
+								INI[75]=0;标记位
+								INI[20]=LADAO[254];A轴磨削位-当前
+								LADAO[5]=LADAO[255];B轴磨削位-当前
+
+								PROCESS[16]=LADAO[241];圆心y
+								INI[6]=LADAO[239];圆心z
+								LADAO[199]=LADAO[240];圆心x
+							ELSE;螺纹
+								TECHNOLOGY[90]=TECHNOLOGY[102]*INI[4]*WORK[0];磨削速度计算
+								TECHNOLOGY[91]=TECHNOLOGY[103]*INI[4]*WORK[0];磨削速度计算
+								TECHNOLOGY[92]=TECHNOLOGY[104]*INI[4]*WORK[0];磨削速度计算
+								TECHNOLOGY[93]=TECHNOLOGY[105]*INI[4]*WORK[0];磨削速度计算
+
+								INI[75]=0;标记位
+								INI[20]=TECHNOLOGY[243];A轴磨削位-当前
+								LADAO[5]=TECHNOLOGY[244];B轴磨削位-当前
+								PROCESS[16]=TECHNOLOGY[248]+TECHNOLOGY[245];磨削安全位-当前
+
+								IF INI[0]==1;左旋
+									INI[6]=TECHNOLOGY[241];工件左端
+									INI[7]=TECHNOLOGY[242];工件右端
+								ELSE;右旋
+									INI[6]=TECHNOLOGY[242];工件右端
+									INI[7]=TECHNOLOGY[241];工件左端
+								ENDIF
+
+								PROCESS[13]=TECHNOLOGY[246]+TECHNOLOGY[245];初始接触Y
+								LADAO[13]=TECHNOLOGY[243];齿形偏转角度
+								LADAO[199]=LADAO[257];圆心x
+
+								INI[3]=TECHNOLOGY[242]-TECHNOLOGY[241];磨削长度
+								INI[5]=WORK[0]*INI[4];导程
+								INI[9]=360*(INI[3]-INI[24])/INI[5];磨削总角度
+								INI[8]=(TECHNOLOGY[242]+TECHNOLOGY[241])/2;磨削中点
+
+								;锥度相关计算,内螺纹大头往小头磨,外螺纹小头往大头磨
+								INI[15]=INI[3]*INI[14]+INI[141];X方向的增量+补偿值
+
+								WORK[5]=0;强制按次数修整
+
+								IF (INI[3]<=0);磨削长度
+									MSG("工件左端大于右端坐标！")
+									M0
+									G4 F99999999
+								ENDIF
 							ENDIF
-
-							INI[75]=0;标记位
-							INI[20]=LADAO[254];A轴磨削位-当前
-							LADAO[5]=LADAO[255];B轴磨削位-当前
-
-							PROCESS[16]=LADAO[241];圆心y
-							INI[6]=LADAO[239];圆心z
-							LADAO[199]=LADAO[240];圆心x
 						ENDIF
 					ENDIF
 				ENDIF
@@ -370,7 +414,9 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 								IF LADAO[37]==6
 
 								ELSE
-
+									IF LADAO[37]==7
+									ELSE
+									ENDIF
 								ENDIF
 							ENDIF
 						ENDIF
@@ -402,6 +448,10 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 								IF LADAO[37]==6
 									PROCESS[4]=TECHNOLOGY[238]
 								ELSE
+									IF LADAO[37]==7
+									ELSE
+										PROCESS[4]=TECHNOLOGY[247]
+									ENDIF
 
 								ENDIF
 							ENDIF
