@@ -65,6 +65,21 @@ WHILE(WORK[1]<WORK[0])
 	ENDIF
 	STOPRE
 	WORK[1]=WORK[1]+1;头数累加
+
+	TECHNOLOGY[282]=TECHNOLOGY[282]+1;圆拉刀-按槽数计数修整-槽数磨削累计计数
+	IF WORK[6]>0;如果按头数修整设定
+		IF (TECHNOLOGY[282] MOD WORK[6]==0);如果修正设定整除当前加工的工件头数
+			G90 G01 Y=PROCESS[16]  F=INI[55]/2
+
+			M9;磨削冷却关
+			B_DRESS;修整
+
+			INI[72]=1;磨削中进行过修整后的标记
+			C_LINESPEED_GRIND;磨削时砂轮速度调节子程序
+
+			D_GRIND_INIT_POSITION(INI[6],LADAO[199],PROCESS[16],INI[56],LADAO[2],INI[55]);外螺纹
+		ENDIF
+	ENDIF
 ENDWHILE
 
 TECHNOLOGY[247]=PROCESS[4];当前接触Y
