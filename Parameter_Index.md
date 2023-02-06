@@ -867,6 +867,7 @@
 |TECHNOLOGY[280]||圆拉刀-后角-C轴起始角度
 |TECHNOLOGY[281]||圆拉刀-铲背-C轴起始角度
 |TECHNOLOGY[282]||圆拉刀-按槽数计数修整-槽数磨削累计计数(此数值循环中不清零，可跨循环次数及工序计数)
+|TECHNOLOGY[283]||螺旋槽-升角补偿.A
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
@@ -1684,6 +1685,7 @@
 |LADAO[258]||圆拉刀-槽数
 |LADAO[259]||圆拉刀-起始磨削槽
 |LADAO[260]||圆拉刀-终止磨削槽
+|LADAO[261]||圆拉刀-外径
 |||
 |MEASURE_RESULT[0]||底面测量结果1
 |MEASURE_RESULT[149]||底面测量结果150

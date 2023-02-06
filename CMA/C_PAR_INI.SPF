@@ -379,7 +379,7 @@ ELSE
 								TECHNOLOGY[93]=TECHNOLOGY[105]*INI[4]*WORK[0];磨削速度计算
 
 								INI[75]=0;标记位
-								INI[20]=TECHNOLOGY[243];A轴磨削位-当前
+								INI[20]=TECHNOLOGY[243]+TECHNOLOGY[283];A轴磨削位-当前
 								LADAO[5]=TECHNOLOGY[244];B轴磨削位-当前
 								PROCESS[16]=TECHNOLOGY[248]+TECHNOLOGY[245];磨削安全位-当前
 
