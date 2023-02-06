@@ -131,7 +131,14 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	LADAO[5]=LADAO[43];B轴磨削位-当前
 
 	LENGTH_X=LADAO[1]-LADAO[0]
-	PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[11]))
+
+	IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
+		PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[11]))
+		BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[174]));每齿x磨削起点补偿
+	ELSE
+		PIANYI_Y=0
+		BUCHANG_X=0
+	ENDIF
 
 	IF LADAO[44]<LADAO[35];安全抬刀小于齿高
 		LADAO[44]=LADAO[35]
@@ -147,13 +154,7 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	LADAO[26]=LADAO[99];斜线进刀角度
 	LADAO[13]=SHAPE_MODEL[7];齿形偏转角度
 
-	BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[174]));每齿x磨削起点补偿
-
-	IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
-		LADAO[199]=LADAO[0]+BUCHANG_X;当前工序x轴起始位
-	ELSE
-		LADAO[199]=LADAO[0];当前工序x轴起始位
-	ENDIF
+	LADAO[199]=LADAO[0]+BUCHANG_X;当前工序x轴起始位
 
 	LADAO[94]=LADAO[252];前角斜线进刀(0否1是)
 ELSE
@@ -186,11 +187,8 @@ ELSE
 		PROCESS[13]=TECHNOLOGY[234]+LADAO[204];初始接触Y
 		LADAO[13]=TECH_ADDED[108];齿形偏转角度
 
-		IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
-			LADAO[199]=LADAO[39]+LADAO[136];当前工序x轴起始位
-		ELSE
-			LADAO[199]=LADAO[39]+LADAO[136];当前工序x轴起始位
-		ENDIF
+		LADAO[199]=LADAO[39]+LADAO[136];当前工序x轴起始位
+		
     ELSE
         IF LADAO[37]==2;齿顶后刃
 			IF TECH_ADDED[57]==1;新砂轮修整后校准磨削位
@@ -219,7 +217,14 @@ ELSE
 			LADAO[5]=LADAO[49];B轴磨削位-当前
 
 			LENGTH_X=LADAO[53]-LADAO[52]
-			PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[133]))
+
+			IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
+				PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[133]))
+				BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[134]));每齿x磨削起点补偿
+			ELSE
+				PIANYI_Y=0
+				BUCHANG_X=0
+			ENDIF
 
 			IF LADAO[50]<LADAO[35];安全抬刀小于齿高
 				LADAO[50]=LADAO[35]
@@ -230,13 +235,7 @@ ELSE
 			PROCESS[13]=TECHNOLOGY[233]+LADAO[208];初始接触Y
 			LADAO[13]=TECH_ADDED[107];齿形偏转角度
 
-			BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[134]));每齿x磨削起点补偿
-
-			IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
-				LADAO[199]=LADAO[52]+BUCHANG_X;当前工序x轴起始位
-			ELSE
-				LADAO[199]=LADAO[52];当前工序x轴起始位
-			ENDIF
+			LADAO[199]=LADAO[52]+BUCHANG_X;当前工序x轴起始位
         ELSE
             IF LADAO[37]==3;齿侧后刃
 				IF TECH_ADDED[97]==1;新砂轮修整后校准磨削位
@@ -294,7 +293,14 @@ ELSE
 					LADAO[5]=LADAO[55];B轴磨削位-当前
 
 					LENGTH_X=LADAO[59]-LADAO[58]
-					PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[132]))
+
+					IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
+						PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[132]))
+						BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[175]));每齿x磨削起点补偿
+					ELSE
+						PIANYI_Y=0
+						BUCHANG_X=0
+					ENDIF
 
 					IF LADAO[56]<LADAO[35];安全抬刀小于齿高
 						LADAO[56]=LADAO[35]
@@ -305,14 +311,8 @@ ELSE
 					PROCESS[13]=TECHNOLOGY[232]+LADAO[207];初始接触Y
 					LADAO[26]=LADAO[41];斜线进刀角度
 					LADAO[13]=LADAO[14];齿形偏转角度
-
-					BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[175]));每齿x磨削起点补偿
 					
-					IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
-						LADAO[199]=LADAO[58]+BUCHANG_X;当前工序x轴起始位
-					ELSE
-						LADAO[199]=LADAO[58];当前工序x轴起始位
-					ENDIF
+					LADAO[199]=LADAO[58]+BUCHANG_X;当前工序x轴起始位
 
 					LADAO[94]=LADAO[253];前角斜线进刀(0否1是)
 				ELSE;
@@ -326,7 +326,12 @@ ELSE
 						LADAO[5]=LADAO[147];B轴磨削位-当前
 
 						LENGTH_X=LADAO[143]-LADAO[142]
-						PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[150]))
+
+						IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
+							PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[150]))
+						ELSE
+							PIANYI_Y=0
+						ENDIF
 
 						IF LADAO[144]<LADAO[35];安全抬刀小于齿高
 							LADAO[144]=LADAO[35]
@@ -337,11 +342,7 @@ ELSE
 						PROCESS[13]=LADAO[145]+LADAO[209];初始接触Y
 						LADAO[13]=LADAO[149];齿形偏转角度
 
-						IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
-							LADAO[199]=LADAO[142];当前工序x轴起始位
-						ELSE
-							LADAO[199]=LADAO[142];当前工序x轴起始位
-						ENDIF
+						LADAO[199]=LADAO[142];当前工序x轴起始位
 					ELSE
 						IF LADAO[37]==6;吸铁台面
 							INI[75]=0;标记位
