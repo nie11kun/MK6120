@@ -3,32 +3,47 @@ PROC F_DRESSWHEEL_RUN(REAL SPEED) DISPLOF
 ;*修整轮启动
 ;SPEED:转速
 ;****************************
+
+DEF REAL CHOICE_NOW
+
+IF DRESSER[0]==6;金刚笔
+    RET
+ENDIF
+
 IF DRESSER[0]==1;插补
-    IF LADAO[152]==0;单滚轮-滚轮选择(0前滚轮/1后滚轮)
-        IF $A_DBB[11]==0;修整轮1当前未启动
-            INI[71]=INI[114];启动等待转速到位延时时间
-        ELSE
-            INI[71]=INI[115]
-        ENDIF
+    CHOICE_NOW=LADAO[152];插补滚轮选择(0左前滚轮/1左后滚轮/2右前滚轮/3右后滚轮)
+ELSE
+    CHOICE_NOW=LADAO[153];成型滚轮选择(0左前滚轮/1左后滚轮/2右前滚轮/3右后滚轮)
+ENDIF
+
+
+IF CHOICE_NOW==0;单滚轮-滚轮选择(0左前滚轮/1左后滚轮/2右前滚轮/3右后滚轮)
+    IF $A_DBB[11]==0;修整轮1当前未启动
+        INI[71]=INI[114];启动等待转速到位延时时间
     ELSE
-        IF $A_DBB[13]==0;修整轮2当前未启动
-            INI[71]=INI[114];启动等待转速到位延时时间
-        ELSE
-            INI[71]=INI[115]
-        ENDIF
+        
+        INI[71]=INI[115]
     ENDIF
 ELSE
-    IF LADAO[153]==0;
-        IF $A_DBB[11]==0;修整轮1当前未启动
+    IF CHOICE_NOW==1
+        IF $A_DBB[13]==0;修整轮2当前未启动
             INI[71]=INI[114];启动等待转速到位延时时间
         ELSE
             INI[71]=INI[115]
         ENDIF
     ELSE
-        IF $A_DBB[13]==0;修整轮2当前未启动
-            INI[71]=INI[114];启动等待转速到位延时时间
+        IF CHOICE_NOW==2
+            IF $A_DBB[28]==0;修整轮3当前未启动
+                INI[71]=INI[114];启动等待转速到位延时时间
+            ELSE
+                INI[71]=INI[115]
+            ENDIF
         ELSE
-            INI[71]=INI[115]
+            IF $A_DBB[29]==0;修整轮4当前未启动
+                INI[71]=INI[114];启动等待转速到位延时时间
+            ELSE
+                INI[71]=INI[115]
+            ENDIF
         ENDIF
     ENDIF
 ENDIF
@@ -36,17 +51,17 @@ ENDIF
 IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
     R297=SPEED
     G4 F0.2
-    IF DRESSER[0]==1;插补
-        IF LADAO[152]==0;单滚轮-滚轮选择(0前滚轮/1后滚轮)
-            M64;修整轮1启动
-        ELSE
-            M63;修整轮2启动
-        ENDIF
+    IF CHOICE_NOW==0;单滚轮-滚轮选择(0左前滚轮/1左后滚轮/2右前滚轮/3右后滚轮)
+        M64;修整轮1启动
     ELSE
-        IF LADAO[153]==0
-            M64;修整轮1启动
-        ELSE
+        IF CHOICE_NOW==1
             M63;修整轮2启动
+        ELSE
+            IF CHOICE_NOW==2
+                M43;修整轮3启动
+            ELSE
+                M44;修整轮4启动
+            ENDIF
         ENDIF
     ENDIF
 ELSE
