@@ -1411,8 +1411,6 @@
 //M(Mask11/$85094/"panel_1_1_chs.png"/)
 
 	DEF VAR1=(I//0/$85134,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
-
-	DEF VAR7=(R3/0,50//$85104,$85104,$85043,/WR2,ac4/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[5]"/360,80,202/460,80,60//"UserGuide/section_1.html","S1D4");工件螺距输入
 	
 	DEF X_IM=(R///$85118,$85118,,/WR1,ac4//"$AA_IM[X]"/10,10,20/30,10,60/3);X_IM
 	DEF Z_IM=(R///$85119,$85119,,/WR1,ac4//"$AA_IM[Z]"/10,30,20/30,30,60/3);Z_IM
@@ -1425,17 +1423,19 @@
 	DEF DUIDAOWEI=(R///$85112,$85112,,/WR4,ac4/"panel_1_3_chs.png"/"/NC/_N_NC_GD2_ACX/INI[135]"/245,30,50/280,30,60//"UserGuide/section_1.html","S1D7");任意点对刀位
 	;ifIsNotHasReOperateEnd
 
-	DEF Y_INIT_UP=(R///$85198,$85198,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[246]"/360,10,202/460,10,110//);磨削起始Y偏置
+	DEF SCREW_R=(I/*0=$85124,1=$85125//$85103,$85103,,/WR2,ac4/"panel_1_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[1]"/360,10,100/460,10,60//"UserGuide/section_1.html","S1D8");螺纹旋向
+	DEF VAR6=(I/0,50//$85102,$85102,$85051,/WR2,ac4/"panel_1_5_chs.png"/"/NC/_N_NC_GD2_ACX/WORK[1]"/360,30,202/460,30,60//"UserGuide/section_1.html","S1D9");工件头数
+	DEF VAR7=(R3/0,50//$85104,$85104,$85043,/WR2,ac4/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[5]"/360,50,202/460,50,60//"UserGuide/section_1.html","S1D4");工件螺距输入
 
-	DEF SCREW_R=(I/*0=$85124,1=$85125//$85103,$85103,,/WR2,ac4/"panel_1_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[1]"/360,40,100/460,40,60//"UserGuide/section_1.html","S1D8");螺纹旋向
-	DEF VAR6=(I/0,50//$85102,$85102,$85051,/WR2,ac4/"panel_1_5_chs.png"/"/NC/_N_NC_GD2_ACX/WORK[1]"/360,60,202/460,60,60//"UserGuide/section_1.html","S1D9");工件头数
+	DEF VAR8=(R3/-2000,2000//$85108,$85108,,/WR2,ac4/"panel_1_7_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[242]"/360,70,202/460,70,60/6/"UserGuide/section_1.html","S1D10");工件左端
+	DEF VAR9=(R3/-2000,2000//$85109,$85109,,/WR2,ac4/"panel_1_8_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[243]"/360,90,202/460,90,60/6/"UserGuide/section_1.html","S1D11");工件右端
 
-	DEF VAR8=(R3/-2000,2000//$85108,$85108,,/WR2,ac4/"panel_1_7_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[242]"/360,100,202/460,100,60/6/"UserGuide/section_1.html","S1D10");工件左端
-	DEF VAR9=(R3/-2000,2000//$85109,$85109,,/WR2,ac4/"panel_1_8_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[243]"/360,120,202/460,120,60/6/"UserGuide/section_1.html","S1D11");工件右端
+	DEF X_CENTER=(R///$85180,$85180,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[258]"/360,110,202/460,110,60//);工件中心位置X
 
-	DEF X_CENTER=(R///$85180,$85180,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[258]"/360,140,202/460,140,60//);工件中心位置X
+	DEF Z_INIT_UP=(R///$85199,$85199,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[285]"/360,130,202/460,130,110//);磨削起始Z偏置
+	DEF Y_INIT_UP=(R///$85198,$85198,,$85043/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[246]"/360,150,202/460,150,110//);磨削起始Y偏置
 
-	DEF GRIND_SAFE=(R/-500,500//$85172,$85172,,/WR2,ac4/"panel_1_23_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[249]"/360,165,202/460,165,60/6/"UserGuide/section_1.html","S1D13");磨削安全位置
+	DEF GRIND_SAFE=(R/-500,500//$85989,$85989,,/WR2,ac4/"panel_1_23_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[249]"/360,170,202/460,170,60/6/"UserGuide/section_1.html","S1D13");磨削安全位置
 	DEF C_INIT=(R/0,360//$85100,$85100,$85042,/WR2,ac4/"panel_1_34_chs.png"/"/NC/_N_NC_GD2_ACX/INI[28]"/360,205,202/460,205,60//"UserGuide/section_1.html","S1D29");头架在程序结束调整到合适角度
 	DEF PITCH_COM=(R/-500,500//$85105,$85105,$85043,/WR2,ac7/"panel_1_11_chs.png"/"/NC/_N_NC_GD2_ACX/INI[25]"/360,225,202/460,225,60//"UserGuide/section_1.html","S1D15");全长导程补偿
 
@@ -1447,11 +1447,10 @@
 
 	DEF GRIND_B=(R///$85925,$85925,,$85042/WR2//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[245]"/360,350,110/460,350,110/);B轴磨削位
 
-	DEF para_switch_3=(I/*0=$85015,1=$85016/1/$85063,$85063,,/WR2,ac7/"panel_1_24_chs.png"//0,0,0/190,310,18/);参数锁定开关
-	DEF INITANG=(R///$85176,$85176,$85042,/WR1,ac4//"/NC/_N_NC_GD2_ACX/TOOL_SET[5]"/10,310,210/120,310,60//"UserGuide/section_1.html","S1D24");头架初始角
-	DEF VAR19=(R///$85158,$85158,,/WR1,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[248]"/10,330,210/120,330,60//"UserGuide/section_1.html","S1D25");当前磨削接触位
-	DEF WHELL_POS_INI=(R///$85169,$85169,,/WR1,ac4/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[247]"/10,350,210/120,350,60/6/"UserGuide/section_1.html","S1D26");初始磨削接触位(对刀完成后磨削接触位)
-	DEF SHOUJIAN=(I/*0=$85087,1=$85088//$85089,$85039,,/WR2,ac4/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[58]"/190,350,20/210,350,70//"UserGuide/section_1.html","S1D27");是否是首件工件
+	DEF INITANG=(R/0,360//$85176,$85176,$85042,/WR2,ac4//"/NC/_N_NC_GD2_ACX/TOOL_SET[5]"/10,310,210/120,310,60//"UserGuide/section_1.html","S1D24");头架初始角
+	DEF VAR19=(R///$85158,$85158,,/WR2,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[248]"/10,330,210/120,330,60//"UserGuide/section_1.html","S1D25");当前磨削接触位
+	DEF WHELL_POS_INI=(R///$85169,$85169,,/WR2,ac4/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[247]"/10,350,210/120,350,60/6/"UserGuide/section_1.html","S1D26");初始磨削接触位(对刀完成后磨削接触位)
+	DEF SHOUJIAN=(I/*0=$85087,1=$85088/0/$85089,$85039,,/WR4,ac4/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[58]"/190,350,20/210,350,70//"UserGuide/section_1.html","S1D27");是否是首件工件
 
 	LOAD
 		LS("MENU_2");默认调用 MENU_1
@@ -1463,18 +1462,6 @@
 			DUIDAOWEI.WR=2
 		ELSE
 			DUIDAOWEI.WR=4
-		ENDIF
-	END_CHANGE
-
-	CHANGE(para_switch_3)
-		IF para_switch_3.VAL==0
-			INITANG.WR=2
-			VAR19.WR=2
-			WHELL_POS_INI.WR=2
-		ELSE
-			INITANG.WR=1
-			VAR19.WR=1
-			WHELL_POS_INI.WR=1
 		ENDIF
 	END_CHANGE
 

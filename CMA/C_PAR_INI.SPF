@@ -384,10 +384,10 @@ ELSE
 								PROCESS[16]=TECHNOLOGY[248]+TECHNOLOGY[245];磨削安全位-当前
 
 								IF INI[0]==1;左旋
-									INI[6]=TECHNOLOGY[241];工件左端
+									INI[6]=TECHNOLOGY[241]+TECHNOLOGY[284];工件左端
 									INI[7]=TECHNOLOGY[242];工件右端
 								ELSE;右旋
-									INI[6]=TECHNOLOGY[242];工件右端
+									INI[6]=TECHNOLOGY[242]+TECHNOLOGY[284];工件右端
 									INI[7]=TECHNOLOGY[241];工件左端
 								ENDIF
 

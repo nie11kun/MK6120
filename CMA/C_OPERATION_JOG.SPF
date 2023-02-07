@@ -3,6 +3,8 @@ PROC C_OPERATION_JOG DISPLOF
 ;*螺纹手动对刀
 ;****************************
 
+C_ROTATE_ANGLE(INI[20],LADAO[5]);螺旋升角
+
 ;*********************
 CASE TOOL_SET[19] OF 0 GOTOF DDD0 1 GOTOF DDD1 2 GOTOF DDD2 DEFAULT GOTOF DDD0;外螺纹   ifIsExternal
 ;*********************
