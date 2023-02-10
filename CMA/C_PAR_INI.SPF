@@ -4,7 +4,7 @@ PROC C_PAR_INI SBLOF DISPLOF
 ;*各种参数初始化赋值，判断及运算
 ;****************************
 
-DEF REAL TEMP_Z,TEMP_Y,TEMP_1,TEMP_2,TEMP_3,TEMP_4,LENGTH_X,PIANYI_Y,BUCHANG_X
+DEF REAL TEMP_Z,TEMP_Y,TEMP_1,TEMP_2,TEMP_3,TEMP_4,LENGTH_X,PIANYI_Y,BUCHANG_X,BUCHANG_A
 
 DRFOF;手轮偏置清除
 
@@ -127,18 +127,21 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	IF (INI[74]==0) OR (INI[73]<INI[74]);修整为零或当前几件小于设定值
 		INI[75]=0;标记位
 	ENDIF
-	INI[20]=LADAO[42];A轴磨削位-当前
-	LADAO[5]=LADAO[43];B轴磨削位-当前
-
+	
 	LENGTH_X=LADAO[1]-LADAO[0]
 
 	IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
 		PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[11]))
 		BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[174]));每齿x磨削起点补偿
+		BUCHANG_A=0;
 	ELSE
 		PIANYI_Y=0
 		BUCHANG_X=0
+		BUCHANG_A=LADAO[277]
 	ENDIF
+
+	INI[20]=LADAO[42]+BUCHANG_A;A轴磨削位-当前
+	LADAO[5]=LADAO[43];B轴磨削位-当前
 
 	IF LADAO[44]<LADAO[35];安全抬刀小于齿高
 		LADAO[44]=LADAO[35]
@@ -289,18 +292,21 @@ ELSE
 					IF (TECH_ADDED[129]==0) OR (TECH_ADDED[128]<TECH_ADDED[129]);修整为零或当前几件小于设定值
 						INI[75]=0;标记位
 					ENDIF
-					INI[20]=LADAO[54];A轴磨削位-当前
-					LADAO[5]=LADAO[55];B轴磨削位-当前
-
+					
 					LENGTH_X=LADAO[59]-LADAO[58]
 
 					IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
 						PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[132]))
 						BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[175]));每齿x磨削起点补偿
+						BUCHANG_A=0
 					ELSE
 						PIANYI_Y=0
 						BUCHANG_X=0
+						BUCHANG_A=LADAO[278]
 					ENDIF
+
+					INI[20]=LADAO[54]+BUCHANG_A;A轴磨削位-当前
+					LADAO[5]=LADAO[55];B轴磨削位-当前
 
 					IF LADAO[56]<LADAO[35];安全抬刀小于齿高
 						LADAO[56]=LADAO[35]

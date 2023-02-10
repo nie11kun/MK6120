@@ -30,6 +30,7 @@
 	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR4/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/10,60,110/130,60,110//"UserGuide/section_3.html","S3D14");新砂轮直径
 	DEF VAR14=(R/0,1000//$85320,$85320,,$85043/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/10,80,110/130,80,110/);砂轮当前直径
 	DEF WHEEL_W_MIN=(R/0,1000//$85303,$85303,,$85043/WR4/"panel_3_10_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[36]"/10,100,130/130,100,110//"UserGuide/section_3.html","S3D5");外螺纹砂轮最小直径 ifIsExternal
+	DEF WHEEL_RAD=(R/0,//$85331,$85331,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[277]"/10,120,130/130,120,110//);直径方向-齿顶圆弧半径 - 圆拉刀前角加工A角度计算用
 
 	DEF HOUDU_MSG=(R///$85330,$85330,,/WR4///10,40,200/0,0,0//);
 	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/10,60,110/130,60,110//"UserGuide/section_3.html","S3D13");新砂轮厚度
@@ -66,6 +67,8 @@
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
+
+	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);磨削参数
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
@@ -250,6 +253,11 @@
 			VAR13.WR=2
 			VAR14.WR=1
 			WHEEL_W_MIN.WR=2
+			IF LADAO_CHOICE.VAL==1
+				WHEEL_RAD.WR=2
+			ELSE
+				WHEEL_RAD.WR=4
+			ENDIF
 
 			HOUDU_MSG.WR=4
 			VAR12.WR=4
@@ -262,6 +270,7 @@
 			VAR13.WR=4
 			VAR14.WR=4
 			WHEEL_W_MIN.WR=4
+			WHEEL_RAD.WR=4
 
 			HOUDU_MSG.WR=1
 			VAR12.WR=2

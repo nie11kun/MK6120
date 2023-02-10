@@ -309,6 +309,8 @@
 
 	DEF XIE_ANG=(R///$85945,$85945,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[100]"/360,260,110/460,260,60//"UserGuide/section_1.html","S1D44");斜线进刀角度
 
+	DEF GRIND_A_ADDON=(R///$85990,$85990,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[278]"/360,280,110/460,280,60//);圆拉刀-前角-A轴补偿角
+
 	DEF GRIND_ZUIDU=(R///$85914,$85914,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[12]"/360,290,110/460,290,110//"UserGuide/section_1.html","S1D44");磨削x向锥度调整
 	DEF GRIND_X_ANG=(R///$85946,$85946,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[175]"/360,310,110/460,310,110//"UserGuide/section_1.html","S1D44");磨削x向补偿角度
 	DEF GRIND_Z_ANG=(R///$85970,$85970,,$85042/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[148]"/360,330,110/460,330,110//"UserGuide/section_1.html","S1D44");磨削z向补偿角度
@@ -355,6 +357,21 @@
 	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
 
+	DEF YUAN_DIA=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[262]"/0,0,0/0,0,0//);圆拉刀-外径
+	DEF WHEEL_RAD=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[277]"/0,0,0/0,0,0//);直径方向-齿顶圆弧半径
+	DEF HEIGHT=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[36]"/0,0,0/0,0,0//);齿形参数：齿高
+	DEF QIAN_ANG=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[31]"/0,0,0/0,0,0//);齿形参数：前刃角度
+
+	DEF TEMP_1
+	DEF TEMP_2
+	DEF TEMP_3
+	DEF TEMP_4
+	DEF TEMP_5
+	DEF TEMP_6
+	DEF TEMP_7
+	DEF TEMP_8
+	DEF TEMP_9
+
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
 		VS2.SE=3
@@ -369,6 +386,28 @@
 
 			CNC_CHOICE.VAL=0
 			CNC_CHOICE.WR=4
+
+			GRIND_A_ADDON.WR=2
+
+			GRIND_A.WR=1
+			POS_INPUT_6.WR=1
+
+			;******************************************************
+			TEMP_1=COS(SRAD(QIAN_ANG));
+			TEMP_2=HEIGHT/TEMP_1; L
+			TEMP_3=WHEEL_DIA-WHEEL_RAD*3;将圆弧半径作为砂轮直径补偿量--近似计算
+
+			TEMP_4=(2*YUAN_DIA-2*TEMP_2*TEMP_1)*(2*YUAN_DIA-2*TEMP_2*TEMP_1)-4*TEMP_3*TEMP_3;    a
+			TEMP_5=2*TEMP_2*TEMP_2*(2*YUAN_DIA-2*TEMP_2*TEMP_1)+8*TEMP_3*TEMP_3*TEMP_2*TEMP_1;   b
+			TEMP_6=TEMP_2*TEMP_2*TEMP_2*TEMP_2-4*TEMP_3*TEMP_3*TEMP_2*TEMP_2;                    c
+
+			TEMP_7=(-(TEMP_5)+SQRT(TEMP_5*TEMP_5-4*TEMP_4*TEMP_6))/(2*TEMP_4);  x
+			TEMP_8=SQRT(TEMP_7*TEMP_7+TEMP_2*TEMP_2-2*TEMP_7*TEMP_2*TEMP_1);    y
+
+			TEMP_9=SDEG(CALC_ASIN(SIN(SRAD(QIAN_ANG))*TEMP_7/TEMP_8));       beita
+
+			GRIND_A.VAL=QIAN_ANG+TEMP_9;
+			;******************************************************
 		ENDIF
 	END_LOAD
 
@@ -530,6 +569,8 @@
 
 	DEF XIE_ANG=(R///$85945,$85945,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[42]"/360,260,110/460,260,60//"UserGuide/section_1.html","S1D44");斜线进刀角度
 
+	DEF GRIND_A_ADDON=(R///$85990,$85990,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[279]"/360,280,110/460,280,60//);圆拉刀-前角-A轴补偿角
+
 	DEF GRIND_ZUIDU=(R///$85914,$85914,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[133]"/360,290,110/460,290,110//"UserGuide/section_1.html","S1D44");磨削x向锥度调整
 	DEF GRIND_X_ANG=(R///$85946,$85946,,$85042/WR2//"/NC/_N_NC_GD2_ACX/LADAO[176]"/360,310,110/460,310,110//"UserGuide/section_1.html","S1D44");磨削x向补偿角度
 	DEF GRIND_Z_ANG=(R///$85970,$85970,,$85042/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[149]"/360,330,110/460,330,110//"UserGuide/section_1.html","S1D44");磨削z向补偿角度
@@ -566,6 +607,21 @@
 	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
 
+	DEF YUAN_DIA=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[262]"/0,0,0/0,0,0//);圆拉刀-外径
+	DEF WHEEL_RAD=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[277]"/0,0,0/0,0,0//);直径方向-齿顶圆弧半径
+	DEF HEIGHT=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[36]"/0,0,0/0,0,0//);齿形参数：齿高
+	DEF QIAN_ANG=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[31]"/0,0,0/0,0,0//);齿形参数：前刃角度
+
+	DEF TEMP_1
+	DEF TEMP_2
+	DEF TEMP_3
+	DEF TEMP_4
+	DEF TEMP_5
+	DEF TEMP_6
+	DEF TEMP_7
+	DEF TEMP_8
+	DEF TEMP_9
+
 	LOAD
 		LS("MENU_1");默认调用 MENU_1
 		VS3.SE=3
@@ -577,6 +633,28 @@
 			GRIND_X_ANG.WR=4
 			GRIND_Z_ANG.WR=4
 			GRIND_ZUIDU.WR=4
+
+			GRIND_A_ADDON.WR=2
+
+			GRIND_A.WR=1
+			POS_INPUT_6.WR=1
+
+			;******************************************************
+			TEMP_1=COS(SRAD(QIAN_ANG));
+			TEMP_2=HEIGHT/TEMP_1; L
+			TEMP_3=WHEEL_DIA-WHEEL_RAD*3;将圆弧半径作为砂轮直径补偿量--近似计算
+
+			TEMP_4=(2*YUAN_DIA-2*TEMP_2*TEMP_1)*(2*YUAN_DIA-2*TEMP_2*TEMP_1)-4*TEMP_3*TEMP_3;    a
+			TEMP_5=2*TEMP_2*TEMP_2*(2*YUAN_DIA-2*TEMP_2*TEMP_1)+8*TEMP_3*TEMP_3*TEMP_2*TEMP_1;   b
+			TEMP_6=TEMP_2*TEMP_2*TEMP_2*TEMP_2-4*TEMP_3*TEMP_3*TEMP_2*TEMP_2;                    c
+
+			TEMP_7=(-(TEMP_5)+SQRT(TEMP_5*TEMP_5-4*TEMP_4*TEMP_6))/(2*TEMP_4);  x
+			TEMP_8=SQRT(TEMP_7*TEMP_7+TEMP_2*TEMP_2-2*TEMP_7*TEMP_2*TEMP_1);    y
+
+			TEMP_9=SDEG(CALC_ASIN(SIN(SRAD(QIAN_ANG))*TEMP_7/TEMP_8));       beita
+
+			GRIND_A.VAL=QIAN_ANG+TEMP_9;
+			;******************************************************
 		ENDIF
 	END_LOAD
 
