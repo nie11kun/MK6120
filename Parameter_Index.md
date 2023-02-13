@@ -866,11 +866,15 @@
 |TECHNOLOGY[277]||圆拉刀-每刀停留时间-4
 |TECHNOLOGY[278]||圆拉刀-当前每刀停留时间
 |TECHNOLOGY[279]||圆拉刀-通磨-C轴起始角度
-|TECHNOLOGY[280]||圆拉刀-后角-C轴起始角度
+|TECHNOLOGY[280]||
 |TECHNOLOGY[281]||圆拉刀-铲背-C轴起始角度
 |TECHNOLOGY[282]||圆拉刀-按槽数计数修整-槽数磨削累计计数(此数值循环中不清零，可跨循环次数及工序计数)
 |TECHNOLOGY[283]||螺旋槽-升角补偿.A
 |TECHNOLOGY[284]||螺旋槽-起始偏置.Z
+|TECHNOLOGY[285]||圆拉刀-后角-头架转速-1
+|TECHNOLOGY[286]||圆拉刀-后角-头架转速-2
+|TECHNOLOGY[287]||圆拉刀-后角-头架转速-3
+|TECHNOLOGY[288]||圆拉刀-后角-头架转速-4
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
