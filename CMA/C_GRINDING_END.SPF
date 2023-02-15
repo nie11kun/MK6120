@@ -10,9 +10,24 @@ INI[25]=0;退刀计算标志位置0
 IF (PROCESS[0]==0) AND ((RING[0]==0) OR (LADAO[37]==1) OR (LADAO[37]==5) OR (LADAO[37]==6) OR (LADAO[37]==7) OR (LADAO[37]==8));如果不是DIY且不是环形槽或者是磨平磨
     G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
     G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
-    IF LADAO[37]==8;螺纹加工
+
+    IF LADAO[256]==1;是否有圆拉刀(0无1有)
+        IF (LADAO[219]==1) AND ((LADAO[37]==0) OR (LADAO[37]==2) OR (LADAO[37]==4) OR (LADAO[37]==5));圆拉刀且在进行工序-前角 后背 后角 齿平面
+            IF $MA_SPIND_ASSIGN_TO_MACHAX[C]==0;C轴是否是主轴(0否1是) MD35000
+                DO MOV[C]=1 FA[C]=360*5
+                G4 F0.5
+                DO MOV[C]=0;停止c轴旋转
+            ELSE
+                M3 S=5;头架启动
+                G4 F0.5
+                M5;头架停止转动
+            ENDIF
+        ENDIF
+
+        G4 F0.5
         G90 G01 C=ACP(INI[27]) F=INI[58];头架在程序结束调整到合适角度
     ENDIF
+    
     M9;内磨削冷却关
     M57;退刀关
     ;*M61;*对刀关
