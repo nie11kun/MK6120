@@ -1,4 +1,4 @@
-PROC E_CYCLE_MESSAGE_RING DISPLOF
+PROC E_CYCLE_MESSAGE_RING(REAL VAR1,REAL VAR2) DISPLOF
 ;***********程序功能**********
 ;*环形槽小循环当前工艺信息:
 ;*当前循环次数,头数,进刀量,剩余次数
@@ -10,6 +10,10 @@ IF (LADAO[37]==0) OR (LADAO[37]==2) OR (LADAO[37]==3) OR (LADAO[37]==4);加工�
     CI_MSG="正在磨削第"<<RING[2]+RING[5]<<"齿,剩余"<<RING[4]-RING[5]-1<<"齿, ";
 ELSE
     CI_MSG="";
+ENDIF
+
+IF (LADAO[219]==1) AND (LADAO[37]==1);圆拉刀-通磨
+    CI_MSG="正在磨削第"<<VAR2<<"槽,剩余"<<VAR1-VAR2+1<<"槽, ";
 ENDIF
 
 CASE PROCESS[2] OF 0 GOTOF MESSAGE_0 1 GOTOF MESSAGE_1 2 GOTOF MESSAGE_2 3 GOTOF MESSAGE_3 4 GOTOF MESSAGE_4 DEFAULT GOTOF MESSAGE_5
