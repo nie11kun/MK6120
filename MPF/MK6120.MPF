@@ -14,7 +14,7 @@
 ;
 ;ifIsExternalBegin
 INI[53]=1500;*对刀时砂轮转速
-INI[150]=20000;*砂轮最高速度限制
+INI[150]=12000;*砂轮最高速度限制
 ;ifIsExternalEnd
 ;
 LADAO[236]=300;自动对刀-快速测量速度
