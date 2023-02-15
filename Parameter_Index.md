@@ -875,6 +875,10 @@
 |TECHNOLOGY[286]||圆拉刀-后角-头架转速-2
 |TECHNOLOGY[287]||圆拉刀-后角-头架转速-3
 |TECHNOLOGY[288]||圆拉刀-后角-头架转速-4
+|TECHNOLOGY[289]||圆拉刀-通磨磨外圆-头架转速-1
+|TECHNOLOGY[290]||圆拉刀-通磨磨外圆-头架转速-2
+|TECHNOLOGY[291]||圆拉刀-通磨磨外圆-头架转速-3
+|TECHNOLOGY[292]||圆拉刀-通磨磨外圆-头架转速-4
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
@@ -1712,6 +1716,7 @@
 |LADAO[278]||圆拉刀-后背-A轴补偿角
 |LADAO[279]||圆拉刀-共需加工几槽
 |LADAO[280]||圆拉刀-正在磨削第几槽
+|LADAO[281]||圆拉刀-通磨-加工方式(0通磨槽/1通磨外圆)
 |||
 |MEASURE_RESULT[0]||底面测量结果1
 |MEASURE_RESULT[149]||底面测量结果150

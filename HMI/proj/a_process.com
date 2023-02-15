@@ -2481,7 +2481,13 @@
 	DEF VAR38=(R/0,//$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[16]"/0,0,0/222,203,60//"UserGuide/section_2.html","S2D7");半粗磨砂轮线速度
 	DEF VAR39=(R/0,//$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[26]"/0,0,0/312,203,60//"UserGuide/section_2.html","S2D7");半精磨砂轮线速度
 	DEF VAR40=(R/0,//$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[36]"/0,0,0/402,203,60//"UserGuide/section_2.html","S2D7");精磨砂轮线速度
-		
+
+	;头架转速显示
+	DEF VAR23=(R///$85203,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[290]"/0,0,0/132,245,60//"UserGuide/section_2.html","S2D8");粗磨头架转速
+	DEF VAR24=(R///$85204,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[291]"/0,0,0/222,245,60//"UserGuide/section_2.html","S2D8");半粗磨头架转速
+	DEF VAR25=(R///$85205,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[292]"/0,0,0/312,245,60//"UserGuide/section_2.html","S2D8");半精磨头架转速
+	DEF VAR26=(R///$85206,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[293]"/0,0,0/402,245,60//"UserGuide/section_2.html","S2D8");精磨头架转速
+
 	;砂轮转速显示
 	DEF SHALUN_LEIXIN=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[39]"/0,0,0/0,0,0//);砂轮类型
 	DEF HOUDU_DIA=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[115]"/0,0,0/0,0,0/);厚度模式-砂轮直径
@@ -2512,6 +2518,8 @@
 	
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
+	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF GRIND_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[282]"/0,0,0/0,0,0//);圆拉刀-通磨-加工方式(0通磨槽/1通磨外圆)
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -2551,6 +2559,14 @@
 			VAR38.WR=1
 			VAR39.WR=1
 			VAR40.WR=1
+		ENDIF
+
+		IF (LADAO_CHOICE.VAL==1) AND (GRIND_MODE.VAL==1)
+			MAINPIC.ST=$85202
+			VAR23.WR=2;
+			VAR24.WR=2;
+			VAR25.WR=2;
+			VAR26.WR=2;
 		ENDIF
 	END_LOAD
 
