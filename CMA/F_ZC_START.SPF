@@ -9,10 +9,7 @@ PROC F_ZC_START(REAL Z_START_POSITION,REAL Z_END_POSITION,REAL WORK_LEAD,REAL SP
 ;****************************
 
 DEF REAL PERCENTS,ZUIDU_STATUS,FULL_ANG,X_DISTANCE,X_SPEED,Z_DISTANCE,LUOWEN_ORI
-
-;删除余程指令所在的同步动作不可使用 ID 号，所以其同步动作只能在一个插补器运行期间生效
-WHEN $A_DBB[2]==1 DO DELDTG(Y) $R[280]=$AA_IM[Y] $R[281]=$AA_IM[Z];删除余程延时0.1s执行下面的，同步动作中不可以使用自定义变量，可以设置机床数据 18660[1]=20，开放20个 real 类型 MGUD 变量：SYG_RM[0]-SYG_RM[19]，可以在同步动作中使用，注意变量名称是系统固定的
-WHEN ($A_DBB[2]==1) AND ($A_DBB[19]==1) DO POS[Y]=0.2 FA[Y]=30;0.4秒后退0.2mm，同步动作启动,注意同步动作中定位轴 POS 效果等同于 POSA，使用 POSA 会报警
+DEF INT DBB_TUIDAO
 
 Z_DISTANCE=Z_END_POSITION-Z_START_POSITION;加工长度
 PERCENTS=Z_DISTANCE/INI[3];加工长度占总长百分比(区分正负)
@@ -38,7 +35,13 @@ FGROUP(Z)
 POS[Y]=X_DISTANCE FA[Y]=X_SPEED G91 Z=Z_DISTANCE C=LUOWEN_ORI*FULL_ANG*PERCENTS F=SPEED
 
 STOPRE
-IF $A_DBB[2]==0;没按退刀键
+IF LADAO[256]==0;是否有圆拉刀(0无1有)
+    DBB_TUIDAO=$A_DBB[2]
+ELSE
+    DBB_TUIDAO=$A_IN[3]
+ENDIF
+
+IF DBB_TUIDAO==0;没按退刀键
     R280=$AA_IM[Y]
     R281=$AA_IM[Z]
 ENDIF

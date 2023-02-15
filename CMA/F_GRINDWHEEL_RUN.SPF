@@ -4,7 +4,15 @@ PROC F_GRINDWHEEL_RUN(REAL SPEED) DISPLOF
 ;SPEED:转速
 ;****************************
 
-IF $A_DBB[12]==0;砂轮当前未启动
+DEF INT DBB_GRIND_WHEEL
+
+IF LADAO[256]==0;是否有圆拉刀(0无1有)
+    DBB_GRIND_WHEEL=$A_DBB[12]
+ELSE
+    DBB_GRIND_WHEEL=$A_IN[5]
+ENDIF
+
+IF DBB_GRIND_WHEEL==0;砂轮当前未启动
     INI[71]=INI[112];砂轮启动等待转速到位延时时间
 ELSE
     INI[71]=INI[113]

@@ -3,17 +3,29 @@ PROC B_RING_GROOVE DISPLON
 ;*环形槽
 ;****************************
 
-IF $A_DBB[0]<>0;修整
+DEF INT DBB_DRESS,DBB_DUIDAO,DBB_AUTO
+
+IF LADAO[256]==0;是否有圆拉刀(0无1有)
+    DBB_DRESS=$A_DBB[0]
+    DBB_DUIDAO=$A_DBB[1]
+    DBB_AUTO=$A_DBB[5]
+ELSE
+    DBB_DRESS=$A_IN[1]
+    DBB_DUIDAO=$A_IN[2]
+    DBB_AUTO=$A_IN[4]
+ENDIF
+
+IF DBB_DRESS<>0;修整
     B_SCREW;磨削主程序
     GOTOF RING_ENDING
 ENDIF
 
-IF $A_DBB[1]<>0;手动对刀
+IF DBB_DUIDAO<>0;手动对刀
     ;B_SCREW;磨削主程序
     RET
 ENDIF
 
-IF $A_DBB[5]<>0;自动对刀
+IF DBB_AUTO<>0;自动对刀
     B_SCREW;磨削主程序
     GOTOF RING_ENDING
 ENDIF
@@ -30,7 +42,13 @@ TECH_ADDED[128]=0;磨削工件计数
 WHILE(RING[5]<RING[4]);已加工小于需加工
     C_RING_RELATED_POS(RING[2]+RING[5],RING[6],RING[7]);当前槽的XZ方向偏移量计算
     B_SCREW;磨削主程序
-    IF (DRESSER[6]<>0) OR ($A_DBB[2]==1);有报警/按下退刀键则退出程序
+
+    IF LADAO[256]==0;是否有圆拉刀(0无1有)
+        DBB_TUIDAO=$A_DBB[2]
+    ELSE
+        DBB_TUIDAO=$A_IN[3]
+    ENDIF
+    IF (DRESSER[6]<>0) OR (DBB_TUIDAO==1);有报警/按下退刀键则退出程序
         GOTOF RING_ENDING
     ENDIF
     STOPRE

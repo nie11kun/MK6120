@@ -5,6 +5,17 @@ PROC C_PAR_INI SBLOF DISPLOF
 ;****************************
 
 DEF REAL TEMP_Z,TEMP_Y,TEMP_1,TEMP_2,TEMP_3,TEMP_4,LENGTH_X,PIANYI_Y,BUCHANG_X,BUCHANG_A
+DEF INT DBB_DRESS,DBB_DUIDAO,DBB_AUTO,DBB_TUIDAO
+
+IF LADAO[256]==0;是否有圆拉刀(0无1有)
+    DBB_DRESS=$A_DBB[0]
+    DBB_DUIDAO=$A_DBB[1]
+    DBB_AUTO=$A_DBB[5]
+ELSE
+    DBB_DRESS=$A_IN[1]
+    DBB_DUIDAO=$A_IN[2]
+    DBB_AUTO=$A_IN[4]
+ENDIF
 
 DRFOF;手轮偏置清除
 
@@ -55,27 +66,27 @@ WORK[6]=0;按头数修整设定参数
 		ENDIF
 	ENDIF
 
-GRIND[1]=$A_DBB[0];是否修整
+GRIND[1]=DBB_DRESS;是否修整
 
 IF INI[69]==0;无自动对刀
-	GRIND[2]=$A_DBB[1];是否对刀
+	GRIND[2]=DBB_DUIDAO;是否对刀
 ELSE
 	IF TOOL_SET[68]==0;磨削中心：自动对刀标记
-		IF ($A_DBB[1]==0) AND ($A_DBB[5]==0)
+		IF (DBB_DUIDAO==0) AND (DBB_AUTO==0)
 			GRIND[2]=0;不对刀
 		ELSE
-			IF ($A_DBB[1]==1) AND ($A_DBB[5]==0)
+			IF (DBB_DUIDAO==1) AND (DBB_AUTO==0)
 				IF LADAO[37]==8;螺纹加工
 					GRIND[2]=1;手动对刀
 				ELSE
 					GRIND[2]=0;不对刀
 				ENDIF
 			ELSE
-				IF ($A_DBB[1]==0) AND ($A_DBB[5]==1)
+				IF (DBB_DUIDAO==0) AND (DBB_AUTO==1)
 					GRIND[2]=2;自动对刀(只计算C角度)
 					TOOL_SET[8]=0;首次对刀
 				ELSE
-					IF ($A_DBB[1]==1) AND ($A_DBB[5]==1)
+					IF (DBB_DUIDAO==1) AND (DBB_AUTO==1)
 						GRIND[2]=2;自动对刀(只计算C角度)
 						TOOL_SET[8]=0;首次对刀
 					ENDIF

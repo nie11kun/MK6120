@@ -3,13 +3,23 @@ PROC C_ROTATE_ANGLE(REAL A_ANG,REAL B_ANG) DISPLOF
 ;*螺旋升角
 ;****************************
 
+DEF INT A_CLAMP,B_CLAMP
+
+IF LADAO[256]==0;是否有圆拉刀(0无1有)
+    A_CLAMP=$A_DBB[14]
+    B_CLAMP=$A_DBB[15]
+ELSE
+    A_CLAMP=$A_IN[14]
+    B_CLAMP=$A_IN[15]
+ENDIF
+
 IF INI[16]==1
 	IF ABS($AA_IM[A]-A_ANG)*1000>=1
 		G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
 		M73;液压开
 		G4 F1
 		M35;松开
-		WHILE($A_DBB[14]==0);未松开
+		WHILE(A_CLAMP==0);未松开
 			G4 F0.2
 		ENDWHILE
 		G4 F1
@@ -29,7 +39,7 @@ IF INI[16]==1
 		M73;液压开
 		G4 F1
 		M94;松开
-		WHILE($A_DBB[15]==0);未松开
+		WHILE(B_CLAMP==0);未松开
 			G4 F0.2
 		ENDWHILE
 		G4 F1

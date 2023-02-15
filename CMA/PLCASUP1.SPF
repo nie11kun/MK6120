@@ -4,9 +4,12 @@ PROC PLCASUP1 DISPLOF
 ;****************************
 
 DEF REAL DR11,DR12,DR13
+DEF INT DBB_TUIDAO
 
 STOPRE
 IF LADAO[37]==8;是螺纹加工
+    R280=$AA_IM[Y]
+    R281=$AA_IM[Z]
     TOOL_SET[3]=R280;对刀完成后Y轴坐标(用于磨削初始进刀位)
     TOOL_SET[21]=R281;手动对刀完成后Z轴坐标
     TOOL_SET[2]=$AC_DRF[Z];对刀完成时手轮偏置值
@@ -42,7 +45,13 @@ IF LADAO[37]==8;是螺纹加工
     DRFOF
 ENDIF
 
-IF $A_DBB[2]==1;按下退刀键
+IF LADAO[256]==0;是否有圆拉刀(0无1有)
+    DBB_TUIDAO=$A_DBB[2]
+ELSE
+    DBB_TUIDAO=$A_IN[3]
+ENDIF
+
+IF DBB_TUIDAO==1;按下退刀键
     IF LADAO[37]<>8;不是螺纹加工
         G91 G01 Y=LADAO[35] Z=-LADAO[98]*LADAO[35]*TAN(LADAO[30]) F=INI[54]
     ELSE

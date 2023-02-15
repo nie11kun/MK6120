@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CONFIGURATION>
+  <General>
+    <NumRows type="int" value="100"/>
+  </General>
+  <Operand>
+    <Row0 type="QString" value="$A_IN[0]"/>
+    <Row1 type="QString" value="$A_IN[1]"/>
+    <Row2 type="QString" value="$A_IN[2]"/>
+    <Row3 type="QString" value="$A_IN[3]"/>
+    <Row4 type="QString" value="$A_IN[4]"/>
+    <Row5 type="QString" value="$A_IN[5]"/>
+    <Row6 type="QString" value="$A_IN[6]"/>
+    <Row7 type="QString" value="$A_IN[7]"/>
+    <Row8 type="QString" value="$A_IN[8]"/>
+    <Row9 type="QString" value="$A_IN[9]"/>
+    <Row10 type="QString" value="$A_IN[10]"/>
+    <Row11 type="QString" value="$A_IN[11]"/>
+    <Row12 type="QString" value="$A_IN[12]"/>
+    <Row13 type="QString" value="$A_IN[13]"/>
+    <Row14 type="QString" value="$A_IN[14]"/>
+    <Row15 type="QString" value="$A_IN[15]"/>
+    <Row16 type="QString" value="$A_IN[16]"/>
+    <Row17 type="QString" value="$A_IN[17]"/>
+    <Row18 type="QString" value="$A_IN[18]"/>
+    <Row19 type="QString" value="$A_IN[19]"/>
+    <Row20 type="QString" value="$A_IN[20]"/>
+    <Row21 type="QString" value="$A_IN[27]"/>
+  </Operand>
+  <Info>
+    <Row0 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[0]|/Nck/State/digitInpVal[0]"/>
+    <Row1 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[1]|/Nck/State/digitInpVal[1]"/>
+    <Row2 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[2]|/Nck/State/digitInpVal[2]"/>
+    <Row3 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[3]|/Nck/State/digitInpVal[3]"/>
+    <Row4 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[4]|/Nck/State/digitInpVal[4]"/>
+    <Row5 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[5]|/Nck/State/digitInpVal[5]"/>
+    <Row6 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[6]|/Nck/State/digitInpVal[6]"/>
+    <Row7 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[7]|/Nck/State/digitInpVal[7]"/>
+    <Row8 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[8]|/Nck/State/digitInpVal[8]"/>
+    <Row9 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[9]|/Nck/State/digitInpVal[9]"/>
+    <Row10 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[10]|/Nck/State/digitInpVal[10]"/>
+    <Row11 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[11]|/Nck/State/digitInpVal[11]"/>
+    <Row12 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[12]|/Nck/State/digitInpVal[12]"/>
+    <Row13 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[13]|/Nck/State/digitInpVal[13]"/>
+    <Row14 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[14]|/Nck/State/digitInpVal[14]"/>
+    <Row15 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[15]|/Nck/State/digitInpVal[15]"/>
+    <Row16 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[16]|/Nck/State/digitInpVal[16]"/>
+    <Row17 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[17]|/Nck/State/digitInpVal[17]"/>
+    <Row18 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[18]|/Nck/State/digitInpVal[18]"/>
+    <Row19 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[19]|/Nck/State/digitInpVal[19]"/>
+    <Row20 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[20]|/Nck/State/digitInpVal[20]"/>
+    <Row21 type="QString" value="S5M9G8JD41M4CNHF|1|1|$A_IN[27]|/Nck/State/digitInpVal[27]"/>
+  </Info>
+  <Unit>
+    <Row0 type="QString" value=""/>
+    <Row1 type="QString" value=""/>
+    <Row2 type="QString" value=""/>
+    <Row3 type="QString" value=""/>
+    <Row4 type="QString" value=""/>
+    <Row5 type="QString" value=""/>
+    <Row6 type="QString" value=""/>
+    <Row7 type="QString" value=""/>
+    <Row8 type="QString" value=""/>
+    <Row9 type="QString" value=""/>
+    <Row10 type="QString" value=""/>
+    <Row11 type="QString" value=""/>
+    <Row12 type="QString" value=""/>
+    <Row13 type="QString" value=""/>
+    <Row14 type="QString" value=""/>
+    <Row15 type="QString" value=""/>
+    <Row16 type="QString" value=""/>
+    <Row17 type="QString" value=""/>
+    <Row18 type="QString" value=""/>
+    <Row19 type="QString" value=""/>
+    <Row20 type="QString" value=""/>
+    <Row21 type="QString" value=""/>
+  </Unit>
+  <Comment>
+    <Row0 type="QString" value=""/>
+    <Row1 type="QString" value="是否修整"/>
+    <Row2 type="QString" value="手动对刀"/>
+    <Row3 type="QString" value="退刀"/>
+    <Row4 type="QString" value="自动对刀"/>
+    <Row5 type="QString" value="砂轮旋转"/>
+    <Row6 type="QString" value="左滚轮旋转"/>
+    <Row7 type="QString" value="右滚轮旋转"/>
+    <Row8 type="QString" value=""/>
+    <Row9 type="QString" value=""/>
+    <Row10 type="QString" value=""/>
+    <Row11 type="QString" value=""/>
+    <Row12 type="QString" value=""/>
+    <Row13 type="QString" value="C轴松开"/>
+    <Row14 type="QString" value="A轴松开"/>
+    <Row15 type="QString" value="B轴松开"/>
+    <Row16 type="QString" value=""/>
+    <Row17 type="QString" value=""/>
+    <Row18 type="QString" value=""/>
+    <Row19 type="QString" value=""/>
+    <Row20 type="QString" value=""/>
+    <Row21 type="QString" value="测头信号屏蔽"/>
+  </Comment>
+  <Format>
+    <Row0 type="int" value="0"/>
+    <Row1 type="int" value="0"/>
+    <Row2 type="int" value="0"/>
+    <Row3 type="int" value="0"/>
+    <Row4 type="int" value="0"/>
+    <Row5 type="int" value="0"/>
+    <Row6 type="int" value="0"/>
+    <Row7 type="int" value="0"/>
+    <Row8 type="int" value="0"/>
+    <Row9 type="int" value="0"/>
+    <Row10 type="int" value="0"/>
+    <Row11 type="int" value="0"/>
+    <Row12 type="int" value="0"/>
+    <Row13 type="int" value="0"/>
+    <Row14 type="int" value="0"/>
+    <Row15 type="int" value="0"/>
+    <Row16 type="int" value="0"/>
+    <Row17 type="int" value="0"/>
+    <Row18 type="int" value="0"/>
+    <Row19 type="int" value="0"/>
+    <Row20 type="int" value="0"/>
+    <Row21 type="int" value="0"/>
+  </Format>
+</CONFIGURATION>

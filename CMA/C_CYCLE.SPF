@@ -104,10 +104,6 @@ ELSE
     ENDIF
 ENDIF
 
-IF $A_DBB[2]==1;按下退刀键跳转到结束程序
-    RET
-ENDIF
-
 ;
 
 IF PROCESS[3]==1

@@ -5,6 +5,19 @@ PROC F_DRESSWHEEL_RUN(REAL SPEED) DISPLOF
 ;****************************
 
 DEF REAL CHOICE_NOW
+DEF INT DBB_DRESS_WHEEL_1,DBB_DRESS_WHEEL_2,DBB_DRESS_WHEEL_3,DBB_DRESS_WHEEL_4
+
+IF LADAO[256]==0;是否有圆拉刀(0无1有)
+	DBB_DRESS_WHEEL_1=$A_DBB[11]
+	DBB_DRESS_WHEEL_2=$A_DBB[13]
+	DBB_DRESS_WHEEL_3=0
+	DBB_DRESS_WHEEL_4=0
+ELSE
+	DBB_DRESS_WHEEL_1=$A_IN[6]
+	DBB_DRESS_WHEEL_2=$A_IN[6]
+	DBB_DRESS_WHEEL_3=$A_IN[7]
+	DBB_DRESS_WHEEL_4=$A_IN[7]
+ENDIF
 
 IF DRESSER[0]==6;金刚笔
     RET
@@ -18,7 +31,7 @@ ENDIF
 
 
 IF CHOICE_NOW==0;单滚轮-滚轮选择(0左前滚轮/1左后滚轮/2右前滚轮/3右后滚轮)
-    IF $A_DBB[11]==0;修整轮1当前未启动
+    IF DBB_DRESS_WHEEL_1==0;修整轮1当前未启动
         INI[71]=INI[114];启动等待转速到位延时时间
     ELSE
         
@@ -26,20 +39,20 @@ IF CHOICE_NOW==0;单滚轮-滚轮选择(0左前滚轮/1左后滚轮/2右前滚�
     ENDIF
 ELSE
     IF CHOICE_NOW==1
-        IF $A_DBB[13]==0;修整轮2当前未启动
+        IF DBB_DRESS_WHEEL_2==0;修整轮2当前未启动
             INI[71]=INI[114];启动等待转速到位延时时间
         ELSE
             INI[71]=INI[115]
         ENDIF
     ELSE
         IF CHOICE_NOW==2
-            IF $A_DBB[28]==0;修整轮3当前未启动
+            IF DBB_DRESS_WHEEL_3==0;修整轮3当前未启动
                 INI[71]=INI[114];启动等待转速到位延时时间
             ELSE
                 INI[71]=INI[115]
             ENDIF
         ELSE
-            IF $A_DBB[29]==0;修整轮4当前未启动
+            IF DBB_DRESS_WHEEL_4==0;修整轮4当前未启动
                 INI[71]=INI[114];启动等待转速到位延时时间
             ELSE
                 INI[71]=INI[115]

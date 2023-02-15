@@ -3,6 +3,18 @@ PROC B_GRIND_DETECTION DISPLOF
 ;*当前加工工序提示
 ;****************************
 
+DEF INT DBB_DRESS,DBB_DUIDAO,DBB_AUTO,DBB_TUIDAO
+
+IF LADAO[256]==0;是否有圆拉刀(0无1有)
+    DBB_DRESS=$A_DBB[0]
+    DBB_DUIDAO=$A_DBB[1]
+    DBB_AUTO=$A_DBB[5]
+ELSE
+    DBB_DRESS=$A_IN[1]
+    DBB_DUIDAO=$A_IN[2]
+    DBB_AUTO=$A_IN[4]
+ENDIF
+
 IF RING[1]>=150;总齿数大于等于150
     MSG("工件最大齿数不可超过149齿,请修改工件参数");
     M0
@@ -10,12 +22,17 @@ IF RING[1]>=150;总齿数大于等于150
     STOPRE
 ENDIF
 
-IF $A_DBB[0]<>0;修整
+IF DBB_DRESS<>0;修整
     MSG("当前加工工序-砂轮修整");
     GOTOF WAIT_START
 ENDIF
 
-IF $A_DBB[5]<>0;自动对刀
+IF DBB_DUIDAO<>0;手动对刀
+    MSG("当前加工工序-手动对刀");
+    GOTOF WAIT_START
+ENDIF
+
+IF DBB_AUTO<>0;自动对刀
     MSG("当前加工工序-自动对刀");
     GOTOF WAIT_START
 ENDIF
