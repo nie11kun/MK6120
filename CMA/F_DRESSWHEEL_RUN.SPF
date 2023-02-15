@@ -55,12 +55,16 @@ IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
         M64;修整轮1启动
     ELSE
         IF CHOICE_NOW==1
-            M63;修整轮2启动
+            IF LADAO[256]==0;是否有圆拉刀(0无1有)
+                M63;修整轮2启动
+            ELSE
+                M64;修整轮2启动
+            ENDIF
         ELSE
             IF CHOICE_NOW==2
-                M43;修整轮3启动
+                M63;修整轮3启动
             ELSE
-                M44;修整轮4启动
+                M63;修整轮4启动
             ENDIF
         ENDIF
     ENDIF
