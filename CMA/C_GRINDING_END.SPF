@@ -12,7 +12,7 @@ IF (PROCESS[0]==0) AND ((RING[0]==0) OR (LADAO[37]==1) OR (LADAO[37]==5) OR (LAD
     G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
 
     IF LADAO[256]==1;是否有圆拉刀(0无1有)
-        IF (LADAO[219]==1) AND ((LADAO[37]==0) OR (LADAO[37]==2) OR (LADAO[37]==4) OR (LADAO[37]==5));圆拉刀且在进行工序-前角 后背 后角 齿平面
+        IF (LADAO[219]==1) AND ((LADAO[37]==0) OR ((LADAO[37]==1) AND (LADAO[281]==1)) OR (LADAO[37]==2) OR (LADAO[37]==4) OR (LADAO[37]==5));圆拉刀且在进行工序-前角 通磨外圆 后背 后角 齿平面
             IF $MA_SPIND_ASSIGN_TO_MACHAX[C]==0;C轴是否是主轴(0否1是) MD35000
                 DO MOV[C]=1 FA[C]=360*5
                 G4 F0.5
