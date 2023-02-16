@@ -20,6 +20,13 @@ IF INI[16]==1
 		G4 F1
 		M35;松开
 		WHILE(A_CLAMP==0);未松开
+			IF LADAO[256]==0;是否有圆拉刀(0无1有)
+				A_CLAMP=$A_DBB[14]
+				B_CLAMP=$A_DBB[15]
+			ELSE
+				A_CLAMP=$A_IN[14]
+				B_CLAMP=$A_IN[15]
+			ENDIF
 			G4 F0.2
 		ENDWHILE
 		G4 F1
@@ -40,6 +47,13 @@ IF INI[16]==1
 		G4 F1
 		M94;松开
 		WHILE(B_CLAMP==0);未松开
+			IF LADAO[256]==0;是否有圆拉刀(0无1有)
+				A_CLAMP=$A_DBB[14]
+				B_CLAMP=$A_DBB[15]
+			ELSE
+				A_CLAMP=$A_IN[14]
+				B_CLAMP=$A_IN[15]
+			ENDIF
 			G4 F0.2
 		ENDWHILE
 		G4 F1
