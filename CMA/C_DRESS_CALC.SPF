@@ -6,6 +6,8 @@ PROC C_DRESS_CALC SBLOF DISPLOF
 
 DEF REAL TEMP_1,TEMP_2,TEMP_3,TEMP_4
 
+STOPRE
+
 IF LADAO[38]==0;砂轮类型
     TEMP_4=0
 ELSE
@@ -43,15 +45,15 @@ ELSE
         PROCESS[4]=PROCESS[4]-DRESSER[14]*COS(LADAO[13]);当前进刀位置计算
 
         IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)，4后背
-            INI[2]=INI[2]+DRESSER[14]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+            INI[2]=INI[2]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
             INI[6]=INI[2]+LADAO[245]+RING[7];工件右端
             D_DRESS_GRIND_CALC(0,150,DRESSER[14]*COS(LADAO[13]));前刃底面当前接触Y
-            D_DRESS_GRIND_CALC(150,150,-DRESSER[14]*SIN(LADAO[13])*LADAO[98]);前刃当前接触Z
+            D_DRESS_GRIND_CALC(150,150,-DRESSER[14]*SIN(LADAO[13]));前刃当前接触Z
             TECHNOLOGY[231]=TECHNOLOGY[231]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
         ELSE
             IF LADAO[37]==1;通磨
                 ;LADAO[39]=LADAO[39]-DRESSER[14]*SIN(LADAO[13]);x磨削位
-                LADAO[40]=LADAO[40]+DRESSER[14]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                LADAO[40]=LADAO[40]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
                 INI[6]=LADAO[40]+LADAO[246]-LADAO[135]*LADAO[98];平磨起点z
 
                 TECHNOLOGY[234]=TECHNOLOGY[234]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
@@ -59,9 +61,9 @@ ELSE
             ELSE
                 IF LADAO[37]==2;平刃后角
                     TEMP_1=DRESSER[14]/COS(TEMP_4)
-                    TEMP_2=TEMP_1*SIN(TEMP_4-LADAO[13])
-                    TEMP_3=TEMP_1*COS(TEMP_4-LADAO[13])
-                    LADAO[51]=LADAO[51]+TEMP_2*LADAO[98];z轴磨削起始计算
+                    TEMP_2=TEMP_1*SIN(TEMP_4+LADAO[13])
+                    TEMP_3=TEMP_1*COS(TEMP_4+LADAO[13])
+                    LADAO[51]=LADAO[51]+TEMP_2;z轴磨削起始计算
                     INI[6]=LADAO[51]+LADAO[247]+RING[7];工件右端
                     D_DRESS_GRIND_CALC(450,150,TEMP_3);顶部后刃当前接触Y
                     TECHNOLOGY[233]=TECHNOLOGY[233]-TEMP_3;初始进刀位置计算
@@ -72,14 +74,14 @@ ELSE
                         TECHNOLOGY[235]=TECHNOLOGY[235]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
                     ELSE;
                         IF LADAO[37]==4;齿背
-                            LADAO[57]=LADAO[57]+DRESSER[14]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                            LADAO[57]=LADAO[57]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
                             INI[6]=LADAO[57]+LADAO[249]+RING[7];工件右端
                             D_DRESS_GRIND_CALC(750,150,DRESSER[14]*COS(LADAO[13]));后刃底面当前接触Y
-                            D_DRESS_GRIND_CALC(300,150,-DRESSER[14]*SIN(LADAO[13])*LADAO[98]);后背当前接触Z
+                            D_DRESS_GRIND_CALC(300,150,-DRESSER[14]*SIN(LADAO[13]));后背当前接触Z
                             TECHNOLOGY[232]=TECHNOLOGY[232]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
                         ELSE;
                             IF LADAO[37]==5;齿平面
-                                LADAO[140]=LADAO[140]+DRESSER[14]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                                LADAO[140]=LADAO[140]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
                                 INI[6]=LADAO[140]+LADAO[250];工件右端
                                 LADAO[145]=LADAO[145]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
                                 TECHNOLOGY[237]=TECHNOLOGY[237]-DRESSER[14]*COS(LADAO[13]);通磨当前接触Y
@@ -95,10 +97,10 @@ ELSE
                                         ENDIF
                                     ELSE;螺纹加工
                                         IF INI[0]==1;左旋
-                                            TECHNOLOGY[241]=TECHNOLOGY[241]+DRESSER[14]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                                            TECHNOLOGY[241]=TECHNOLOGY[241]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
                                             INI[6]=TECHNOLOGY[241];工件左端
                                         ELSE;右旋
-                                            TECHNOLOGY[242]=TECHNOLOGY[242]+DRESSER[14]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                                            TECHNOLOGY[242]=TECHNOLOGY[242]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
                                             INI[6]=TECHNOLOGY[242];工件右端
                                         ENDIF
                                         TECHNOLOGY[246]=TECHNOLOGY[246]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
@@ -123,15 +125,15 @@ ELSE
             PROCESS[4]=PROCESS[4]-DRESSER[15]*COS(LADAO[13]);当前进刀位置计算
 
             IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
-                INI[2]=INI[2]+DRESSER[15]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                INI[2]=INI[2]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
                 INI[6]=INI[2]+LADAO[245]+RING[7];工件右端
                 D_DRESS_GRIND_CALC(0,150,DRESSER[15]*COS(LADAO[13]))
-                D_DRESS_GRIND_CALC(150,150,-DRESSER[15]*SIN(LADAO[13])*LADAO[98])
+                D_DRESS_GRIND_CALC(150,150,-DRESSER[15]*SIN(LADAO[13]))
                 TECHNOLOGY[231]=TECHNOLOGY[231]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
             ELSE
                 IF LADAO[37]==1
                     ;LADAO[39]=LADAO[39]-DRESSER[15]*SIN(LADAO[13])
-                    LADAO[40]=LADAO[40]+DRESSER[15]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                    LADAO[40]=LADAO[40]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
                     INI[6]=LADAO[40]+LADAO[246]-LADAO[135]*LADAO[98];平磨起点z
                 
                     TECHNOLOGY[234]=TECHNOLOGY[234]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
@@ -139,9 +141,9 @@ ELSE
                 ELSE
                     IF LADAO[37]==2
                         TEMP_1=DRESSER[15]/COS(TEMP_4)
-                        TEMP_2=TEMP_1*SIN(TEMP_4-LADAO[13])
-                        TEMP_3=TEMP_1*COS(TEMP_4-LADAO[13])
-                        LADAO[51]=LADAO[51]+TEMP_2*LADAO[98];z轴磨削起始计算
+                        TEMP_2=TEMP_1*SIN(TEMP_4+LADAO[13])
+                        TEMP_3=TEMP_1*COS(TEMP_4+LADAO[13])
+                        LADAO[51]=LADAO[51]+TEMP_2;z轴磨削起始计算
                         INI[6]=LADAO[51]+LADAO[247]+RING[7];工件右端
                         D_DRESS_GRIND_CALC(450,150,TEMP_3)
                         TECHNOLOGY[233]=TECHNOLOGY[233]-TEMP_3;初始进刀位置计算
@@ -152,14 +154,14 @@ ELSE
                             TECHNOLOGY[235]=TECHNOLOGY[235]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
                         ELSE
                             IF LADAO[37]==4;齿背
-                                LADAO[57]=LADAO[57]+DRESSER[15]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                                LADAO[57]=LADAO[57]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
                                 INI[6]=LADAO[57]+LADAO[249]+RING[7];工件右端
                                 D_DRESS_GRIND_CALC(750,150,DRESSER[15]*COS(LADAO[13]))
-                                D_DRESS_GRIND_CALC(300,150,-DRESSER[15]*SIN(LADAO[13])*LADAO[98])
+                                D_DRESS_GRIND_CALC(300,150,-DRESSER[15]*SIN(LADAO[13]))
                                 TECHNOLOGY[232]=TECHNOLOGY[232]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
                             ELSE;
                                 IF LADAO[37]==5;齿平面
-                                    LADAO[140]=LADAO[140]+DRESSER[15]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                                    LADAO[140]=LADAO[140]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
                                     INI[6]=LADAO[140]+LADAO[250];工件右端
                                     LADAO[145]=LADAO[145]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
                                     TECHNOLOGY[237]=TECHNOLOGY[237]-DRESSER[15]*COS(LADAO[13]);通磨当前接触Y
@@ -175,10 +177,10 @@ ELSE
                                             ENDIF
                                         ELSE
                                             IF INI[0]==1;左旋
-                                                TECHNOLOGY[241]=TECHNOLOGY[241]+DRESSER[15]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                                                TECHNOLOGY[241]=TECHNOLOGY[241]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
                                                 INI[6]=TECHNOLOGY[241];工件左端
                                             ELSE;右旋
-                                                TECHNOLOGY[242]=TECHNOLOGY[242]+DRESSER[15]*SIN(LADAO[13])*LADAO[98];z轴磨削起始计算
+                                                TECHNOLOGY[242]=TECHNOLOGY[242]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
                                                 INI[6]=TECHNOLOGY[242];工件右端
                                             ENDIF
                                             TECHNOLOGY[246]=TECHNOLOGY[246]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算

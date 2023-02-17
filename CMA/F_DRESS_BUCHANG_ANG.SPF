@@ -1,0 +1,30 @@
+PROC F_DRESS_BUCHANG_ANG(VAR REAL ANG_RELATE) DISPLOF
+;***********程序功能**********
+;*Z轴快速移动
+;ANG_RELATE:修磨角度差
+;****************************
+
+IF DRESSER[0]==1;插补修整
+    IF LADAO[38]==0;直径方向
+        ANG_RELATE=INI[20]-INI[153];齿形偏转角度
+    ELSE;厚度方向
+        ANG_RELATE=INI[20]-LADAO[115];齿形偏转角度
+    ENDIF
+ELSE
+    IF DRESSER[0]==4;成型
+        IF LADAO[38]==0
+            ANG_RELATE=INI[20]-LADAO[117];齿形偏转角度
+        ELSE
+            ANG_RELATE=INI[20]-LADAO[119];齿形偏转角度
+        ENDIF
+    ELSE;金刚笔
+        IF LADAO[38]==0
+            ANG_RELATE=INI[20]-LADAO[223];齿形偏转角度
+        ELSE
+            ANG_RELATE=INI[20]-LADAO[228];齿形偏转角度
+        ENDIF
+    ENDIF
+ENDIF
+
+RET
+
