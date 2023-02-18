@@ -21,6 +21,8 @@ ELSE
     F_FLIN_FNORM_MOVE("X",LADAO[122],TECHNOLOGY[28],LADAO[2],TECHNOLOGY[29])
 ENDIF
 
+M8;修整冷却开
+
 G90 G1 Y=WHEEL[10]+INI[132] F=INI[55];多退刀一点，防止齿高过大抬刀不够
 ;
 MSG("台面到位中"); ifIsCHS
