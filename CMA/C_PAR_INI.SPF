@@ -174,6 +174,8 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	LADAO[199]=LADAO[0]+BUCHANG_X;当前工序x轴起始位
 
 	LADAO[94]=LADAO[252];前角斜线进刀(0否1是)
+
+	TECHNOLOGY[300]=TECHNOLOGY[293];c轴安装角
 ELSE
     IF LADAO[37]==1;通磨
 		INI[20]=LADAO[45];A轴磨削位-当前
@@ -214,6 +216,8 @@ ELSE
 		PROCESS[13]=TECHNOLOGY[234]+LADAO[204];初始接触Y
 
 		LADAO[199]=LADAO[39]+LADAO[136];当前工序x轴起始位
+
+		TECHNOLOGY[300]=TECHNOLOGY[294];c轴安装角
 		
     ELSE
         IF LADAO[37]==2;齿顶后刃
@@ -265,6 +269,8 @@ ELSE
 			PROCESS[13]=TECHNOLOGY[233]+LADAO[208];初始接触Y
 
 			LADAO[199]=LADAO[52]+BUCHANG_X;当前工序x轴起始位
+
+			TECHNOLOGY[300]=TECHNOLOGY[295];c轴安装角
         ELSE
             IF LADAO[37]==3;齿侧后刃
 				INI[20]=LADAO[67];A轴磨削位-当前
@@ -303,6 +309,8 @@ ELSE
 				ELSE
 					LADAO[199]=LADAO[71]+LADAO[139];当前工序x轴起始位
 				ENDIF
+
+				TECHNOLOGY[300]=TECHNOLOGY[296];c轴安装角
             ELSE;
 				IF LADAO[37]==4;后背
 					IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
@@ -351,6 +359,8 @@ ELSE
 					LADAO[199]=LADAO[58]+BUCHANG_X;当前工序x轴起始位
 
 					LADAO[94]=LADAO[253];前角斜线进刀(0否1是)
+
+					TECHNOLOGY[300]=TECHNOLOGY[297];c轴安装角
 				ELSE;
 					IF LADAO[37]==5;齿平面
 						INI[20]=LADAO[146];A轴磨削位-当前
@@ -381,6 +391,8 @@ ELSE
 						PROCESS[13]=LADAO[145]+LADAO[209];初始接触Y
 
 						LADAO[199]=LADAO[142];当前工序x轴起始位
+
+						TECHNOLOGY[300]=TECHNOLOGY[298];c轴安装角
 					ELSE
 						IF LADAO[37]==6;吸铁台面
 							INI[75]=0;标记位
@@ -399,6 +411,8 @@ ELSE
 							ELSE
 								LADAO[199]=LADAO[165];当前工序x轴起始位
 							ENDIF
+
+							TECHNOLOGY[300]=TECHNOLOGY[299];c轴安装角
 						ELSE;
 							IF LADAO[37]==7;内圆加工
 								IF INI[47]==1;磨削中不正常退出标记

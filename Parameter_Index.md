@@ -879,6 +879,14 @@
 |TECHNOLOGY[290]||圆拉刀-通磨磨外圆-头架转速-2
 |TECHNOLOGY[291]||圆拉刀-通磨磨外圆-头架转速-3
 |TECHNOLOGY[292]||圆拉刀-通磨磨外圆-头架转速-4
+|TECHNOLOGY[293]||有圆拉刀-平面拉刀-前角-c轴安装角
+|TECHNOLOGY[294]||有圆拉刀-平面拉刀-通磨-c轴安装角
+|TECHNOLOGY[295]||有圆拉刀-平面拉刀-后角-c轴安装角
+|TECHNOLOGY[296]||有圆拉刀-平面拉刀-铲背-c轴安装角
+|TECHNOLOGY[297]||有圆拉刀-平面拉刀-后背-c轴安装角
+|TECHNOLOGY[298]||有圆拉刀-平面拉刀-齿平面-c轴安装角
+|TECHNOLOGY[299]||有圆拉刀-平面拉刀-吸铁台面-c轴安装角
+|TECHNOLOGY[300]||有圆拉刀-平面拉刀-当前c轴安装角(除过- 内圆加工 螺旋槽)
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
