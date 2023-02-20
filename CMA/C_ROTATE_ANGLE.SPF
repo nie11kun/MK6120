@@ -32,9 +32,9 @@ IF INI[16]==1
 		G4 F1
 ;
 		;MSG("螺旋升角到位中"); ifIsCHS
-		G90 G01 A=A_ANG+1 F=INI[60]
+		G90 G01 A=DC(A_ANG+1) F=INI[60]
 		G4 F0.2
-		G90 G01 A=A_ANG F=INI[60]/2
+		G90 G01 A=DC(A_ANG) F=INI[60]/2
 		STOPRE
 		G4 F0.5
 		M36;夹紧
@@ -59,9 +59,9 @@ IF INI[16]==1
 		G4 F1
 ;
 		;MSG("螺旋升角到位中"); ifIsCHS
-		G90 G01 B=B_ANG+1 F=INI[60]
+		G90 G01 B=DC(B_ANG+1) F=INI[60]
 		G4 F0.2
-		G90 G01 B=B_ANG F=INI[60]/2
+		G90 G01 B=DC(B_ANG) F=INI[60]/2
 		STOPRE
 		G4 F0.5
 		M95;夹紧
