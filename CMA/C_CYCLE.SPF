@@ -37,9 +37,9 @@ IF (INI[72]==1) OR (LADAO[162]==1);第一次磨削或者修整后的磨削
     IF LADAO[256]==1;是否有圆拉刀(0无1有)
         IF (LADAO[219]==0) AND (LADAO[37]<>7) AND (LADAO[37]<>8);平面拉刀且不是内圆加工和螺旋槽
             IF ABS($AA_IM[C]-TECHNOLOGY[300])*1000>=1;有圆拉刀-平面拉刀-当前c轴安装角(除过- 内圆加工 螺旋槽)
-                G90 G01 C=TECHNOLOGY[300]+1 F=INI[59]
+                G90 G01 C=DC(TECHNOLOGY[300]+1) F=INI[59]
                 G4 F0.2
-                G90 G01 C=TECHNOLOGY[300] F=INI[59]
+                G90 G01 C=DC(TECHNOLOGY[300]) F=INI[59]
             ENDIF
         ENDIF
     ENDIF

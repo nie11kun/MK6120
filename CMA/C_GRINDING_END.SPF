@@ -26,7 +26,7 @@ IF (PROCESS[0]==0) AND ((RING[0]==0) OR (LADAO[37]==1) OR (LADAO[37]==5) OR (LAD
             ENDIF
 
             G4 F0.5
-            G90 G01 C=INI[27] F=INI[58];头架在程序结束调整到合适角度
+            G90 G01 C=ACP(INI[27]) F=INI[58];头架在程序结束调整到合适角度
         ENDIF
     ENDIF
     
