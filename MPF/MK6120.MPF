@@ -52,15 +52,12 @@ TECHNOLOGY[277]=5;圆拉刀-每刀停留时间-4
 G94;车床版系统切换线性进给率
 T0D0
 
-IF LADAO[157]==0;数据备份与恢复(0加工/1备份/2恢复)
-    A_GRINDING;主程序调用 ;ifIsNotCenter
-ELSE
-    IF LADAO[157]==1
-        A_BACKUP;
-    ELSE
-        A_RESTORE;
-    ENDIF
+IF CHOICE<>0;数据备份与恢复(0加工/1备份/2恢复)
+    A_BACKUP_RESTORE;变量备份恢复主程序
+    RET;备份恢复后直接结束
 ENDIF
+
+A_GRINDING;主程序调用 ;ifIsNotCenter
 
 M30
 

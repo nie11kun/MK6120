@@ -1,0 +1,99 @@
+PROC E_BACKUP_ALL_IN_ARR(STRING[50] BACKUP_PATH,STRING[30] ARRAYNAME,INT VAR_TYPE) DISPLOF
+;***********程序功能**********
+;读取某个数组或变量的值并写入到文件
+;****************************
+
+DEF INT COUNT
+DEF STRING[60] VARSTR
+DEF BOOL IS_VAR
+DEF INT ERR
+
+COUNT=0
+
+IF VAR_TYPE==1;STRING
+    VARSTR=ARRAYNAME<<"["<<COUNT<<"]"
+    IF ISVAR(VARSTR)==TRUE
+        IS_VAR=TRUE
+        GOTOF STRING_ARRAY_WRITE
+    ELSE
+        VARSTR=ARRAYNAME
+        IF ISVAR(VARSTR)==TRUE
+            GOTOF STRING_VAR_WRITE
+        ELSE
+            GOTOF FINISH_WRITE
+        ENDIF
+    ENDIF
+ELSE;REAL
+    VARSTR=ARRAYNAME<<"["<<COUNT<<"]"
+    IF ISVAR(VARSTR)==TRUE
+        IS_VAR=TRUE
+        GOTOF REAL_ARRAY_WRITE
+    ELSE
+        VARSTR=ARRAYNAME
+        IF ISVAR(VARSTR)==TRUE
+            GOTOF REAL_VAR_WRITE
+        ELSE
+            GOTOF FINISH_WRITE
+        ENDIF
+    ENDIF
+ENDIF
+
+;***************************************************
+STRING_VAR_WRITE:
+
+F_BACKUP_SINGLE(BACKUP_PATH,VARSTR,"STRING")
+
+GOTOF FINISH_WRITE
+
+;***************************************************
+REAL_VAR_WRITE:
+
+F_BACKUP_SINGLE(BACKUP_PATH,VARSTR,"REAL")
+
+GOTOF FINISH_WRITE
+
+;***************************************************
+STRING_ARRAY_WRITE:
+
+WHILE (IS_VAR)
+    F_BACKUP_SINGLE(BACKUP_PATH,VARSTR,"STRING")
+
+    COUNT=COUNT+1
+    VARSTR=ARRAYNAME<<"["<<COUNT<<"]"
+    IF ISVAR(VARSTR)==TRUE
+        IS_VAR=TRUE
+    ELSE
+        IS_VAR=FALSE
+    ENDIF
+ENDWHILE
+
+GOTOF FINISH_WRITE
+
+;*************************************************
+REAL_ARRAY_WRITE:
+
+WHILE (IS_VAR)
+    F_BACKUP_SINGLE(BACKUP_PATH,VARSTR,"REAL")
+
+    COUNT=COUNT+1
+    VARSTR=ARRAYNAME<<"["<<COUNT<<"]"
+    IF ISVAR(VARSTR)==TRUE
+        IS_VAR=TRUE
+    ELSE
+        IS_VAR=FALSE
+    ENDIF
+
+    IF ARRAYNAME=="R"
+        IF COUNT>=300
+            GOTOF FINISH_WRITE
+        ENDIF
+    ENDIF
+ENDWHILE
+
+GOTOF FINISH_WRITE
+
+;*************************************************
+FINISH_WRITE:
+
+RET
+

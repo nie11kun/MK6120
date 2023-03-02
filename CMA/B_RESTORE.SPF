@@ -1,4 +1,4 @@
-PROC A_RESTORE DISPLOF
+PROC B_RESTORE DISPLOF
 ;**********程序功能**********
 ;*参数恢复程序
 ;****************************
@@ -12,15 +12,19 @@ STOPRE
 MSG("正在恢复数据,请稍后...")
 BR_MSG="正在恢复数据,请稍后...";
 
-IF LADAO[159]==0;恢复位置(0内置/1后USB/2前USB)
+;前置USB接口路径为:"USB:",后部USB接口需要在 调试-HMI-逻辑驱动器中定义
+;本地驱动器："LOCAL_DRIVE:"，;CF 卡："CF_CARD:"，两者可互换使用都是表示 cf 卡路径
+
+;在以下设定数据中可以预设至外部子程序目录的路径：SD42700 $SC_EXT_PROG_PATH，定义后可以直接对应路径下的调用程序名称即可
+IF RESTORE_POS==0;恢复位置(0内置/1后USB/2前USB/3 CF卡)
     RESTORE_PATH="/_N_SPF_DIR/_N_"<<RESTORE_DIR<<"_DIR/_N_"<<RESTORE_NAME<<"_SPF"
     CALL(RESTORE_PATH);
 ELSE
-    IF LADAO[159]==1
+    IF RESTORE_POS==1
         RESTORE_PATH="//DEV_3:"<<RESTORE_DIR<<"/"<<RESTORE_NAME;
         EXTCALL(RESTORE_PATH)
     ELSE
-        IF LADAO[159]==2
+        IF RESTORE_POS==2
             RESTORE_PATH="USB:"<<RESTORE_DIR<<"/"<<RESTORE_NAME;
             EXTCALL(RESTORE_PATH)
         ELSE

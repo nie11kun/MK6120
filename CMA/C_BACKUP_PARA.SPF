@@ -1,0 +1,50 @@
+PROC C_BACKUP_PARA(STRING[50] BACKUP_PATH) DISPLOF
+;**********程序功能**********
+;*参数备份程序
+;*经测试最大自定义变量表备份参数个数为790个
+;****************************
+
+DEF INT ERR,CYC_COUNT
+DEF STRING[10] LF_CHAR
+DEF STRING[255] RESULT[790],LINE_CURR
+
+IF BACKUP_POS==0;备份位置(0内置/1后USB/2前USB)
+    LF_CHAR=""
+ELSE
+    LF_CHAR="'H0A'"
+ENDIF
+
+IF BACKUP_TYPE==0;备份模式(0备份所有变量/1备份自定义变量表)
+    D_BACKUP_ALL_PARA(BACKUP_PATH)
+ELSE
+    ;需要提前定义参数文件总行数 FILE_LINE_COUNT，包括分号注释所占行
+    ;参数文件内可在行开头用分号 " ; " 定义注释，注释所在行不会被读取，空行也不会被读取
+    READ(ERR,"/_N_SPF_DIR/_N_"<<LIST_DIR<<"_DIR/_N_"<<LIST_NAME<<"_TXT",1,FILE_LINE_COUNT,RESULT)
+
+    IF ERR==0
+        FOR CYC_COUNT = 0 TO FILE_LINE_COUNT-1;
+            LINE_CURR=RESULT[CYC_COUNT]
+            IF (LINE_CURR[0]<>";") AND (LINE_CURR[0]<>"");如果行开头为分号或空行则跳过此行
+                IF LINE_CURR[0]<>"*";星号标记字符串变量
+                    F_BACKUP_SINGLE(BACKUP_PATH,RESULT[CYC_COUNT],"REAL")
+                ELSE
+                    LINE_CURR[0]=" ";
+                    RESULT[CYC_COUNT]=LINE_CURR
+                    F_BACKUP_SINGLE(BACKUP_PATH,RESULT[CYC_COUNT],"STRING")
+                ENDIF
+            ELSE
+                WRITE(ERR,BACKUP_PATH,LINE_CURR<<LF_CHAR)
+            ENDIF
+        ENDFOR
+    ELSE
+        MSG("参数读取错误,错误码:"<<ERR)
+        M0
+    ENDIF
+ENDIF
+
+WRITE(ERR,BACKUP_PATH,LF_CHAR)
+WRITE(ERR,BACKUP_PATH,"RET"<<LF_CHAR)
+WRITE(ERR,BACKUP_PATH,LF_CHAR)
+
+RET
+

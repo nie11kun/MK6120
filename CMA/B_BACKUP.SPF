@@ -1,4 +1,4 @@
-PROC A_BACKUP DISPLOF
+PROC B_BACKUP DISPLOF
 ;**********程序功能**********
 ;*参数备份程序
 ;****************************
@@ -13,22 +13,26 @@ STOPRE
 MSG("正在备份数据,请稍后...")
 BR_MSG="正在备份数据,请稍后...";
 
-IF LADAO[158]==0;备份位置(0内置/1后USB/2前USB)
+; "LOCAL_DRIVE" 为本地 cf 卡预定义路径，无需在 extdev.ini 中定义, 直接通过 "LOCAL_DRIVE/path/to/file" 定义文件路径即可
+;前面板 USB 或网络地址需要在 extdev.ini 中定义对应的逻辑设备名称
+;经过测试无法正常连接后面板 usb 接口
+
+IF BACKUP_POS==0;备份位置(0内置/1后USB/2前USB/3 CF卡)
     BACKUP_PATH="/_N_SPF_DIR/_N_"<<BACKUP_DIR<<"_DIR/_N_"<<BACKUP_NAME<<"_SPF"
     IF(ISFILE(BACKUP_PATH))
         Delete(ERR,BACKUP_PATH)
     ENDIF
-    B_BACKUP_PARA(BACKUP_PATH)
+    C_BACKUP_PARA(BACKUP_PATH)
     BR_MSG="数据保存完成";
 ELSE
-    IF LADAO[158]==1
+    IF BACKUP_POS==1
 
     ELSE
-        IF LADAO[158]==2
+        IF BACKUP_POS==2
             BACKUP_PATH="/dev/ext/9/"<<BACKUP_DIR<<"/"<<BACKUP_NAME<<".SPF";
             EXTOPEN(ERR,BACKUP_PATH,"SYN","SHARED")
             IF ERR==0
-                B_BACKUP_PARA(BACKUP_PATH)
+                C_BACKUP_PARA(BACKUP_PATH)
                 EXTCLOSE(ERR,BACKUP_PATH)
                 BR_MSG="数据保存完成";
             ELSE
@@ -40,7 +44,7 @@ ELSE
             BACKUP_PATH="LOCAL_DRIVE/"<<BACKUP_DIR<<"/"<<BACKUP_NAME<<".SPF";
             EXTOPEN(ERR,BACKUP_PATH,"SYN","SHARED")
             IF ERR==0
-                B_BACKUP_PARA(BACKUP_PATH)
+                C_BACKUP_PARA(BACKUP_PATH)
                 EXTCLOSE(ERR,BACKUP_PATH)
                 BR_MSG="数据保存完成";
             ELSE
