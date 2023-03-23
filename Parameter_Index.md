@@ -229,7 +229,7 @@
 |INI[11]|滚压轮修整中反向距离
 |INI[12]|外圆台阶长度
 |INI[13]|外圆台阶分段
-|INI[14]|TAPER_VALUE|单位长度锥度值(半径方向)，内螺纹大头往小头磨,外螺纹小头往大头磨
+|INI[14]|
 |INI[15]|dx|锥度对应的全长X增量(半径方向)
 |INI[16]|helix_angle_enable|螺旋升角使能
 |INI[17]|degree|度
@@ -239,7 +239,7 @@
 |INI[21]|LUB_INTER|润滑间歇时间(中间变量)
 |INI[22]|LUB_TIME|润滑启动时间(中间变量)
 |INI[23]|QUIT|退刀位置
-|INI[24]|PITCH_COM|全长导程补偿
+|INI[24]|PITCH_COM|
 |INI[25]|QUIT_CALCULATE|退刀计算标志位
 |INI[26]|MULTI_OR_SINGLE|单件小批量/批量生产
 |INI[27]|C_INIT|头架在程序结束调整到合适角度
@@ -356,7 +356,7 @@
 |INI[138]||外圆是否测量圆度(0否1是)
 |INI[139]||磨削中心右端测量与设置当前差值
 |INI[140]||磨削中心工件长度测量
-|INI[141]||全长锥度补偿(半径方向补偿)
+|INI[141]||
 |INI[142]||外圆砂轮静止启动延时
 |INI[143]||外圆砂轮动态启动延时
 |INI[144]||砂轮是否恒转速(0否1是)
@@ -828,7 +828,7 @@
 |TECHNOLOGY[239]||螺纹加工-累计磨削总量
 |TECHNOLOGY[240]||螺纹加工-设定磨削总量
 |TECHNOLOGY[241]||螺纹加工-工件左端
-|TECHNOLOGY[242]||螺纹加工-工件右端
+|TECHNOLOGY[242]||螺纹加工-终点补偿
 |TECHNOLOGY[243]||螺纹加工-A轴角度
 |TECHNOLOGY[244]||螺纹加工-B轴角度
 |TECHNOLOGY[245]||螺纹加工-起始偏置Y
@@ -887,6 +887,8 @@
 |TECHNOLOGY[298]||有圆拉刀-平面拉刀-齿平面-c轴安装角
 |TECHNOLOGY[299]||有圆拉刀-平面拉刀-吸铁台面-c轴安装角
 |TECHNOLOGY[300]||有圆拉刀-平面拉刀-当前c轴安装角(除过- 内圆加工 螺旋槽)
+|TECHNOLOGY[301]||
+|TECHNOLOGY[302]||螺旋槽-升角补偿.B
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数

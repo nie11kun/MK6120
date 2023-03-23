@@ -96,13 +96,8 @@ ELSE
                                             LADAO[242]=LADAO[242]+DRESSER[14]
                                         ENDIF
                                     ELSE;螺纹加工
-                                        IF INI[0]==1;左旋
-                                            TECHNOLOGY[241]=TECHNOLOGY[241]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
-                                            INI[6]=TECHNOLOGY[241];工件左端
-                                        ELSE;右旋
-                                            TECHNOLOGY[242]=TECHNOLOGY[242]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
-                                            INI[6]=TECHNOLOGY[242];工件右端
-                                        ENDIF
+                                        TECHNOLOGY[241]=TECHNOLOGY[241]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
+                                        INI[6]=TECHNOLOGY[241]+TECHNOLOGY[284];工件左端
                                         TECHNOLOGY[246]=TECHNOLOGY[246]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
                                         TECHNOLOGY[247]=TECHNOLOGY[247]-DRESSER[14]*COS(LADAO[13]);当前接触Y
                                     ENDIF
@@ -176,13 +171,8 @@ ELSE
                                                 LADAO[242]=LADAO[242]+DRESSER[15]
                                             ENDIF
                                         ELSE
-                                            IF INI[0]==1;左旋
-                                                TECHNOLOGY[241]=TECHNOLOGY[241]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
-                                                INI[6]=TECHNOLOGY[241];工件左端
-                                            ELSE;右旋
-                                                TECHNOLOGY[242]=TECHNOLOGY[242]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
-                                                INI[6]=TECHNOLOGY[242];工件右端
-                                            ENDIF
+                                            TECHNOLOGY[241]=TECHNOLOGY[241]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
+                                            INI[6]=TECHNOLOGY[241]+TECHNOLOGY[284];工件左端
                                             TECHNOLOGY[246]=TECHNOLOGY[246]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
                                             TECHNOLOGY[247]=TECHNOLOGY[247]-DRESSER[15]*COS(LADAO[13]);当前接触Y
                                         ENDIF

@@ -79,7 +79,7 @@ ELSE
 		ELSE
 			IF (DBB_DUIDAO==1) AND (DBB_AUTO==0)
 				IF LADAO[37]==8;螺纹加工
-					GRIND[2]=1;手动对刀
+					GRIND[2]=0;不对刀
 				ELSE
 					GRIND[2]=0;不对刀
 				ENDIF
@@ -435,39 +435,19 @@ ELSE
 
 								INI[75]=0;标记位
 								INI[20]=TECHNOLOGY[243]+TECHNOLOGY[283];A轴磨削位-当前
-								LADAO[5]=TECHNOLOGY[244];B轴磨削位-当前
+								LADAO[5]=TECHNOLOGY[244]+TECHNOLOGY[302];B轴磨削位-当前
 
 								F_DRESS_BUCHANG_ANG(LADAO[297])
 								LADAO[13]=LADAO[297];齿形偏转角度
 
 								PROCESS[16]=TECHNOLOGY[248]+TECHNOLOGY[245];磨削安全位-当前
 
-								IF INI[0]==1;左旋
-									INI[6]=TECHNOLOGY[241]+TECHNOLOGY[284];工件左端
-									INI[7]=TECHNOLOGY[242];工件右端
-								ELSE;右旋
-									INI[6]=TECHNOLOGY[242]+TECHNOLOGY[284];工件右端
-									INI[7]=TECHNOLOGY[241];工件左端
-								ENDIF
+								INI[6]=TECHNOLOGY[241]+TECHNOLOGY[284];工件起始
 
 								PROCESS[13]=TECHNOLOGY[246]+TECHNOLOGY[245];初始接触Y
 								LADAO[199]=LADAO[257];圆心x
-
-								INI[3]=TECHNOLOGY[242]-TECHNOLOGY[241];磨削长度
 								INI[5]=WORK[0]*INI[4];导程
-								INI[9]=360*(INI[3]-INI[24])/INI[5];磨削总角度
-								INI[8]=(TECHNOLOGY[242]+TECHNOLOGY[241])/2;磨削中点
-
-								;锥度相关计算,内螺纹大头往小头磨,外螺纹小头往大头磨
-								INI[15]=INI[3]*INI[14]+INI[141];X方向的增量+补偿值
-
 								WORK[5]=0;强制按次数修整
-
-								IF (INI[3]<=0);磨削长度
-									MSG("工件左端大于右端坐标！")
-									M0
-									G4 F99999999
-								ENDIF
 							ENDIF
 						ENDIF
 					ENDIF
