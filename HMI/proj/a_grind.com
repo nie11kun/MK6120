@@ -1596,7 +1596,7 @@
 //END
 
 ;**********************MASK11:螺纹加工:panel_11:;**********************
-//M(Mask11/$85094/"panel_1_1_chs.png"/)
+//M(Mask11/$85094//)
 
 	DEF VAR1=(I//0/$85134,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	
@@ -1606,8 +1606,10 @@
 	DEF X_DRF=(R///$85116,$85116,,/WR1,ac4//"$AC_DRF[X]"/120,10,50/170,10,60/7);DRF_X
 	DEF Z_DRF=(R///$85117,$85117,,/WR1,ac4//"$AC_DRF[Z]"/120,30,50/170,30,60/7);DRF_Z
 
+	DEF PITCH_MODE=(I/*0=$85096,1=$85097//$85095,$85095,,/WR2,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[302]"/250,10,100/300,10,60//);螺旋槽-导程模式(0标准导程、1测量导程)
+
 	DEF SCREW_R=(I/*0=$85124,1=$85125//$85103,$85103,,/WR2,ac4/"panel_1_4_chs.png"/"/NC/_N_NC_GD2_ACX/INI[1]"/360,10,100/460,10,60//"UserGuide/section_1.html","S1D8");螺纹旋向
-	DEF VAR6=(I/0,50//$85102,$85102,$85051,/WR2,ac4/"panel_1_5_chs.png"/"/NC/_N_NC_GD2_ACX/WORK[1]"/360,30,202/460,30,60//"UserGuide/section_1.html","S1D9");工件头数
+	DEF VAR6=(I/0,6//$85102,$85102,$85051,/WR2,ac4/"panel_1_5_chs.png"/"/NC/_N_NC_GD2_ACX/WORK[1]"/360,30,202/460,30,60//"UserGuide/section_1.html","S1D9");工件头数,最大6头
 	DEF VAR7=(R3/0,50//$85104,$85104,$85043,/WR2,ac4/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[5]"/360,50,202/460,50,60//"UserGuide/section_1.html","S1D4");工件螺距输入
 
 	DEF VAR8=(R3///$85108,$85108,,/WR2,ac4/"panel_1_7_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[242]"/360,70,202/460,70,60/6/"UserGuide/section_1.html","S1D10");工件起点

@@ -887,8 +887,14 @@
 |TECHNOLOGY[298]||有圆拉刀-平面拉刀-齿平面-c轴安装角
 |TECHNOLOGY[299]||有圆拉刀-平面拉刀-吸铁台面-c轴安装角
 |TECHNOLOGY[300]||有圆拉刀-平面拉刀-当前c轴安装角(除过- 内圆加工 螺旋槽)
-|TECHNOLOGY[301]||
+|TECHNOLOGY[301]||螺旋槽-导程模式(0标准导程、1测量导程)
 |TECHNOLOGY[302]||螺旋槽-升角补偿.B
+|TECHNOLOGY[303]||螺旋槽-第1头测量导程
+|TECHNOLOGY[304]||螺旋槽-第2头测量导程
+|TECHNOLOGY[305]||螺旋槽-第3头测量导程
+|TECHNOLOGY[306]||螺旋槽-第4头测量导程
+|TECHNOLOGY[307]||螺旋槽-第5头测量导程
+|TECHNOLOGY[308]||螺旋槽-第6头测量导程
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数

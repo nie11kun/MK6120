@@ -446,7 +446,12 @@ ELSE
 
 								PROCESS[13]=TECHNOLOGY[246]+TECHNOLOGY[245];初始接触Y
 								LADAO[199]=LADAO[257];圆心x
-								INI[5]=WORK[0]*INI[4];导程
+
+								IF TECHNOLOGY[301]==0;螺旋槽-导程模式(0标准导程、1测量导程)
+									INI[5]=WORK[0]*INI[4];导程
+								ELSE
+									INI[5]=TECHNOLOGY[303];导程
+								ENDIF
 								WORK[5]=0;强制按次数修整
 							ENDIF
 						ENDIF
