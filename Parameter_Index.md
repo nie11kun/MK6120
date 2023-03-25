@@ -895,6 +895,7 @@
 |TECHNOLOGY[306]||螺旋槽-第4头测量导程
 |TECHNOLOGY[307]||螺旋槽-第5头测量导程
 |TECHNOLOGY[308]||螺旋槽-第6头测量导程
+|TECHNOLOGY[309]||几何轴排列选择(0XYZ/1YZX)
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
