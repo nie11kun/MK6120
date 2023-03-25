@@ -834,7 +834,7 @@
 |TECHNOLOGY[245]||螺纹加工-起始偏置Y
 |TECHNOLOGY[246]||螺纹加工-初始接触Y
 |TECHNOLOGY[247]||螺纹加工-当前接触Y
-|TECHNOLOGY[248]||螺纹加工-磨削安全位Y
+|TECHNOLOGY[248]||螺纹加工-安全抬高Y
 |TECHNOLOGY[249]||圆拉刀-前角底面-头架转速-1
 |TECHNOLOGY[250]||圆拉刀-前角底面-头架转速-2
 |TECHNOLOGY[251]||圆拉刀-前角底面-头架转速-3

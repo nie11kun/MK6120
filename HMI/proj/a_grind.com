@@ -1614,7 +1614,7 @@
 	DEF VAR7=(R3/0,50//$85104,$85104,$85043,/WR2,ac4/"panel_1_6_chs.png"/"/NC/_N_NC_GD2_ACX/INI[5]"/360,50,202/460,50,60//"UserGuide/section_1.html","S1D4");工件螺距输入
 
 	DEF VAR8=(R3///$85108,$85108,,/WR2,ac4/"panel_1_7_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[242]"/360,70,202/460,70,60/6/"UserGuide/section_1.html","S1D10");工件起点
-	DEF GRIND_SAFE=(R/-500,500//$85989,$85989,,/WR2,ac4/"panel_1_23_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[249]"/360,90,202/460,90,60/6/"UserGuide/section_1.html","S1D13");磨削安全位置
+	DEF GRIND_SAFE=(R/0,//$85172,$85172,,/WR2,ac4/"panel_1_23_chs.png"/"/NC/_N_NC_GD2_ACX/TECHNOLOGY[249]"/360,90,202/460,90,60/6/"UserGuide/section_1.html","S1D13");磨削安全位置
 
 	DEF X_CENTER=(R///$85180,$85180,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[258]"/360,110,202/460,110,60//);工件中心位置X
 
