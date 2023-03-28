@@ -302,7 +302,7 @@ ELSE
 				INI[6]=LADAO[70]+LADAO[248]+RING[7]-LADAO[137]*LADAO[98];工件右端
 				PROCESS[13]=TECHNOLOGY[235]+LADAO[205];初始接触Y
 
-				BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[216]));每齿x磨削起点补偿
+				BUCHANG_X=RING[6]*LADAO[216];每齿x磨削起点补偿(当前齿总齿升量偏移*系数)
 
 				IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
 					LADAO[199]=LADAO[71]+LADAO[139]+BUCHANG_X;当前工序x轴起始位
