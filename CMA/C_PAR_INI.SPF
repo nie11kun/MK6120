@@ -433,6 +433,11 @@ ELSE
 								TECHNOLOGY[92]=TECHNOLOGY[104]*INI[4]*WORK[0];磨削速度计算
 								TECHNOLOGY[93]=TECHNOLOGY[105]*INI[4]*WORK[0];磨削速度计算
 
+								TECHNOLOGY[327]=TECHNOLOGY[339]*INI[4]*WORK[0];磨削速度计算
+								TECHNOLOGY[328]=TECHNOLOGY[340]*INI[4]*WORK[0];磨削速度计算
+								TECHNOLOGY[329]=TECHNOLOGY[341]*INI[4]*WORK[0];磨削速度计算
+								TECHNOLOGY[330]=TECHNOLOGY[342]*INI[4]*WORK[0];磨削速度计算
+
 								INI[75]=0;标记位
 								INI[20]=TECHNOLOGY[243]+TECHNOLOGY[283];A轴磨削位-当前
 								LADAO[5]=TECHNOLOGY[244]+TECHNOLOGY[302];B轴磨削位-当前
@@ -440,12 +445,19 @@ ELSE
 								F_DRESS_BUCHANG_ANG(LADAO[297])
 								LADAO[13]=LADAO[297];齿形偏转角度
 
+								IF TECHNOLOGY[248]<LADAO[35];安全抬刀小于齿高
+									TECHNOLOGY[248]=LADAO[35]
+								ENDIF
+
 								PROCESS[16]=TECHNOLOGY[246]+TECHNOLOGY[248]+TECHNOLOGY[245];磨削安全位-当前
 
 								INI[6]=TECHNOLOGY[241]+TECHNOLOGY[284];工件起始
 
 								PROCESS[13]=TECHNOLOGY[246]+TECHNOLOGY[245];初始接触Y
 								LADAO[199]=LADAO[257];圆心x
+
+								LADAO[26]=TECHNOLOGY[312];斜线进刀角度
+								LADAO[94]=TECHNOLOGY[311];斜线进刀(0否1是)
 
 								IF TECHNOLOGY[301]==0;螺旋槽-导程模式(0标准导程、1测量导程)
 									INI[5]=WORK[0]*INI[4];导程
@@ -528,6 +540,7 @@ IF PROCESS[0]==0;选择界面工艺时执行判断,选择DIY时在DIY内执行�
 								ELSE
 									IF LADAO[37]==7
 									ELSE
+										LADAO[17]=TECHNOLOGY[310]-INI[6];磨削偏移z向累计
 										PROCESS[4]=TECHNOLOGY[247]
 									ENDIF
 
