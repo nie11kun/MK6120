@@ -935,6 +935,8 @@
 |TECHNOLOGY[344]||螺纹加工-砂轮转速-2
 |TECHNOLOGY[345]||螺纹加工-砂轮转速-3
 |TECHNOLOGY[346]||螺纹加工-砂轮转速-4
+|TECHNOLOGY[347]||前角-直接靠磨后背(0否1是) - 不可是斜线进刀，设置为1后侧面工艺界面三四工序为后背进刀
+|TECHNOLOGY[348]||前角-直接靠磨后背-补偿过侧面前两工序进刀值标记
 |**DIY参数**||
 |DIY[0]|GRIND_METHOD_DIY|DIY单双磨削
 |DIY[1]|TECH_TIME_DIY|DIY磨削次数
