@@ -128,7 +128,8 @@ IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧�
 	LENGTH_X=LADAO[1]-LADAO[0]
 	IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
 		PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[11]))
-		BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[174]));每齿x磨削起点补偿
+		D_RING_Z_RELATED_POS(RING[2]+RING[5],LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
+		BUCHANG_X=LADAO[157]*TAN(LADAO[174]);每齿x磨削起点补偿
 		BUCHANG_A=0;
 	ELSE
 		PIANYI_Y=0
@@ -255,7 +256,8 @@ ELSE
 
 			IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
 				PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[133]))
-				BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[134]));每齿x磨削起点补偿
+				D_RING_Z_RELATED_POS(RING[2]+RING[5],LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
+				BUCHANG_X=LADAO[157]*TAN(LADAO[134]);每齿x磨削起点补偿
 			ELSE
 				PIANYI_Y=0
 				BUCHANG_X=0
@@ -316,7 +318,8 @@ ELSE
 				IF LADAO[37]==4;后背
 					IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
 						PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[132]))
-						BUCHANG_X=(RING[2]+RING[5]-1)*(LADAO[34]*TAN(LADAO[175]));每齿x磨削起点补偿
+						D_RING_Z_RELATED_POS(RING[2]+RING[5],LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
+						BUCHANG_X=LADAO[157]*TAN(LADAO[175]);每齿x磨削起点补偿
 						BUCHANG_A=0
 					ELSE
 						PIANYI_Y=0

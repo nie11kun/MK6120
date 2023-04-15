@@ -1,0 +1,100 @@
+PROC D_RING_Z_RELATED_POS(REAL CAO_CURRENT,VAR REAL Z_RELATED,VAR REAL CIJU_CURRENT) DISPLOF
+;**********程序功能**********
+;*当前槽的Z方向偏移量计算及齿距
+;****************************
+
+DEF REAL Z_RELATED_1,Z_RELATED_2,Z_RELATED_3,Z_RELATED_4,Z_RELATED_5,Z_RELATED_6,Z_RELATED_7,Z_RELATED_8,Z_RELATED_9,Z_RELATED_10
+
+Z_RELATED_1=LADAO[301]*RING[11]
+Z_RELATED_2=LADAO[302]*RING[21]
+Z_RELATED_3=LADAO[303]*RING[31]
+Z_RELATED_4=LADAO[304]*RING[41]
+Z_RELATED_5=LADAO[305]*LADAO[100]
+Z_RELATED_6=LADAO[306]*LADAO[101]
+Z_RELATED_7=LADAO[307]*LADAO[102]
+Z_RELATED_8=LADAO[308]*LADAO[103]
+Z_RELATED_9=LADAO[309]*LADAO[104]
+Z_RELATED_10=LADAO[310]*LADAO[105]
+
+IF CAO_CURRENT-RING[11]<=0
+    CIJU_CURRENT=LADAO[301]
+    Z_RELATED=CIJU_CURRENT*CAO_CURRENT-LADAO[301]
+ELSE
+    IF CAO_CURRENT-RING[11]-RING[21]<=0
+        CIJU_CURRENT=LADAO[302]
+        Z_RELATED=Z_RELATED_1+CIJU_CURRENT*(CAO_CURRENT-RING[11])-LADAO[301]
+    ELSE
+        IF CAO_CURRENT-RING[11]-RING[21]-RING[31]<=0
+            CIJU_CURRENT=LADAO[303]
+            Z_RELATED=Z_RELATED_1+Z_RELATED_2+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21])-LADAO[301]
+        ELSE
+            IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]<=0
+                CIJU_CURRENT=LADAO[304]
+                Z_RELATED=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31])-LADAO[301]
+            ELSE
+                IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]<=0
+                    CIJU_CURRENT=LADAO[305]
+                    Z_RELATED=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41])-LADAO[301]
+                ELSE
+                    IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]<=0
+                        CIJU_CURRENT=LADAO[306]
+                        Z_RELATED=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100])-LADAO[301]
+                    ELSE
+                        IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]<=0
+                            CIJU_CURRENT=LADAO[307]
+                            Z_RELATED=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101])-LADAO[301]
+                        ELSE
+                            IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]<=0
+                                CIJU_CURRENT=LADAO[308]
+                                Z_RELATED=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+Z_RELATED_7+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102])-LADAO[301]
+                            ELSE
+                                IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104]<=0
+                                    CIJU_CURRENT=LADAO[309]
+                                    Z_RELATED=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+Z_RELATED_7+Z_RELATED_8+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103])-LADAO[301]
+                                ELSE
+                                    IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104]-LADAO[105]<=0
+                                        CIJU_CURRENT=LADAO[310]
+                                        Z_RELATED=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+Z_RELATED_7+Z_RELATED_8+Z_RELATED_9+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104])-LADAO[301]
+                                    ELSE
+                                        CIJU_CURRENT=LADAO[310]
+                                        IF LADAO[105]==0
+                                            CIJU_CURRENT=LADAO[309]
+                                        ENDIF
+                                        IF LADAO[104]==0
+                                            CIJU_CURRENT=LADAO[308]
+                                        ENDIF
+                                        IF LADAO[103]==0
+                                            CIJU_CURRENT=LADAO[307]
+                                        ENDIF
+                                        IF LADAO[102]==0
+                                            CIJU_CURRENT=LADAO[306]
+                                        ENDIF
+                                        IF LADAO[101]==0
+                                            CIJU_CURRENT=LADAO[305]
+                                        ENDIF
+                                        IF LADAO[100]==0
+                                            CIJU_CURRENT=LADAO[304]
+                                        ENDIF
+                                        IF RING[41]==0
+                                            CIJU_CURRENT=LADAO[303]
+                                        ENDIF
+                                        IF RING[31]==0
+                                            CIJU_CURRENT=LADAO[302]
+                                        ENDIF
+                                        IF RING[21]==0
+                                            CIJU_CURRENT=LADAO[301]
+                                        ENDIF
+                                        Z_RELATED=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+Z_RELATED_7+Z_RELATED_8+Z_RELATED_9+Z_RELATED_10+CIJU_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104]-LADAO[105])-LADAO[301]
+                                    ENDIF
+                                ENDIF
+                            ENDIF
+                        ENDIF
+                    ENDIF
+                ENDIF
+            ENDIF
+        ENDIF
+    ENDIF
+ENDIF
+
+RET
+

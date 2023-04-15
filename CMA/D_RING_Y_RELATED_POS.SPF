@@ -4,6 +4,7 @@ PROC D_RING_Y_RELATED_POS(REAL CAO_CURRENT,VAR REAL Y_RELATED) DISPLOF
 ;****************************
 
 DEF REAL Y_RELATED_1,Y_RELATED_2,Y_RELATED_3,Y_RELATED_4,Y_RELATED_5,Y_RELATED_6,Y_RELATED_7,Y_RELATED_8,Y_RELATED_9,Y_RELATED_10
+DEF REAL CISHENG_CURRENT
 
 Y_RELATED_1=LADAO[7]*RING[11]
 Y_RELATED_2=LADAO[8]*RING[21]
@@ -43,7 +44,39 @@ ELSE
                                 IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104]<=0
                                     Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+Y_RELATED_7+Y_RELATED_8+LADAO[110]*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103])-LADAO[7]
                                 ELSE
-                                    Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+Y_RELATED_7+Y_RELATED_8+Y_RELATED_9+LADAO[111]*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104])-LADAO[7]
+                                    IF CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104]-LADAO[105]<=0
+                                        Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+Y_RELATED_7+Y_RELATED_8+Y_RELATED_9+LADAO[111]*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104])-LADAO[7]
+                                    ELSE
+                                        CISHENG_CURRENT=LADAO[111]
+                                        IF LADAO[105]==0
+                                            CISHENG_CURRENT=LADAO[110]
+                                        ENDIF
+                                        IF LADAO[104]==0
+                                            CISHENG_CURRENT=LADAO[109]
+                                        ENDIF
+                                        IF LADAO[103]==0
+                                            CISHENG_CURRENT=LADAO[108]
+                                        ENDIF
+                                        IF LADAO[102]==0
+                                            CISHENG_CURRENT=LADAO[107]
+                                        ENDIF
+                                        IF LADAO[101]==0
+                                            CISHENG_CURRENT=LADAO[106]
+                                        ENDIF
+                                        IF LADAO[100]==0
+                                            CISHENG_CURRENT=LADAO[10]
+                                        ENDIF
+                                        IF RING[41]==0
+                                            CISHENG_CURRENT=LADAO[9]
+                                        ENDIF
+                                        IF RING[31]==0
+                                            CISHENG_CURRENT=LADAO[8]
+                                        ENDIF
+                                        IF RING[21]==0
+                                            CISHENG_CURRENT=LADAO[7]
+                                        ENDIF
+                                        Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+Y_RELATED_7+Y_RELATED_8+Y_RELATED_9+Y_RELATED_10+CISHENG_CURRENT*(CAO_CURRENT-RING[11]-RING[21]-RING[31]-RING[41]-LADAO[100]-LADAO[101]-LADAO[102]-LADAO[103]-LADAO[104]-LADAO[105])-LADAO[7]
+                                    ENDIF
                                 ENDIF
                             ENDIF
                         ENDIF
