@@ -5,7 +5,7 @@
 
 	HS7=(["\\S_001.png",$85064],ac7,se1,pa0)
 	VS1=(["\\S_002.png",$85065],ac7,se1,pa0) 
-	VS2=($85029,ac7,se1,pa0)
+	VS2=(["\\S_008.png",$85029],ac7,se1,pa0)
 	
 	PRESS(HS7)
 		LM("MASK51","a_grind.com");磨削界面加载 ifIsExternal
