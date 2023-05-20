@@ -7,7 +7,8 @@ PROC F_ZC_START(REAL GRIND_MODE) DISPLOF
 DEF REAL GRIND_Z_1,GRIND_Z_2,GRIND_Z_3,GRIND_Z_4,GRIND_Z_5,GRIND_Z_6,GRIND_Z_7,GRIND_Z_8,GRIND_Z_9,GRIND_Z_10,GRIND_Z_11
 DEF REAL GRIND_Y_1,GRIND_Y_2,GRIND_Y_3,GRIND_Y_4,GRIND_Y_5,GRIND_Y_6,GRIND_Y_7,GRIND_Y_8,GRIND_Y_9,GRIND_Y_10,GRIND_Y_11
 DEF REAL GRIND_C_1,GRIND_C_2,GRIND_C_3,GRIND_C_4,GRIND_C_5,GRIND_C_6,GRIND_C_7,GRIND_C_8,GRIND_C_9,GRIND_C_10,GRIND_C_11
-DEF INT DBB_TUIDAO,LUOWEN_ORI
+DEF INT DBB_TUIDAO,LUOWEN_ORI,COUNT,COUNT_DOWN,COUNT_CM
+DEF REAL TEMP_1,TEMP_2,TEMP_3,TEMP_4,TEMP_5,TEMP_6,TEMP_7,TEMP_8,TEMP_9
 
 IF INI[0]==1;左旋
     LUOWEN_ORI=1
@@ -59,78 +60,75 @@ GRIND_C_9=GRIND_Z_9/INI[5]*360*LUOWEN_ORI
 GRIND_C_10=GRIND_Z_10/INI[5]*360*LUOWEN_ORI
 GRIND_C_11=GRIND_Z_11/INI[5]*360*LUOWEN_ORI
 
+IF SCREW_TAP[0]==1;螺纹0/丝锥1
+    IF SCREW_TAP[2]==0;直槽0/螺旋槽1
+        SCREW_TAP[16]=SCREW_TAP[1]
+    ELSE;螺旋槽
+        IF (INI[0]+SCREW_TAP[3]==0) OR (INI[0]+SCREW_TAP[3]==2);都是右旋或都是左旋
+            SCREW_TAP[16]=SCREW_TAP[1]*SIN(ABS(SCREW_TAP[4])-ABS(LADAO[5]))/SIN(SCREW_TAP[4])/COS(LADAO[5]);螺旋升角调用B轴角度
+        ELSE
+            SCREW_TAP[16]=SCREW_TAP[1]*SIN(ABS(SCREW_TAP[4])+ABS(LADAO[5]))/SIN(SCREW_TAP[4])/COS(LADAO[5])
+        ENDIF
+    ENDIF
+ENDIF
+
 FGROUP(Z)
 G64
 F=PROCESS[9]
 
 IF GRIND_MODE==0;从起点到终点
-    IF GRIND_Z_1<>0
-        G91 Y=GRIND_Y_1 Z=GRIND_Z_1 C=GRIND_C_1
-    ENDIF
-    IF GRIND_Z_2<>0
-        G91 Y=GRIND_Y_2 Z=GRIND_Z_2 C=GRIND_C_2
-    ENDIF
-    IF GRIND_Z_3<>0
-        G91 Y=GRIND_Y_3 Z=GRIND_Z_3 C=GRIND_C_3
-    ENDIF
-    IF GRIND_Z_4<>0
-        G91 Y=GRIND_Y_4 Z=GRIND_Z_4 C=GRIND_C_4
-    ENDIF
-    IF GRIND_Z_5<>0
-        G91 Y=GRIND_Y_5 Z=GRIND_Z_5 C=GRIND_C_5
-    ENDIF
-    IF GRIND_Z_6<>0
-        G91 Y=GRIND_Y_6 Z=GRIND_Z_6 C=GRIND_C_6
-    ENDIF
-    IF GRIND_Z_7<>0
-        G91 Y=GRIND_Y_7 Z=GRIND_Z_7 C=GRIND_C_7
-    ENDIF
-    IF GRIND_Z_8<>0
-        G91 Y=GRIND_Y_8 Z=GRIND_Z_8 C=GRIND_C_8
-    ENDIF
-    IF GRIND_Z_9<>0
-        G91 Y=GRIND_Y_9 Z=GRIND_Z_9 C=GRIND_C_9
-    ENDIF
-    IF GRIND_Z_10<>0
-        G91 Y=GRIND_Y_10 Z=GRIND_Z_10 C=GRIND_C_10
-    ENDIF
-    IF GRIND_Z_11<>0
-        G91 Y=GRIND_Y_11 Z=GRIND_Z_11 C=GRIND_C_11
-    ENDIF
+    FOR COUNT=1 TO 11
+        EXECSTRING("TEMP_1=GRIND_Z_" << COUNT)
+        IF TEMP_1<>0
+            IF SCREW_TAP[0]==0;螺纹0/丝锥1
+                EXECSTRING("G91 Y=GRIND_Y_" << COUNT << " Z=GRIND_Z_" << COUNT << " C=GRIND_C_" << COUNT)
+            ELSE
+                EXECSTRING("TEMP_2=1/SCREW_TAP[16]*360*(GRIND_C_" << COUNT << "/ABS(GRIND_C_" << COUNT << "))");一个铲磨动作走的C角度(区分正负)
+                EXECSTRING("TEMP_3=ABS(ROUNDUP(GRIND_C_" << COUNT << "/TEMP_2))");这一段铲磨的循环次数
+
+                TEMP_4=TEMP_2*(SCREW_TAP[14]/(SCREW_TAP[14]+1));向下铲磨走过的角度c(区分正负)
+                TEMP_5=TEMP_2*(1/(SCREW_TAP[14]+1));向上抬起走过的角度c(区分正负)
+
+                TEMP_6=TEMP_4*INI[5]/360/LUOWEN_ORI;向下铲磨移动距离.Z
+                TEMP_7=TEMP_5*INI[5]/360/LUOWEN_ORI;向上抬起移动距离.Z
+
+                TEMP_8=-SCREW_TAP[15];铲背量.Y
+                EXECSTRING("TEMP_9=SCREW_TAP[15]+GRIND_Y_" << COUNT << "/GRIND_Z_" << COUNT << "*(TEMP_6+TEMP_7)");向上抬起距离考虑锥度.Y
+
+                FOR COUNT_CM=1 TO TEMP_3
+                    G91 Y=TEMP_8 Z=TEMP_6 C=TEMP_4
+                        Y=TEMP_9 Z=TEMP_7 C=TEMP_5
+                ENDFOR
+            ENDIF
+        ENDIF
+    ENDFOR
 ELSE
-    IF GRIND_Z_11<>0
-        G91 Y=-GRIND_Y_11 Z=-GRIND_Z_11 C=-GRIND_C_11
-    ENDIF
-    IF GRIND_Z_10<>0
-        G91 Y=-GRIND_Y_10 Z=-GRIND_Z_10 C=-GRIND_C_10
-    ENDIF
-    IF GRIND_Z_9<>0
-        G91 Y=-GRIND_Y_9 Z=-GRIND_Z_9 C=-GRIND_C_9
-    ENDIF
-    IF GRIND_Z_8<>0
-        G91 Y=-GRIND_Y_8 Z=-GRIND_Z_8 C=-GRIND_C_8
-    ENDIF
-    IF GRIND_Z_7<>0
-        G91 Y=-GRIND_Y_7 Z=-GRIND_Z_7 C=-GRIND_C_7
-    ENDIF
-    IF GRIND_Z_6<>0
-        G91 Y=-GRIND_Y_6 Z=-GRIND_Z_6 C=-GRIND_C_6
-    ENDIF
-    IF GRIND_Z_5<>0
-        G91 Y=-GRIND_Y_5 Z=-GRIND_Z_5 C=-GRIND_C_5
-    ENDIF
-    IF GRIND_Z_4<>0
-        G91 Y=-GRIND_Y_4 Z=-GRIND_Z_4 C=-GRIND_C_4
-    ENDIF
-    IF GRIND_Z_3<>0
-        G91 Y=-GRIND_Y_3 Z=-GRIND_Z_3 C=-GRIND_C_3
-    ENDIF
-    IF GRIND_Z_2<>0
-        G91 Y=-GRIND_Y_2 Z=-GRIND_Z_2 C=-GRIND_C_2
-    ENDIF
-    IF GRIND_Z_1<>0
-        G91 Y=-GRIND_Y_1 Z=-GRIND_Z_1 C=-GRIND_C_1
-    ENDIF
+    FOR COUNT=1 TO 11
+        COUNT_DOWN=12-COUNT
+        EXECSTRING("TEMP_1=GRIND_Z_" << COUNT_DOWN)
+        IF TEMP_1<>0
+            IF SCREW_TAP[0]==0;螺纹0/丝锥1
+                EXECSTRING("G91 Y=-GRIND_Y_" << COUNT_DOWN << " Z=-GRIND_Z_" << COUNT_DOWN << " C=-GRIND_C_" << COUNT_DOWN)
+            ELSE
+                EXECSTRING("TEMP_2=1/SCREW_TAP[16]*360*(GRIND_C_" << COUNT_DOWN << "/ABS(GRIND_C_" << COUNT_DOWN << "))");一个铲磨动作走的C角度(区分正负)
+                EXECSTRING("TEMP_3=ABS(ROUNDUP(GRIND_C_" << COUNT_DOWN << "/TEMP_2))");这一段铲磨的循环次数
+
+                TEMP_4=TEMP_2*(SCREW_TAP[14]/(SCREW_TAP[14]+1));向下铲磨走过的角度c(区分正负)
+                TEMP_5=TEMP_2*(1/(SCREW_TAP[14]+1));向上抬起走过的角度c(区分正负)
+
+                TEMP_6=TEMP_4*INI[5]/360/LUOWEN_ORI;向下铲磨移动距离.Z
+                TEMP_7=TEMP_5*INI[5]/360/LUOWEN_ORI;向上抬起移动距离.Z
+
+                TEMP_8=-SCREW_TAP[15];铲背量.Y
+                EXECSTRING("TEMP_9=SCREW_TAP[15]+GRIND_Y_" << COUNT_DOWN << "/GRIND_Z_" << COUNT_DOWN << "*(TEMP_6+TEMP_7)");向上抬起距离考虑锥度.Y
+
+                FOR COUNT_CM=1 TO TEMP_3
+                    G91 Y=-TEMP_9 Z=-TEMP_7 C=-TEMP_5
+                        Y=-TEMP_8 Z=-TEMP_6 C=-TEMP_4
+                ENDFOR
+            ENDIF
+        ENDIF
+    ENDFOR
 ENDIF
 
 FGROUP(Y,Z)
