@@ -105,6 +105,7 @@
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 	DEF cixindiaoyong=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[115]"/0,0,0/0,0,0/);调用默认齿形程序0/通用齿形程序1
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);磨削参数
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
@@ -112,6 +113,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -124,6 +126,12 @@
 	VS2=($85348,ac7,se2);"滚压轮"
 	VS3=($85371,ac7,se2);"金刚笔"
 ;
+	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+	END_LOAD
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -792,6 +800,7 @@
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 	DEF cixindiaoyong=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[115]"/0,0,0/0,0,0/);调用默认齿形程序0/通用齿形程序1
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);磨削参数
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
@@ -799,6 +808,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -811,6 +821,12 @@
 	VS2=($85348,ac7,se3);"滚压轮"
 	VS3=($85371,ac7,se2);"金刚笔"
 ;
+	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+	END_LOAD
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -1394,6 +1410,7 @@
 	DEF WARE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/0,0,0/);修整器
 	DEF N_CX_X_TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器前后
 	DEF cixindiaoyong=(I////WR4//"/NC/_N_NC_GD2_ACX/DRESSER[115]"/0,0,0/0,0,0/);调用默认齿形程序0/通用齿形程序1
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);磨削参数
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
@@ -1401,6 +1418,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -1413,7 +1431,13 @@
 	VS2=($85348,ac7,se2);"滚压轮"
 	VS3=($85371,ac7,se3);"金刚笔"
 ;
-
+	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+	END_LOAD
+	
 	PRESS(HS1)
 		IF TYPE.VAL<>1
 			LM("MASK51","a_grind.com")

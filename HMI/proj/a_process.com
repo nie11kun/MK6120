@@ -112,6 +112,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -119,6 +120,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -128,6 +130,11 @@
 	VS2=($85232,ac7,se1);前角侧面
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF DRESS_MODE_DIS.VAL == 0
 			DRESS_MODE.WR = 4
 		ELSE
@@ -611,6 +618,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -618,6 +626,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -627,6 +636,11 @@
 	VS2=($85232,ac7,se3);前角侧面
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF DRESS_MODE_DIS.VAL == 0
 			DRESS_MODE.WR = 4
 		ELSE
@@ -1094,6 +1108,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -1101,6 +1116,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -1110,6 +1126,11 @@
 	VS2=($85246,ac7,se1);齿背侧面
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF DRESS_MODE_DIS.VAL == 0
 			DRESS_MODE.WR = 4
 		ELSE
@@ -1575,6 +1596,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -1582,6 +1604,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -1591,6 +1614,11 @@
 	VS2=($85246,ac7,se3);齿背侧面
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF DRESS_MODE_DIS.VAL == 0
 			DRESS_MODE.WR = 4
 		ELSE
@@ -2048,6 +2076,7 @@
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -2055,6 +2084,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -2063,6 +2093,11 @@
 	VS1=($85247,ac7,se3);平刃后角
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF DRESS_MODE_DIS.VAL == 0
 			DRESS_MODE.WR = 4
 		ELSE
@@ -2517,6 +2552,7 @@
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
 	DEF GRIND_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[282]"/0,0,0/0,0,0//);圆拉刀-通磨-加工方式(0通磨槽/1通磨外圆)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -2524,6 +2560,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -2532,6 +2569,11 @@
 	VS1=($85248,ac7,se3);通磨
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF DRESS_MODE_DIS.VAL == 0
 			DRESS_MODE.WR = 4
 		ELSE
@@ -2979,6 +3021,7 @@
 	
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -2986,6 +3029,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -2994,6 +3038,11 @@
 	VS1=($85249,ac7,se3);铲背
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF DRESS_MODE_DIS.VAL == 0
 			DRESS_MODE.WR = 4
 		ELSE
@@ -3450,6 +3499,7 @@
 
 	DEF GRIND_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[38]"/0,0,0/0,0,0/);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背,5齿两端平面,6吸铁台面)
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -3457,6 +3507,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -3465,6 +3516,11 @@
 	VS1=($85251,ac7,se3);齿平面
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF DRESS_MODE_DIS.VAL == 0
 			DRESS_MODE.WR = 4
 		ELSE
@@ -3920,6 +3976,7 @@
 	DEF AFTER_DRESS=(I/*0=$85041,1=$85040//$85214,$85214,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[161]"/30,300,200/180,300,60//);修砂轮后是否不进刀加工一次(0否1是)
 	
 	DEF WHEEL_RUN_MODE=(I////WR4,ac4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 	
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -3927,6 +3984,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -3936,6 +3994,11 @@
 	VS2=($85272,ac7,se1);螺纹加工-侧面
 	
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF WHEEL_RUN_MODE.VAL==0;线速度->转速
 			VAR33.WR=1
 			VAR34.WR=1
@@ -4245,6 +4308,7 @@
 	DEF VER_CUT=(R//0/$85230,$85230,,$85043/WR1///400,1,190/470,1,110/);垂直相对加工量
 	DEF XIE_ANG=(R////WR4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[313]"/0,0,0/0,0,0//);斜线进刀角度
 	DEF JINDAOMODE=(I////WR4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[312]"/0,0,0/0,0,0//);前刃后背加工是否斜向进刀(0否1是)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
@@ -4252,6 +4316,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -4261,6 +4326,11 @@
 	VS2=($85272,ac7,se3);螺纹加工-侧面
 	
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF WHEEL_RUN_MODE.VAL==0;线速度->转速
 			VAR33.WR=1
 			VAR34.WR=1

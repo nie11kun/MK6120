@@ -58,6 +58,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se3,pa0);自动对刀 ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -65,6 +66,11 @@
 
 	LOAD
 		LG("Measure","GRID","a_auto.com")
+
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
 
 		IF LOAD_YUANLADAO.VAL==0
 			SIGNAL.WR=1

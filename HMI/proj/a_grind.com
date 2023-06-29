@@ -51,6 +51,9 @@
 		ENDIF
 
 		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+
 			C_IM.WR=4
 			C_QUIT.WR=4
 			POS_INPUT_3.WR=4
@@ -192,6 +195,11 @@
 			CAO_END.WR=2
 			YUAN_DIA.WR=2
 			CAO_COUNT.WR=2
+		ENDIF
+
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
 		ENDIF
 	END_LOAD
 
@@ -465,6 +473,11 @@
 		LS("MENU_1");默认调用 MENU_1
 		VS2.SE=3
 
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF (LOAD_YUANLADAO.VAL==1) AND (LADAO_CHOICE.VAL==0);有圆拉刀且当前磨平面拉刀
 			GRIND_C_INIT.WR=2
 		ENDIF
@@ -721,6 +734,11 @@
 		LS("MENU_1");默认调用 MENU_1
 		VS3.SE=3
 
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF (LOAD_YUANLADAO.VAL==1) AND (LADAO_CHOICE.VAL==0);有圆拉刀且当前磨平面拉刀
 			GRIND_C_INIT.WR=2
 		ENDIF
@@ -918,6 +936,11 @@
 		LS("MENU_1");默认调用 MENU_1
 		VS4.SE=3
 
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF (LOAD_YUANLADAO.VAL==1) AND (LADAO_CHOICE.VAL==0);有圆拉刀且当前磨平面拉刀
 			GRIND_C_INIT.WR=2
 		ENDIF
@@ -1103,6 +1126,11 @@
 		LS("MENU_1");默认调用 MENU_1
 		VS5.SE=3
 
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF (LOAD_YUANLADAO.VAL==1) AND (LADAO_CHOICE.VAL==0);有圆拉刀且当前磨平面拉刀
 			GRIND_C_INIT.WR=2
 		ENDIF
@@ -1277,6 +1305,11 @@
 		LS("MENU_1");默认调用 MENU_1
 		VS6.SE=3
 
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF (LOAD_YUANLADAO.VAL==1) AND (LADAO_CHOICE.VAL==0);有圆拉刀且当前磨平面拉刀
 			GRIND_C_INIT.WR=2
 		ENDIF
@@ -1435,6 +1468,11 @@
 		LS("MENU_1");默认调用 MENU_1
 		VS7.SE=3
 
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
 		IF (LOAD_YUANLADAO.VAL==1) AND (LADAO_CHOICE.VAL==0);有圆拉刀且当前磨平面拉刀
 			GRIND_C_INIT.WR=2
 		ENDIF
@@ -1559,6 +1597,11 @@
 			VS3.SE=2
 			VS3.ST=""
 		ENDIF
+
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
 	END_LOAD
 
 	CHANGE(POS_INPUT_1)
@@ -1639,6 +1682,11 @@
 			VS3.SE=2
 			VS3.ST=""
 		ENDIF
+
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
 	END_LOAD
 //END
 
@@ -1711,9 +1759,16 @@
 	DEF VAR19_Z=(R///$85173,$85173,,/WR1,ac4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[311]"/10,350,210/120,350,60//"UserGuide/section_1.html","S1D25");当前磨削接触位.Z
 	DEF SHOUJIAN=(I/*0=$85087,1=$85088/0/$85089,$85039,,/WR4,ac4/"panel_1_24_chs.png"/"/NC/_N_NC_GD2_ACX/TOOL_SET[58]"/190,350,20/210,350,70//"UserGuide/section_1.html","S1D27");是否是首件工件
 
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
+
 	LOAD
 		LS("MENU_2");默认调用 MENU_1
 		VS3.SE=3
+
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
 	END_LOAD
 	
 	CHANGE(VAR11)
@@ -1815,6 +1870,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85075,ac7,se1);工件参数
@@ -1892,6 +1948,9 @@
 		IF LOAD_YUANLADAO.VAL==0
 			VS3.SE=2
 			VS3.ST=""
+
+			HS7.SE=2
+			HS7.ST=""
 		ENDIF
 	END_PRESS
 //END
@@ -1903,6 +1962,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
 	VS1=($85092,ac7,se1);吸铁台面
@@ -1957,5 +2017,9 @@
 
 	PRESS(VS8)
 		LS("MENU_1","a_grind.com",0);恢复 MENU_1 菜单
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
 	END_PRESS
 //END

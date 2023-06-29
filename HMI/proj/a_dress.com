@@ -69,6 +69,7 @@
 	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
 
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);磨削参数
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
@@ -76,6 +77,7 @@
 	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
 	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
 
 	;
 
@@ -88,6 +90,11 @@
 ;
 
 	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+		
 		call("UP3")
 		IF WHEEL_RUN_MODE.VAL==0
 			VAR15.WR=2
