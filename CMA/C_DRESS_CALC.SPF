@@ -54,7 +54,7 @@ ELSE
             IF LADAO[37]==1;通磨
                 ;LADAO[39]=LADAO[39]-DRESSER[14]*SIN(LADAO[13]);x磨削位
                 LADAO[40]=LADAO[40]+DRESSER[14]*SIN(LADAO[13]);z轴磨削起始计算
-                INI[6]=LADAO[40]+LADAO[246]-LADAO[135]*LADAO[98];平磨起点z
+                INI[6]=LADAO[40]+LADAO[246]+LADAO[135];平磨起点z
 
                 TECHNOLOGY[234]=TECHNOLOGY[234]-DRESSER[14]*COS(LADAO[13]);初始进刀位置计算
                 TECHNOLOGY[236]=TECHNOLOGY[236]-DRESSER[14]*COS(LADAO[13]);通磨当前接触Y
@@ -129,7 +129,7 @@ ELSE
                 IF LADAO[37]==1
                     ;LADAO[39]=LADAO[39]-DRESSER[15]*SIN(LADAO[13])
                     LADAO[40]=LADAO[40]+DRESSER[15]*SIN(LADAO[13]);z轴磨削起始计算
-                    INI[6]=LADAO[40]+LADAO[246]-LADAO[135]*LADAO[98];平磨起点z
+                    INI[6]=LADAO[40]+LADAO[246]+LADAO[135];平磨起点z
                 
                     TECHNOLOGY[234]=TECHNOLOGY[234]-DRESSER[15]*COS(LADAO[13]);初始进刀位置计算
                     TECHNOLOGY[236]=TECHNOLOGY[236]-DRESSER[15]*COS(LADAO[13]);通磨当前接触Y
