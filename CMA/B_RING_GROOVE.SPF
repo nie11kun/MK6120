@@ -35,8 +35,13 @@ IF LADAO[37]<>1;不是通磨
     LADAO[390]=0;已加工槽数
 ELSE
     IF (LADAO[219]==1) AND (LADAO[281]==0);圆拉刀且通磨槽
-        RING[4]=LADAO[260]-LADAO[259]+1;需加工槽数
+        IF LADAO[158]==0;圆拉刀-通磨槽-磨削方式(0按槽计数/1按圈计数)
+            RING[4]=LADAO[260]-LADAO[259]+1;需加工槽数
+        ELSE
+            RING[4]=1;需加工槽数
+        ENDIF
     ELSE
+        LADAO[259]=1;强制从第一槽开始
         RING[4]=1;需加工槽数
     ENDIF
     LADAO[388]=0;已加工槽数
