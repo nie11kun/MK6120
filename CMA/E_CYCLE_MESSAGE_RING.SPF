@@ -14,9 +14,9 @@ ENDIF
 
 IF (LADAO[219]==1) AND (LADAO[37]==1) AND (LADAO[281]==0);圆拉刀-通磨槽
     IF LADAO[158]==0;圆拉刀-通磨槽-磨削方式(0按槽计数/1按圈计数)
-        CI_MSG="正在磨削第"<<LADAO[259]+RING[5]<<"槽,剩余"<<LADAO[260]-RING[5]-1<<"槽, ";
+        CI_MSG="正在磨削第"<<LADAO[259]+RING[5]<<"槽,剩余"<<RING[4]-RING[5]-1<<"槽, ";
     ELSE
-        CI_MSG="正在磨削第"<<LADAO[259]+VAR1<<"槽,剩余"<<LADAO[260]-VAR1-1<<"槽, ";
+        CI_MSG="正在磨削第"<<LADAO[259]+VAR1<<"槽,剩余"<<RING[4]-VAR1-1<<"槽, ";
     ENDIF
 ENDIF
 
