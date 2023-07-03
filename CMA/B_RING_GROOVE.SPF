@@ -30,7 +30,17 @@ IF DBB_AUTO<>0;自动对刀
     GOTOF RING_ENDING
 ENDIF
 
-RING[4]=RING[3]-RING[2]+1;需加工槽数
+IF LADAO[37]<>1;不是通磨
+    RING[4]=RING[3]-RING[2]+1;需加工槽数
+    LADAO[390]=0;已加工槽数
+ELSE
+    IF (LADAO[219]==1) AND (LADAO[281]==0);圆拉刀且通磨槽
+        RING[4]=LADAO[260]-LADAO[259]+1;需加工槽数
+    ELSE
+        RING[4]=1;需加工槽数
+    ENDIF
+    LADAO[388]=0;已加工槽数
+ENDIF
 RING[5]=0;已加工槽数
 
 IF (LADAO[37]==0) AND (LADAO[200]==0) AND (LADAO[94]==0) AND (TECHNOLOGY[347]==1);前角且不是CNC加工且不是斜线加工且直接靠磨后背
@@ -61,6 +71,11 @@ WHILE(RING[5]<RING[4]);已加工小于需加工
     ENDIF
     STOPRE
     RING[5]=RING[5]+1;已加工槽数
+    IF LADAO[37]<>1;不是通磨
+        LADAO[390]=RING[5];已加工槽数
+    ELSE
+        LADAO[388]=RING[5];已加工槽数
+    ENDIF
     STOPRE
 ENDWHILE
 
@@ -69,24 +84,7 @@ RING_ENDING:
 G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
 G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
 
-IF LADAO[256]==1;是否有圆拉刀(0无1有)
-    IF LADAO[219]==1;圆拉刀
-        IF (LADAO[37]==0) OR ((LADAO[37]==1) AND (LADAO[281]==1)) OR (LADAO[37]==2) OR (LADAO[37]==4) OR (LADAO[37]==5);进行工序-前角 通磨外圆 后背 后角 齿平面
-            IF $MA_SPIND_ASSIGN_TO_MACHAX[C]==0;C轴是否是主轴(0否1是) MD35000
-                DO MOV[C]=1 FA[C]=360*5
-                G4 F0.5
-                DO MOV[C]=0;停止c轴旋转
-            ELSE
-                M3 S=5;头架启动
-                G4 F0.5
-                M5;头架停止转动
-            ENDIF
-        ENDIF
-
-        G4 F0.5
-        G90 G01 C=ACP(INI[27]) F=INI[58];头架在程序结束调整到合适角度
-    ENDIF
-ENDIF
+F_HEAD_STOP;头架停止转动
 
 M9;内磨削冷却关
 M57;退刀关

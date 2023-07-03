@@ -824,7 +824,7 @@
 |TECHNOLOGY[233]||平刃后角-初始接触Y
 |TECHNOLOGY[234]||通磨-初始接触Y
 |TECHNOLOGY[235]||铲背-初始接触Y
-|TECHNOLOGY[236]||通磨当前接触Y
+|TECHNOLOGY[236]||
 |TECHNOLOGY[237]||齿平面当前接触Y
 |TECHNOLOGY[238]||吸铁台面当前接触Y
 |TECHNOLOGY[239]||螺纹加工-累计磨削总量
@@ -1772,8 +1772,8 @@
 |LADAO[276]||直径方向-齿顶圆弧半径
 |LADAO[277]||圆拉刀-前角-A轴补偿角
 |LADAO[278]||圆拉刀-后背-A轴补偿角
-|LADAO[279]||圆拉刀-共需加工几槽
-|LADAO[280]||圆拉刀-正在磨削第几槽
+|LADAO[279]||
+|LADAO[280]||
 |LADAO[281]||圆拉刀-通磨-加工方式(0通磨槽/1通磨外圆)
 |LADAO[282]||圆拉刀-通磨-磨削终点.Z
 |LADAO[283]||圆拉刀-通磨-锥度
@@ -1880,6 +1880,10 @@
 |LADAO[384]||
 |LADAO[385]||
 |LADAO[386]||通磨槽-砂轮尖到端面距离
+|LADAO[387]||需加工槽数
+|LADAO[388]||已加工槽数
+|LADAO[389]||需加工齿数
+|LADAO[390]||已加工齿数
 |||
 |MEASURE_RESULT[0]||底面测量结果1
 |MEASURE_RESULT[149]||底面测量结果150
@@ -1920,6 +1924,8 @@
 |GRIND_RESULT[749]||侧刃当前接触Y150
 |GRIND_RESULT[750]||后背底面当前接触Y1
 |GRIND_RESULT[899]||后背底面当前接触Y150
+|GRIND_RESULT[900]||通磨当前接触Y1
+|GRIND_RESULT[1049]||通磨当前接触Y150
 |||
 |TECH_ADDED[0]||平磨-粗磨单双
 |TECH_ADDED[1]||平磨-粗磨次数

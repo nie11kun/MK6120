@@ -27,7 +27,7 @@ ENDIF
 WRITE(ERR,BACKUP_PATH,WRITESTR)
 
 IF ERR<>0
-    MSG(参数写入文件出错)
+    MSG("参数写入文件出错")
     BR_MSG="参数写入文件出错";
     M0
 ENDIF
