@@ -1,0 +1,70 @@
+PROC F_LAST_GROUP_INFO(VAR REAL GROUP_NUM,VAR REAL CIJU,VAR REAL CISHENGLIANG) DISPLOF
+;***********程序功能**********
+;*最后一组工件数据
+;GROUP_NUM:最后一组的编号
+;CIJU:最后一组的齿距
+;CISHENGLIANG:最后一组的齿升量
+;****************************
+
+IF LADAO[105]<>0;第10组
+	GROUP_NUM=10
+	CIJU=LADAO[310]
+	CISHENGLIANG=LADAO[111]
+ELSE
+	IF LADAO[104]<>0;第9组
+		GROUP_NUM=9
+		CIJU=LADAO[309]
+		CISHENGLIANG=LADAO[110]
+	ELSE
+		IF LADAO[103]<>0;第8组
+			GROUP_NUM=8
+			CIJU=LADAO[308]
+			CISHENGLIANG=LADAO[109]
+		ELSE
+			IF LADAO[102]<>0;第7组
+				GROUP_NUM=7
+				CIJU=LADAO[307]
+				CISHENGLIANG=LADAO[108]
+			ELSE
+				IF LADAO[101]<>0;第6组
+					GROUP_NUM=6
+					CIJU=LADAO[306]
+					CISHENGLIANG=LADAO[107]
+				ELSE
+					IF LADAO[100]<>0;第5组
+						GROUP_NUM=5
+						CIJU=LADAO[305]
+						CISHENGLIANG=LADAO[106]
+					ELSE
+						IF RING[41]<>0;第4组
+							GROUP_NUM=4
+							CIJU=LADAO[304]
+							CISHENGLIANG=LADAO[10]
+						ELSE
+							IF RING[31]<>0;第3组
+								GROUP_NUM=3
+								CIJU=LADAO[303]
+								CISHENGLIANG=LADAO[9]
+							ELSE
+								IF RING[21]<>0;第2组
+									GROUP_NUM=2
+									CIJU=LADAO[302]
+									CISHENGLIANG=LADAO[8]
+								ELSE
+									IF RING[11]<>0;第1组
+										GROUP_NUM=1
+										CIJU=LADAO[301]
+										CISHENGLIANG=LADAO[7]
+									ENDIF
+								ENDIF
+							ENDIF
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+
+RET
+
