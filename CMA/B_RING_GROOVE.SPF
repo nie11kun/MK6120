@@ -31,12 +31,12 @@ IF DBB_AUTO<>0;自动对刀
 ENDIF
 
 IF LADAO[37]<>1;不是通磨
-    RING[4]=RING[3]-RING[2]+1;需加工槽数
+    RING[4]=RING[3]-RING[2]+1;需加工槽数  界面里也进行了同样的计算防止加工中修改
     LADAO[390]=0;已加工槽数
 ELSE
     IF (LADAO[219]==1) AND (LADAO[281]==0);圆拉刀且通磨槽
         IF LADAO[158]==0;圆拉刀-通磨槽-磨削方式(0按槽计数/1按圈计数)
-            RING[4]=LADAO[260]-LADAO[259]+1;需加工槽数
+            RING[4]=LADAO[260]-LADAO[259]+1;需加工槽数 界面里也进行了同样的计算防止加工中修改
         ELSE
             RING[4]=1;需加工槽数
         ENDIF
@@ -50,7 +50,7 @@ RING[5]=0;已加工槽数
 
 IF (LADAO[37]==0) AND (LADAO[200]==0) AND (LADAO[94]==0) AND (TECHNOLOGY[347]==1);前角且不是CNC加工且不是斜线加工且直接靠磨后背
     IF RING[3]==RING[1];终止加工槽是最后一槽
-        RING[4]=RING[4]+1;多加工一个槽的后背
+        RING[4]=RING[4]+1;多加工一个槽的后背 界面里也进行了同样的计算防止加工中修改
         D_RING_Z_RELATED_POS(RING[3]+1,LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
         MEASURE_RESULT[1350+RING[3]]=MEASURE_RESULT[1350+RING[3]-1]+LADAO[34]*LADAO[98];手动给最后一个齿的下一个齿的测量位置赋值，用来按照测量位磨削用
     ENDIF
