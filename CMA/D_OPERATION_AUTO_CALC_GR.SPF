@@ -10,6 +10,7 @@ DEF REAL ANG_A_1,ANG_A_2,ANG_A_3,ANG_A_4,ANG_A_6
 DEF REAL R_1,R_2,R_3,R_4,R_5,R_6
 DEF REAL AERFA_1,AERFA_3,AERFA_4,AERFA_6,AERFA_7,AERFA_8,AERFA_9
 DEF REAL L_A,L_B,L_C,L_D
+DEF REAL TEMP[20]
 
 ;****砂轮1的基准位置计算****************************************************
 ANG_A_1=0
@@ -97,10 +98,21 @@ R_4=L_7/2/SIN((ANG_A_4-ANG_A_3)/2);测头2球中心 相对回转中心虚拟半�
 
 L_8=(LADAO[341]-LADAO[342])-(LADAO[351]-LADAO[352]);两个测头中心长度差值
 
-AERFA_4=ACOS((POT(R_3)+POT(L_8)-POT(R_4))/(2*R_3*L_8));测头1测量杆相对回转中心虚拟半径的夹角
+TEMP[0]=POT(R_3)+POT(L_8)-POT(R_4)
+TEMP[1]=2*R_3*L_8
+IF TEMP[0]<=TEMP[1]
+    TEMP[2]=TEMP[0]/TEMP[1]
+ELSE
+    TEMP[2]=1
+ENDIF
+AERFA_4=ACOS(TEMP[2]);测头1测量杆相对回转中心虚拟半径的夹角
 
 L_C=R_3*COS(AERFA_4)-(LADAO[341]-LADAO[342]);测头基准长度(测头长度为0时)
 L_D=R_3*SIN(AERFA_4);测头测量杆方向相对回转中心偏移距离
+
+LADAO[357]=AERFA_3
+LADAO[358]=L_C
+LADAO[359]=L_D
 
 ;*******实际测量结果的计算*********************************************
 
