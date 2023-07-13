@@ -13,7 +13,11 @@ GRIND_0:
 IF LADAO[18]==0;进刀方向(0垂直/1水平)
     GRIND_INFO="前角底面--"
 ELSE
-    GRIND_INFO="前角侧面--"
+    IF LADAO[159]==0;没有靠磨后背
+        GRIND_INFO="前角侧面--"
+    ELSE
+        GRIND_INFO="靠磨后背--"
+    ENDIF
 ENDIF
 GOTOF CONTINUE_MSG
 

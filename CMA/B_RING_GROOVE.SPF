@@ -53,6 +53,7 @@ IF (LADAO[37]==0) AND (LADAO[200]==0) AND (LADAO[94]==0) AND (TECHNOLOGY[347]==1
         RING[4]=RING[4]+1;多加工一个槽的后背 界面里也进行了同样的计算防止加工中修改
         D_RING_Z_RELATED_POS(RING[3]+1,LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
         MEASURE_RESULT[1350+RING[3]]=MEASURE_RESULT[1350+RING[3]-1]+LADAO[34]*LADAO[98];手动给最后一个齿的下一个齿的测量位置赋值，用来按照测量位磨削用
+        MEASURE_RESULT[300+RING[3]]=MEASURE_RESULT[300+RING[3]-1]+LADAO[34]*LADAO[98];手动给最后一个齿的下一个齿的测量位置赋值，用来按照测量位磨削用
     ENDIF
 ENDIF
 

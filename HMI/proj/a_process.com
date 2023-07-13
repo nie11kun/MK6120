@@ -106,6 +106,9 @@
 
 	DEF AFTER_DRESS=(I/*0=$85041,1=$85040//$85214,$85214,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[161]"/30,300,200/180,300,60//);修砂轮后是否不进刀加工一次(0否1是)
 
+	DEF JINDAOMODE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[253]"/0,0,0/0,0,0//);前刃后背加工是否斜向进刀(0否1是)
+	DEF MO_CIBEI=(I////WR4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[348]"/0,0,0/0,0,0//);前角-直接靠磨后背(0否1是) - 不可是斜线进刀
+
 	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
 	DEF TECH_CHECK=(I///$85220,$85219,$85043,/WR4//"/NC/_N_NC_GD2_ACX/PROCESS[3]"/0,0,0/0,0,0);当前执行那道工艺检测
 	
@@ -128,8 +131,14 @@
 
 	VS1=($85231,ac7,se3);前角底面
 	VS2=($85232,ac7,se1);前角侧面
+	VS3=($85251,ac7,se1);后背侧面
 
 	LOAD
+		IF (JINDAOMODE.VAL==1) OR (MO_CIBEI.VAL==0)
+			VS3.SE=2
+			VS3.ST=""
+		ENDIF
+
 		IF LOAD_YUANLADAO.VAL==0
 			HS7.SE=2
 			HS7.ST=""
@@ -206,6 +215,10 @@
 
 	PRESS(VS2)
 		LM("MASK29","a_process.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK30","a_process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -605,6 +618,7 @@
 	DEF VER_CUT=(R//0/$85230,$85230,,$85043/WR1///400,1,190/470,1,110/);垂直相对加工量
 	DEF XIE_ANG=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[100]"/0,0,0/0,0,0//);斜线进刀角度
 	DEF JINDAOMODE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[253]"/0,0,0/0,0,0//);前刃后背加工是否斜向进刀(0否1是)
+	DEF MO_CIBEI=(I////WR4//"/NC/_N_NC_GD2_ACX/TECHNOLOGY[348]"/0,0,0/0,0,0//);前角-直接靠磨后背(0否1是) - 不可是斜线进刀
 
 	;磨削几件后修整
 	DEF WORK_CUMU=(I///$85227,$85227,,$85228/WR2//"/NC/_N_NC_GD2_ACX/INI[74]"/230,1,110/300,1,110//"UserGuide/section_2.html","S2D1");磨削工件计数(磨削完毕后累加)
@@ -634,8 +648,14 @@
 
 	VS1=($85231,ac7,se1);前角底面
 	VS2=($85232,ac7,se3);前角侧面
+	VS3=($85251,ac7,se1);后背侧面
 
 	LOAD
+		IF (JINDAOMODE.VAL==1) OR (MO_CIBEI.VAL==0)
+			VS3.SE=2
+			VS3.ST=""
+		ENDIF
+
 		IF LOAD_YUANLADAO.VAL==0
 			HS7.SE=2
 			HS7.ST=""
@@ -712,6 +732,10 @@
 
 	PRESS(VS2)
 		LM("MASK29","a_process.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK30","a_process.com")
 	END_PRESS
 
 	PRESS(HS8)
@@ -963,6 +987,458 @@
 				VAR12.WR=2
 				VAR13.WR=2
 				VAR19.WR=2
+				VAR20.WR=2
+				VAR21.WR=2
+				VAR22.WR=2
+			ENDIF
+		ENDIF	
+	END_SUB
+
+	SUB(ROTATE_LINE_SPEED)
+		IF WHEEL_RUN_MODE.VAL==0;线速度->转速
+			VAR33.WR=1
+			VAR34.WR=1
+			VAR35.WR=1
+			VAR36.WR=1
+			VAR37.WR=2
+			VAR38.WR=2
+			VAR39.WR=2
+			VAR40.WR=2
+		ELSE
+			VAR33.WR=2
+			VAR34.WR=2
+			VAR35.WR=2
+			VAR36.WR=2
+			VAR37.WR=1
+			VAR38.WR=1
+			VAR39.WR=1
+			VAR40.WR=1
+		ENDIF
+	END_SUB
+
+	SUB(ROTATE_SPEED)
+		IF WHEEL_RUN_MODE.VAL==0;线速度->转速
+			IF SHALUN_LEIXIN.VAL==0
+				VAR33.VAL=VAR37.VAL*60000/(PI*VAR32.VAL)
+				VAR34.VAL=VAR38.VAL*60000/(PI*VAR32.VAL)
+				VAR35.VAL=VAR39.VAL*60000/(PI*VAR32.VAL)
+				VAR36.VAL=VAR40.VAL*60000/(PI*VAR32.VAL)
+			ELSE
+				VAR33.VAL=VAR37.VAL*60000/(PI*HOUDU_DIA.VAL)
+				VAR34.VAL=VAR38.VAL*60000/(PI*HOUDU_DIA.VAL)
+				VAR35.VAL=VAR39.VAL*60000/(PI*HOUDU_DIA.VAL)
+				VAR36.VAL=VAR40.VAL*60000/(PI*HOUDU_DIA.VAL)
+			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(LINE_SPEED)
+		IF WHEEL_RUN_MODE.VAL==1;转速->线速度
+			IF SHALUN_LEIXIN.VAL==0
+				VAR37.VAL=VAR33.VAL*PI*VAR32.VAL/60000
+				VAR38.VAL=VAR34.VAL*PI*VAR32.VAL/60000
+				VAR39.VAL=VAR35.VAL*PI*VAR32.VAL/60000
+				VAR40.VAL=VAR36.VAL*PI*VAR32.VAL/60000
+			ELSE
+				VAR37.VAL=VAR33.VAL*PI*HOUDU_DIA.VAL/60000
+				VAR38.VAL=VAR34.VAL*PI*HOUDU_DIA.VAL/60000
+				VAR39.VAL=VAR35.VAL*PI*HOUDU_DIA.VAL/60000
+				VAR40.VAL=VAR36.VAL*PI*HOUDU_DIA.VAL/60000
+			ENDIF
+		ENDIF
+	END_SUB
+
+//END
+
+;**********************MASK30:工艺参数_前角_靠后背_侧面;**********************
+//M(Mask30/$85021//)
+	
+	DEF MAINPIC = (V///,$85200////0,0,600,370/0,0,0)
+
+	;单双磨削选择
+	DEF VAR10=(I/*0=$85233,1=$85234//$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[241]"/0,0,0/132,78,60//"UserGuide/section_2.html","S2D3");
+	DEF VAR11=(I/*0=$85233,1=$85234//$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[251]"/0,0,0/222,78,60//"UserGuide/section_2.html","S2D3");
+	DEF VAR12=(I/*0=$85233,1=$85234//$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[261]"/0,0,0/312,78,60//"UserGuide/section_2.html","S2D3");
+	DEF VAR13=(I/*0=$85233,1=$85234//$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[271]"/0,0,0/402,78,60//"UserGuide/section_2.html","S2D3");	
+
+	;循环次数
+	DEF VAR15=(I///$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[242]"/0,0,0/132,104,60//"UserGuide/section_2.html","S2D4");粗磨次数
+	DEF VAR16=(I///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[252]"/0,0,0/222,104,60//"UserGuide/section_2.html","S2D4");半粗磨次数
+	DEF VAR17=(I///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[262]"/0,0,0/312,104,60//"UserGuide/section_2.html","S2D4");半精磨次数
+	DEF VAR18=(I///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[272]"/0,0,0/402,104,60//"UserGuide/section_2.html","S2D4");精磨次数
+	
+	;进给深度
+	DEF VAR19=(R///$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[243]"/0,0,0/132,129,60//"UserGuide/section_2.html","S2D5");粗磨进给量
+	DEF VAR20=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[253]"/0,0,0/222,129,60//"UserGuide/section_2.html","S2D5");半粗磨进给量
+	DEF VAR21=(R///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[263]"/0,0,0/312,129,60//"UserGuide/section_2.html","S2D5");半精磨进给量
+	DEF VAR22=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[273]"/0,0,0/402,129,60//"UserGuide/section_2.html","S2D5");精磨进给量
+	
+	;磨削速度
+	DEF VAR27=(R///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[244]"/0,0,0/132,154,60/);粗磨速度
+	DEF VAR28=(R///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[254]"/0,0,0/222,154,60/);半粗磨速度
+	DEF VAR29=(R///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[264]"/0,0,0/312,154,60/);半精磨速度
+	DEF VAR30=(R///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[274]"/0,0,0/402,154,60/);精磨速度
+
+	;磨削几次修整设定
+	DEF VAR41=(I///$85203,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[245]"/0,0,0/132,179,60//"UserGuide/section_2.html","S2D6");粗磨
+	DEF VAR42=(I///$85204,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[255]"/0,0,0/222,179,60//"UserGuide/section_2.html","S2D6");半精磨
+	DEF VAR43=(I///$85205,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[265]"/0,0,0/312,179,60//"UserGuide/section_2.html","S2D6");精磨
+	DEF VAR44=(I///$85206,,,/WR2//"/NC/_N_NC_GD2_ACX/TECH_ADDED[275]"/0,0,0/402,179,60//"UserGuide/section_2.html","S2D6");终磨
+	
+	;砂轮线速度设定
+	DEF VAR37=(R/0,//$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[246]"/0,0,0/132,203,60//"UserGuide/section_2.html","S2D7");粗磨砂轮线速度
+	DEF VAR38=(R/0,//$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[256]"/0,0,0/222,203,60//"UserGuide/section_2.html","S2D7");半粗磨砂轮线速度
+	DEF VAR39=(R/0,//$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[266]"/0,0,0/312,203,60//"UserGuide/section_2.html","S2D7");半精磨砂轮线速度
+	DEF VAR40=(R/0,//$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[276]"/0,0,0/402,203,60//"UserGuide/section_2.html","S2D7");精磨砂轮线速度
+
+	;头架转速显示
+	DEF VAR23=(R///$85203,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/TECH_ADDED[248]"/0,0,0/132,245,60//"UserGuide/section_2.html","S2D8");粗磨头架转速
+	DEF VAR24=(R///$85204,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/TECH_ADDED[258]"/0,0,0/222,245,60//"UserGuide/section_2.html","S2D8");半粗磨头架转速
+	DEF VAR25=(R///$85205,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/TECH_ADDED[268]"/0,0,0/312,245,60//"UserGuide/section_2.html","S2D8");半精磨头架转速
+	DEF VAR26=(R///$85206,,,/WR4,ac4//"/NC/_N_NC_GD2_ACX/TECH_ADDED[278]"/0,0,0/402,245,60//"UserGuide/section_2.html","S2D8");精磨头架转速
+
+	;砂轮转速显示
+	DEF SHALUN_LEIXIN=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[39]"/0,0,0/0,0,0//);砂轮类型
+	DEF HOUDU_DIA=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[115]"/0,0,0/0,0,0/);厚度模式-砂轮直径
+	DEF VAR32=(R///,,,/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[25]"/0,0,0/0,0,0/);当前砂轮直径调用
+	DEF VAR33=(I/0,//$85203,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[247]"/0,0,0/132,266,60//"UserGuide/section_2.html","S2D10");粗磨砂轮转速
+	DEF VAR34=(I/0,//$85204,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[257]"/0,0,0/222,266,60//"UserGuide/section_2.html","S2D10");半粗磨砂轮转速
+	DEF VAR35=(I/0,//$85205,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[267]"/0,0,0/312,266,60//"UserGuide/section_2.html","S2D10");半精磨砂轮转速
+	DEF VAR36=(I/0,//$85206,,,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[277]"/0,0,0/402,266,60//"UserGuide/section_2.html","S2D10");精磨砂轮转速
+
+	DEF PIANYI_LEIJI=(R///$85240,$85240,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[18]"/20,310,120/130,310,110/);磨削偏移累计.Z
+	DEF FEED_MODE=(I/*0=$85243,1=$85244//$85242,$85242,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[19]"/390,1,70/460,1,60/);进刀方向
+
+	;界面设定磨削总量计算
+	DEF GRIND_DIERCTION=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[99]"/0,0,0/0,0,0/);加工方向(1从左到右/-1从右到左)
+	DEF VAR14=(R///$85220,$85219,$85043,/WR1//"/NC/_N_NC_GD2_ACX/TECH_ADDED[249]"/30,20,190/120,20,60/);工艺磨削总量显示
+
+	;磨削几件后修整
+	DEF WORK_CUMU=(I///$85227,$85227,,$85228/WR2//"/NC/_N_NC_GD2_ACX/INI[74]"/230,1,110/300,1,110//"UserGuide/section_2.html","S2D1");磨削工件计数(磨削完毕后累加)
+	DEF WORK_DRESS=(I///$85229,$85229,,$85228/WR2//"/NC/_N_NC_GD2_ACX/INI[75]"/230,20,110/300,20,110//"UserGuide/section_2.html","S2D2");磨削几件后修整(次数到达后,下一次开始时修整)
+
+	DEF CHUMO_UP_LIMIT=(R/0,1//$85287,$85287,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[280]"/400,1,110/480,1,60//);粗磨进给量上限
+	DEF CHUMO_DOWN_LIMIT=(R/0,1//$85288,$85288,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[281]"/400,20,110/480,20,60//);粗磨进给量下限
+
+	DEF AFTER_DRESS=(I/*0=$85041,1=$85040//$85214,$85214,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[161]"/30,300,200/180,300,60//);修砂轮后是否不进刀加工一次(0否1是)
+
+	DEF QCHECK=(I////WR4//"/Plc/Q113.5"/0,0,0/0,0,0);循环启动Q点检测
+	DEF TECH_CHECK=(I///$85220,$85219,$85043,/WR4//"/NC/_N_NC_GD2_ACX/PROCESS[3]"/0,0,0/0,0,0);当前执行那道工艺检测
+	
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF WHEEL_RUN_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[145]"/0,0,0/0,0,0/);砂轮是否恒转速(0否1是)
+	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
+
+	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
+	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
+	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);"修整参数"
+	HS4=(["\\S_006.png",$85069],ac7,se1,pa0);自动对刀  ifIsAuto
+	HS5=(["\\S_003.png",$85076],ac7,se1,pa0);加工数据
+	HS6=(["\\S_006.png",$85085],ac7,se1,pa0);
+	HS7=(["\\S_007.png",$85099],ac7,se1,pa0);磨削基准
+
+	;
+
+	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
+
+	VS1=($85231,ac7,se1);前角底面
+	VS2=($85232,ac7,se1);前角侧面
+	VS3=($85251,ac7,se3);后背侧面
+
+	LOAD
+		IF LOAD_YUANLADAO.VAL==0
+			HS7.SE=2
+			HS7.ST=""
+		ENDIF
+
+		IF DRESS_MODE_DIS.VAL == 0
+			DRESS_MODE.WR = 4
+		ELSE
+			DRESS_MODE.WR = 2
+		ENDIF
+		IF WHEEL_RUN_MODE.VAL==0;线速度->转速
+			VAR33.WR=1
+			VAR34.WR=1
+			VAR35.WR=1
+			VAR36.WR=1
+			VAR37.WR=2
+			VAR38.WR=2
+			VAR39.WR=2
+			VAR40.WR=2
+		ELSE
+			VAR33.WR=2
+			VAR34.WR=2
+			VAR35.WR=2
+			VAR36.WR=2
+			VAR37.WR=1
+			VAR38.WR=1
+			VAR39.WR=1
+			VAR40.WR=1
+		ENDIF
+		IF LADAO_CHOICE.VAL==1
+			MAINPIC.ST=$85202
+			VAR23.WR=2;
+			VAR24.WR=2;
+			VAR25.WR=2;
+			VAR26.WR=2;
+		ENDIF
+	END_LOAD
+
+	PRESS(HS1)
+		IF TYPE.VAL<>1
+			LM("MASK51","a_grind.com")
+		ELSE
+			LM("MASK18","a_grind.com")
+		ENDIF
+	END_PRESS
+
+	PRESS(HS2)
+		LM("MASK2","a_process.com")
+	END_PRESS
+
+	PRESS(HS3)
+		LM("MASK3","a_dress.com")
+	END_PRESS
+
+	PRESS(HS4)
+		LM("MASK21","a_auto.com")
+	END_PRESS
+
+	PRESS(HS5)
+		LM("MASK1","a_grind_pos.com")
+	END_PRESS
+	
+	PRESS(HS6)
+		LM("MASK1","a_auto_pos.com")
+	END_PRESS
+	
+	PRESS(HS7)
+		LM("MASK0","a_data.com")
+	END_PRESS
+
+	PRESS(VS1)
+		LM("MASK2","a_process.com")
+	END_PRESS
+
+	PRESS(VS2)
+		LM("MASK29","a_process.com")
+	END_PRESS
+
+	PRESS(VS3)
+		LM("MASK30","a_process.com")
+	END_PRESS
+
+	PRESS(HS8)
+		EXIT
+	END_PRESS
+
+	CHANGE(VAR15);界面设定磨削总量计算
+		CALL("UP3")
+	END_CHANGE
+
+	CHANGE(VAR16);界面设定磨削总量计算
+		CALL("UP3")
+	END_CHANGE
+
+	CHANGE(VAR17);界面设定磨削总量计算
+		CALL("UP3")
+	END_CHANGE
+
+	CHANGE(VAR18);界面设定磨削总量计算
+		CALL("UP3")
+	END_CHANGE
+
+	CHANGE(VAR19);界面设定磨削总量计算
+		CALL("UP3")
+	END_CHANGE
+
+	CHANGE(VAR20);界面设定磨削总量计算
+		CALL("UP3")
+	END_CHANGE
+
+	CHANGE(VAR21);界面设定磨削总量计算
+		CALL("UP3")
+	END_CHANGE
+
+	CHANGE(VAR22);界面设定磨削总量计算
+		CALL("UP3")
+	END_CHANGE
+
+	CHANGE(VAR45)
+		IF VAR45.VAL<>0
+			LM("MASK20","a_process.com")
+		ENDIF
+	END_CHANGE
+
+	CHANGE(SHALUN_LEIXIN)
+		CALL("ROTATE_SPEED")
+		CALL("LINE_SPEED")
+	END_CHANGE
+
+	CHANGE(HOUDU_DIA)
+		CALL("ROTATE_SPEED")
+		CALL("LINE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR32)
+		CALL("ROTATE_SPEED")
+		CALL("LINE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR37);砂轮转速计算
+		CALL("ROTATE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR38)
+		CALL("ROTATE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR39)
+		CALL("ROTATE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR40)
+		CALL("ROTATE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR33)
+		CALL("LINE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR34)
+		CALL("LINE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR35)
+		CALL("LINE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR36)
+		CALL("LINE_SPEED")
+	END_CHANGE
+
+	CHANGE(WHEEL_RUN_MODE)
+		CALL("ROTATE_LINE_SPEED")
+	END_CHANGE
+
+	CHANGE(VAR0);选择DIY工艺时,工艺表格全部不能选中
+		CALL("Q_DIY_SET")
+	END_CHANGE
+	
+	CHANGE(QCHECK)
+		CALL("Q_DIY_SET")
+	END_CHANGE
+	
+	CHANGE(TECH_CHECK)
+		CALL("Q_DIY_SET")
+	END_CHANGE
+
+	CHANGE(WAIJING)
+		CALL("ZHONGCACU")
+	END_CHANGE
+
+	CHANGE(SANXIAN)
+		CALL("ZHONGCACU")
+	END_CHANGE
+
+	CHANGE(GANGQIU)
+		CALL("ZHONGCACU")
+	END_CHANGE
+	
+	SUB(UP2)
+
+	END_SUB
+
+	SUB(UP3)
+		VAR14.VAL=VAR15.VAL*VAR19.VAL+VAR16.VAL*VAR20.VAL+VAR17.VAL*VAR21.VAL+VAR18.VAL*VAR22.VAL
+	END_SUB
+	
+	SUB(DIY_ON)
+		;单双磨禁止选择
+		VAR10.WR=1
+		VAR11.WR=1
+		VAR12.WR=1
+		VAR13.WR=1
+		;循环次数
+		VAR16.WR=1
+		VAR17.WR=1
+		VAR18.WR=1
+		;进给深度
+		VAR20.WR=1
+		VAR21.WR=1
+		VAR22.WR=1
+		;磨削速度
+		;磨削几次修整设定
+		VAR41.WR=1
+		VAR42.WR=1
+		VAR43.WR=1
+		VAR44.WR=1
+	END_SUB	
+
+	SUB(DIY_OFF)
+		;单双磨
+		VAR10.WR=2
+		VAR11.WR=2
+		VAR12.WR=2
+		VAR13.WR=2
+		;循环次数
+		VAR16.WR=2
+		VAR17.WR=2
+		VAR18.WR=2
+		;进给深度
+		VAR20.WR=2
+		VAR21.WR=2
+		VAR22.WR=2
+		;磨削速度
+		;磨削几次修整设定
+		VAR41.WR=2
+		VAR42.WR=2
+		VAR43.WR=2
+		VAR44.WR=2
+	END_SUB
+
+	SUB(Q_DIY_SET)
+		IF VAR0.VAL==1
+			VAR14.WR=4
+			DIY_MSG.WR=1
+			CALL("DIY_ON")
+		ELSE
+			VAR14.WR=1
+			DIY_MSG.WR=4
+			CALL("DIY_OFF")
+			IF QCHECK.VAL==1
+				IF TECH_CHECK.VAL==0
+					VAR10.WR=1
+				ELSE
+					VAR10.WR=2
+				ENDIF
+				IF TECH_CHECK.VAL==1
+					VAR11.WR=1
+					VAR20.WR=1
+				ELSE
+					VAR11.WR=2
+					VAR20.WR=2
+				ENDIF
+				IF TECH_CHECK.VAL==2
+					VAR12.WR=1
+					VAR21.WR=1
+				ELSE
+					VAR12.WR=2
+					VAR21.WR=2
+				ENDIF
+				IF TECH_CHECK.VAL==3
+					VAR13.WR=1
+					VAR22.WR=1
+				ELSE
+					VAR13.WR=2
+					VAR22.WR=2
+				ENDIF
+			ELSE
+				VAR10.WR=2
+				VAR11.WR=2
+				VAR12.WR=2
+				VAR13.WR=2
 				VAR20.WR=2
 				VAR21.WR=2
 				VAR22.WR=2
@@ -4264,7 +4740,7 @@
 
 //END
 
-;**********************MASK9:工艺参数_螺纹_侧面;**********************
+;**********************MASK10:工艺参数_螺纹_侧面;**********************
 //M(Mask10/$85021//)
 	
 	DEF MAINPIC = (V///,$85202////0,0,600,370/0,0,0)

@@ -40,6 +40,7 @@ WORK[6]=0;按头数修整设定参数
 
 LADAO[162]=1;首次启动程序标记
 TECHNOLOGY[348]=0;前角-直接靠磨后背-补偿过侧面前两工序进刀值标记
+LADAO[159]=0;正在进行前角靠磨后背工序标记
 
 ;非蜗杆磨床时对存储齿形程序的变量赋值
 	IF (DRESSER[0]==6) OR (DRESSER[0]==1);插补/金刚笔
@@ -127,6 +128,10 @@ ENDIF
 F_LAST_GROUP_INFO(LADAO[366],LADAO[367],LADAO[368]);最后一组工件数据
 
 IF LADAO[37]==0;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背，5齿两端平面,6吸铁台面)
+	IF (LADAO[37]==0) AND (LADAO[200]==0) AND (LADAO[94]==0) AND (TECHNOLOGY[347]==1);前角且不是CNC加工且不是斜线加工且直接靠磨后背
+		F_KAOHOUBEI_TECH_CALC(RING[2]+RING[5]);当前齿前角加工直接靠磨后背 工艺参数自动计算
+	ENDIF
+
 	LENGTH_X=LADAO[1]-LADAO[0]
 	IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
 		PIANYI_Y=ABS(LENGTH_X*TAN(LADAO[11]))

@@ -50,7 +50,7 @@ IF LADAO[161]==0;修砂轮后磨削标记
 	ENDIF
 	PROCESS[8]=S_TECH_GRIND_DEEP;磨削进刀量
 	IF (LADAO[37]==0) AND (LADAO[200]==0) AND (LADAO[94]==0) AND (TECHNOLOGY[347]==1);前角且不是CNC加工且不是斜线加工且直接靠磨后背
-		IF (LADAO[18]==1) AND (PROCESS[2]>=2);进刀方向水平-34工序
+		IF (LADAO[18]==1) AND (LADAO[159]==1);进刀方向水平且正在靠磨后背
 			PROCESS[8]=-PROCESS[8]
 		ENDIF
 	ENDIF
