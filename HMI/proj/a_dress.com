@@ -5,26 +5,26 @@
 	DEF VAR6=(R/0,0.5//$85308,$85308,,$85043/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[28]"/330,60,110/440,60,110//"UserGuide/section_3.html","S3D8");粗修量
 	DEF VAR7=(R/0,1000//$85306,$85306,,$85045/WR2/"panel_3_5_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[30]"/330,80,110/440,80,110//"UserGuide/section_3.html","S3D9");粗修速度
 
-	DEF VAR8=(I/0,1000//$85341,$85341,,/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[27]"/330,110,110/440,110,60//"UserGuide/section_3.html","S3D10");精修次数 ifIsNotHasWorm
-	DEF VAR9=(R/0,0.5//$85309,$85309,,$85043/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[29]"/330,130,110/440,130,110//"UserGuide/section_3.html","S3D11");精修量
-	DEF VAR10=(R/0,1000//$85307,$85307,,$85045/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[31]"/330,150,110/440,150,110//"UserGuide/section_3.html","S3D12");精修速度
+	DEF VAR8=(I/0,1000//$85341,$85341,,/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[27]"/330,110,110/440,110,60/,"#d3e8ff"/"UserGuide/section_3.html","S3D10");精修次数 ifIsNotHasWorm
+	DEF VAR9=(R/0,0.5//$85309,$85309,,$85043/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[29]"/330,130,110/440,130,110/,"#d3e8ff"/"UserGuide/section_3.html","S3D11");精修量
+	DEF VAR10=(R/0,1000//$85307,$85307,,$85045/WR2/"panel_3_6_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[31]"/330,150,110/440,150,110/,"#d3e8ff"/"UserGuide/section_3.html","S3D12");精修速度
 
 	DEF VAR15=(R/0,80//$85317,$85317,,$85046/WR1/"panel_3_8_chs.png"/"/NC/_N_NC_GD2_ACX/WHEEL_LINESPEED_DRESS[2]"/330,180,110/440,180,110//"UserGuide/section_3.html","S3D15");砂轮线速度
 	DEF VAR16=(I/0,//$85221,$85221,,$85044/WR1/"panel_3_15_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[37]"/330,200,110/440,200,110//"UserGuide/section_3.html","S3D19");修整时砂轮转速
 
-	DEF STORE_AREA=(I/*0=$85322,1=$85323,2=$85324,3=$85326/0/$85321,$85321,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[157]"/330,230,110/440,230,60//);齿形程序存储位置
-	DEF MODEL_DIR=(S///$85456,$85456,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_DIR"/330,250,80/440,250,110/);外部齿形文件夹名称
-	DEF MODEL_NAME=(S///$85464,$85464,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_EXTERNAL"/330,270,80/440,270,110/);存储齿形程序名
-	DEF CIGAO=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[93]"/330,290,110/440,290,110//);修整齿形齿高
-	DEF TAIDAO=(R///$85637,$85637,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[17]"/330,310,110/440,310,110//);新砂轮抬刀高度
+	DEF STORE_AREA=(I/*0=$85322,1=$85323,2=$85324,3=$85326/0/$85321,$85321,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[157]"/330,230,110/440,230,60/,"#fff4f1"/);齿形程序存储位置
+	DEF MODEL_DIR=(S///$85456,$85456,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_DIR"/330,250,80/440,250,110/,"#fff4f1");外部齿形文件夹名称
+	DEF MODEL_NAME=(S///$85464,$85464,,/WR4//"/NC/_N_NC_GD2_ACX/SHAPE_EXTERNAL"/330,270,80/440,270,110/,"#fff4f1");存储齿形程序名
+	DEF CIGAO=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[93]"/330,290,110/440,290,110/,"#fff4f1"/);修整齿形齿高
+	DEF TAIDAO=(R///$85637,$85637,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[17]"/330,310,110/440,310,110/,"#fff4f1"/);新砂轮抬刀高度
 
-	DEF CIGAO_ROLL=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/330,230,110/440,230,110//);修整齿形齿高
+	DEF CIGAO_ROLL=(R///$85602,$85602,,$85043/WR4//"/NC/_N_NC_GD2_ACX/DRESSER[2]"/330,230,110/440,230,110/,"#fff4f1"/);修整齿形齿高
 
 	DEF SAFE_Z=(R//0/$85370,$85370,,$85043/WR4//"/NC/_N_NC_GD2_ACX/LADAO[185]"/330,350,110/440,350,110//);修整安全距离.Z
 
 	;*******************************************
 
-	DEF SHALUN_LEIXIN=(I/*0=$85368,1=$85369//$85367,$85367,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[39]"/10,10,110/130,10,70//);砂轮类型
+	DEF SHALUN_LEIXIN=(I/*0=$85368,1=$85369//$85367,$85367,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[39]"/10,10,110/130,10,70/,"#ffc5c5"/);砂轮类型
 
 	DEF ZHIJIN_MSG=(R///$85329,$85329,,/WR4///10,40,200/0,0,0//);
 	DEF VAR13=(R/0,1000//$85319,$85319,,$85043/WR4/"panel_3_7_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[24]"/10,60,110/130,60,110//"UserGuide/section_3.html","S3D14");新砂轮直径
@@ -41,8 +41,8 @@
 
 	;************************************************
 
-	DEF VAR1=(I/*1=$85345,4=$85348,6=$85371//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60//"UserGuide/section_3.html","S3D2");Y_Z/Y  ifIsDressWare3
-	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,10,60//"UserGuide/section_3.html","S3D16");砂轮状态
+	DEF VAR1=(I/*1=$85345,4=$85348,6=$85371//$85387,,,/WR2//"/NC/_N_NC_GD2_ACX/DRESSER[1]"/0,0,0/335,10,60/,"#ffc5c5"/"UserGuide/section_3.html","S3D2");Y_Z/Y  ifIsDressWare3
+	DEF VAR4=(I/*0=$85327,1=$85328//$85350,,,/WR2/"panel_3_4_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[6]"/0,0,0/440,10,60/,"#ffc5c5"/"UserGuide/section_3.html","S3D16");砂轮状态
 
 	DEF N_CX_X_TYPE=(I//0//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[38]"/0,0,0/0,0,0/);成型X修整时修整器在前 ifIsFrontDress
 	DEF EXTERNAL_SHAPE=(I//1//WR4//"/NC/_N_NC_GD2_ACX/DRESSER[140]"/0,0,0/0,0,0/);使用外部齿形程序
