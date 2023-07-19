@@ -25,10 +25,18 @@ ELSE
             D_RING_Z_RELATED_POS(RING[2]+RING[5],LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
             Z_RELATED=LADAO[157]*LADAO[98]
         ENDIF
-        D_RING_Y_RELATED_POS(CAO_CURRENT,Y_RELATED)
+        IF LADAO[403]==0;后角-齿升量模式(0测量1标准)
+            Y_RELATED=MEASURE_RESULT[900+CAO_CURRENT-1]-MEASURE_RESULT[900]
+        ELSE
+            D_RING_Y_RELATED_POS(CAO_CURRENT,Y_RELATED)
+        ENDIF
     ELSE
         IF LADAO[37]==3;加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃)
-            D_RING_Y_RELATED_POS(CAO_CURRENT,Y_RELATED)
+            IF LADAO[404]==0;后角-齿升量模式(0测量1标准)
+                Y_RELATED=MEASURE_RESULT[900+CAO_CURRENT-1]-MEASURE_RESULT[900]
+            ELSE
+                D_RING_Y_RELATED_POS(CAO_CURRENT,Y_RELATED)
+            ENDIF
             IF LADAO[96]==0;磨削齿距模式(0测量齿距/1标准齿距)
                 Z_RELATED=MEASURE_RESULT[300+CAO_CURRENT-1]-MEASURE_RESULT[300]
             ELSE
