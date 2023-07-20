@@ -1,0 +1,148 @@
+PROC D_RING_Y_REL_FROM_Z_POS(REAL Z_POS,VAR REAL Y_RELATED) DISPLOF
+;**********程序功能**********
+;*计算相对第一齿起点 任意Z位置下的标准累计齿升量的值
+;Z_POS:任意位置相对第一齿磨削起点Z轴方向的距离 输入正值
+;Y_RELATED:任意位置下标准累计齿升量的值
+;****************************
+
+DEF REAL Z_RELATED_1,Z_RELATED_2,Z_RELATED_3,Z_RELATED_4,Z_RELATED_5,Z_RELATED_6,Z_RELATED_7,Z_RELATED_8,Z_RELATED_9,Z_RELATED_10
+DEF REAL Y_RELATED_1,Y_RELATED_2,Y_RELATED_3,Y_RELATED_4,Y_RELATED_5,Y_RELATED_6,Y_RELATED_7,Y_RELATED_8,Y_RELATED_9,Y_RELATED_10
+DEF REAL TAN_ANG_1,TAN_ANG_2,TAN_ANG_3,TAN_ANG_4,TAN_ANG_5,TAN_ANG_6,TAN_ANG_7,TAN_ANG_8,TAN_ANG_9,TAN_ANG_10
+DEF REAL TAN_ANG_CURRENT
+
+Z_RELATED_1=LADAO[301]*RING[11]-LADAO[301]
+Z_RELATED_2=LADAO[302]*RING[21]
+Z_RELATED_3=LADAO[303]*RING[31]
+Z_RELATED_4=LADAO[304]*RING[41]
+Z_RELATED_5=LADAO[305]*LADAO[100]
+Z_RELATED_6=LADAO[306]*LADAO[101]
+Z_RELATED_7=LADAO[307]*LADAO[102]
+Z_RELATED_8=LADAO[308]*LADAO[103]
+Z_RELATED_9=LADAO[309]*LADAO[104]
+Z_RELATED_10=LADAO[310]*LADAO[105]
+
+Y_RELATED_1=LADAO[7]*RING[11]-LADAO[7]
+Y_RELATED_2=LADAO[8]*RING[21]
+Y_RELATED_3=LADAO[9]*RING[31]
+Y_RELATED_4=LADAO[10]*RING[41]
+Y_RELATED_5=LADAO[106]*LADAO[100]
+Y_RELATED_6=LADAO[107]*LADAO[101]
+Y_RELATED_7=LADAO[108]*LADAO[102]
+Y_RELATED_8=LADAO[109]*LADAO[103]
+Y_RELATED_9=LADAO[110]*LADAO[104]
+Y_RELATED_10=LADAO[111]*LADAO[105]
+
+TAN_ANG_1=0
+TAN_ANG_2=0
+TAN_ANG_3=0
+TAN_ANG_4=0
+TAN_ANG_5=0
+TAN_ANG_6=0
+TAN_ANG_7=0
+TAN_ANG_8=0
+TAN_ANG_9=0
+TAN_ANG_10=0
+
+IF LADAO[301]>0
+    TAN_ANG_1=LADAO[7]/LADAO[301]
+ENDIF
+IF LADAO[302]>0
+    TAN_ANG_2=LADAO[8]/LADAO[302]
+ENDIF
+IF LADAO[303]>0
+    TAN_ANG_3=LADAO[9]/LADAO[303]
+ENDIF
+IF LADAO[304]>0
+    TAN_ANG_4=LADAO[10]/LADAO[304]
+ENDIF
+IF LADAO[305]>0
+    TAN_ANG_5=LADAO[106]/LADAO[305]
+ENDIF
+IF LADAO[306]>0
+    TAN_ANG_6=LADAO[107]/LADAO[306]
+ENDIF
+IF LADAO[307]>0
+    TAN_ANG_7=LADAO[108]/LADAO[307]
+ENDIF
+IF LADAO[308]>0
+    TAN_ANG_8=LADAO[109]/LADAO[308]
+ENDIF
+IF LADAO[309]>0
+    TAN_ANG_9=LADAO[110]/LADAO[309]
+ENDIF
+IF LADAO[310]>0
+    TAN_ANG_10=LADAO[111]/LADAO[310]
+ENDIF
+
+IF Z_POS<=Z_RELATED_1
+    Y_RELATED=Z_POS*TAN_ANG_1
+ELSE
+    IF Z_POS<=Z_RELATED_1+Z_RELATED_2
+        Y_RELATED=Y_RELATED_1+(Z_POS-Z_RELATED_1)*TAN_ANG_2
+    ELSE
+         IF Z_POS<=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3
+            Y_RELATED=Y_RELATED_1+Y_RELATED_2+(Z_POS-Z_RELATED_1-Z_RELATED_2)*TAN_ANG_3
+        ELSE
+            IF Z_POS<=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4
+                Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+(Z_POS-Z_RELATED_1-Z_RELATED_2-Z_RELATED_3)*TAN_ANG_4
+            ELSE
+                IF Z_POS<=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5
+                    Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+(Z_POS-Z_RELATED_1-Z_RELATED_2-Z_RELATED_3-Z_RELATED_4)*TAN_ANG_5
+                ELSE
+                    IF Z_POS<=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6
+                        Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+(Z_POS-Z_RELATED_1-Z_RELATED_2-Z_RELATED_3-Z_RELATED_4-Z_RELATED_5)*TAN_ANG_6
+                    ELSE
+                        IF Z_POS<=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+Z_RELATED_7
+                            Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+(Z_POS-Z_RELATED_1-Z_RELATED_2-Z_RELATED_3-Z_RELATED_4-Z_RELATED_5-Z_RELATED_6)*TAN_ANG_7
+                        ELSE
+                            IF Z_POS<=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+Z_RELATED_7+Z_RELATED_8
+                                Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+Y_RELATED_7+(Z_POS-Z_RELATED_1-Z_RELATED_2-Z_RELATED_3-Z_RELATED_4-Z_RELATED_5-Z_RELATED_6-Z_RELATED_7)*TAN_ANG_8
+                            ELSE
+                                IF Z_POS<=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+Z_RELATED_7+Z_RELATED_8+Z_RELATED_9
+                                    Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+Y_RELATED_7+Y_RELATED_8+(Z_POS-Z_RELATED_1-Z_RELATED_2-Z_RELATED_3-Z_RELATED_4-Z_RELATED_5-Z_RELATED_6-Z_RELATED_7-Z_RELATED_8)*TAN_ANG_9
+                                ELSE
+                                    IF Z_POS<=Z_RELATED_1+Z_RELATED_2+Z_RELATED_3+Z_RELATED_4+Z_RELATED_5+Z_RELATED_6+Z_RELATED_7+Z_RELATED_8+Z_RELATED_9+Z_RELATED_10
+                                        Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+Y_RELATED_7+Y_RELATED_8+Y_RELATED_9+(Z_POS-Z_RELATED_1-Z_RELATED_2-Z_RELATED_3-Z_RELATED_4-Z_RELATED_5-Z_RELATED_6-Z_RELATED_7-Z_RELATED_8-Z_RELATED_9)*TAN_ANG_10
+                                    ELSE
+                                        TAN_ANG_CURRENT=TAN_ANG_10
+                                        IF LADAO[105]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_9
+                                        ENDIF
+                                        IF LADAO[104]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_8
+                                        ENDIF
+                                        IF LADAO[103]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_7
+                                        ENDIF
+                                        IF LADAO[102]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_6
+                                        ENDIF
+                                        IF LADAO[101]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_5
+                                        ENDIF
+                                        IF LADAO[100]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_4
+                                        ENDIF
+                                        IF RING[41]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_3
+                                        ENDIF
+                                        IF RING[31]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_2
+                                        ENDIF
+                                        IF RING[21]==0
+                                            TAN_ANG_CURRENT=TAN_ANG_1
+                                        ENDIF
+                                        Y_RELATED=Y_RELATED_1+Y_RELATED_2+Y_RELATED_3+Y_RELATED_4+Y_RELATED_5+Y_RELATED_6+Y_RELATED_7+Y_RELATED_8+Y_RELATED_9+Y_RELATED_10+(Z_POS-Z_RELATED_1-Z_RELATED_2-Z_RELATED_3-Z_RELATED_4-Z_RELATED_5-Z_RELATED_6-Z_RELATED_7-Z_RELATED_8-Z_RELATED_9-Z_RELATED_10)*TAN_ANG_CURRENT
+                                    ENDIF
+                                ENDIF
+                            ENDIF
+                        ENDIF
+                    ENDIF
+                ENDIF
+            ENDIF
+        ENDIF
+    ENDIF
+ENDIF
+
+RET
+
