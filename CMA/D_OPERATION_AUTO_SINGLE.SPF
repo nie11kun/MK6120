@@ -189,6 +189,11 @@ IF (LADAO[27]<=RING[1]) OR (LADAO[93]==0);不是最后齿背或测全型
 		LADAO[87]=LADAO[79];自动测量-上次顶刃z坐标
 		LADAO[88]=LADAO[80];自动测量-上次顶刃y坐标
 	ENDIF
+
+	IF LADAO[27]==1;第一齿
+		LADAO[463]=LADAO[73];自动对刀-第一齿前角实测.Z
+		LADAO[464]=LADAO[80];自动对刀-第一齿后角实测.Y
+	ENDIF
 ENDIF
 
 OPERATION_END:
