@@ -40,7 +40,7 @@ IF LADAO[93]==0;自动测量-测量位置(0全测/1前刃/2前刃and底面)
     ENDIF
 ENDIF
 
-IF LADAO[93]==2;自动测量-测量位置(0全测/1前刃/2前刃and底面)
+IF (LADAO[93]==2) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
     IF LADAO[27]<=RING[1];不是最后一个齿背
         ;底面坐标校准
         LADAO[77]=LADAO[77]
@@ -48,7 +48,7 @@ IF LADAO[93]==2;自动测量-测量位置(0全测/1前刃/2前刃and底面)
     ENDIF
 ENDIF
 
-IF LADAO[93]==3;自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角)
+IF (LADAO[93]==3) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
     IF LADAO[27]<=RING[1];不是最后一个齿背
         ;顶刃坐标校准
         LADAO[79]=LADAO[79]-LADAO[36]*SIN(LADAO[33])*LADAO[98]
@@ -110,11 +110,11 @@ IF LADAO[93]==0;自动测量-测量位置(0全测/1前刃)
     ENDIF
 ENDIF
 
-IF LADAO[93]==2;自动测量-测量位置(0全测/1前刃)
+IF (LADAO[93]==2) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
     MEASURE_RESULT[0+LADAO[27]-1]=LADAO[78];底面Y
 ENDIF
 
-IF LADAO[93]==3;自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角)
+IF (LADAO[93]==3) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
     MEASURE_RESULT[900+LADAO[27]-1]=LADAO[80];顶刃Y
 ENDIF
 
@@ -131,10 +131,10 @@ ELSE
             MEASURE_RESULT[1050+LADAO[27]-1]=MEASURE_RESULT[900+LADAO[27]-1]-MEASURE_RESULT[900+LADAO[27]-1-1];顶部后刃测量相对偏移
             MEASURE_RESULT[1950+LADAO[27]-1]=MEASURE_RESULT[900+LADAO[27]-1]-MEASURE_RESULT[900];顶部后刃测量累计偏移
         ENDIF
-        IF LADAO[93]==2;自动测量-测量位置(0全测/1前刃)
+        IF (LADAO[93]==2) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
             MEASURE_RESULT[150+LADAO[27]-1]=MEASURE_RESULT[0+LADAO[27]-1]-MEASURE_RESULT[0+LADAO[27]-1-1];底面相对偏移
         ENDIF
-        IF LADAO[93]==3;自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角)
+        IF (LADAO[93]==3) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
             MEASURE_RESULT[1050+LADAO[27]-1]=MEASURE_RESULT[900+LADAO[27]-1]-MEASURE_RESULT[900+LADAO[27]-1-1];顶部后刃测量相对偏移
             MEASURE_RESULT[1950+LADAO[27]-1]=MEASURE_RESULT[900+LADAO[27]-1]-MEASURE_RESULT[900];顶部后刃测量累计偏移
         ENDIF

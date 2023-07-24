@@ -133,7 +133,7 @@ IF LADAO[93]==0;自动测量-测量位置(0全测/1前刃/2前刃and底面)
 	ENDIF
 ENDIF
 
-IF LADAO[93]==2;自动测量-测量位置(0全测/1前刃/2前刃and底面)
+IF (LADAO[93]==2) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
 	IF LADAO[27]<=RING[1];不是最后一个齿背
 		G90 G01 Z=LADAO[73]-LADAO[28]*LADAO[98] F=LADAO[236]*3;Z轴到安全位置
 
@@ -149,7 +149,7 @@ IF LADAO[93]==2;自动测量-测量位置(0全测/1前刃/2前刃and底面)
 	ENDIF
 ENDIF
 
-IF LADAO[93]==3;自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角)
+IF (LADAO[93]==3) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
 	IF LADAO[27]<=RING[1];不是最后一个齿背
 		G90 G01 Y=Y_SAFE_CURR Z=$AA_IM[Z]-LADAO[98]*(Y_SAFE_CURR-$AA_IM[Y])*TAN(LADAO[30]) F=LADAO[236]*3;Y轴到安全位置
 		G90 G01 Z=LADAO[73]+LADAO[98]*LADAO[29] F=LADAO[236]*3;Z轴到安全位置
@@ -181,11 +181,11 @@ IF (LADAO[27]<=RING[1]) OR (LADAO[93]==0);不是最后齿背或测全型
 		LADAO[87]=LADAO[79];自动测量-上次顶刃z坐标
 		LADAO[88]=LADAO[80];自动测量-上次顶刃y坐标
 	ENDIF
-	IF LADAO[93]==2;自动测量-测量位置(0全测/1前刃)
+	IF (LADAO[93]==2) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
 		LADAO[85]=LADAO[77];自动测量-上次底面z坐标
 		LADAO[86]=LADAO[78];自动测量-上次底面y坐标
 	ENDIF
-	IF LADAO[93]==3;自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角)
+	IF (LADAO[93]==3) OR (LADAO[93]==4);自动测量-测量位置(0全测/1前刃/2前刃and底面/3前角and后角/4前角and底面and后角)
 		LADAO[87]=LADAO[79];自动测量-上次顶刃z坐标
 		LADAO[88]=LADAO[80];自动测量-上次顶刃y坐标
 	ENDIF
