@@ -32,7 +32,6 @@ ENDIF
         ;    G4 F1.5;重新计算转速后的延时
         ENDIF
         D_GRINDWHEEL_DIACURNT;当前砂轮直径计算
-        M8;修整冷却开
         C_DRESS_SHAPE;修整
         IF GRIND[1]<>0;纯修整时 每个循环重新赋值界面修整速度参数
             DRESSER[16]=DRESSER[29];粗修速度
