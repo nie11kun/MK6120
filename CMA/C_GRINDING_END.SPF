@@ -10,6 +10,7 @@ INI[25]=0;退刀计算标志位置0
 IF (PROCESS[0]==0) AND ((RING[0]==0) OR (LADAO[37]==5) OR (LADAO[37]==6) OR (LADAO[37]==7) OR (LADAO[37]==8));如果不是DIY且不是环形槽或者是磨平磨
     G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
     G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
+    G90 G01 Z=LADAO[471] F=INI[56];Z轴到安全位置
 
     F_HEAD_STOP;头架停止转动
     IF (LADAO[256]==1) AND (LADAO[219]==1);有圆拉刀且当前加工圆拉刀
