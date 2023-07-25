@@ -60,14 +60,22 @@ GOTOF CONTINUE_MSG
 CONTINUE_MSG:
 
 IF (LADAO[37]==0) OR (LADAO[37]==2) OR (LADAO[37]==3) OR (LADAO[37]==4);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃,4后背,5齿平面)
-    CI_MSG="正在磨削第"<<RING[2]+RING[5]<<"齿,剩余"<<RING[4]-RING[5]-1<<"齿, ";
+    IF LADAO[470]==0;加工计数方向(0递增计数 1递减计数)
+        CI_MSG="正在磨削第"<<RING[2]+RING[5]<<"齿,剩余"<<RING[4]-RING[5]-1<<"齿, ";
+    ELSE
+        CI_MSG="正在磨削第"<<RING[2]+RING[5]<<"齿,剩余"<<RING[5]<<"齿, ";
+    ENDIF
 ELSE
     CI_MSG="";
 ENDIF
 
 IF (LADAO[219]==1) AND (LADAO[37]==1) AND (LADAO[281]==0);圆拉刀-通磨槽
     IF LADAO[158]==0;圆拉刀-通磨槽-磨削方式(0按槽计数/1按圈计数)
-        CI_MSG="正在磨削第"<<LADAO[259]+RING[5]<<"槽,剩余"<<RING[4]-RING[5]-1<<"槽, ";
+        IF LADAO[470]==0;加工计数方向(0递增计数 1递减计数)
+            CI_MSG="正在磨削第"<<LADAO[259]+RING[5]<<"槽,剩余"<<RING[4]-RING[5]-1<<"槽, ";
+        ELSE
+            CI_MSG="正在磨削第"<<LADAO[259]+RING[5]<<"槽,剩余"<<RING[5]<<"槽, ";
+        ENDIF
     ELSE
         CI_MSG="正在磨削第"<<LADAO[259]+VAR1<<"槽,剩余"<<VAR2-VAR1<<"槽, ";
     ENDIF

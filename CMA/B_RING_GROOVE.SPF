@@ -63,27 +63,52 @@ TECH_ADDED[48]=0;磨削工件计数
 TECH_ADDED[88]=0;磨削工件计数
 TECH_ADDED[128]=0;磨削工件计数
 
-WHILE(RING[5]<RING[4]);已加工小于需加工
-    C_RING_RELATED_POS(RING[2]+RING[5],RING[6],RING[7]);当前槽的XZ方向偏移量计算
-    B_SCREW;磨削主程序
+IF LADAO[470]==0;加工计数方向(0递增计数 1递减计数)
+    WHILE(RING[5]<RING[4]);已加工小于需加工
+        C_RING_RELATED_POS(RING[2]+RING[5],RING[6],RING[7]);当前槽的XZ方向偏移量计算
+        B_SCREW;磨削主程序
 
-    IF LADAO[256]==0;是否有圆拉刀(0无1有)
-        DBB_TUIDAO=$A_DBB[2]
-    ELSE
-        DBB_TUIDAO=$A_IN[3]
-    ENDIF
-    IF (DRESSER[6]<>0) OR (DBB_TUIDAO==1);有报警/按下退刀键则退出程序
-        GOTOF RING_ENDING
-    ENDIF
-    STOPRE
-    RING[5]=RING[5]+1;已加工槽数
-    IF LADAO[37]<>1;不是通磨
-        LADAO[390]=RING[5];已加工槽数
-    ELSE
-        LADAO[388]=RING[5];已加工槽数
-    ENDIF
-    STOPRE
-ENDWHILE
+        IF LADAO[256]==0;是否有圆拉刀(0无1有)
+            DBB_TUIDAO=$A_DBB[2]
+        ELSE
+            DBB_TUIDAO=$A_IN[3]
+        ENDIF
+        IF (DRESSER[6]<>0) OR (DBB_TUIDAO==1);有报警/按下退刀键则退出程序
+            GOTOF RING_ENDING
+        ENDIF
+        STOPRE
+        RING[5]=RING[5]+1;已加工槽数
+        IF LADAO[37]<>1;不是通磨
+            LADAO[390]=RING[5];已加工槽数
+        ELSE
+            LADAO[388]=RING[5];已加工槽数
+        ENDIF
+        STOPRE
+    ENDWHILE
+ELSE
+    RING[5]=RING[4]-1;已加工槽数
+    WHILE(RING[5]>=0);已加工小于需加工
+        C_RING_RELATED_POS(RING[2]+RING[5],RING[6],RING[7]);当前槽的XZ方向偏移量计算
+        B_SCREW;磨削主程序
+
+        IF LADAO[256]==0;是否有圆拉刀(0无1有)
+            DBB_TUIDAO=$A_DBB[2]
+        ELSE
+            DBB_TUIDAO=$A_IN[3]
+        ENDIF
+        IF (DRESSER[6]<>0) OR (DBB_TUIDAO==1);有报警/按下退刀键则退出程序
+            GOTOF RING_ENDING
+        ENDIF
+        STOPRE
+        RING[5]=RING[5]-1;已加工槽数
+        IF LADAO[37]<>1;不是通磨
+            LADAO[390]=(RING[4]-1)-RING[5];已加工槽数
+        ELSE
+            LADAO[388]=(RING[4]-1)-RING[5];已加工槽数
+        ENDIF
+        STOPRE
+    ENDWHILE
+ENDIF
 
 RING_ENDING:
 
