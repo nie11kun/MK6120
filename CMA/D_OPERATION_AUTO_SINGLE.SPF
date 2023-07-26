@@ -222,6 +222,9 @@ IF (LADAO[27]<=RING[1]) OR (LADAO[93]==0);不是最后齿背或测全型
 	IF LADAO[27]==1;第一齿
 		LADAO[463]=LADAO[73];自动对刀-第一齿前角实测.Z
 		LADAO[464]=LADAO[80];自动对刀-第一齿后角实测.Y
+
+		LADAO[362]=LADAO[73]+LADAO[36]*LADAO[98];自动计算磨削位_实际测量-测头中心在前角顶尖接触点的坐标.Z(测头需要A轴0度时测量)
+		LADAO[363]=LADAO[80]+(LADAO[29]-LADAO[36])*SIN(LADAO[33])-LADAO[36]*COS(LADAO[33]);自动计算磨削位_实际测量-测头中心在前角顶尖接触点的坐标.Y(测头需要A轴0度时测量)
 	ENDIF
 ENDIF
 
