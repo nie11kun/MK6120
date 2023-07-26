@@ -15,7 +15,6 @@ IF $AA_IM[Y]<INI[23]-LADAO[35]
 ENDIF
 G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
 G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
-G90 G01 Z=LADAO[471] F=INI[56];Z轴到安全位置
 
 IF (LADAO[37]<>5) AND (LADAO[37]<>6) AND (LADAO[37]<>7) AND (LADAO[37]<>8);加工选择(0前刃、1齿形平磨，2齿顶后刃，3齿侧后刃，4后背,5齿平面,6吸铁台面,7内圆加工,8螺纹加工)
     IF (LADAO[37]==0) AND (LADAO[200]==1) AND (LADAO[214]==0);前角-CNC插补-砂轮顶圆弧YZ插补
