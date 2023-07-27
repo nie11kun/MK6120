@@ -19,6 +19,8 @@ Y_SAFE_CURR=LADAO[25]+LADAO[21]+Y_RELATED
 
 D_RING_Z_RELATED_POS(LADAO[27],LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
 
+MSG("正在测量第 "<<LADAO[27]<<" 齿...")
+
 IF (LADAO[27]<=RING[1]) OR (LADAO[93]==0);不是最后齿背或测全型
 
 	IF LADAO[27]>1;不是第一齿
