@@ -1163,14 +1163,14 @@
 	DEF WHEEL_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[285]"/0,0,0/0,0,0/);砂轮选择(0砂轮一/1砂轮二)
 
 	DEF POS_INPUT_AUTO_X=(I/*0=$85017,1=$85017/0/$85662,$85662,,/WR4///10,180,202/60,180,15/,"#0fb766");坐标写入键
-	DEF SHALUN_JIZUN_HOUDU=(R///$85687,$85687,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[473]"/80,180,202/180,180,60/,"#fff4f1"/);通磨-自动计算起点.X-砂轮基准宽度
+	DEF SHALUN_JIZUN_HOUDU=(R///$85687,$85687,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[473]"/80,180,202/190,180,60/,"#fff4f1"/);通磨-自动计算起点.X-测头测量点所在砂轮位置距砂轮端面距离
 	DEF MEAS_1ST_PIANYI_X=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[467]"/0,0,0/0,0,0//);测量第一齿齿侧面偏移距离.X
 	DEF MEAS_1ST_VALUE_X=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[469]"/0,0,0/0,0,0//);测量第一齿齿侧面测量值.X
 	DEF MEAS_TO_WHEEL_AXIS_DIS_1=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[384]"/0,0,0/0,0,0//);测量基准-测头距离砂轮一-轴向距离
 	DEF MEAS_TO_WHEEL_AXIS_DIS_2=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[393]"/0,0,0/0,0,0//);测量基准-测头距离砂轮二-轴向距离
 
 	DEF POS_INPUT_AUTO_Y=(I/*0=$85017,1=$85017/0/$85690,$85690,,/WR4///10,200,202/60,200,15/,"#0fb766");坐标写入键
-	DEF SHALUN_DIA_PIANYI=(R///$85689,$85689,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[283]"/80,200,202/180,200,60/,"#fff4f1"/);通磨-自动计算起点.Y-砂轮直径补偿-测头测量点所在砂轮位置相对当前砂轮直径的偏移
+	DEF SHALUN_DIA_PIANYI=(R///$85689,$85689,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[283]"/80,200,202/190,200,60/,"#fff4f1"/);通磨-自动计算起点.Y-砂轮直径补偿-测头测量点所在砂轮位置相对当前砂轮起始修整点的偏移
 	DEF AUTO_1ST_Y=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[465]"/0,0,0/0,0,0/);自动对刀-第一齿前角实测.Y
 	DEF MEAS_GAN_LENGTH=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[239]"/0,0,0/0,0,0//);测量杆总长
 	DEF MEAS_TO_WHEEL_HEIGTH_DIS_1=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[385]"/0,0,0/0,0,0//);测量基准-测头距离砂轮一-垂直距离
@@ -1485,14 +1485,14 @@
 	DEF WHEEL_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[285]"/0,0,0/0,0,0/);砂轮选择(0砂轮一/1砂轮二)
 
 	DEF POS_INPUT_AUTO_X=(I/*0=$85017,1=$85017/0/$85662,$85662,,/WR4///10,180,202/60,180,15/,"#0fb766");坐标写入键
-	DEF SHALUN_JIZUN_HOUDU=(R///$85687,$85687,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[474]"/80,180,202/180,180,60/,"#fff4f1"/);通磨-自动计算起点.X-砂轮基准宽度
+	DEF SHALUN_JIZUN_HOUDU=(R///$85687,$85687,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[474]"/80,180,202/190,180,60/,"#fff4f1"/);通磨-自动计算起点.X-测头测量点所在砂轮位置距砂轮端面距离
 	DEF MEAS_1ST_PIANYI_X=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[467]"/0,0,0/0,0,0//);测量第一齿齿侧面偏移距离.X
 	DEF MEAS_1ST_VALUE_X=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[469]"/0,0,0/0,0,0//);测量第一齿齿侧面测量值.X
 	DEF MEAS_TO_WHEEL_AXIS_DIS_1=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[384]"/0,0,0/0,0,0//);测量基准-测头距离砂轮一-轴向距离
 	DEF MEAS_TO_WHEEL_AXIS_DIS_2=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[393]"/0,0,0/0,0,0//);测量基准-测头距离砂轮二-轴向距离
 
 	DEF POS_INPUT_AUTO_Y=(I/*0=$85017,1=$85017/0/$85690,$85690,,/WR4///10,200,202/60,200,15/,"#0fb766");坐标写入键
-	DEF SHALUN_DIA_PIANYI=(R///$85689,$85689,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[284]"/80,200,202/180,200,60/,"#fff4f1"/);通磨-自动计算起点.Y-砂轮直径补偿-测头测量点所在砂轮位置相对当前砂轮直径的偏移
+	DEF SHALUN_DIA_PIANYI=(R///$85689,$85689,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[284]"/80,200,202/190,200,60/,"#fff4f1"/);通磨-自动计算起点.Y-砂轮直径补偿-测头测量点所在砂轮位置相对当前砂轮起始修整点的偏移
 	DEF AUTO_1ST_Y=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[465]"/0,0,0/0,0,0/);自动对刀-第一齿前角实测.Y
 	DEF MEAS_GAN_LENGTH=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[239]"/0,0,0/0,0,0//);测量杆总长
 	DEF MEAS_TO_WHEEL_HEIGTH_DIS_1=(R////WR4//"/NC/_N_NC_GD2_ACX/LADAO[385]"/0,0,0/0,0,0//);测量基准-测头距离砂轮一-垂直距离
