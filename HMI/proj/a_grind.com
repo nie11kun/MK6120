@@ -332,6 +332,46 @@
 		call("UP3")
 	END_CHANGE
 
+	CHANGE(Z_DELTA_1)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_2)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_3)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_4)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_5)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_6)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_7)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_8)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_9)
+		call("UP3")
+	END_CHANGE
+
+	CHANGE(Z_DELTA_10)
+		call("UP3")
+	END_CHANGE
+
 	CHANGE(SLOT_END)
 		call("UP5")
 		call("UP2")
