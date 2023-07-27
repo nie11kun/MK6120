@@ -90,11 +90,6 @@
 ;
 
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
-		
 		call("UP3")
 		IF WHEEL_RUN_MODE.VAL==0
 			VAR15.WR=2

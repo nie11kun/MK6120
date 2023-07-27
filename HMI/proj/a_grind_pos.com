@@ -26,11 +26,6 @@
 	VS3=($85084,ac7,se1);
 
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
-
 		LG("POSITION_CURR_1","GRID","a_grind_pos.com")
 	END_LOAD
 
@@ -108,11 +103,6 @@
 	VS3=($85084,ac7,se1);
 
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
-
 		LG("POSITION_CURR_2","GRID","a_grind_pos.com")
 	END_LOAD
 
@@ -190,11 +180,6 @@
 	VS3=($85084,ac7,se3);
 
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
-		
 		LG("POSITION_CURR_3","GRID","a_grind_pos.com")
 	END_LOAD
 

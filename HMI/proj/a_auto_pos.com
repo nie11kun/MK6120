@@ -26,11 +26,6 @@
 	VS3=($85084,ac7,se1);
 
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
-
 		LG("Measure_1","GRID","a_auto_pos.com")
 	END_LOAD
 
@@ -112,11 +107,6 @@
 	VS3=($85084,ac7,se1);
 
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
-
 		LG("Measure_2","GRID","a_auto_pos.com")
 	END_LOAD
 
@@ -198,11 +188,6 @@
 	VS3=($85084,ac7,se3);
 
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
-		
 		LG("Measure_3","GRID","a_auto_pos.com")
 	END_LOAD
 

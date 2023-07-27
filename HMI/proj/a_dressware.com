@@ -156,10 +156,7 @@
 	VS3=($85371,ac7,se2);"金刚笔"
 ;
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
+
 	END_LOAD
 
 	PRESS(HS1)
@@ -1251,10 +1248,7 @@
 	VS3=($85371,ac7,se2);"金刚笔"
 ;
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
+
 	END_LOAD
 
 	PRESS(HS1)
@@ -2248,10 +2242,7 @@
 	VS3=($85371,ac7,se3);"金刚笔"
 ;
 	LOAD
-		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
+
 	END_LOAD
 	
 	PRESS(HS1)

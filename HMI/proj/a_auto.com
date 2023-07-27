@@ -72,11 +72,6 @@
 		LG("Measure","GRID","a_auto.com")
 
 		IF LOAD_YUANLADAO.VAL==0
-			HS7.SE=2
-			HS7.ST=""
-		ENDIF
-
-		IF LOAD_YUANLADAO.VAL==0
 			SIGNAL.WR=1
 			SIGNAL_1.WR=4
 			SIGNAL_2.WR=4
