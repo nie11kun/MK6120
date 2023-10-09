@@ -58,6 +58,11 @@ IF CHOICE<>0;数据备份与恢复(0加工/1备份/2恢复)
     RET;备份恢复后直接结束
 ENDIF
 
+IF LADAO[312]<>0;测头-砂轮-相对位置计算(0否1是)
+    D_OPERATION_AUTO_CALC_GR;测头-砂轮相对位置校准主程序
+    RET;计算后直接结束
+ENDIF
+
 A_GRINDING;主程序调用 ;ifIsNotCenter
 
 M30
