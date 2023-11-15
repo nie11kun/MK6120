@@ -153,8 +153,8 @@ ELSE
     TEMP[4]=LADAO[340]
 ENDIF
 
-R_6=SQRT(POT(TEMP[3]+L_11)+POT(TEMP[4]+DRESSER[24]/2));砂轮外延顶尖处相对回转中心虚拟半径
-AERFA_9=ATAN2(TEMP[3]+L_11,TEMP[4]+DRESSER[24]/2);砂轮外延顶尖处虚拟半径和偏移长度上的夹角
+R_6=SQRT(POT(TEMP[3]+L_11)+POT(TEMP[4]+DRESSER[24]/2+LADAO[478]));砂轮外延顶尖处相对回转中心虚拟半径
+AERFA_9=ATAN2(TEMP[3]+L_11,TEMP[4]+DRESSER[24]/2+LADAO[478]);砂轮外延顶尖处虚拟半径和偏移长度上的夹角
 AERFA_8=AERFA_9-ABS(ANG_A_6);砂轮外延顶尖处虚拟半径磨削角度下相对垂直向下的夹角
 ;***********************
 
@@ -164,8 +164,8 @@ L_14=R_6*COS(AERFA_8)-LADAO[475]*COS(LADAO[477]);砂轮尖和测头球中心测�
 Z_11_A=Z_10_A+L_13;砂轮尖在测量点的水平坐标
 Y_11_A=Y_10_A+L_14;砂轮尖在测量点的垂直坐标
 
-INI[2]=Z_11_A+(LADAO[35]-LADAO[385])*TAN(LADAO[30])*LADAO[98];偏移距离
-TECHNOLOGY[231]=Y_11_A-(LADAO[35]-LADAO[385]);偏移距离
+INI[2]=Z_11_A+LADAO[385]*TAN(LADAO[30])*LADAO[98];偏移距离
+TECHNOLOGY[231]=Y_11_A-LADAO[385];偏移距离
 
 RET
 
