@@ -6,7 +6,7 @@ PROC D_OPERATION_AUTO_CALC_GR DISPLOF
 DEF REAL Z_1_A,Z_2_A,Z_3_A,Z_4_A,Z_5_A,Z_6_A,Z_7_A,Z_8_A,Z_9_A,Z_10_A,Z_11_A
 DEF REAL Y_1_A,Y_2_A,Y_3_A,Y_4_A,Y_5_A,Y_6_A,Y_7_A,Y_8_A,Y_9_A,Y_10_A,Y_11_A
 DEF REAL L_2,L_3,L_6,L_7,L_8,L_11,L_13,L_14
-DEF REAL ANG_A_1,ANG_A_2,ANG_A_3,ANG_A_4,ANG_A_6
+DEF REAL ANG_A_1,ANG_A_2,ANG_A_3,ANG_A_4,ANG_A_6,ANG_A_7,ANG_A_8
 DEF REAL R_1,R_2,R_3,R_4,R_5,R_6
 DEF REAL AERFA_1,AERFA_3,AERFA_4,AERFA_6,AERFA_7,AERFA_8,AERFA_9
 DEF REAL L_A,L_B,L_C,L_D
@@ -91,8 +91,7 @@ Y_7_A=LADAO[354]-LADAO[352]
 Z_8_A=LADAO[355]+LADAO[352]
 Y_8_A=LADAO[356]-LADAO[352]
 
-;基准测头1 测量完 ANG_A_3 角度下的坐标后 手动收回一点点测头 再次测量出接触坐标后计算出A轴0度下测头和垂直方向的夹角
-AERFA_3=ATAN2(LADAO[349]-LADAO[345],LADAO[346]-LADAO[350])-ANG_A_3;校准数据-A轴0度时测量杆和垂直方向的夹角(正值则向A轴正向偏)
+AERFA_3=ATAN2(Z_7_A-Z_5_A,Y_5_A-Y_7_A)-ANG_A_3;校准数据-A轴0度时测量杆和垂直方向的夹角(正值则向A轴正向偏)
 
 L_6=SQRT(POT(Z_5_A-Z_6_A)+POT(Y_5_A-Y_6_A));测头1在两个角度下测头中心距离
 L_7=SQRT(POT(Z_7_A-Z_8_A)+POT(Y_7_A-Y_8_A));测头2在两个角度下测头中心距离
@@ -102,8 +101,9 @@ R_4=L_7/2/SIN((ANG_A_4-ANG_A_3)/2);测头2球中心 相对回转中心虚拟半�
 
 L_8=(LADAO[341]-LADAO[342])-(LADAO[351]-LADAO[352]);两个测头中心长度差值
 
-TEMP[0]=POT(R_3)+POT(L_8)-POT(R_4)
-TEMP[1]=2*R_3*L_8
+;根据余弦定理求三角形一个角度
+TEMP[0]=POT(R_3)+POT(L_8)-POT(R_4);a^2+b^2-c^2
+TEMP[1]=2*R_3*L_8;2ab
 IF TEMP[0]<=TEMP[1]
     TEMP[2]=TEMP[0]/TEMP[1]
 ELSE
@@ -112,7 +112,14 @@ ENDIF
 AERFA_4=ACOS(TEMP[2]);测头1测量杆相对回转中心虚拟半径的夹角
 
 L_C=R_3*COS(AERFA_4)-(LADAO[341]-LADAO[342]);测头基准长度(测头长度为0时)
-L_D=R_3*SIN(AERFA_4);测头测量杆方向相对回转中心偏移距离
+L_D=R_3*SIN(AERFA_4);测头测量杆方向相对回转中心偏移距离  下方继续判断正负
+
+ANG_A_7=ATAN2(Y_5_A-Y_6_A,Z_5_A-Z_6_A);测头1在两个角度下Y轴偏移的角度
+ANG_A_8=180-(90-(ANG_A_3+AERFA_3))-(180-(ANG_A_4-ANG_A_3))/2;测头杆在回转中心时两个角度下Y轴偏移的标准角度
+
+IF ANG_A_7<ANG_A_8;偏移方向为回转中心向左
+    L_D=-L_D;测头测量杆方向相对回转中心偏移距离  向左偏移取负值
+ENDIF
 
 LADAO[357]=AERFA_3;正值则向A轴正向偏
 LADAO[358]=L_C
@@ -122,7 +129,7 @@ LADAO[382]=ABS((LADAO[360]-LADAO[314]/2)-(LADAO[365]-LADAO[342]));测量基准-�
 LADAO[383]=LADAO[325]+LADAO[359];测量基准-测头距离砂轮一-轴向距离
 LADAO[384]=LADAO[358]-LADAO[326];测量基准-测头距离砂轮一-垂直距离
 LADAO[391]=ABS((LADAO[361]-LADAO[328]/2)-(LADAO[365]-LADAO[342]));测量基准-测头距离砂轮e二-径向距离
-LADAO[392]=LADAO[339]+LADAO[359];测量基准-测头距离砂轮二-轴向距离
+LADAO[392]=LADAO[339]-LADAO[359];测量基准-测头距离砂轮二-轴向距离
 LADAO[393]=LADAO[358]-LADAO[340];测量基准-测头距离砂轮二-垂直距离
 
 RET
@@ -131,35 +138,35 @@ RET
 
 ;当前砂轮数据计算
 IF LADAO[219]==0;拉刀类型(0平面拉刀/1圆拉刀)
-    ANG_A_6=LADAO[42];前角-A轴磨削角度
+    ANG_A_6=LADAO[42];前角-A轴磨削角度    0
 ELSE
     ANG_A_6=LADAO[42]+LADAO[277]
 ENDIF
 
-Z_10_A=LADAO[362];测头中心在前角顶尖接触点的坐标.Z(测头需要A轴0度时测量)
-Y_10_A=LADAO[363];测头中心在前角顶尖接触点的坐标.Y(测头需要A轴0度时测量)
+Z_10_A=LADAO[362];测头中心在前角顶尖接触点的坐标.Z(测头需要A轴0度时测量)   0
+Y_10_A=LADAO[363];测头中心在前角顶尖接触点的坐标.Y(测头需要A轴0度时测量)   0
 
 IF DRESSER[0]==1;插补修整
-    L_11=LADAO[188]+LADAO[189]+LADAO[364];包含砂轮尖的磨杆总长
+    L_11=LADAO[188]+LADAO[189]+LADAO[364];包含砂轮尖的磨杆总长           8
 ELSE
     L_11=LADAO[194]+LADAO[195]+LADAO[364]
 ENDIF
 
 IF LADAO[284]==0;砂轮1
-    TEMP[3]=LADAO[325];磨杆基准长度
-    TEMP[4]=LADAO[326];磨杆距离回转中心偏移
+    TEMP[3]=LADAO[325];磨杆基准长度              175.927
+    TEMP[4]=LADAO[326];磨杆距离回转中心偏移       299.527
 ELSE
     TEMP[3]=LADAO[339]
     TEMP[4]=LADAO[340]
 ENDIF
-
-R_6=SQRT(POT(TEMP[3]+L_11)+POT(TEMP[4]+DRESSER[24]/2+LADAO[478]));砂轮外延顶尖处相对回转中心虚拟半径
-AERFA_9=ATAN2(TEMP[3]+L_11,TEMP[4]+DRESSER[24]/2+LADAO[478]);砂轮外延顶尖处虚拟半径和偏移长度上的夹角
-AERFA_8=AERFA_9-ABS(ANG_A_6);砂轮外延顶尖处虚拟半径磨削角度下相对垂直向下的夹角
+;                    183.927            347.527 
+R_6=SQRT(POT(TEMP[3]+L_11)+POT(TEMP[4]+DRESSER[24]/2+LADAO[478]));砂轮外延顶尖处相对回转中心虚拟半径   393.197
+AERFA_9=ATAN2(TEMP[3]+L_11,TEMP[4]+DRESSER[24]/2+LADAO[478]);砂轮外延顶尖处虚拟半径和偏移长度上的夹角   27.89
+AERFA_8=(AERFA_9-ABS(ANG_A_6))*LADAO[98];砂轮外延顶尖处虚拟半径磨削角度下相对垂直向下的夹角   27.89
 ;***********************
 
-L_13=R_6*SIN(AERFA_8)+LADAO[475]*SIN(LADAO[477]);砂轮尖和测头球中心测量点的水平距离
-L_14=R_6*COS(AERFA_8)-LADAO[475]*COS(LADAO[477]);砂轮尖和测头球中心测量点的垂直距离
+L_13=R_6*SIN(AERFA_8)+LADAO[475]*SIN(LADAO[477]);砂轮尖和测头球中心测量点的水平距离 186.378
+L_14=R_6*COS(AERFA_8)-LADAO[475]*COS(LADAO[477]);砂轮尖和测头球中心测量点的垂直距离 -123.141 
 
 Z_11_A=Z_10_A+L_13;砂轮尖在测量点的水平坐标
 Y_11_A=Y_10_A+L_14;砂轮尖在测量点的垂直坐标
