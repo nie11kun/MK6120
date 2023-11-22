@@ -9,9 +9,9 @@ DEF INT DBB_DRESS_WHEEL_1,DBB_DRESS_WHEEL_2,DBB_DRESS_WHEEL_3,DBB_DRESS_WHEEL_4
 
 IF LADAO[256]==0;是否有圆拉刀(0无1有)
 	DBB_DRESS_WHEEL_1=$A_DBB[11]
-	DBB_DRESS_WHEEL_2=$A_DBB[13]
-	DBB_DRESS_WHEEL_3=0
-	DBB_DRESS_WHEEL_4=0
+	DBB_DRESS_WHEEL_2=$A_DBB[11]
+	DBB_DRESS_WHEEL_3=$A_DBB[13]
+	DBB_DRESS_WHEEL_4=$A_DBB[13]
 ELSE
 	DBB_DRESS_WHEEL_1=$A_IN[6]
 	DBB_DRESS_WHEEL_2=$A_IN[6]
@@ -68,11 +68,7 @@ IF (INI[37]==0) OR (INI[37]==2);修整轮类型选择
         M64;修整轮1启动
     ELSE
         IF CHOICE_NOW==1
-            IF LADAO[256]==0;是否有圆拉刀(0无1有)
-                M63;修整轮2启动
-            ELSE
-                M64;修整轮2启动
-            ENDIF
+            M64;修整轮2启动
         ELSE
             IF CHOICE_NOW==2
                 M63;修整轮3启动
