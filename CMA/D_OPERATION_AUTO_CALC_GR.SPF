@@ -131,9 +131,9 @@ Z_10_A=LADAO[362];测头中心在前角顶尖接触点的坐标.Z(测头需要A�
 Y_10_A=LADAO[363];测头中心在前角顶尖接触点的坐标.Y(测头需要A轴0度时测量)   0
 
 IF DRESSER[0]==1;插补修整
-    L_11=LADAO[188]+LADAO[189]+LADAO[364];包含砂轮尖的磨杆总长           8
+    L_11=LADAO[188]+LADAO[189]+LADAO[190]-LADAO[364];包含砂轮尖的磨杆总长           8
 ELSE
-    L_11=LADAO[194]+LADAO[195]+LADAO[364]
+    L_11=LADAO[194]+LADAO[195]+LADAO[196]-LADAO[364]
 ENDIF
 
 IF LADAO[284]==0;砂轮1
