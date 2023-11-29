@@ -3010,6 +3010,18 @@
 	DEF GRIND_MODE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[282]"/0,0,0/0,0,0//);圆拉刀-通磨-加工方式(0通磨槽/1通磨外圆)
 	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
 
+	DEF CAO_COUNT=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[259]"/0,0,0/0,0,0//);圆拉刀-槽数
+
+	DEF INT_I
+	DEF INT_J
+	DEF STR_K
+	DEF STR_L
+	DEF STR_M
+	DEF INT_N
+	DEF INT_O
+	DEF INT_P
+	DEF INT_Q
+
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);"磨削参数"
 	HS2=(["\\S_004.png",$85067],ac7,se3,pa0);"工艺参数"
 	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);"修整参数"
@@ -3023,6 +3035,7 @@
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);"返回"
 
 	VS1=($85248,ac7,se3);通磨
+	VS2=();
 
 	LOAD
 		IF DRESS_MODE_DIS.VAL == 0
@@ -3097,6 +3110,10 @@
 
 	PRESS(VS1)
 		LM("MASK6","a_process.com")
+	END_PRESS
+
+	PRESS(VS2)
+		CALL("CAO_DRESS_CALC")
 	END_PRESS
 
 	PRESS(HS8)
@@ -3412,6 +3429,48 @@
 				VAR39.VAL=VAR35.VAL*PI*HOUDU_DIA.VAL/60000
 				VAR40.VAL=VAR36.VAL*PI*HOUDU_DIA.VAL/60000
 			ENDIF
+		ENDIF
+	END_SUB
+
+	SUB(CAO_DRESS_CALC)
+		IF (GRIND_MODE.VAL==0) AND (GRIND_TYPE==1) AND (VAR41.VAL>0);通磨槽 按圈计数 修整设定大于0
+			INT_I=1;循环圈数累计
+			INT_J=1;每圈齿数累计
+			INT_P=1;总齿数累计
+			INT_N=VAR41;修整设定
+			INT_O=VAR15;循环次数
+			INT_Q=CAO_COUNT;工件齿槽数
+			STR_K=" ";达到修整设定的齿号 初始值给一个空格
+
+			;do_while 超过950个循环会报错
+			DO_WHILE ((INT_I-1)*INT_Q+INT_J) <= INT_O * INT_Q;当前累计齿数不大于总齿数
+				IF ((INT_I-1)*INT_Q+INT_J) MOD INT_N == 0;当前累计齿数是修整设定整数倍
+					STR_L = "" << INT_J;记录当前齿号到字符串
+					IF (INSTR(0," " << STR_L << " ",STR_K) == 0) AND (INSTR(0," " << STR_L << "+",STR_K) == 0);如果字符串中找不到当前齿号
+						STR_K = STR_K << STR_L << " ";记录当前齿号
+					ELSE
+						STR_M=REPLACE(STR_K," " << STR_L << " ", " " << STR_L << "+1 ");给重复修整齿号做标记
+						IF STR_K <> STR_M;找到替换字符
+							STR_K=STR_M;
+						ELSE;没有找到替换字符
+							STR_M=REPLACE(STR_K," " << STR_L << "+", " " << STR_L << "+1+");给重复修整齿号做标记
+							STR_K=STR_M;
+						ENDIF
+					ENDIF
+				ENDIF
+				INT_J=INT_J+1;当前齿号累加
+				INT_P=INT_P+1;总齿数累计
+				IF INT_J>INT_Q;进入下一圈循环
+					INT_I=INT_I+1
+					INT_J=1
+				ENDIF
+				IF (LEN(STR_K)>450) OR (INT_P>950);如果字符串长度超过450 继续进行字符串操作会导致溢出 / do_while 超过950个循环会报错
+					INT_I=INT_O + 1;跳出循环
+				ENDIF
+			LOOP
+
+			DLGL(STR_K);显示在提示信息栏
+			;DEBUG("marked dressing slot: " << STR_K);DEBUG 最多只能输出235个字符  \user\sinumerik\hmi\log\easyscreen_log.txt
 		ENDIF
 	END_SUB
 
