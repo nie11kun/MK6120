@@ -64,6 +64,8 @@
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
 	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
 	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
+	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF GRIND_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[38]"/0,0,0/0,0,0/);加工选择
 
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);磨削参数
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
@@ -198,7 +200,7 @@
 			MEAS_1ST_PIANYI_Z.WR=4
 			MEAS_1ST_VALUE.WR=4
 
-			IF LOAD_YUANLADAO.VAL==0
+			IF (LADAO_CHOICE.VAL==0) OR (GRIND_CHOICE<>1);平拉刀或者不是通磨
 				MEAS_FENGDU.WR=4
 				MEAS_FENGDU.VAL=0
 			ELSE
