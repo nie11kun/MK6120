@@ -3464,7 +3464,7 @@
 					INT_I=INT_I+1
 					INT_J=1
 				ENDIF
-				IF (LEN(STR_K)>450) OR (INT_P>950);如果字符串长度超过450 继续进行字符串操作会导致溢出 / do_while 超过950个循环会报错
+				IF (LEN(STR_K)>450) OR (INT_P>900);如果字符串长度超过450 继续进行字符串操作会导致溢出 / do_while 超过900个循环会报错
 					INT_I=INT_O + 1;跳出循环
 				ENDIF
 			LOOP
