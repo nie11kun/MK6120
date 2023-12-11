@@ -5,7 +5,7 @@ PROC B_RING_GROOVE DISPLON
 
 DEF INT DBB_DRESS,DBB_DUIDAO,DBB_AUTO,DBB_TUIDAO
 
-IF LADAO[256]==0;是否有圆拉刀(0无1有)
+IF LADAO[334]==0;输入输出信号检测模式(0:$A_DBB/1:$A_IN)
     DBB_DRESS=$A_DBB[0]
     DBB_DUIDAO=$A_DBB[1]
     DBB_AUTO=$A_DBB[5]
@@ -67,7 +67,7 @@ IF LADAO[470]==0;加工计数方向(0递增计数 1递减计数)
         C_RING_RELATED_POS(RING[2]+RING[5],RING[6],RING[7]);当前槽的XZ方向偏移量计算
         B_SCREW;磨削主程序
 
-        IF LADAO[256]==0;是否有圆拉刀(0无1有)
+        IF LADAO[334]==0;输入输出信号检测模式(0:$A_DBB/1:$A_IN)
             DBB_TUIDAO=$A_DBB[2]
         ELSE
             DBB_TUIDAO=$A_IN[3]
@@ -90,7 +90,7 @@ ELSE
         C_RING_RELATED_POS(RING[2]+RING[5],RING[6],RING[7]);当前槽的XZ方向偏移量计算
         B_SCREW;磨削主程序
 
-        IF LADAO[256]==0;是否有圆拉刀(0无1有)
+        IF LADAO[334]==0;输入输出信号检测模式(0:$A_DBB/1:$A_IN)
             DBB_TUIDAO=$A_DBB[2]
         ELSE
             DBB_TUIDAO=$A_IN[3]
