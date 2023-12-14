@@ -87,6 +87,7 @@
 ;
 	VS2=($85348,ac7,se2);"滚压轮"
 	VS3=($85371,ac7,se2);"金刚笔"
+	VS5=($85037,ac7,se1);"历史记录"
 ;
 
 	LOAD
@@ -159,6 +160,10 @@
 
 	PRESS(VS3)
 		LM("MASK20","a_dressware.com")
+	END_PRESS
+
+	PRESS(VS5)
+		LM("MASK1","a_dress_data.com")
 	END_PRESS
 
 	PRESS(VS8)

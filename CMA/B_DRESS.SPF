@@ -33,6 +33,7 @@ ENDIF
         ENDIF
         D_GRINDWHEEL_DIACURNT;当前砂轮直径计算
         C_DRESS_SHAPE;修整
+        C_DRESS_MEMORY;齿型数据更换记录
         IF GRIND[1]<>0;纯修整时 每个循环重新赋值界面修整速度参数
             DRESSER[16]=DRESSER[29];粗修速度
             DRESSER[17]=DRESSER[30];精修速度

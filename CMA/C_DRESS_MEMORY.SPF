@@ -1,0 +1,57 @@
+PROC C_DRESS_MEMORY DISPLOF
+;***********程序功能**********
+;*齿型数据更换记录
+;****************************
+
+IF (DRESSER[0]==1) OR (DRESSER[0]==4);1插补 4成型
+    IF CUR_SHAPE<0;第一次启动
+        CUR_SHAPE=0;初始赋值
+    ENDIF
+
+    IF ((DRESSER[0]==1) AND (SHAPE_NAME[0]<>SHAPE_EXTERNAL)) OR ((DRESSER[0]==4) AND (SHAPE_INFO[0]<>DRESSER[1]));上次齿型名称和当前设置不一样
+        CUR_SHAPE=CUR_SHAPE+1;当前砂轮累计
+        IF CUR_SHAPE>50;最多 50 组记录
+            CUR_SHAPE=1;返回第一组
+        ENDIF
+        SHAPE_CHANGED_DATA[CUR_SHAPE]=""
+        SHAPE_NAME[CUR_SHAPE]=""
+        SHAPE_INFO[CUR_SHAPE]=0
+        SHAPE_INFO[CUR_SHAPE+100]=0
+        SHAPE_INFO[CUR_SHAPE+200]=0
+        SHAPE_INFO[CUR_SHAPE+300]=0
+        SHAPE_INFO[CUR_SHAPE+400]=0
+        SHAPE_INFO[CUR_SHAPE+500]=0
+
+        IF DRESSER[0]==1;插补
+            SHAPE_NAME[0]=SHAPE_EXTERNAL;齿型名称
+        ELSE
+            SHAPE_INFO[0]=DRESSER[1];成型齿高
+        ENDIF
+    ENDIF
+
+    SHAPE_CHANGED_DATA[CUR_SHAPE]=$A_YEAR << "-" << $A_MONTH << "-" << $A_DAY << "  " << $A_HOUR << ":" << $A_MINUTE << ":" << $A_SECOND
+    IF DRESSER[0]==1;插补
+        SHAPE_NAME[CUR_SHAPE]=SHAPE_EXTERNAL;齿型名称
+        SHAPE_INFO[CUR_SHAPE]=LADAO[92];齿高
+        SHAPE_INFO[CUR_SHAPE+100]=LADAO[16];抬刀
+        SHAPE_INFO[CUR_SHAPE+200]=DRESSER[24];当前砂轮直径
+        SHAPE_INFO[CUR_SHAPE+300]=LADAO[188];磨杆长度
+        SHAPE_INFO[CUR_SHAPE+400]=LADAO[189];垫圈厚度
+        SHAPE_INFO[CUR_SHAPE+500]=LADAO[190];砂轮厚度
+
+        SHAPE_INFO[0]=0;清空
+    ELSE
+        SHAPE_NAME[CUR_SHAPE]="成型轮"
+        SHAPE_INFO[CUR_SHAPE]=DRESSER[1];成型齿高
+        SHAPE_INFO[CUR_SHAPE+100]=0
+        SHAPE_INFO[CUR_SHAPE+200]=DRESSER[24];当前砂轮直径
+        SHAPE_INFO[CUR_SHAPE+300]=LADAO[194];磨杆长度
+        SHAPE_INFO[CUR_SHAPE+400]=LADAO[195];垫圈厚度
+        SHAPE_INFO[CUR_SHAPE+500]=LADAO[196];砂轮厚度
+
+        SHAPE_NAME[0]="";清空
+    ENDIF
+ENDIF
+
+RET
+

@@ -1,0 +1,30 @@
+//M(Mask1/$85037//);历史记录
+
+	DEF CUR_SHAPE=(I/0,50//$85038,$85038,,/WR2//"/NC/_N_NC_GD2_ACX/CUR_SHAPE"/10,10,110/150,10,60//);当前行号
+
+	DEF GRID={TYP="R",TGL="% SHAPE_CURR_1",X=10,Y=40,W=540,H=325};
+
+	VS8=($85073,ac7,se1);
+
+	LOAD
+		LG("SHAPE_CURR_1","GRID","a_dress_data.com")
+	END_LOAD
+
+	PRESS(VS8)
+		LM("MASK3","a_dress.com")
+	END_PRESS
+
+//END
+
+//G(SHAPE_CURR_1/0/51)
+	(I///$85398,$85398/WR3//"1"/40/1)
+	(S///$85390,$85390/WR2//"SHAPE_CHANGED_DATA[1]"/120/1);上次使用日期
+	(S///$85391,$85391/WR2//"SHAPE_NAME[1]"/120/1);齿型名称
+	(R///$85392,$85392/WR2//"SHAPE_INFO[1]"/80/1);齿高
+	(R///$85393,$85393/WR2//"SHAPE_INFO[101]"/80/1);抬刀高低
+	(R///$85394,$85394/WR2//"SHAPE_INFO[201]"/80/1);砂轮当前直径
+	(R///$85395,$85395/WR2//"SHAPE_INFO[301]"/80/1);磨杆长度
+	(R///$85396,$85396/WR2//"SHAPE_INFO[401]"/80/1);垫圈厚度
+	(R///$85397,$85397/WR2//"SHAPE_INFO[501]"/80/1);砂轮厚度
+//END
+
