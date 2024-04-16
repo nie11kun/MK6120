@@ -110,6 +110,7 @@ IF INI[69]==1;有自动对刀(0没有/1有)
 			F_PROBE_DBB_BACK(TOOL_SET[51]);等待接近开关缩回
 		ENDIF
 		IF TOOL_SET[49]==1;自动对刀是否有测量头测量结构
+			TOOL_SET[52]=0;测量头(0-测量机构1/1-测量机构2)
 			F_PROBE_M_BACK(TOOL_SET[52]);测量头退回
 			F_PROBE_DBB_BACK(TOOL_SET[52]);等待测量头缩回
 		ENDIF

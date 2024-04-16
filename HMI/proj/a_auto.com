@@ -16,7 +16,7 @@
 	;ifIsCeTouCeLiangBegin
 	DEF KAIGUAN=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[32]"/0,0,0/0,0,0);自动对刀是否有接近开关测量机构
 	DEF CETOU=(I//1//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[50]"/0,0,0/0,0,0);自动对刀是否有测量头测量结构
-	DEF CETOU_1=(I//0//WR4//"/NC/_N_NC_GD2_ACX/TOOL_SET[53]"/0,0,0/0,0,0);测量头(0-测量机构1/1-测量机构2)
+	;测量头(0-测量机构1/1-测量机构2)  程序中根据需要切换 1 2
 	;ifIsCeTouCeLiangEnd
 
 	DEF VAR0=(R///$85570,$85570,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[21]"/320,40,150/440,40,60/,"#d3e8ff"/);自动测量起始X位置

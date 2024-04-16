@@ -6,6 +6,8 @@ PROC C_OPERATION_AUTO DISPLOF
 DEF REAL TEMP_1,TEMP_2
 DEF INT LUOWEN_ORI
 
+TOOL_SET[55]=1;当前正在进行接近开关0/测量头1机构测量
+
 D_CETOU_POS_MEAS;测头实际位置校准
 
 IF LADAO[336]==0;自动对刀-测量齿数量(0全测  1测第一齿)
@@ -29,8 +31,6 @@ ENDIF
 G90 G01 Z=LADAO[22] F=INI[56];Z轴到安全位置
 G90 G01 X=LADAO[20] F=LADAO[2];X轴到安全位置
 G90 G01 Y=LADAO[25]+LADAO[21] F=INI[55];Y轴到安全位置
-
-TOOL_SET[55]=1;当前正在进行接近开关0/测量头1机构测量
 
 ;自动计算初始位-当前测头数据计算-(需要提前设置好:磨削基准-基准校准参数及计算后才能正确进行以下计算)
 IF LADAO[358]>0;测头-基准长度大于0时-表示计算过基准数据(测量杆长度为0时)
