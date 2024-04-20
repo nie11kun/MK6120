@@ -19,7 +19,11 @@ IF LADAO[480]==1;测头实际位置校准(0否1是)
 
     Y_INI_POSITION=-LADAO[21]
 
-    TOOL_SET[52]=1;测量头(0-测量机构1/1-测量机构2)
+    IF LADAO[498]==0;自动对刀-是否有第二基准测头(0无1有)
+        TOOL_SET[52]=0;测量头(0-测量机构1/1-测量机构2)
+    ELSE
+        TOOL_SET[52]=1;测量头(0-测量机构1/1-测量机构2)
+    ENDIF
 
 	E_PROBE_DETECTING_YMOVE(Y_INI_POSITION,LADAO[236]);测头进入齿内
 	F_PROBE_AC_MEA(TOOL_SET[52])
@@ -82,7 +86,11 @@ IF LADAO[480]==1;测头实际位置校准(0否1是)
     G90 G01 Y=LADAO[486]+LADAO[21] F=PROCESS[119];Y轴到安全位置
     G90 G01 Z=MEAS_Z1-LADAO[484]-LADAO[36] F=PROCESS[119];Z轴到安全位置
 
-    TOOL_SET[52]=1;测量头(0-测量机构1/1-测量机构2)
+    IF LADAO[498]==0;自动对刀-是否有第二基准测头(0无1有)
+        TOOL_SET[52]=0;测量头(0-测量机构1/1-测量机构2)
+    ELSE
+        TOOL_SET[52]=1;测量头(0-测量机构1/1-测量机构2)
+    ENDIF
 
     D_PROBE_DETECT_YPOSITION(-20,LADAO[131],LADAO[236],LADAO[237],MEAS_Z2,MEAS_Y2);
     F_PROBE_AC_MEA(TOOL_SET[52])
