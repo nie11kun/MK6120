@@ -64,17 +64,11 @@
 	DEF MEAS_1ST_DING_Z=(R///$85519,$85519,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[496]"/10,300,202/130,300,60/,"#d3e8ff"/);测量第一齿顶面测量.Z
 	DEF POS_INPUT_13=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR4///0,0,0/200,300,15/);坐标写入键
 
-	DEF MEAS_1ST_VALUE=(R///$85682,$85682,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[469]"/10,320,202/130,320,60/"#5ded67"/);测量第一齿齿侧面测量值.X
-
 	DEF MEAS_FENGDU=(I/*0=$85190,1=$85738,2=$85739//$85697,$85697,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[324]"/10,160,202/130,160,60/,"#ffc5c5"/);自动测量-是否测量齿轮齿槽精度(0否1是)
 	DEF CAO_LENGTH=(R///$85698,$85698,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[325]"/10,180,202/130,180,60/,"#e1ffe3"/);自动测量-测量齿轮齿槽-齿槽长度
 	DEF MEAS_MAX_FENGDU=(R4///$85735,$85735,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[322]"/10,200,202/130,200,60/"#5ded67"/);自动测量-通磨槽-最大分度误差
 	DEF MEAS_MAX_CIXIANG=(R4///$85736,$85736,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[323]"/10,220,202/130,220,60/"#5ded67"/);自动测量-通磨槽-最大齿向误差
 	DEF MEAS_MAX_DIA=(R4///$85737,$85737,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[334]"/10,200,202/130,200,60/"#5ded67"/);自动测量-通磨槽-最大外径误差
-
-	DEF MEAS_BASE_1=(R///$85691,$85694,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[476]"/10,310,220/130,310,60/"#5ded67",129/);自动计算磨削位_实际测量-测头相对回转中心虚拟半径
-	DEF MEAS_BASE_2=(R///$85692,$85695,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[477]"/10,330,220/130,330,60/"#5ded67",129/);自动计算磨削位_实际测量-测头虚拟半径和测量杆的夹角
-	DEF MEAS_BASE_3=(R///$85693,$85696,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[478]"/10,350,220/130,350,60/"#5ded67",129/);自动计算磨削位_实际测量-测头测量时虚拟半径垂直向下的夹角
 
 	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
 	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
@@ -83,23 +77,8 @@
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
 	DEF GRIND_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[38]"/0,0,0/0,0,0/);加工选择
 
-	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);磨削参数
-	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
-	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	;
-	HS4=(["\\S_006.png",$85069],ac7,se3,pa0);自动对刀 ifIsAuto
-	HS5=(["\\S_008.png",$85076],ac7,se1,pa0);加工数据
-	HS6=(["\\S_007.png",$85085],ac7,se1,pa0);
-	HS7=(["\\S_009.png",$85099],ac7,se1,pa0);磨削基准
-
-	;
-
-	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
-
-	VS1=($85504,ac7,se1);"测头校准"
-
 	LOAD
-		LG("Measure","GRID","a_auto.com")
+		LS("MENU_1");默认调用 MENU_1
 
 		IF LOAD_YUANLADAO.VAL==0
 			SIGNAL.WR=1
@@ -132,46 +111,6 @@
 			MEAS_1ST_DIRECTION.VAL=1
 		ENDIF
 	END_LOAD
-
-	PRESS(HS1)
-		IF TYPE.VAL<>1
-			LM("MASK51","a_grind.com")
-		ELSE
-			LM("MASK18","a_grind.com")
-		ENDIF
-	END_PRESS
-
-	PRESS(HS2)
-		LM("MASK1","a_process.com")
-	END_PRESS
-
-	PRESS(HS3)
-		LM("MASK3","a_dress.com")
-	END_PRESS
-
-	PRESS(HS4)
-		LM("MASK21","a_auto.com")
-	END_PRESS
-
-	PRESS(HS5)
-		LM("MASK1","a_grind_pos.com")
-	END_PRESS
-	
-	PRESS(HS6)
-		LM("MASK1","a_auto_pos.com")
-	END_PRESS
-	
-	PRESS(HS7)
-		LM("MASK0","a_data.com")
-	END_PRESS
-
-	PRESS(HS8)
-		EXIT
-	END_PRESS
-
-	PRESS(VS1)
-		LM("MASK50","a_auto.com")
-	END_PRESS
 	
 	CHANGE(POS_INPUT_1)
 		IF POS_INPUT_1.VAL==1
@@ -266,7 +205,6 @@
 			POS_INPUT_8.WR=4
 			POS_INPUT_9.WR=4
 			POS_INPUT_10.WR=4
-			MEAS_1ST_VALUE.WR=4
 			IF (LADAO_CHOICE.VAL==0) OR (GRIND_CHOICE<>1);平拉刀或者不是通磨
 				MEAS_FENGDU.WR=4
 				MEAS_FENGDU.VAL=0
@@ -281,7 +219,6 @@
 			POS_INPUT_8.WR=2
 			POS_INPUT_9.WR=2
 			POS_INPUT_10.WR=2
-			MEAS_1ST_VALUE.WR=1
 			MEAS_FENGDU.WR=4
 			MEAS_FENGDU.VAL=0
 		ENDIF
@@ -388,20 +325,73 @@
 	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
 	DEF GRIND_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[38]"/0,0,0/0,0,0/);加工选择
 
+	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS1.SE=3
+	END_LOAD
+	
+	CHANGE(POS_INPUT_0)
+		IF POS_INPUT_0.VAL==1
+			VAR0.VAL=X_IM.VAL
+			POS_INPUT_0.VAL=0
+		ENDIF
+	END_CHANGE
+	
+	CHANGE(POS_INPUT_1)
+		IF POS_INPUT_1.VAL==1
+			VAR1.VAL=Y_IM.VAL
+			POS_INPUT_1.VAL=0
+		ENDIF
+	END_CHANGE
+	
+	CHANGE(POS_INPUT_2)
+		IF POS_INPUT_2.VAL==1
+			VAR2.VAL=Z_IM.VAL
+			POS_INPUT_2.VAL=0
+		ENDIF
+	END_CHANGE
+//END
+
+;**************MASK21:测量数据:panel_51********************
+//M(Mask51/$85513//)
+
+	DEF MEAS_BASE_1=(R///$85691,$85694,,/WR1//"/NC/_N_NC_GD2_ACX/LADAO[476]"/320,10,150/440,10,60/"#d34d2f",129/);自动计算磨削位_实际测量-测头相对回转中心虚拟半径
+	DEF MEAS_BASE_2=(R///$85692,$85695,,/WR1//"/NC/_N_NC_GD2_ACX/LADAO[477]"/320,30,150/440,30,60/"#d34d2f",129/);自动计算磨削位_实际测量-测头虚拟半径和测量杆的夹角
+	DEF MEAS_BASE_3=(R///$85693,$85696,,/WR1//"/NC/_N_NC_GD2_ACX/LADAO[478]"/320,50,150/440,50,60/"#d34d2f",129/);自动计算磨削位_实际测量-测头测量时虚拟半径垂直向下的夹角
+
+	DEF MEAS_1ST_VALUE_X=(R///$85682,$85682,,/WR1//"/NC/_N_NC_GD2_ACX/LADAO[469]"/320,80,150/440,80,60//);测量基准面测量值.X
+	DEF MEAS_1ST_VALUE_Y=(R///$85520,$85520,,/WR1//"/NC/_N_NC_GD2_ACX/LADAO[465]"/320,100,150/440,100,60//);测量基准面测量值.Y
+	DEF MEAS_1ST_VALUE_Z=(R///$85521,$85521,,/WR1//"/NC/_N_NC_GD2_ACX/LADAO[464]"/320,120,150/440,120,60//);测量基准面测量值.Z
+
+	DEF QIANJIAO_BASE_Y=(R///$85522,$85522,,/WR1//"/NC/_N_NC_GD2_ACX/LADAO[364]"/320,150,150/440,150,60//);前角基准坐标.Y
+	DEF QIANJIAO_BASE_Z=(R///$85523,$85523,,/WR1//"/NC/_N_NC_GD2_ACX/LADAO[363]"/320,170,150/440,170,60//);前角基准坐标.Z
+
+	DEF TYPE=(I////WR4//"/NC/_N_NC_GD2_ACX/GRIND[1]"/0,0,0/0,0,0/);磨削类型
+	DEF TECH=(I////WR4//"/NC/_N_NC_GD2_ACX/PROCESS[16]"/0,0,0/0,0,0);精简工艺参数/扩展工艺参数
+	DEF PIECE_VOLUME=(I////WR4//"/NC/_N_NC_GD2_ACX/INI[27]"/0,0,0/0,0,0/);单件/批量磨削方式选择
+	DEF LOAD_YUANLADAO=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[257]"/0,0,0/0,0,0);是否有圆拉刀
+	DEF LADAO_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[220]"/0,0,0/0,0,0/);拉刀类型(0平面拉刀/1圆拉刀)
+	DEF GRIND_CHOICE=(I////WR4//"/NC/_N_NC_GD2_ACX/LADAO[38]"/0,0,0/0,0,0/);加工选择
+
+	LOAD
+		LS("MENU_1");默认调用 MENU_1
+		VS2.SE=3
+	END_LOAD
+	
+//END
+
+//S(MENU_1)
 	HS1=(["\\S_003.png",$85066],ac7,se1,pa0);磨削参数
 	HS2=(["\\S_004.png",$85067],ac7,se1,pa0);工艺参数
 	HS3=(["\\S_005.png",$85068],ac7,se1,pa0);修整参数
-	;
 	HS4=(["\\S_006.png",$85069],ac7,se3,pa0);自动对刀 ifIsAuto
 	HS5=(["\\S_008.png",$85076],ac7,se1,pa0);加工数据
 	HS6=(["\\S_007.png",$85085],ac7,se1,pa0);
 	HS7=(["\\S_009.png",$85099],ac7,se1,pa0);磨削基准
-
-	;
-
 	HS8=(["\\S_010.png",$85073],ac7,se1,pa0);返回
 
-	VS1=($85504,ac7,se3);"测头校准"
+	VS1=($85504,ac7,se1);"测头校准"
+	VS2=($85513,ac7,se1);"测量数据"
 
 	PRESS(HS1)
 		IF TYPE.VAL<>1
@@ -442,25 +432,8 @@
 	PRESS(VS1)
 		LM("MASK50","a_auto.com")
 	END_PRESS
-	
-	CHANGE(POS_INPUT_0)
-		IF POS_INPUT_0.VAL==1
-			VAR0.VAL=X_IM.VAL
-			POS_INPUT_0.VAL=0
-		ENDIF
-	END_CHANGE
-	
-	CHANGE(POS_INPUT_1)
-		IF POS_INPUT_1.VAL==1
-			VAR1.VAL=Y_IM.VAL
-			POS_INPUT_1.VAL=0
-		ENDIF
-	END_CHANGE
-	
-	CHANGE(POS_INPUT_2)
-		IF POS_INPUT_2.VAL==1
-			VAR2.VAL=Z_IM.VAL
-			POS_INPUT_2.VAL=0
-		ENDIF
-	END_CHANGE
+
+	PRESS(VS2)
+		LM("MASK51","a_auto.com")
+	END_PRESS
 //END
