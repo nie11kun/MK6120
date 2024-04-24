@@ -173,7 +173,7 @@ ENDIF
 IF (LADAO[27]==1) AND (LADAO[465]==1);测量第一齿且测量齿侧面
 	G90 G01 Y=Y_SAFE_CURR Z=$AA_IM[Z]-LADAO[98]*(Y_SAFE_CURR-$AA_IM[Y])*TAN(LADAO[30]) F=LADAO[236]*3;Y轴到安全位置
 
-	IF LADAO[489]==0;自动对刀-测量第一齿齿侧-测量角度(0度测量垂直面  设置角度则为测量标准棒)
+	IF (LADAO[489]==0) AND (TOOL_SET[47]==1);自动对刀-测量第一齿齿侧-测量角度(0度测量垂直面  设置角度则为测量标准棒) 且探测基准Y
 		G90 G01 Z=LADAO[495] F=LADAO[236]*3;Z轴到安全位置
 		G90 G01 Y=LADAO[494]+LADAO[21] F=LADAO[236]*3
 		G90 G01 X=LADAO[493];自动对刀-测量第一齿齿侧面
@@ -251,10 +251,14 @@ STOPRE
 IF LADAO[27]==1;第一齿
 	LADAO[463]=LADAO[73];自动对刀-第一齿前角实测.Z  通磨自动计算用
 	IF LADAO[465]==1;测量齿侧
-		IF LADAO[489]<>0;测量角度不为0
-			LADAO[464]=LADAO[492]-LADAO[490]/2-LADAO[490]/2/TAN((90-LADAO[489])/2);自动对刀-齿侧测量面.Y  通磨自动计算用
-		ELSE
+		IF (LADAO[489]==0) AND (TOOL_SET[47]==1);测量角度为0 且测量基准Y
 			LADAO[464]=LADAO[497]
+		ELSE
+			IF LADAO[489]<>0;
+				LADAO[464]=LADAO[492]-LADAO[490]/2-LADAO[490]/2/TAN((90-LADAO[489])/2);自动对刀-齿侧测量面.Y  通磨自动计算用
+			ELSE
+				LADAO[464]=LADAO[80]
+			ENDIF
 		ENDIF
 	ELSE
 		LADAO[464]=LADAO[80];自动对刀-第一齿后角实测.Y  通磨自动计算用
