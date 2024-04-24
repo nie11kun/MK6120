@@ -560,7 +560,7 @@
 |PROCESS[14]|GRID_TOTAL_ACCUMULATION|工艺磨削总量累计
 |PROCESS[15]|TECH_DRESS_EXTEND|精简工艺参数/扩展工艺参数
 |PROCESS[16]||磨削安全位置
-|PROCESS[17]||
+|PROCESS[17]||前角靠后背-齿宽补偿-叠加补偿
 |磨削中心相关||
 |PROCESS[18]||外圆磨当前所在工艺
 |PROCESS[19]||外圆磨当前循环是否修整累计
