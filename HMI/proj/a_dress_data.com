@@ -1,6 +1,6 @@
 //M(Mask1/$85037//);历史记录
 
-	DEF CUR_SHAPE=(I/0,50//$85038,$85038,,/WR2//"/NC/_N_NC_GD2_ACX/CUR_SHAPE"/10,10,110/150,10,60//);当前行号
+	DEF CUR_SHAPE=(I/0,50//$85038,$85038,,/WR2//"/NC/_N_NC_GD2_ACX/CUR_SHAPE"/10,10,110/120,10,60//);当前行号
 	DEF RESTORE_LINE=(I/0,50//$85030,$85030,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[500]"/360,10,110/470,10,60//);历史记录恢复行号
 
 	DEF RESTORE_COMFIRM=(I//0//WR4,ac4///0,0,0/0,0,0/);参数恢复判断参数
@@ -42,7 +42,12 @@
 		LM("Mask2","a_dress_data.com",1,RESTORE_COMFIRM)
 		IF RESTORE_COMFIRM.VAL==1;如果为1则重置参数
 			call("UP1")
-			DLGL("数据恢复完成")
+			IF XIUZHENG_MODE.VAL==1;插补  恢复数据后需要跳转到滚轮界面自动计算 xyz 修整基准
+				LM("MASK12","a_dressware.com")
+			ELSE
+				LM("MASK16","a_dressware.com")
+			ENDIF
+			DLGL("数据恢复完成,请核对修整界面/插补或滚压界面参数是否正确！")
 		ELSE
 			DLGL("数据恢复取消")
 		ENDIF
