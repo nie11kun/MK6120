@@ -239,7 +239,7 @@ IF (LADAO[27]==1) AND (LADAO[465]==1);测量第一齿且测量齿侧面
 		LADAO[468]=LADAO[468]+LADAO[490]*LADAO[335];校准测头接触侧面位置.X
 
 		G91 G01 Y=5 F=LADAO[236]*3
-		G90 G01 X=LADAO[468];移动到安全位置 防止Y轴向下移动撞刀
+		G90 G01 X=LADAO[466];移动到安全位置 防止Y轴向下移动撞刀
 	ENDIF
 
 	G90 G01 Y=Y_SAFE_CURR Z=$AA_IM[Z]-LADAO[98]*(Y_SAFE_CURR-$AA_IM[Y])*TAN(LADAO[30]) F=LADAO[236]*3;Y轴到安全位置
