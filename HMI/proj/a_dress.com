@@ -38,8 +38,9 @@
 	DEF VAR12=(R/0,200//$85316,$85316,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/DRESSER[23]"/10,60,110/130,60,110//"UserGuide/section_3.html","S3D13");新砂轮厚度
 	DEF HOUDU_CURR=(R///$85313,$85313,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[113]"/10,80,110/130,80,110//"UserGuide/section_3.html","S3D13");当前砂轮厚度
 	DEF HOUDU_MIN=(R///$85314,$85314,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[114]"/10,100,110/130,100,110//"UserGuide/section_3.html","S3D13");最小砂轮厚度
-	DEF HOUDU_DIA=(R///$85315,$85315,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[115]"/10,120,110/130,120,110//"UserGuide/section_3.html","S3D13");砂轮直径
+	DEF HOUDU_DIA=(R///$85315,$85315,,$85043/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[115]"/10,120,110/130,120,110//"UserGuide/section_3.html","S3D13");基准砂轮直径
 	DEF HOUDU_ZUIDU=(R///$85325,$85325,,$85042/WR4/"panel_3_9_chs.png"/"/NC/_N_NC_GD2_ACX/LADAO[178]"/10,140,110/130,140,110//"UserGuide/section_3.html","S3D13");砂轮锥度角
+	DEF HOUDU_CURR_DIA=(R///$86010,$86010,,$85043/WR4//"/NC/_N_NC_GD2_ACX/PROCESS[22]"/10,160,110/130,160,110/"#de8d77");厚度方向-当前砂轮直径
 
 	;************************************************
 
@@ -231,10 +232,16 @@
 
 	CHANGE(HOUDU_CURR);VAR14
 		call("ROTATE_LINE")
+		call("UP2")
 	END_CHANGE
 
 	CHANGE(HOUDU_DIA);VAR14
 		call("ROTATE_LINE")
+		call("UP2")
+	END_CHANGE
+	
+	CHANGE(HOUDU_ZUIDU)
+		call("UP2")
 	END_CHANGE
 	
 	CHANGE(VAR15)
@@ -277,6 +284,7 @@
 			HOUDU_MIN.WR=4
 			HOUDU_DIA.WR=4
 			HOUDU_ZUIDU.WR=4
+			HOUDU_CURR_DIA.WR=4
 		ELSE
 			ZHIJIN_MSG.WR=4
 			VAR13.WR=4
@@ -290,6 +298,7 @@
 			HOUDU_MIN.WR=2
 			HOUDU_DIA.WR=2
 			HOUDU_ZUIDU.WR=2
+			HOUDU_CURR_DIA.WR=1
 		ENDIF
 	END_CHANGE
 
@@ -396,5 +405,10 @@
 		ENDIF
 	END_SUB
 
+	SUB(UP2)
+		IF SHALUN_LEIXIN.VAL==1
+			HOUDU_CURR_DIA.VAL=HOUDU_DIA.VAL+HOUDU_CURR.VAL*TAN(SRAD(HOUDU_ZUIDU.VAL))*2
+		ENDIF
+	END_SUB
 //END
 
