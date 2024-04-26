@@ -568,7 +568,7 @@
 |PROCESS[22]||后角-起点自动计算-厚度方向-砂轮宽度补偿
 |PROCESS[23]||
 |PROCESS[24]||
-|PROCESS[25]||
+|PROCESS[25]||铲背加工-是否有齿升量-0没有/1有
 |PROCESS[26]||
 |PROCESS[27]||
 |PROCESS[28]||
