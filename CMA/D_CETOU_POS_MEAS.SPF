@@ -9,6 +9,7 @@ DEF REAL Y_INI_POSITION
 IF LADAO[480]==1;测头实际位置校准(0否1是)
 
     G90 G01 Y=INI[23] F=INI[55];Y轴到安全位置
+    G90 G01 X=LADAO[12] F=LADAO[2];X轴到安全位置
     C_ROTATE_ANGLE(0,0);螺旋升角
 
     G90 G01 Z=LADAO[487] F=INI[56];Z轴到安全位置
