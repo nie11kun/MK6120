@@ -3,40 +3,165 @@
 <HMI_SL_HELP language="chs">
 	<BOOK ref="index.html" title="用户手册" helpdir="UserGuide">
 		<ENTRY ref ="section_1.html" title="HMI界面参数定义" >
-			<ENTRY ref ="section_1.html" title="磨削界面" >
-				<INDEX_ENTRY ref="section_1.html" title="磨削界面" />
+			<ENTRY ref ="section_1.html" title="磨削参数" >
+				<ENTRY ref ="section_1.html" title="磨削主界面" >
+					<INDEX_ENTRY ref="section_1.html" title="磨削主界面" />
+				</ENTRY>
+				<ENTRY ref ="section_2.html" title="工件参数" >
+					<INDEX_ENTRY ref="section_2.html" title="工件参数" />
+				</ENTRY>
+				<ENTRY ref ="section_3.html" title="前角" >
+					<INDEX_ENTRY ref="section_3.html" title="前角" />
+				</ENTRY>
+				<ENTRY ref ="section_4.html" title="齿背" >
+					<INDEX_ENTRY ref="section_4.html" title="齿背" />
+				</ENTRY>
+				<ENTRY ref ="section_5.html" title="后角" >
+					<INDEX_ENTRY ref="section_5.html" title="后角" />
+				</ENTRY>
+				<ENTRY ref ="section_6.html" title="通磨" >
+					<INDEX_ENTRY ref="section_6.html" title="通磨" />
+				</ENTRY>
+				<ENTRY ref ="section_7.html" title="铲背" >
+					<INDEX_ENTRY ref="section_7.html" title="铲背" />
+				</ENTRY>
+				<ENTRY ref ="section_8.html" title="齿端平面" >
+					<INDEX_ENTRY ref="section_8.html" title="齿端平面" />
+				</ENTRY>
+				<ENTRY ref ="section_9.html" title="吸铁台面" >
+					<INDEX_ENTRY ref="section_9.html" title="吸铁台面" />
+				</ENTRY>
+				<ENTRY ref ="section_10.html" title="内圆加工" >
+					<INDEX_ENTRY ref="section_10.html" title="内圆加工" />
+				</ENTRY>
+				<ENTRY ref ="section_11.html" title="螺旋槽" >
+					<INDEX_ENTRY ref="section_11.html" title="螺旋槽" />
+				</ENTRY>	
 			</ENTRY>
-			<ENTRY ref ="section_2.html" title="工艺界面" >
-				<INDEX_ENTRY ref="section_2.html" title="工艺界面" />
+			<ENTRY ref ="section_20.html" title="工艺参数" >
+				<ENTRY ref ="section_20.html" title="前角" >
+					<INDEX_ENTRY ref="section_20.html" title="前角" />
+				</ENTRY>
+				<ENTRY ref ="section_21.html" title="齿背" >
+					<INDEX_ENTRY ref="section_21.html" title="齿背" />
+				</ENTRY>
+				<ENTRY ref ="section_22.html" title="后角" >
+					<INDEX_ENTRY ref="section_22.html" title="后角" />
+				</ENTRY>
+				<ENTRY ref ="section_23.html" title="通磨" >
+					<INDEX_ENTRY ref="section_23.html" title="通磨" />
+				</ENTRY>
+				<ENTRY ref ="section_24.html" title="铲背" >
+					<INDEX_ENTRY ref="section_24.html" title="铲背" />
+				</ENTRY>
+				<ENTRY ref ="section_25.html" title="齿端平面" >
+					<INDEX_ENTRY ref="section_25.html" title="齿端平面" />
+				</ENTRY>
+				<ENTRY ref ="section_25.html" title="吸铁台面" >
+					<INDEX_ENTRY ref="section_25.html" title="吸铁台面" />
+				</ENTRY>
+				<ENTRY ref ="section_25.html" title="内圆加工" >
+					<INDEX_ENTRY ref="section_25.html" title="内圆加工" />
+				</ENTRY>
+				<ENTRY ref ="section_28.html" title="螺旋槽" >
+					<INDEX_ENTRY ref="section_28.html" title="螺旋槽" />
+				</ENTRY>	
 			</ENTRY>
-			<ENTRY ref ="section_3.html" title="修整界面" >
-				<INDEX_ENTRY ref="section_3.html" title="修整界面" />
+			<ENTRY ref ="section_30.html" title="修整参数" >
+				<ENTRY ref ="section_30.html" title="修整主界面" >
+					<INDEX_ENTRY ref="section_30.html" title="修整主界面" />
+				</ENTRY>
+				<ENTRY ref ="section_31.html" title="插补" >
+					<INDEX_ENTRY ref="section_31.html" title="插补" />
+				</ENTRY>
+				<ENTRY ref ="section_32.html" title="滚压" >
+					<INDEX_ENTRY ref="section_32.html" title="滚压" />
+				</ENTRY>
+				<ENTRY ref ="section_33.html" title="金刚笔" >
+					<INDEX_ENTRY ref="section_33.html" title="金刚笔" />
+				</ENTRY>
+				<ENTRY ref ="section_34.html" title="历史记录" >
+					<INDEX_ENTRY ref="section_34.html" title="历史记录" />
+				</ENTRY>
 			</ENTRY>
-			<ENTRY ref ="section_4.html" title="滚轮界面" >
-				<INDEX_ENTRY ref="section_4.html" title="滚轮界面" />
+			<ENTRY ref ="section_40.html" title="自动对刀" >
+				<ENTRY ref ="section_40.html" title="自动对刀主界面" >
+					<INDEX_ENTRY ref="section_40.html" title="自动对刀主界面" />
+				</ENTRY>
+				<ENTRY ref ="section_41.html" title="测头校准" >
+					<INDEX_ENTRY ref="section_41.html" title="测头校准" />
+				</ENTRY>
+				<ENTRY ref ="section_42.html" title="测量坐标" >
+					<INDEX_ENTRY ref="section_42.html" title="测量坐标" />
+				</ENTRY>
 			</ENTRY>
-			<!--ifIsAutoBegin-->
-			<ENTRY ref ="section_5.html" title="自动对刀界面" >
-				<INDEX_ENTRY ref="section_5.html" title="自动对刀界面" />
+			<ENTRY ref ="section_50.html" title="磨削基准" >
+				<ENTRY ref ="section_50.html" title="基准数据" >
+					<INDEX_ENTRY ref="section_50.html" title="基准数据" />
+				</ENTRY>
+				<ENTRY ref ="section_51.html" title="基准校准" >
+					<INDEX_ENTRY ref="section_51.html" title="基准校准" />
+				</ENTRY>
 			</ENTRY>
-			<!--ifIsAutoEnd-->
-
-			<!--removed-->
+			<ENTRY ref ="section_60.html" title="备份恢复" >
+				<INDEX_ENTRY ref="section_60.html" title="备份恢复" />
+			</ENTRY>
 		</ENTRY>
-		<ENTRY ref ="section_10.html" title="机床功能介绍" >
-			<!--ifIsNotCenterBegin-->
-			<ENTRY ref ="section_10.html" title="修整" >
-				<INDEX_ENTRY ref="section_10.html" title="修整" />
+		<ENTRY ref ="section_70.html" title="机床功能介绍" >
+			<ENTRY ref ="section_70.html" title="砂轮修整" >
+				<ENTRY ref ="section_71.html" title="插补" >
+					<INDEX_ENTRY ref="section_71.html" title="插补" />
+				</ENTRY>
+				<ENTRY ref ="section_72.html" title="滚压" >
+					<INDEX_ENTRY ref="section_72.html" title="滚压" />
+				</ENTRY>
+				<ENTRY ref ="section_73.html" title="金刚笔" >
+					<INDEX_ENTRY ref="section_73.html" title="金刚笔" />
+				</ENTRY>
 			</ENTRY>
-			<ENTRY ref ="section_11.html" title="对刀" >
-				<INDEX_ENTRY ref="section_11.html" title="对刀" />
+			<ENTRY ref ="section_80.html" title="自动对刀" >
+				<ENTRY ref ="section_81.html" title="基准校准" >
+					<INDEX_ENTRY ref="section_81.html" title="基准校准" />
+				</ENTRY>
+				<ENTRY ref ="section_82.html" title="测头校准" >
+					<INDEX_ENTRY ref="section_82.html" title="测头校准" />
+				</ENTRY>
+				<ENTRY ref ="section_83.html" title="自动测量" >
+					<INDEX_ENTRY ref="section_83.html" title="自动测量" />
+				</ENTRY>
 			</ENTRY>
-			<ENTRY ref ="section_12.html" title="磨削" >
-				<INDEX_ENTRY ref="section_12.html" title="磨削" />
+			<ENTRY ref ="section_90.html" title="加工磨削" >
+				<ENTRY ref ="section_91.html" title="前角" >
+					<INDEX_ENTRY ref="section_91.html" title="前角" />
+				</ENTRY>
+				<ENTRY ref ="section_92.html" title="齿背" >
+					<INDEX_ENTRY ref="section_92.html" title="齿背" />
+				</ENTRY>
+				<ENTRY ref ="section_93.html" title="后角" >
+					<INDEX_ENTRY ref="section_93.html" title="后角" />
+				</ENTRY>
+				<ENTRY ref ="section_94.html" title="通磨" >
+					<INDEX_ENTRY ref="section_94.html" title="通磨" />
+				</ENTRY>
+				<ENTRY ref ="section_95.html" title="铲背" >
+					<INDEX_ENTRY ref="section_95.html" title="铲背" />
+				</ENTRY>
+				<ENTRY ref ="section_96.html" title="齿端平面" >
+					<INDEX_ENTRY ref="section_96.html" title="齿端平面" />
+				</ENTRY>
+				<ENTRY ref ="section_97.html" title="吸铁台面" >
+					<INDEX_ENTRY ref="section_97.html" title="吸铁台面" />
+				</ENTRY>
+				<ENTRY ref ="section_98.html" title="内圆加工" >
+					<INDEX_ENTRY ref="section_98.html" title="内圆加工" />
+				</ENTRY>
+				<ENTRY ref ="section_99.html" title="螺旋槽" >
+					<INDEX_ENTRY ref="section_99.html" title="螺旋槽" />
+				</ENTRY>	
 			</ENTRY>
-			<!--ifIsNotCenterEnd-->
-
-			<!--removed-->
+			<ENTRY ref ="section_61.html" title="备份恢复" >
+				<INDEX_ENTRY ref="section_61.html" title="备份恢复" />
+			</ENTRY>
 		</ENTRY>
 	</BOOK>
 </HMI_SL_HELP>

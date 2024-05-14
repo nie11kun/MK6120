@@ -1,0 +1,77 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset="UTF-8"/>
+        <title>参数备份恢复</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    </head>
+    
+    <body>
+        <div class="head1"><a href="index.html">机床功能介绍</a>
+            <hr>
+            <div class="head2">参数备份恢复
+                <hr>
+                <p>具体参数设置请参考<a href="section_31.html" class="highlight">参数备份恢复界面</a></p>
+                <hr>
+                <div class="head3">
+                    <hr>
+                    <div class="head4">加工
+                        <ol class="list">
+                            <li>打开备份恢复界面，将模式选择设置为<b class="highlight">加工</b></li>
+                            <li>启动程序</li>
+                        </ol>
+                    </div>
+                    <hr>
+                    <div class="head4">备份
+                        <ol class="list">
+                            <li>打开备份恢复界面，将模式选择设置为<b class="highlight">备份</b></li>
+                            <li>设置<a href="section_31.html#S31D2">备份路径</a>、<a href="section_31.html#S31D3">备份目录</a>、<a href="section_31.html#S31D4">文件名称</a></li>
+                            <li>根据需要设置<a href="section_31.html#S31D5">备份模式</a></li>
+                            <li>如果设置为自定义变量模式则需要定义：<a href="section_31.html#S31D6">列表目录</a>、<a href="section_31.html#S31D7">列表名称</a>、<a href="section_31.html#S31D8">列表行数</a></li>
+                            <li>变量列表路径默认在子程序目录下</li>
+                            <li>变量列表文件定义规则如下：</li>
+                            <ol class="list">
+                                <li>参数最多不可超过790个</li>
+                                <li>需要定义参数文件总行数，包括分号注释所占行和空行</li>
+                                <li>参数文件内可在行开头用分号 " ; " 定义注释，注释所在行不会被读取，空行也不会被读取</li>
+                                <li>参数名称前加星号 "*" 表示字符串变量</li>
+                            </ol>
+                            <li>示例自定义备份变量表文件内容如下：</li>
+                            <div>
+                                ;****************************<br>
+                                ;PAR_DEMO.TXT<br>
+                                <br>
+                                ;此文件为示例参数列表文件<br>
+                                ;需要在行数参数中声明此文件总共有多少行,此示例文件需要定义的行数为 14<br>
+                                ;参数文件内可在行开头用分号 " ; " 定义注释，注释所在行不会被读取，空行也不会被读取<br>
+                                ;参数名称前加星号 "*" 表示字符串变量<br>
+                                <br>
+                                R0<br>
+                                R1<br>
+                                <br>
+                                INI[5]<br>
+                                *STRING<br>
+                                ;注释行<br>
+                                WORK[5]<br>
+                                ;*****************************<br>
+                            </div>
+                        </ol>
+                    </div>
+                        <hr>
+                    <div class="head4">恢复
+                        <ol class="list">
+                            <li>打开备份恢复界面，将模式选择设置为<b class="highlight">恢复</b></li>
+                            <li>设置<a href="section_31.html#S31D9">恢复路径</a>、<a href="section_31.html#S31D10">恢复目录</a>、<a href="section_31.html#S31D11">文件名称</a></li>
+                            <li>如需恢复存储在后置USB的文件，需要在逻辑驱动器中配置好，名称设置为：<b class="highlight">//DEV_3</b></li>
+                        </ol>
+                    </div>
+                    <hr>
+                    <div class="alarm1">注意事项
+                        <ol class="list">
+                            <li>自定义备份变量表文件需要定义在系统子程序路径下</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
