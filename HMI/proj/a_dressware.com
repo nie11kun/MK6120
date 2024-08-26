@@ -34,7 +34,7 @@
 	DEF POS_INPUT_10=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/480,137,15/);坐标写入键
 
 	DEF GRIND_CHOICE=(I/*0=$85670,1=$85671//$85669,$85669,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[285]"/10,10,202/150,10,60/,"#ffc5c5"/"UserGuide/section_31.html","S31D11");砂轮选择(0砂轮一/1砂轮二)
-	DEF WHEEL_CHOICE=(I/*0=$85639,2=$85667,3=$85668//$85638,$85638,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[153]"/10,30,202/150,30,60/,"#ffc5c5"/"UserGuide/section_31.html","S31D12");滚轮选择(0左前滚轮/1左后滚轮/2右前滚轮/3右后滚轮)
+	DEF WHEEL_CHOICE=(I/*0=$85639,1=$85640,2=$85667,3=$85668//$85638,$85638,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[153]"/10,30,202/150,30,60/,"#ffc5c5"/"UserGuide/section_31.html","S31D12");滚轮选择(0左前滚轮/1左后滚轮/2右前滚轮/3右后滚轮)
 	DEF X_DRESS_POS_ZUO_QIAN_1=(R///$85641,$85641,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[155]"/10,50,202/150,50,60/,"#ffc5c5"/"UserGuide/section_31.html","S31D13");1左前滚压修整位X
 	DEF Y_DRESS_POS_ZUO_QIAN_1=(R///$85660,$85660,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[235]"/10,70,202/150,70,60/,"#ffc5c5"/"UserGuide/section_31.html","S31D14");1左前滚轮修整基准.Y
 	DEF Z_DRESS_POS_ZUO_QIAN_1=(R///$85653,$85653,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[198]"/10,90,202/150,90,60/,"#ffc5c5"/"UserGuide/section_31.html","S31D15");1左前滚轮端面碰主轴端面坐标z
@@ -1127,7 +1127,7 @@
 	DEF POS_INPUT_10=(I/*0=$85017,1=$85017/0/$85058,$85058,,/WR2///0,0,0/480,137,15/);坐标写入键
 
 	DEF GRIND_CHOICE=(I/*0=$85670,1=$85671//$85669,$85669,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[285]"/10,10,202/150,10,60/,"#ffc5c5"/"UserGuide/section_32.html","S32D11");砂轮选择(0砂轮一/1砂轮二)
-	DEF WHEEL_CHOICE=(I/*0=$85639,2=$85667,3=$85668//$85638,$85638,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[154]"/10,30,202/150,30,60/,"#ffc5c5"/"UserGuide/section_32.html","S32D12");滚轮选择(0前滚轮/1后滚轮)
+	DEF WHEEL_CHOICE=(I/*0=$85639,1=$85640,2=$85667,3=$85668//$85638,$85638,,/WR2//"/NC/_N_NC_GD2_ACX/LADAO[154]"/10,30,202/150,30,60/,"#ffc5c5"/"UserGuide/section_32.html","S32D12");滚轮选择(0前滚轮/1后滚轮)
 	DEF X_DRESS_POS_ZUO_QIAN_1=(R///$85641,$85641,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[155]"/10,50,202/150,50,60/,"#ffc5c5"/"UserGuide/section_32.html","S32D13");左前滚压修整位X
 	DEF Y_DRESS_POS_ZUO_QIAN_1=(R///$85660,$85660,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[235]"/10,70,202/150,70,60/,"#ffc5c5"/"UserGuide/section_32.html","S32D14");左前滚轮修整基准.Y
 	DEF Z_DRESS_POS_ZUO_QIAN_1=(R///$85653,$85653,,/WR4//"/NC/_N_NC_GD2_ACX/LADAO[198]"/10,90,202/150,90,60/,"#ffc5c5"/"UserGuide/section_32.html","S32D15");左前滚轮端面碰主轴端面坐标z
