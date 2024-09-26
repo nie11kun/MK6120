@@ -45,7 +45,7 @@ ENDIF
 
 ;传递参数
 IF LADAO[161]==0;修砂轮后磨削标记
-	IF LADAO[18]==0;进刀方向(0垂直/1水平)
+	IF ((LADAO[37]<>3) AND (LADAO[18]==0)) OR ((LADAO[37]==3) AND (LADAO[502]==0));进刀方向垂直 或者 加工铲背且是上下Y进刀
 		PROCESS[4]=PROCESS[4]-S_TECH_GRIND_DEEP;进刀位置
 	ENDIF
 	PROCESS[8]=S_TECH_GRIND_DEEP;磨削进刀量
