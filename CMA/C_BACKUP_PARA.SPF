@@ -26,11 +26,11 @@ ELSE
             LINE_CURR=RESULT[CYC_COUNT]
             IF (LINE_CURR[0]<>";") AND (LINE_CURR[0]<>"");如果行开头为分号或空行则跳过此行
                 IF LINE_CURR[0]<>"*";星号标记字符串变量
-                    F_BACKUP_SINGLE(BACKUP_PATH,RESULT[CYC_COUNT],"REAL")
+                    F_BACKUP_SINGLE(BACKUP_POS,BACKUP_PATH,RESULT[CYC_COUNT],"REAL")
                 ELSE
                     LINE_CURR[0]=" ";
                     RESULT[CYC_COUNT]=LINE_CURR
-                    F_BACKUP_SINGLE(BACKUP_PATH,RESULT[CYC_COUNT],"STRING")
+                    F_BACKUP_SINGLE(BACKUP_POS,BACKUP_PATH,RESULT[CYC_COUNT],"STRING")
                 ENDIF
             ELSE
                 WRITE(ERR,BACKUP_PATH,LINE_CURR<<LF_CHAR)

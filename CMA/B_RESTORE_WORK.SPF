@@ -1,0 +1,18 @@
+PROC B_RESTORE_WORK DISPLOF
+;**********程序功能**********
+;*工件参数恢复程序
+;****************************
+
+DEF STRING[100] RESTORE_PATH
+
+MSG("当前执行程序-工件参数恢复");
+M0
+STOPRE
+
+MSG("正在恢复数据,请稍后...")
+
+RESTORE_PATH="/_N_SPF_DIR/_N_"<<"WORKPIECE_PAR"<<"_DIR/_N_"<<"NO_"<<LADAO[499]<<"_"<<SHAPE_NAME[CUR_SHAPE]<<"_SPF"
+CALL(RESTORE_PATH);
+
+RET
+

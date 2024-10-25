@@ -65,6 +65,11 @@ IF LADAO[312]<>0;测头-砂轮-相对位置计算(0否1是)
     RET;计算后直接结束
 ENDIF
 
+IF LADAO[504]<>0;历史记录-是否恢复工件数据(0否1是)
+    B_RESTORE_WORK;恢复工件参数
+    RET
+ENDIF
+
 A_GRINDING;主程序调用 ;ifIsNotCenter
 
 M30
