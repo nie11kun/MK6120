@@ -6,6 +6,7 @@ PROC A_BACKUP_RESTORE DISPLOF
 ;注意事项：
 ;如需备份数据到外部存储设备，需将 extdev.ini 配置文件放入 oem 或 user 系统目录下: `/oem/sinumerik/nck`, 并重启 nck 才可执行程序
 ;后部USB地址需要在逻辑驱动器中配置好，名称设置为 "//DEV_3"，且只能用于恢复数据
+;机床数据：MD11420 $MN_LEN_PROTOCOL_FILE, 定义允许的最大记录文件大小 限制适用于所有被动文件系统中通过WRITE 指令创建的文件。
 
 ;可备份全部MGUD预定义变量或自定义需备份变量表-如需指定备份变量需则定义相关下方变量
 
