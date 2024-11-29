@@ -48,11 +48,10 @@ ELSE
 ENDIF
 RING[5]=0;已加工槽数
 
-IF RING[3]==RING[1]+1;终止加工槽是最后一槽+1
-    D_RING_Z_RELATED_POS(RING[3],LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
-    MEASURE_RESULT[1350+RING[3]-1]=MEASURE_RESULT[1350+RING[3]-1-1]+LADAO[34]*LADAO[98];手动给最后一个齿的下一个齿的测量位置赋值，用来按照测量位磨削用
-    MEASURE_RESULT[300+RING[3]-1]=MEASURE_RESULT[300+RING[3]-1-1]+LADAO[34]*LADAO[98];手动给最后一个齿的下一个齿的测量位置赋值，用来按照测量位磨削用
-ENDIF
+;默认计算多一个齿的测量数据
+D_RING_Z_RELATED_POS(RING[1]+1,LADAO[157],LADAO[34]);计算当前齿的齿距和距离第一齿标准齿距的距离
+MEASURE_RESULT[1350+RING[1]]=MEASURE_RESULT[1350+RING[1]-1]+LADAO[34]*LADAO[98];手动给最后一个齿的下一个齿的测量位置赋值，用来按照测量位磨削用
+MEASURE_RESULT[300+RING[1]]=MEASURE_RESULT[300+RING[1]-1]+LADAO[34]*LADAO[98];手动给最后一个齿的下一个齿的测量位置赋值，用来按照测量位磨削用
 
 INI[73]=0;磨削工件计数
 TECH_ADDED[8]=0;磨削工件计数
